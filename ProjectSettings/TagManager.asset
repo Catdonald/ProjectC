@@ -6,6 +6,9 @@ TagManager:
   tags:
   - kitchen
   - desk
+  - Upgrade
+  - Cooker
+  - Table
   layers:
   - Default
   - TransparentFX
