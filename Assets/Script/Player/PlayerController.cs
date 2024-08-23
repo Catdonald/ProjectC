@@ -39,9 +39,7 @@ public class PlayerController : MonoBehaviour
             {
                 // 클릭된 위치와 현재 커서 위치를 통해 이동 방향 구하기
                 Vector3 mousePos = Input.mousePosition;
-                //Debug.Log(mousePos);
                 Vector3 mouseDelta = mousePos - mouseClickedPos;              
-                Debug.Log(mouseDelta);
                 // max padSizeX = 35.0f
                 Vector3 mouseDeltaNorm = new Vector3(mouseDelta.x / 35.0f, mouseDelta.y / 35.0f, mouseDelta.z);
                 if(mouseDeltaNorm.magnitude > 1.0f)
