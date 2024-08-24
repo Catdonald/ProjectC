@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 /// <summary>
 /// 240822 ¿À¼ö¾È
@@ -22,8 +23,8 @@ public class playerStack : MonoBehaviour
     int typeNow;
     int stackMax;
     int stackNow;
+    float stackSpeed;
 
-    int stackTime;
 
     void Awake()
     {
@@ -38,6 +39,7 @@ public class playerStack : MonoBehaviour
         typeNow = 0;
         stackMax = 3;
         stackNow = 0;
+        stackSpeed = 0.1f;
     }
 
     public void OnEnterInteraction(Collider other)
@@ -74,6 +76,8 @@ public class playerStack : MonoBehaviour
 
                 obj.transform.position = pos;
                 obj.transform.SetParent(gameObject.transform);
+
+                //obj.GetComponent<TrailRenderer>().enabled = false;
             }
         }
     }
