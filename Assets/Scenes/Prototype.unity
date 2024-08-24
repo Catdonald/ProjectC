@@ -163,9 +163,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 22622950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ef6beba9d30b6942a9c2c238e77cb7d, type: 3}
+  m_Script: {fileID: 11500000, guid: fbb0abfe45b9b844ea79b4948a82841d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
+  receiver: {fileID: 0}
 --- !u!1 &314860329
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,6 +914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1054023cb1bbbd641b7170e018c65970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectType: 0
 --- !u!1 &1695372897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,8 +1112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fb7c755adb4b53488b4ef6fada4c38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodType: 0
-  foodHeight: 0
+  objectType: 0
+  objectHeight: 0
   countMax: 0
   countNow: 0
   spawnSpeed: 0

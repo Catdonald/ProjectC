@@ -12,14 +12,14 @@ public class PlayerTestMove : MonoBehaviour
     public float speed = 6.0f;        // 플레이어 이동 속도
     public float gravity = -9.81f;    // 중력
     public CharacterController controller;
-    public burgerStack stack;
+    public playerStack stack;
 
     private Vector3 velocity;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        stack = GetComponentInChildren<burgerStack>();
+        stack = GetComponentInChildren<playerStack>();
     }
 
     void Update()
@@ -42,56 +42,23 @@ public class PlayerTestMove : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        switch (other.transform.tag)
-        {
-            case "kitchen":
-                {
-                    stack.OnEnterKitchen(0, other);
-                }
-                break;
-            case "desk":
-                {
-                    stack.OnEnterTable(0, other);
-                }
-                break;
-        }
-
+       stack.OnEnterInteraction(other);
     }
 
     void OnTriggerStay(Collider other)
     {
-        switch (other.transform.tag)
+        if (other.CompareTag("kitchen"))
         {
-            case "kitchen":
-                {
-                    stack.TryGetBurger();
-                }
-                break;
-            case "desk":
-                {
-                    stack.TrySetBurger();
-                }
-                break;
+            stack.InteractWithSpawner();
         }
-
+        else if (other.CompareTag("desk"))
+        {
+            stack.InteractWithReceiver();
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
-        switch (other.transform.tag)
-        {
-            case "kitchen":
-                {
-
-                    stack.OnExitKitchen();
-
-                }
-                break;
-            case "desk":
-                {
-                    stack.OnExitTable();
-                }
-                break;
-        }
+        stack.OnExitInteraction();
     }
 }

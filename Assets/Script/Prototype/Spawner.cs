@@ -12,11 +12,11 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     bool isSpawning;
-    public Stack<GameObject> burgerStack;
+    public Stack<GameObject> stack;
 
     [Header("spawn info")]
-    public int foodType;
-    public float foodHeight;
+    public int objectType;
+    public float objectHeight;
     public int countMax;
     public int countNow;
     public float spawnSpeed;
@@ -24,16 +24,16 @@ public class Spawner : MonoBehaviour
     void Awake()
     {
         isSpawning = false;
-        burgerStack = new Stack<GameObject>();
+        stack = new Stack<GameObject>();
 
-        foodType = 0;
+        objectType = 0;
         countMax = 3;
         spawnSpeed = 3f;
     }
     void OnEnable()
     {
-        GameObject food = GameManager.instance.PoolManager.Get(foodType);
-        foodHeight = food.GetComponent<Renderer>().bounds.size.y;
+        GameObject food = GameManager.instance.PoolManager.Get(objectType);
+        objectHeight = food.GetComponent<Renderer>().bounds.size.y;
         GameManager.instance.PoolManager.Return(food);
     }
 
@@ -44,25 +44,33 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        if (burgerStack.Count < countMax && !isSpawning)
+        if (stack.Count < countMax && !isSpawning)
         {
             isSpawning = true;
-            StartCoroutine(SpawnFood(foodType));
+            StartCoroutine(SpawnObject(objectType));
         }
     }
 
-    IEnumerator SpawnFood(int index)
+    private IEnumerator SpawnObject(int index)
     {
         yield return new WaitForSeconds(spawnSpeed);
 
         GameObject food = GameManager.instance.PoolManager.Get(index);
 
         food.transform.position = 
-            transform.position + Vector3.up * foodHeight * burgerStack.Count;
+            transform.position + Vector3.up * objectHeight * stack.Count;
 
-        burgerStack.Push(food);
+        stack.Push(food);
 
         isSpawning = false;
+    }
+
+    public GameObject RequestObject()
+    {
+        if(stack.Count > 0)
+            return stack.Pop();
+        else 
+            return null;
     }
 
 }
