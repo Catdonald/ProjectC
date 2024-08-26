@@ -28,18 +28,17 @@ public class Spawner : MonoBehaviour
 
         objectType = 0;
         countMax = 3;
-        spawnSpeed = 3f;
+        spawnSpeed = 1f;
     }
     void OnEnable()
     {
-        GameObject food = GameManager.instance.PoolManager.Get(objectType);
-        objectHeight = food.GetComponent<Renderer>().bounds.size.y;
-        GameManager.instance.PoolManager.Return(food);
     }
 
     void Start()
     {
-
+        GameObject type = GameManager.instance.PoolManager.Get(objectType);
+        objectHeight = type.GetComponent<Renderer>().bounds.size.y;
+        GameManager.instance.PoolManager.Return(type);
     }
 
     void Update()
@@ -55,12 +54,12 @@ public class Spawner : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnSpeed);
 
-        GameObject food = GameManager.instance.PoolManager.Get(index);
+        GameObject obj = GameManager.instance.PoolManager.Get(index);
 
-        food.transform.position = 
+        obj.transform.position = 
             transform.position + Vector3.up * objectHeight * stack.Count;
 
-        stack.Push(food);
+        stack.Push(obj);
 
         isSpawning = false;
     }

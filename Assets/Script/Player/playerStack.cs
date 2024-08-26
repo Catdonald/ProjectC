@@ -42,11 +42,11 @@ public class playerStack : MonoBehaviour
         stackSpeed = 0.1f;
     }
 
-    public void OnEnterInteraction(Collider other)
+    public void OnEnterInteraction(Collision other)
     {
         Transform parentTransform = other.transform.parent;
-        Spawner spawner = parentTransform.GetComponentInChildren<Spawner>();
-        Receiver receiver = parentTransform.GetComponentInChildren<Receiver>();
+        Spawner spawner = other.gameObject.transform.GetComponentInChildren<Spawner>();
+        Receiver receiver = other.gameObject.transform.GetComponentInChildren<Receiver>();
 
         if (spawner != null)
         {
@@ -76,8 +76,6 @@ public class playerStack : MonoBehaviour
 
                 obj.transform.position = pos;
                 obj.transform.SetParent(gameObject.transform);
-
-                //obj.GetComponent<TrailRenderer>().enabled = false;
             }
         }
     }
