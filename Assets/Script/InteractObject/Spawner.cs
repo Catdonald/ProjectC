@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using UnityEngine;
 
@@ -11,15 +12,15 @@ using UnityEngine;
 /// </summary>
 public class Spawner : MonoBehaviour
 {
+    public SpawnData spawnData;
+
     bool isSpawning;
     public Stack<GameObject> stack;
 
-    [Header("spawn info")]
+    [Header("spawner info")]
+    public int level;
     public int objectType;
     public float objectHeight;
-    public int countMax;
-    public int countNow;
-    public float spawnSpeed;
 
     void Awake()
     {
@@ -27,15 +28,13 @@ public class Spawner : MonoBehaviour
         stack = new Stack<GameObject>();
 
         objectType = 0;
-        countMax = 3;
-        spawnSpeed = 1f;
-    }
-    void OnEnable()
-    {
+        level = 0;
     }
 
     void Start()
     {
+        spawnData = SpawnData.instance;
+
         GameObject type = GameManager.instance.PoolManager.Get(objectType);
         objectHeight = type.GetComponent<Renderer>().bounds.size.y;
         GameManager.instance.PoolManager.Return(type);
@@ -43,7 +42,7 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        if (stack.Count < countMax && !isSpawning)
+        if (stack.Count < spawnData.datas[level].maxSpawnCount && !isSpawning)
         {
             isSpawning = true;
             StartCoroutine(SpawnObject(objectType));
@@ -52,7 +51,7 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnObject(int index)
     {
-        yield return new WaitForSeconds(spawnSpeed);
+        yield return new WaitForSeconds(spawnData.datas[level].spawnSpeed);
 
         GameObject obj = GameManager.instance.PoolManager.Get(index);
 

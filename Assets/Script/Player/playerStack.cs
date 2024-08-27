@@ -25,6 +25,10 @@ public class playerStack : MonoBehaviour
     int stackNow;
     float stackSpeed;
 
+    // test code
+    Vector3 firstStackPos;
+    Vector3 currentStackPos;
+
 
     void Awake()
     {
@@ -63,7 +67,9 @@ public class playerStack : MonoBehaviour
 
     public void InteractWithSpawner()
     {
-        if (stackNow == 0 || stackNow != 0 && spawner.objectType == typeNow)
+        if (stackNow == 0 || 
+            stackNow < stackMax ||
+            stackNow != 0 && spawner.objectType == typeNow)
         {
             GameObject obj = spawner.RequestObject();
 
@@ -76,6 +82,8 @@ public class playerStack : MonoBehaviour
 
                 obj.transform.position = pos;
                 obj.transform.SetParent(gameObject.transform);
+
+                //obj.GetComponent<Stuff>().UpdateObjectPosition(transform, true);
             }
         }
     }

@@ -41,6 +41,7 @@ public class Receiver : MonoBehaviour
     public void ReceiveObject(GameObject obj, float objectHeight)
     {
         this.stack.Push(obj);
+        obj.GetComponent<Stuff>().UpdateObjectPosition(null, false);
 
         Vector3 pos = gameObject.transform.position;
         pos.y = pos.y + objectHeight * stack.Count;
