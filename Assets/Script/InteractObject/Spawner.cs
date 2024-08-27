@@ -65,10 +65,7 @@ public class Spawner : MonoBehaviour
 
     public GameObject RequestObject()
     {
-        if(stack.Count > 0)
-            return stack.Pop();
-        else 
-            return null;
+         return stack.Pop();
     }
 
 }

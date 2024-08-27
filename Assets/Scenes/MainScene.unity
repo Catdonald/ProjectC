@@ -1373,7 +1373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   datas:
   - maxSpawnCount: 2
-    spawnSpeed: 5
+    spawnSpeed: 2
 --- !u!1 &1779326482
 GameObject:
   m_ObjectHideFlags: 0

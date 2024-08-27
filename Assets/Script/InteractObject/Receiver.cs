@@ -46,8 +46,29 @@ public class Receiver : MonoBehaviour
         Vector3 pos = gameObject.transform.position;
         pos.y = pos.y + objectHeight * stack.Count;
 
-        obj.transform.position = pos;
+        StartCoroutine(UpdateObjectPos(obj, pos, transform.parent.gameObject));
         obj.transform.SetParent(gameObject.transform);
+    }
+
+    private IEnumerator UpdateObjectPos(GameObject obj, Vector3 targetPos, GameObject targetObject)
+    {
+        float elapsedTime = 0f;
+        float duration = 0.2f;
+
+        Vector3 startingPos = obj.transform.position;
+
+        while (elapsedTime < duration)
+        {
+            targetPos.x = targetObject.transform.position.x;
+            targetPos.z = targetObject.transform.position.z;
+            obj.transform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        targetPos.x = targetObject.transform.position.x;
+        targetPos.z = targetObject.transform.position.z;
+        obj.transform.position = targetPos;
     }
 
 }

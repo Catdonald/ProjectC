@@ -29,7 +29,6 @@ public class playerStack : MonoBehaviour
     Vector3 firstStackPos;
     Vector3 currentStackPos;
 
-
     void Awake()
     {
         isInArea = false;
@@ -80,10 +79,8 @@ public class playerStack : MonoBehaviour
                 Vector3 pos = gameObject.transform.position;
                 pos.y = pos.y + objectHeight * stack.Count;
 
-                obj.transform.position = pos;
+                StartCoroutine(UpdateObjectPos(obj, pos, transform.parent.gameObject));
                 obj.transform.SetParent(gameObject.transform);
-
-                //obj.GetComponent<Stuff>().UpdateObjectPosition(transform, true);
             }
         }
     }
@@ -98,5 +95,26 @@ public class playerStack : MonoBehaviour
         spawner = null;
         receiver = null;
         isInArea = false;
+    }
+
+    private IEnumerator UpdateObjectPos(GameObject obj, Vector3 targetPos, GameObject targetObject)
+    {
+        float elapsedTime = 0f;
+        float duration = 0.2f;
+
+        Vector3 startingPos = obj.transform.position;
+
+        while (elapsedTime < duration)
+        {
+            targetPos.x = targetObject.transform.position.x;
+            targetPos.z = targetObject.transform.position.z;
+            obj.transform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        targetPos.x = targetObject.transform.position.x;
+        targetPos.z = targetObject.transform.position.z;
+        obj.transform.position = targetPos;
     }
 }
