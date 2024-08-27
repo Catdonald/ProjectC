@@ -74,13 +74,14 @@ public class playerStack : MonoBehaviour
 
             if (obj != null)
             {
-                stack.Push(obj);
 
                 Vector3 pos = gameObject.transform.position;
                 pos.y = pos.y + objectHeight * stack.Count;
 
                 StartCoroutine(UpdateObjectPos(obj, pos, transform.parent.gameObject));
                 obj.transform.SetParent(gameObject.transform);
+
+                stack.Push(obj);
             }
         }
     }
@@ -100,7 +101,7 @@ public class playerStack : MonoBehaviour
     private IEnumerator UpdateObjectPos(GameObject obj, Vector3 targetPos, GameObject targetObject)
     {
         float elapsedTime = 0f;
-        float duration = 0.2f;
+        float duration = 0.1f;
 
         Vector3 startingPos = obj.transform.position;
 
