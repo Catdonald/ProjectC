@@ -9,6 +9,7 @@ TagManager:
   - Upgrade
   - Cooker
   - Table
+  - floor
   layers:
   - Default
   - TransparentFX
