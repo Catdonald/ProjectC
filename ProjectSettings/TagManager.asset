@@ -9,6 +9,8 @@ TagManager:
   - Upgrade
   - Cooker
   - Table
+  - Counter
+  - Storage
   layers:
   - Default
   - TransparentFX
