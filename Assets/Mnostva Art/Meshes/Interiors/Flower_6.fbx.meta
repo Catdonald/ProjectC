@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 515b8363a22b9264eaeb6fbc60c0399e
+guid: be4e3b433f3a3e4419057d84a4abea48
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cartoon_Room_Glass
+    second: {fileID: 2100000, guid: bb508600cc27abd4fb6e535cebe0a674, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cartoon_Room_Mat
+    second: {fileID: 2100000, guid: 8a2f803b35c993e47b6368bc26d15cb0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
