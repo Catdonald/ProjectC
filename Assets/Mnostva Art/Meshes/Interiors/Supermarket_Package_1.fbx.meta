@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 3183dfab79acd664ba3c8bd9e676ea51
+guid: d5580df70ba10f6498ad5cfb159e2c72
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cartoon_Room_Mat
+    second: {fileID: 2100000, guid: 8a2f803b35c993e47b6368bc26d15cb0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
