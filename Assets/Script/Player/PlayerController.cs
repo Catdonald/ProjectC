@@ -1,24 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    float moveSpeed = 50.0f;
     [SerializeField]
     GameObject characterRoot;
     [SerializeField]
     GameObject touchController;
 
-    private bool isClicked = false;
-    private Vector3 mouseClickedPos;
+    private PlayerData playerData;
     private Rigidbody playerRigidbody;
     private JoyStickController joystickController;
+
+    private Vector3 mouseClickedPos;
+    private bool isClicked = false;
+
+    private int burgerStackCount = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerData = GetComponent<PlayerData>();
         playerRigidbody = GetComponent<Rigidbody>();
         joystickController = touchController.GetComponentInChildren<JoyStickController>();
     }
@@ -49,8 +53,7 @@ public class PlayerController : MonoBehaviour
                     mouseDeltaNorm = mouseDelta.normalized;
                 }
                 Vector3 moveVec = new Vector3(mouseDeltaNorm.x, 0.0f, mouseDeltaNorm.y);
-                playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * moveSpeed);
-                //transform.position += moveVec * Time.deltaTime * moveSpeed;
+                playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * playerData.speed);
                 // 이동하는 방향 바라보기
                 if (moveVec.magnitude > 0.0f)
                 {

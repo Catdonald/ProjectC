@@ -11,6 +11,9 @@ TagManager:
   - Table
   - Counter
   - Storage
+  - Customer
+  - Order
+  - Entrance
   layers:
   - Default
   - TransparentFX
