@@ -19,36 +19,16 @@ public class Receiver : MonoBehaviour
     {
         stack = new Stack<GameObject>();
     }
-    void Update()
-    {
-        if (stack.Count > 0 && !isDeleting)
-        {
-            StartCoroutine(DeleteObject());
-        }
-    }
-
-    private IEnumerator DeleteObject()
-    {
-        isDeleting = true;
-
-        yield return new WaitForSeconds(5f);
-
-        GameManager.instance.PoolManager.Return(stack.Pop());
-
-        isDeleting = false;
-    }
 
     public void ReceiveObject(GameObject obj, float objectHeight)
     {
-        obj.GetComponent<Stuff>().UpdateObjectPosition(null, false);
+        this.stack.Push(obj);
 
         Vector3 pos = gameObject.transform.position;
-        pos.y = pos.y + objectHeight * stack.Count;
+        pos.y = objectHeight * stack.Count;
 
         StartCoroutine(UpdateObjectPos(obj, pos));
         obj.transform.SetParent(gameObject.transform);
-
-        this.stack.Push(obj);
     }
 
     private IEnumerator UpdateObjectPos(GameObject obj, Vector3 targetPos)
@@ -64,6 +44,10 @@ public class Receiver : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+    }
+    public GameObject CustomerRequest()
+    {
+        return stack.Pop();
     }
 
 }

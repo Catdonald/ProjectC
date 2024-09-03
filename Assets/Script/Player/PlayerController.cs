@@ -47,10 +47,10 @@ public class PlayerController : MonoBehaviour
             {
                 // 클릭된 위치와 현재 커서 위치를 통해 이동 방향 구하기
                 Vector3 mousePos = Input.mousePosition;
-                Vector3 mouseDelta = mousePos - mouseClickedPos;              
+                Vector3 mouseDelta = mousePos - mouseClickedPos;
                 // max padSizeX = 35.0f
                 Vector3 mouseDeltaNorm = new Vector3(mouseDelta.x / 35.0f, mouseDelta.y / 35.0f, mouseDelta.z);
-                if(mouseDeltaNorm.magnitude > 1.0f)
+                if (mouseDeltaNorm.magnitude > 1.0f)
                 {
                     mouseDeltaNorm = mouseDelta.normalized;
                 }
@@ -77,7 +77,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        playerStack.OnEnterInteraction(collision);
+
+        if (collision.gameObject.CompareTag("Cooker") ||
+            collision.gameObject.CompareTag("Storage"))
+        {
+            Debug.Log("Collision Enter");
+            playerStack.OnEnterInteraction(collision);
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -87,7 +93,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Collide with Cooker!");
             playerStack.InteractWithSpawner();
         }
-        else if (collision.gameObject.CompareTag("Table"))
+        else if (collision.gameObject.CompareTag("Storage"))
         {
             Debug.Log("Collide with Table!");
             playerStack.InteractWithReceiver();
@@ -105,7 +111,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        playerStack.OnExitInteraction();
+        if (collision.gameObject.CompareTag("Cooker") ||
+            collision.gameObject.CompareTag("Storage"))
+        {
+            playerStack.OnExitInteraction();
+        }
 
         if (collision.gameObject.CompareTag("Upgrade"))
         {
