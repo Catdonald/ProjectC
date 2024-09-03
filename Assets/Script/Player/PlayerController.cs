@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRigidbody;
     private JoyStickController joystickController;
 
+    private Vector3 rayStartPoint;
     private Vector3 mouseClickedPos;
     private bool isClicked = false;
 
@@ -47,15 +48,30 @@ public class PlayerController : MonoBehaviour
             {
                 // 클릭된 위치와 현재 커서 위치를 통해 이동 방향 구하기
                 Vector3 mousePos = Input.mousePosition;
-                Vector3 mouseDelta = mousePos - mouseClickedPos;              
+                Vector3 mouseDelta = mousePos - mouseClickedPos;
                 // max padSizeX = 35.0f
                 Vector3 mouseDeltaNorm = new Vector3(mouseDelta.x / 35.0f, mouseDelta.y / 35.0f, mouseDelta.z);
-                if(mouseDeltaNorm.magnitude > 1.0f)
+                if (mouseDeltaNorm.magnitude > 1.0f)
                 {
                     mouseDeltaNorm = mouseDelta.normalized;
                 }
                 Vector3 moveVec = new Vector3(mouseDeltaNorm.x, 0.0f, mouseDeltaNorm.y);
-                playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * playerData.speed);
+                rayStartPoint = new Vector3(transform.position.x, 0.2f, transform.position.z);
+                Debug.DrawRay(rayStartPoint, moveVec * 1.5f, Color.red);
+                RaycastHit hit;
+                if (Physics.Raycast(rayStartPoint, moveVec, out hit, 1.5f))
+                {
+                    // 직원이나 손님 오브젝트에 충돌하지 않았다면
+                    // 건물이나 기계, 카운터와 같은 오브젝트와 레이가 충돌한 것이다.
+                    if (!hit.collider.CompareTag("Building"))
+                    {
+                        playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * playerData.speed);
+                    }
+                }
+                else
+                {
+                    playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * playerData.speed);
+                }
                 // 이동하는 방향 바라보기
                 if (moveVec.magnitude > 0.0f)
                 {

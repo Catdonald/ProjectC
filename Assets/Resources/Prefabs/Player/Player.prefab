@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterRoot: {fileID: 3040030988388108470}
   touchController: {fileID: 0}
+  playerStack: {fileID: 0}
 --- !u!114 &3872724437957977560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   experience: 0
-  speed: 25
+  speed: 50
   capacity: 10
   returnRate: 1
 --- !u!136 &5086475053502638052
