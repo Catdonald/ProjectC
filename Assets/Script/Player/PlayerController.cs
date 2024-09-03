@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject touchController;
 
+    public playerStack playerStack;
     private PlayerData playerData;
     private Rigidbody playerRigidbody;
     private JoyStickController joystickController;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
         playerData = GetComponent<PlayerData>();
         playerRigidbody = GetComponent<Rigidbody>();
         joystickController = touchController.GetComponentInChildren<JoyStickController>();
+        playerStack = GetComponentInChildren<playerStack>();
     }
 
     // Update is called once per frame
@@ -73,15 +75,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        playerStack.OnEnterInteraction(collision);
+    }
+
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Cooker"))
         {
             Debug.Log("Collide with Cooker!");
+            playerStack.InteractWithSpawner();
         }
         else if (collision.gameObject.CompareTag("Table"))
         {
             Debug.Log("Collide with Table!");
+            playerStack.InteractWithReceiver();
         }
         else if (collision.gameObject.CompareTag("Upgrade"))
         {
@@ -96,6 +105,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
+        playerStack.OnExitInteraction();
+
         if (collision.gameObject.CompareTag("Upgrade"))
         {
             UpgradeBox box = collision.gameObject.GetComponent<UpgradeBox>();

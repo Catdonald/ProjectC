@@ -66,9 +66,10 @@ public class playerStack : MonoBehaviour
 
     public void InteractWithSpawner()
     {
-        if (stackNow == 0 || 
+        if ((stackNow == 0 || 
             stackNow < stackMax ||
-            stackNow != 0 && spawner.objectType == typeNow)
+            stackNow != 0 && spawner.objectType == typeNow) &&
+            spawner.stack.Count > 0)
         {
             GameObject obj = spawner.RequestObject();
 
@@ -82,6 +83,10 @@ public class playerStack : MonoBehaviour
                 obj.transform.SetParent(gameObject.transform);
 
                 stack.Push(obj);
+            }
+            else
+            {
+                Debug.LogWarning("RequestObj() returned null. No object to process.");
             }
         }
     }
