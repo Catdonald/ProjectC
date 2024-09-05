@@ -8,6 +8,11 @@ public class CustomerController : MonoBehaviour
 {
     public GameObject counter;
     public GameObject entrance;
+    public GameObject spawner;
+    public GameObject lineObject;
+    public GameObject sittingChair;
+    public Table touchedTable;
+
     public NavMeshAgent agent;
 
     private GameObject orderUI;
@@ -20,9 +25,12 @@ public class CustomerController : MonoBehaviour
     private BaseState lineWaitState;
     private BaseState orderState;
     private BaseState moveToTableState;
+    private BaseState eatState;
+    private BaseState exitState;
     private FSM fsm;
 
     public int OrderCount { get; set; }
+    public int CarryingFoodCount { get; set; }
 
     private bool isCollideWithEntrance = false;
     private bool isCollideWithCounter = false;
@@ -43,6 +51,9 @@ public class CustomerController : MonoBehaviour
     {
         counter = GameObject.Find("InteractionRange_Customer");
         entrance = GameObject.Find("Entrance");
+        spawner = GameObject.Find("CustomerSpawner");
+        lineObject = GameObject.Find("LineQueue");
+        agent = GetComponent<NavMeshAgent>();
 
         currentState = State.ENTER;
         enterState = new Customer_EnterState(this);
@@ -50,6 +61,8 @@ public class CustomerController : MonoBehaviour
         lineWaitState = new Customer_LineWaitState(this);
         orderState = new Customer_OrderState(this);
         moveToTableState = new Customer_MoveToTableState(this);
+        eatState = new Customer_EatState(this);
+        exitState = new Customer_ExitState(this);
         fsm = new FSM(enterState);
     }
 
@@ -59,11 +72,15 @@ public class CustomerController : MonoBehaviour
         orderUI = transform.GetChild(0).GetChild(0).gameObject;
         noSeatUI = transform.GetChild(0).GetChild(1).gameObject;
         orderCountText = orderUI.GetComponentInChildren<Text>();
-        agent = GetComponent<NavMeshAgent>();
 
         orderUI.SetActive(false);
         noSeatUI.SetActive(false);
+
+        // 목적지 설정할 때 NavMeshAgent 컴포넌트 비활성화 했다가 활성화 해줘야 제대로 설정된다..
+        agent.enabled = false;
+        agent.enabled = true;
         agent.destination = entrance.transform.position;
+
         DecideFoodAndCount();
     }
 
@@ -76,6 +93,8 @@ public class CustomerController : MonoBehaviour
                 if (isCollideWithEntrance)
                 {
                     ChangeState(State.LINEMOVE);
+                    // agent 목적지 설정
+                    agent.destination = lineObject.transform.position;
                 }
                 break;
             case State.LINEMOVE:
@@ -103,11 +122,40 @@ public class CustomerController : MonoBehaviour
             case State.ORDER:
                 if (OrderCount == 0)
                 {
-                    // 빈 테이블이 있다면
-                    // ChangeState(State.MOVETOTABLE);
+                    orderUI.SetActive(false);
+                    // 빈 자리가 있다면
+                    sittingChair = GameManager.instance.TableManager.GetEmptySeat();
+                    if (sittingChair != null)
+                    {
+                        ChangeState(State.MOVETOTABLE);
+                        noSeatUI.SetActive(false);
+                        // 목적지 설정
+                        agent.destination = sittingChair.transform.position;
+                    }
+                    else
+                    {
+                        noSeatUI.SetActive(true);
+                    }
                 }
                 break;
             case State.MOVETOTABLE:
+                if (CheckAgentReachToDestination())
+                {
+                    sittingChair.GetComponent<Chair>().SetSittingCustomer(this);
+                    ChangeState(State.EAT);
+                }
+                break;
+            case State.EAT:
+                if (touchedTable.CarryingFoodCount == 0)
+                {
+                    ChangeState(State.EXIT);
+                }
+                break;
+            case State.EXIT:
+                if (CheckAgentReachToDestination())
+                {
+                    GameManager.instance.PoolManager.Return(gameObject);
+                }
                 break;
         }
         fsm.UpdateState();
@@ -125,12 +173,18 @@ public class CustomerController : MonoBehaviour
                 break;
             case State.LINEWAIT:
                 fsm.ChangeState(lineWaitState);
-                break; 
+                break;
             case State.ORDER:
                 fsm.ChangeState(orderState);
                 break;
             case State.MOVETOTABLE:
                 fsm.ChangeState(moveToTableState);
+                break;
+            case State.EAT:
+                fsm.ChangeState(eatState);
+                break;
+            case State.EXIT:
+                fsm.ChangeState(exitState);
                 break;
         }
     }
@@ -149,6 +203,10 @@ public class CustomerController : MonoBehaviour
         {
             isCollideWithCounter = true;
         }
+        else if (other.gameObject.CompareTag("Table"))
+        {
+            touchedTable = other.transform.parent.gameObject.GetComponent<Table>();
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -160,6 +218,10 @@ public class CustomerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Order"))
         {
             isCollideWithCounter = false;
+        }
+        else if (other.gameObject.CompareTag("Table"))
+        {
+            touchedTable = null;
         }
     }
 
@@ -202,5 +264,17 @@ public class CustomerController : MonoBehaviour
     public void SetOrderCountText(int count)
     {
         orderCountText.text = count.ToString();
+    }
+
+    public void ReceiveFood(int count)
+    {
+        OrderCount -= count;
+        CarryingFoodCount += count;
+        Debug.Log("Customer : " + CarryingFoodCount);
+    }
+
+    public void PutFoodsOnTable()
+    {
+
     }
 }

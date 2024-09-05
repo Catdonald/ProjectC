@@ -13,6 +13,9 @@ public class Customer_EnterState : BaseState
         // 걷기 애니메이션 재생
         // 목적지 설정
         // 음식과 개수 정하기
+        // 목적지 설정할 때 NavMeshAgent 컴포넌트 비활성화 했다가 활성화 해줘야 제대로 설정된다..
+        customer.agent.enabled = false;
+        customer.agent.enabled = true;
         customer.agent.destination = customer.entrance.transform.position;
         customer.DecideFoodAndCount();
     }

@@ -24,17 +24,22 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public PoolManager PoolManager;
+    public TableManager TableManager;
 
     public GameObject idText;
     public GameObject levelText;
     public GameObject speedText;
-
 
     // 임시 데이터
     info info;
     void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
+        TableManager = GameObject.Find("TableManager").GetComponent<TableManager>();
     }
 
     public void ChangeInfo()

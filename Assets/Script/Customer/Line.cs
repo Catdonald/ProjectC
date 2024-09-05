@@ -7,6 +7,7 @@ public class Line : MonoBehaviour
     private Queue<GameObject> customerQueue;
     private int queueMaxCount = 5;
     private GameObject[] linePositions;
+    public int currentQueueCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -40,9 +41,10 @@ public class Line : MonoBehaviour
         if (other.gameObject.CompareTag("Customer"))
         {
             CustomerController customer = other.gameObject.GetComponent<CustomerController>();
-            if (customer.GetCurrentState() == CustomerController.State.ORDER)
+            if (customer.GetCurrentState() == CustomerController.State.MOVETOTABLE)
             {
                 customerQueue.Dequeue();
+                currentQueueCount--;
                 int index = 0;
                 foreach (GameObject eachObj in customerQueue)
                 {
@@ -52,18 +54,8 @@ public class Line : MonoBehaviour
         }
     }
 
-    public int GetMaxQueueCount()
-    {
-        return queueMaxCount;
-    }
-
-    public int GetLineQueueCount()
-    {
-        return customerQueue.Count;
-    }
-
     public bool IsLineQueueFull()
     {
-        return customerQueue.Count >= queueMaxCount;
+        return currentQueueCount >= queueMaxCount;
     }
 }

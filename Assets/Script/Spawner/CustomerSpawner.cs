@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TempSpawner : MonoBehaviour
+public class CustomerSpawner : MonoBehaviour
 {
     private GameObject customer;
     private Line lineQueue;

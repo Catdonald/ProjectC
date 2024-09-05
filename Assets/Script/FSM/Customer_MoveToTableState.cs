@@ -18,7 +18,10 @@ public class Customer_MoveToTableState : BaseState
     }
     public override void OnStateExit()
     {
-
+        // 앉기 애니메이션 재생
+        // 테이블에 들고 있던 햄버거 놓기
+        customer.touchedTable.CarryingFoodCount = customer.CarryingFoodCount;
+        customer.CarryingFoodCount = 0;
     }
     private CustomerController customer;
 }

@@ -67,7 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   experience: 0
-  speed: 50
+  speed: 25
   capacity: 10
   returnRate: 1
 --- !u!136 &5086475053502638052
