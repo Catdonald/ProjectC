@@ -33,6 +33,7 @@ public class Counter : MonoBehaviour
             {
                 StoragedFoodCount--;
                 customer.ReceiveFood(1);
+                customer.SetOrderCountText(customer.OrderCount);
                 Debug.Log("Counter : " + StoragedFoodCount);
                 // 카운터에 쌓인 햄버거 한개 손님한테 날아감
             }

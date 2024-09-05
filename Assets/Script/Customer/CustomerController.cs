@@ -123,7 +123,7 @@ public class CustomerController : MonoBehaviour
                 if (OrderCount == 0)
                 {
                     orderUI.SetActive(false);
-                    // 빈 자리가 있다면
+                    // 빈 자리가 있다면 그곳으로 이동
                     sittingChair = GameManager.instance.TableManager.GetEmptySeat();
                     if (sittingChair != null)
                     {

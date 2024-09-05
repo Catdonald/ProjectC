@@ -11,7 +11,8 @@ public class CheckTouchedWorker : MonoBehaviour
     private bool isTouchedByPlayer = false;
     private bool isTouchedByEmployee = false;
 
-    private float sellingGauge = 0.0f;
+    private float currentSellingGauge = 0.0f;
+    private float totalSellingGauge = 2.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,25 +26,25 @@ public class CheckTouchedWorker : MonoBehaviour
     {
         if (counter.customer == null)
         {
-            sellingGauge = 0.0f;
+            currentSellingGauge = 0.0f;
         }
 
         if (isTouchedByPlayer || isTouchedByEmployee)
         {
             uiImage.color = Color.green;
-            sellingGauge += Time.deltaTime * 0.75f;
+            currentSellingGauge += Time.deltaTime;
         }
         else
         {
             uiImage.color = Color.white;
-            sellingGauge = 0.0f;
+            currentSellingGauge = 0.0f;
         }
 
-        if(sellingGauge >= 1.0f)
+        if(currentSellingGauge >= totalSellingGauge)
         {
             // 카운터에서 햄버거 1개 판매
             counter.SellFoodToCustomer();
-            sellingGauge = 0.0f;
+            currentSellingGauge = 0.0f;
         }
     }
 

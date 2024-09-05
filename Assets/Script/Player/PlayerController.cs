@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Storage"))
         {
-            Debug.Log("Collide with Table!");
+            Debug.Log("Collide with Storage!");
             playerStack.InteractWithReceiver();
         }
         else if (collision.gameObject.CompareTag("Upgrade"))
