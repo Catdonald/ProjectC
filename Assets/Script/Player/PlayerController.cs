@@ -94,7 +94,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        playerStack.OnEnterInteraction(collision);
+
+        if (collision.gameObject.CompareTag("Cooker") ||
+            collision.gameObject.CompareTag("Storage"))
+        {
+            Debug.Log("Collision Enter");
+            playerStack.OnEnterInteraction(collision);
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -104,7 +110,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Collide with Cooker!");
             playerStack.InteractWithSpawner();
         }
-        else if (collision.gameObject.CompareTag("Table"))
+        else if (collision.gameObject.CompareTag("Storage"))
         {
             Debug.Log("Collide with Table!");
             playerStack.InteractWithReceiver();
@@ -122,7 +128,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        playerStack.OnExitInteraction();
+        if (collision.gameObject.CompareTag("Cooker") ||
+            collision.gameObject.CompareTag("Storage"))
+        {
+            playerStack.OnExitInteraction();
+        }
 
         if (collision.gameObject.CompareTag("Upgrade"))
         {

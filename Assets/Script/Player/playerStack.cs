@@ -17,21 +17,13 @@ public class playerStack : MonoBehaviour
     public Stack<GameObject> stack;
     float objectHeight;
 
-    bool isInArea;
-
     [Header("player stack info")]
     int typeNow;
     int stackMax;
-    int stackNow;
     float stackSpeed;
-
-    // test code
-    Vector3 firstStackPos;
-    Vector3 currentStackPos;
 
     void Awake()
     {
-        isInArea = false;
         stack = new Stack<GameObject>();
 
         spawner = null;
@@ -41,15 +33,14 @@ public class playerStack : MonoBehaviour
 
         typeNow = 0;
         stackMax = 3;
-        stackNow = 0;
         stackSpeed = 0.1f;
     }
 
     public void OnEnterInteraction(Collision other)
     {
-        Transform parentTransform = other.transform.parent;
-        Spawner spawner = other.gameObject.transform.GetComponentInChildren<Spawner>();
-        Receiver receiver = other.gameObject.transform.GetComponentInChildren<Receiver>();
+        Transform parent = other.transform.parent;
+        Spawner spawner = parent.GetComponentInChildren<Spawner>();
+        Receiver receiver = parent.GetComponentInChildren<Receiver>();
 
         if (spawner != null)
         {
@@ -60,22 +51,17 @@ public class playerStack : MonoBehaviour
         {
             this.receiver = receiver;
         }
-
-        isInArea = true;
     }
 
     public void InteractWithSpawner()
     {
-        if ((stackNow == 0 || 
-            stackNow < stackMax ||
-            stackNow != 0 && spawner.objectType == typeNow) &&
+        if (spawner.objectType == typeNow &&
             spawner.stack.Count > 0)
         {
             GameObject obj = spawner.RequestObject();
 
             if (obj != null)
             {
-
                 Vector3 pos = gameObject.transform.position;
                 pos.y = pos.y + objectHeight * stack.Count;
 
@@ -100,7 +86,6 @@ public class playerStack : MonoBehaviour
     {
         spawner = null;
         receiver = null;
-        isInArea = false;
     }
 
     private IEnumerator UpdateObjectPos(GameObject obj, Vector3 targetPos, GameObject targetObject)

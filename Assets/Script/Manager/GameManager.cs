@@ -44,13 +44,13 @@ public class GameManager : MonoBehaviour
 
     public void ChangeInfo()
     {
-        info.id = Random.Range(1, 100);  // ID 초기화 추가
+        info.id = Random.Range(1, 100);
         info.name = "suan";
         info.level = Random.Range(1, 100);
         info.playerSpeed = Random.Range(1, 100);
         info.playerMaxStuff = Random.Range(1, 100);
 
-        ChangeText(); // 데이터 변경 시 텍스트 업데이트
+        ChangeText();
     }
 
     public void GetData()
