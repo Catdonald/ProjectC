@@ -18,7 +18,7 @@ public class CustomerController : MonoBehaviour
     private GameObject orderUI;
     private Text orderCountText;
     private GameObject noSeatUI;
-
+    [SerializeField]
     private State currentState;
     private BaseState enterState;
     private BaseState lineMoveState;
@@ -69,8 +69,8 @@ public class CustomerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        orderUI = transform.GetChild(0).GetChild(0).gameObject;
-        noSeatUI = transform.GetChild(0).GetChild(1).gameObject;
+        orderUI = transform.GetChild(1).GetChild(0).gameObject;
+        noSeatUI = transform.GetChild(1).GetChild(1).gameObject;
         orderCountText = orderUI.GetComponentInChildren<Text>();
 
         orderUI.SetActive(false);
@@ -198,6 +198,7 @@ public class CustomerController : MonoBehaviour
         if (other.gameObject.CompareTag("Entrance"))
         {
             isCollideWithEntrance = true;
+            Debug.Log("Collide with Entrance!");
         }
         else if (other.gameObject.CompareTag("Order"))
         {
@@ -270,6 +271,7 @@ public class CustomerController : MonoBehaviour
     {
         OrderCount -= count;
         CarryingFoodCount += count;
+        orderCountText.text = OrderCount.ToString();
         Debug.Log("Customer : " + CarryingFoodCount);
     }
 

@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PoolManager: {fileID: 2062708304010303993}
+  TableManager: {fileID: 0}
   idText: {fileID: 0}
   levelText: {fileID: 0}
   speedText: {fileID: 0}
@@ -143,3 +144,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 2554426912417560892, guid: 07deee93e458af646a5dc10784eb1485, type: 3}
+  - {fileID: 7032757170463467778, guid: 4e245e764b3861b469322a0c74d3881e, type: 3}
