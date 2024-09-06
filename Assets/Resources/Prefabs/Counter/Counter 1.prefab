@@ -246,7 +246,6 @@ GameObject:
   - component: {fileID: 568628612400789152}
   - component: {fileID: 3053550991358818983}
   - component: {fileID: 1827591159075220804}
-  - component: {fileID: 5636261705458021258}
   m_Layer: 0
   m_Name: CashMachine
   m_TagString: Untagged
@@ -319,28 +318,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5636261705458021258
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3673077671834842508}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2710898579618712159, guid: 01be629c620e249419a70b1f3a92f71b, type: 3}
 --- !u!1 &3965205840110123301
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,9 +654,9 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.690299, y: 1, z: 1.7518959}
-  m_Center: {x: 1.3029895, y: 0.01999998, z: 0.37594807}
+  m_Size: {x: 2.690299, y: 0.2, z: 1.7518959}
+  m_Center: {x: 1.3029895, y: 0.1, z: 0.37594807}

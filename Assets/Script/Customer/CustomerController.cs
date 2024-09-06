@@ -51,7 +51,7 @@ public class CustomerController : MonoBehaviour
     private void Awake()
     {
         spawner = GameObject.Find("CustomerSpawner");
-        entrance = GameObject.Find("Entrance");
+        entrance = GameObject.Find("Entrance_ArrivalPoint");
         counter = GameObject.Find("InteractionRange_Customer");
         lineObject = GameObject.Find("LineQueue");
         agent = GetComponent<NavMeshAgent>();

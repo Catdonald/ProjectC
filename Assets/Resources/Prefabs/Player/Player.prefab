@@ -1641,7 +1641,7 @@ Transform:
   m_GameObject: {fileID: 1808088584581433340}
   serializedVersion: 2
   m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: -5.2200003, y: 10.96, z: -7.3}
+  m_LocalPosition: {x: -7.5, y: 12.5, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10117,7 +10117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterRoot: {fileID: 8541097106289490770}
-  touchController: {fileID: 2521181462381745348, guid: 54bcb613d9b306c40810b9e6341a4e55, type: 3}
+  moveController: {fileID: 0}
   playerStack: {fileID: 0}
 --- !u!114 &4276933918812480811
 MonoBehaviour:
