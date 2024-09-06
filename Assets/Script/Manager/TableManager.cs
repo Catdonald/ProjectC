@@ -6,16 +6,18 @@ using UnityEngine;
 public class TableManager : MonoBehaviour
 {
     private int randomTableIndex = 0;
-    //private List<Table> tables;
+    private List<Table> allTables;
     private List<Table> emptyTables;
 
     // Start is called before the first frame update
     void Start()
     {
         Table[] tableObjects = GetComponentsInChildren<Table>();
+        allTables = new List<Table>();
         emptyTables = new List<Table>();
         foreach (Table table in tableObjects)
         {
+            allTables.Add(table);
             emptyTables.Add(table);
         }
         PickRandomTableIndex();
@@ -55,7 +57,14 @@ public class TableManager : MonoBehaviour
 
     public void AddTable(Table table)
     {
+        allTables.Add(table);
         emptyTables.Add(table);
-        emptyTables.Distinct().ToList();
+    }
+
+    public void CleanTable(Table table)
+    {
+        table.CleanTable();
+        emptyTables.Add(table);
+        emptyTables = emptyTables.Distinct().ToList();
     }
 }

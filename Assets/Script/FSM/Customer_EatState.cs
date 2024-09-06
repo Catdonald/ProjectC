@@ -18,7 +18,7 @@ public class Customer_EatState : BaseState
     }
     public override void OnStateUpdate()
     {
-        // 먹는 동작 1번 끝날 때 테이블 위 음식 1개 사라짐
+        // totalEatingTime 지나면 테이블 위 음식 1개 사라짐
         currentEatingTime += Time.deltaTime;
         if (currentEatingTime >= totalEatingTime)
         {
@@ -28,13 +28,13 @@ public class Customer_EatState : BaseState
             // 자리가 모두 차면 음식이 줄어든다.
             if (customer.touchedTable.CarryingFoodCount > 1)
             {
-                customer.touchedTable.CarryingFoodCount--;
+                customer.touchedTable.RemoveFoodOnTable();
             }
             else
             {
                 if(customer.touchedTable.IsTableFull())
                 {
-                    customer.touchedTable.CarryingFoodCount--;
+                    customer.touchedTable.RemoveFoodOnTable();
                 }
             }
             Debug.Log("Table : " + customer.touchedTable.CarryingFoodCount);
@@ -42,6 +42,7 @@ public class Customer_EatState : BaseState
     }
     public override void OnStateExit()
     {
-        
+        // Table 쓰레기 오브젝트 활성화
+        customer.touchedTable.MakeDirtyTable();
     }
 }

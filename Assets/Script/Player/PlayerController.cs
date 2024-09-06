@@ -58,9 +58,9 @@ public class PlayerController : MonoBehaviour
                 }
                 Vector3 moveVec = new Vector3(mouseDeltaNorm.x, 0.0f, mouseDeltaNorm.y);
                 rayStartPoint = new Vector3(transform.position.x, 0.2f, transform.position.z);
-                Debug.DrawRay(rayStartPoint, moveVec * 1.25f, Color.red);
+                Debug.DrawRay(rayStartPoint, moveVec * 1.0f, Color.red);
                 RaycastHit hit;
-                if (Physics.Raycast(rayStartPoint, moveVec, out hit, 1.25f))
+                if (Physics.Raycast(rayStartPoint, moveVec, out hit, 1.0f))
                 {
                     // 직원이나 손님 오브젝트에 충돌하지 않았다면
                     // 건물이나 기계, 카운터와 같은 오브젝트와 레이가 충돌한 것이다.

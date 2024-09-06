@@ -15,6 +15,7 @@ TagManager:
   - Order
   - Entrance
   - Building
+  - Employee
   layers:
   - Default
   - TransparentFX

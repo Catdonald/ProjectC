@@ -141,6 +141,7 @@ public class CustomerController : MonoBehaviour
             case State.MOVETOTABLE:
                 if (CheckAgentReachToDestination())
                 {
+                    transform.LookAt(touchedTable.transform);
                     sittingChair.GetComponent<Chair>().SetSittingCustomer(this);
                     ChangeState(State.EAT);
                 }
@@ -206,7 +207,7 @@ public class CustomerController : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Table"))
         {
-            touchedTable = other.transform.parent.gameObject.GetComponent<Table>();
+            touchedTable = other.transform.gameObject.GetComponent<Table>();
         }
     }
 
