@@ -21,7 +21,7 @@ public class Table : MonoBehaviour
                 chairList.Add(chair);
             }
 
-            if(transform.GetChild(i).gameObject.name == "Trashes")
+            if (transform.GetChild(i).gameObject.name == "Trashes")
             {
                 trash = transform.GetChild(i).gameObject;
             }
@@ -40,9 +40,9 @@ public class Table : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Employee"))
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Employee"))
         {
-            if(TrashCount > 0)
+            if (TrashCount > 0)
             {
                 GameManager.instance.TableManager.CleanTable(this);
                 // 플레이어나 직원에게 쓰레기 쌓이게 해야 함.
@@ -51,12 +51,15 @@ public class Table : MonoBehaviour
     }
     public GameObject GetEmptySeat()
     {
-        foreach (Chair chair in chairs)
+        if (TrashCount <= 0)
         {
-            if (!chair.isChairUsing)
+            foreach (Chair chair in chairs)
             {
-                chair.isChairUsing = true;
-                return chair.gameObject;
+                if (!chair.isChairUsing)
+                {
+                    chair.isChairUsing = true;
+                    return chair.gameObject;
+                }
             }
         }
         return null;

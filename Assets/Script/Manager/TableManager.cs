@@ -12,7 +12,7 @@ public class TableManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Table[] tableObjects = GetComponentsInChildren<Table>();
+        Table[] tableObjects = GameObject.FindObjectsOfType<Table>();
         allTables = new List<Table>();
         emptyTables = new List<Table>();
         foreach (Table table in tableObjects)
@@ -65,6 +65,5 @@ public class TableManager : MonoBehaviour
     {
         table.CleanTable();
         emptyTables.Add(table);
-        emptyTables = emptyTables.Distinct().ToList();
     }
 }

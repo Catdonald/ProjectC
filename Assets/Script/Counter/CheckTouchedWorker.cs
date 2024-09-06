@@ -12,7 +12,7 @@ public class CheckTouchedWorker : MonoBehaviour
     private bool isTouchedByEmployee = false;
 
     private float currentSellingGauge = 0.0f;
-    private float totalSellingGauge = 2.0f;
+    private float totalSellingGauge = 1.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +68,7 @@ public class CheckTouchedWorker : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Employee"))
         {
+            // 직원 상태 체크
             isTouchedByEmployee = false;
         }
     }
