@@ -13,7 +13,6 @@ public class Receiver : MonoBehaviour
 {
     public Stack<GameObject> stack;
     public int objectType;
-    private bool isDeleting = false;
 
     void Awake()
     {
@@ -44,6 +43,8 @@ public class Receiver : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        obj.transform.position = targetPos;
     }
     public GameObject CustomerRequest()
     {

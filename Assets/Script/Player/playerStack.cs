@@ -55,8 +55,12 @@ public class playerStack : MonoBehaviour
 
     public void InteractWithSpawner()
     {
-        if (spawner.objectType == typeNow &&
-            spawner.stack.Count > 0)
+        if(spawner == null)
+            return;
+
+        if (spawner.stack.Count != 0 ||
+            (spawner.stack.Count >= 1 &&
+            spawner.objectType == typeNow))
         {
             GameObject obj = spawner.RequestObject();
 
