@@ -5,10 +5,6 @@ using UnityEngine;
 public class CustomerStack : MonoBehaviour
 {
     public Stack<GameObject> stack;
-
-    bool isBuying;
-    bool isSeating;
-
     void Awake()
     {
         stack = new Stack<GameObject>();

@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class CustomerController : MonoBehaviour
 {
-    public GameObject counter;
-    public GameObject entrance;
     public GameObject spawner;
+    public GameObject entrance;
+    public GameObject counter;
     public GameObject lineObject;
     public GameObject sittingChair;
     public Table touchedTable;
@@ -19,6 +19,7 @@ public class CustomerController : MonoBehaviour
     private GameObject orderUI;
     private Text orderCountText;
     private GameObject noSeatUI;
+
     [SerializeField]
     private State currentState;
     private BaseState enterState;
@@ -51,9 +52,9 @@ public class CustomerController : MonoBehaviour
 
     private void Awake()
     {
-        counter = GameObject.Find("InteractionRange_Customer");
-        entrance = GameObject.Find("Entrance");
         spawner = GameObject.Find("CustomerSpawner");
+        entrance = GameObject.Find("Entrance_ArrivalPoint");
+        counter = GameObject.Find("InteractionRange_Customer");
         lineObject = GameObject.Find("LineQueue");
         agent = GetComponent<NavMeshAgent>();
 
@@ -145,7 +146,6 @@ public class CustomerController : MonoBehaviour
             case State.MOVETOTABLE:
                 if (CheckAgentReachToDestination())
                 {
-                    transform.LookAt(touchedTable.transform);
                     sittingChair.GetComponent<Chair>().SetSittingCustomer(this);
                     ChangeState(State.EAT);
                 }
@@ -203,7 +203,6 @@ public class CustomerController : MonoBehaviour
         if (other.gameObject.CompareTag("Entrance"))
         {
             isCollideWithEntrance = true;
-            Debug.Log("Collide with Entrance!");
         }
         else if (other.gameObject.CompareTag("Order"))
         {

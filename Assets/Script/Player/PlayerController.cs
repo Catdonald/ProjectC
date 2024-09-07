@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject characterRoot;
     [SerializeField]
-    GameObject touchController;
+    GameObject moveController;
 
     public playerStack playerStack;
     private PlayerData playerData;
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
         playerData = GetComponent<PlayerData>();
         playerRigidbody = GetComponent<Rigidbody>();
         playerRigidbody.sleepThreshold = 0.0f;
-        joystickController = touchController.GetComponentInChildren<JoyStickController>();
+        joystickController = moveController.GetComponentInChildren<JoyStickController>();
         playerStack = GetComponentInChildren<playerStack>();
     }
 
@@ -40,10 +40,10 @@ public class PlayerController : MonoBehaviour
             {
                 isClicked = true;
                 mouseClickedPos = Input.mousePosition;
-                // touchController UI 활성화
-                touchController.SetActive(true);
+                // moveController UI 활성화
+                moveController.SetActive(true);
                 Vector3 touchControllerPos = new Vector3(mouseClickedPos.x - Screen.width / 2, mouseClickedPos.y - Screen.height / 2, mouseClickedPos.z);
-                touchController.GetComponent<RectTransform>().localPosition = touchControllerPos;
+                moveController.GetComponent<RectTransform>().localPosition = touchControllerPos;
             }
             else
             {
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
         {
             isClicked = false;
             // touchController UI 비활성화
-            touchController.SetActive(false);
+            moveController.SetActive(false);
         }
     }
 

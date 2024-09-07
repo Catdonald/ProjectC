@@ -5,7 +5,7 @@ using UnityEngine;
 public class Line : MonoBehaviour
 {
     private Queue<GameObject> customerQueue;
-    private int queueMaxCount = 5;
+    private int queueMaxCount = 10;
     private GameObject[] linePositions;
     public int currentQueueCount = 0;
 
