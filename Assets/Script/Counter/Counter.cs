@@ -5,22 +5,11 @@ using UnityEngine;
 public class Counter : MonoBehaviour
 {
     public CustomerController customer;
-    private int storagedFoodCount;
-    public int StoragedFoodCount
-    {
-        get { return storagedFoodCount; }
-        set
-        {
-            if (value < 0)
-                storagedFoodCount = 0;
-            else
-                storagedFoodCount = value;
-        }
-    }
+    private Receiver receiver;
 
     private void Start()
     {
-        StoragedFoodCount = 100;
+        receiver = GetComponentInChildren<Receiver>();
     }
 
     public void SellFoodToCustomer()
@@ -29,12 +18,13 @@ public class Counter : MonoBehaviour
             return;
         if (customer.OrderCount > 0)
         {
-            if (StoragedFoodCount > 0)
+            if(receiver.stack.Count > 0)
             {
-                StoragedFoodCount--;
-                customer.ReceiveFood(1);
-                Debug.Log("Counter : " + StoragedFoodCount);
-                // 카운터에 쌓인 햄버거 한개 손님한테 날아감
+                GameObject obj = receiver.CustomerRequest();
+                if (obj != null)
+                {
+                    customer.ReceiveFood(obj, receiver.objectHeight);
+                }
             }
         }
     }

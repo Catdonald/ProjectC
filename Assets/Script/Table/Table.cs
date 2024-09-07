@@ -6,12 +6,14 @@ public class Table : MonoBehaviour
 {
     public Chair[] chairs;
     public GameObject trash;
+    public TableStack stack;
     public int TrashCount { get; private set; }
     public int CarryingFoodCount { get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
+        stack = GetComponentInChildren<TableStack>();
         List<Chair> chairList = new List<Chair>();
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -76,8 +78,7 @@ public class Table : MonoBehaviour
 
     public void RemoveFoodOnTable()
     {
-        // Todo) 테이블 위 음식 중 가장 위에 있는 음식 제거
-
+        GameManager.instance.PoolManager.Return(stack.stack.Pop());
         CarryingFoodCount--;
     }
 

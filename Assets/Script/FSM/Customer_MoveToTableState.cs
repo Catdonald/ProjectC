@@ -19,8 +19,7 @@ public class Customer_MoveToTableState : BaseState
     public override void OnStateExit()
     {
         // Todo) 테이블 방향 바라보기
-        // Todo) 테이블에 들고 있던 햄버거 놓기
-
+        customer.PutFoodsOnTable();
         customer.touchedTable.CarryingFoodCount = customer.CarryingFoodCount;
         customer.CarryingFoodCount = 0;
     }

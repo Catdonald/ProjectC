@@ -1,24 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 using DG.Tweening;
 
-/// <summary>
-/// 240822 오수안
-/// 플레이어의 버거를 가져가는 오브젝트 유형
-/// </summary>
-
-public class Receiver : MonoBehaviour
+public class TableStack : MonoBehaviour
 {
     public Stack<GameObject> stack;
-    public int objectType;
-    private float _objectHeight;
-    public float objectHeight
-    {
-        get { return _objectHeight; }
-        set { _objectHeight = value; }
-    }
 
     void Awake()
     {
@@ -27,20 +14,18 @@ public class Receiver : MonoBehaviour
 
     public void ReceiveObject(GameObject obj, float objHeight)
     {
-        this.stack.Push(obj);
-        this._objectHeight = objHeight;
+        stack.Push(obj);
 
-        Vector3 pos = gameObject.transform.position;
-        pos.y = pos.y + _objectHeight * (stack.Count - 1);
-
+        Vector3 pos = transform.position  + Vector3.up * objHeight * stack.Count;
         StartCoroutine(UpdateObjectPos(obj, pos));
-        obj.transform.SetParent(gameObject.transform);
+
+        obj.transform.parent = null;
     }
 
     private IEnumerator UpdateObjectPos(GameObject obj, Vector3 targetPos)
     {
         float elapsedTime = 0f;
-        float duration = 0.1f;
+        float duration = 0.2f;
 
         Vector3 startingPos = obj.transform.position;
 
@@ -53,9 +38,4 @@ public class Receiver : MonoBehaviour
 
         obj.transform.position = targetPos;
     }
-    public GameObject CustomerRequest()
-    {
-        return stack.Pop();
-    }
-
 }

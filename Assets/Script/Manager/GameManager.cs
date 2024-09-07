@@ -26,9 +26,6 @@ public class GameManager : MonoBehaviour
     public PoolManager PoolManager;
     public TableManager TableManager;
 
-    public PlayerData player;
-    public PlayerData[] staffs;
-
     public GameObject idText;
     public GameObject levelText;
     public GameObject speedText;

@@ -17,7 +17,7 @@ public class playerStack : MonoBehaviour
     public Stack<GameObject> stack;
     float objectHeight;
 
-    [Header("player stack info")]
+    [Header("# player stack info")]
     int typeNow;
     int stackMax;
     float stackSpeed;
