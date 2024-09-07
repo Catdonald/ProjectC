@@ -19,7 +19,7 @@ public class Customer_MoveToTableState : BaseState
     public override void OnStateExit()
     {
         // Todo) 테이블 방향 바라보기
-        customer.PutFoodsOnTable();
+        customer.PutFoodsOnTable(); 
         customer.touchedTable.CarryingFoodCount = customer.CarryingFoodCount;
         customer.CarryingFoodCount = 0;
     }

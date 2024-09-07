@@ -66,12 +66,12 @@ public class PlayerController : MonoBehaviour
                     // 건물이나 기계, 카운터와 같은 오브젝트와 레이가 충돌한 것이다.
                     if (!hit.collider.CompareTag("Building"))
                     {
-                        playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * playerData.speed);
+                        playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * playerData.moveSpeed);
                     }
                 }
                 else
                 {
-                    playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * playerData.speed);
+                    playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * playerData.moveSpeed);
                 }
                 // 이동하는 방향 바라보기
                 if (moveVec.magnitude > 0.0f)
@@ -107,12 +107,10 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Cooker"))
         {
-            Debug.Log("Collide with Cooker!");
             playerStack.InteractWithSpawner();
         }
         else if (collision.gameObject.CompareTag("Storage"))
         {
-            Debug.Log("Collide with Storage!");
             playerStack.InteractWithReceiver();
         }
         else if (collision.gameObject.CompareTag("Upgrade"))

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Table : MonoBehaviour
 {
     public Chair[] chairs;
     public GameObject trash;
+    public TableData tableData;
     public TableStack stack;
     public int TrashCount { get; private set; }
     public int CarryingFoodCount { get; set; }
@@ -13,6 +15,7 @@ public class Table : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        tableData = GetComponent<TableData>();
         stack = GetComponentInChildren<TableStack>();
         List<Chair> chairList = new List<Chair>();
         for (int i = 0; i < transform.childCount; i++)

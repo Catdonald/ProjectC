@@ -12,29 +12,25 @@ using UnityEngine;
 /// </summary>
 public class Spawner : MonoBehaviour
 {
-    public SpawnData spawnData;
+    public CookerData cookerData;
 
     bool isSpawning;
     public Stack<GameObject> stack;
 
-    [Header("spawner info")]
-    public int level;
     public int objectType;
     public float objectHeight;
 
     void Awake()
     {
+        cookerData = GetComponent<CookerData>();
         isSpawning = false;
         stack = new Stack<GameObject>();
 
         objectType = 0;
-        level = 0;
     }
 
     void Start()
     {
-        spawnData = SpawnData.instance;
-
         GameObject type = GameManager.instance.PoolManager.Get(objectType);
         objectHeight = type.GetComponent<Renderer>().bounds.size.y;
         GameManager.instance.PoolManager.Return(type);
@@ -42,7 +38,7 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        if (stack.Count < spawnData.datas[level].maxSpawnCount && !isSpawning)
+        if (stack.Count < cookerData.maxCapacity && !isSpawning)
         {
             isSpawning = true;
             StartCoroutine(SpawnObject(objectType));
@@ -51,7 +47,7 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnObject(int index)
     {
-        yield return new WaitForSeconds(spawnData.datas[level].spawnSpeed);
+        yield return new WaitForSeconds(cookerData.spawnSpeed);
 
         GameObject obj = GameManager.instance.PoolManager.Get(index);
 
