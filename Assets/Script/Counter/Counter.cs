@@ -16,15 +16,14 @@ public class Counter : MonoBehaviour
     {
         if (customer == null)
             return;
-        if (customer.OrderCount > 0)
+
+        if (customer.OrderCount > 0 && 
+            receiver.stack.Count > 0)
         {
-            if(receiver.stack.Count > 0)
+            GameObject obj = receiver.CustomerRequest();
+            if (obj != null)
             {
-                GameObject obj = receiver.CustomerRequest();
-                if (obj != null)
-                {
-                    customer.ReceiveFood(obj, receiver.objectHeight);
-                }
+                customer.ReceiveFood(obj, receiver.objectHeight);
             }
         }
     }

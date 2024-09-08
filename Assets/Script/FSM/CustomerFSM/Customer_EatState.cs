@@ -14,6 +14,7 @@ public class Customer_EatState : BaseState
     public override void OnStateEnter()
     {
         customer.transform.LookAt(customer.touchedTable.transform.position);
+        //totalEatingTime = customer.touchedTable.tableData.eatSpeed;
         // 먹는 애니메이션 재생
 
     }

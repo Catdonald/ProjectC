@@ -185,10 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd02a5db0fbc30459e2dd71d8923398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameTime: 0
   PoolManager: {fileID: 5119574723618898919}
-  TableManager: {fileID: 0}
-  player: {fileID: 0}
-  staffs: []
-  idText: {fileID: 0}
-  levelText: {fileID: 0}
-  speedText: {fileID: 0}
+  TableManager: {fileID: 1887695096216975678}
+  Player: {fileID: 0}
+  playerData: {fileID: 0}

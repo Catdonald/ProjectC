@@ -273,13 +273,14 @@ public class CustomerController : MonoBehaviour
 
     public void ReceiveFood(GameObject obj, float objHeight)
     {
+        CarryingFoodHeight = objHeight;
+        customerstack.ReceiveObject(obj, objHeight);
+
         OrderCount -= 1;
         CarryingFoodCount += 1;
         orderCountText.text = OrderCount.ToString();
-        Debug.Log("Customer : " + CarryingFoodCount);
 
-        CarryingFoodHeight = objHeight;
-        customerstack.ReceiveObject(obj, objHeight);
+        Debug.Log("Customer : " + customerstack.stack.Count);
     }
 
     public void PutFoodsOnTable()

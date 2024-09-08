@@ -135,6 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1239602814156936338}
   - component: {fileID: 7473984736461048476}
+  - component: {fileID: 5945638527705467389}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -169,10 +170,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fb7c755adb4b53488b4ef6fada4c38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnData: {fileID: 0}
-  level: 0
+  cookerData: {fileID: 0}
   objectType: 0
   objectHeight: 0
+--- !u!114 &5945638527705467389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126052140887361057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b356954f228dcd45b1afa6eca94d427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experienceToNextLevel: 100
+  spawnSpeed: 0
+  maxCapacity: 0
 --- !u!1 &288471430215058161
 GameObject:
   m_ObjectHideFlags: 0
@@ -3786,7 +3801,7 @@ Transform:
   m_GameObject: {fileID: 3003940858706203797}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4515,6 +4530,7 @@ GameObject:
   - component: {fileID: 3922250657460121938}
   - component: {fileID: 7686848501327637859}
   - component: {fileID: 8673087376171464764}
+  - component: {fileID: 2166778960313620765}
   m_Layer: 0
   m_Name: Table_2people
   m_TagString: Table
@@ -4556,6 +4572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chairs: []
   trash: {fileID: 0}
+  tableData: {fileID: 0}
   stack: {fileID: 0}
 --- !u!65 &8673087376171464764
 BoxCollider:
@@ -4578,6 +4595,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.8, y: 0.2, z: 4}
   m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!114 &2166778960313620765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3940429631548981085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c143a300b07b56409067814b76c178b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experienceToNextLevel: 100
+  eatSpeed: 0
+  price: 0
 --- !u!1 &4088796081860809512
 GameObject:
   m_ObjectHideFlags: 0

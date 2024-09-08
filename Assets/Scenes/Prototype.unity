@@ -991,6 +991,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8866491675376954325, guid: 20746450321252c4aa8e68d60d9df344, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1833501350}
+    - target: {fileID: 8866491675376954325, guid: 20746450321252c4aa8e68d60d9df344, type: 3}
+      propertyPath: TableManager
+      value: 
+      objectReference: {fileID: 1454226953}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6612122394856533688, guid: 20746450321252c4aa8e68d60d9df344, type: 3}
@@ -1157,6 +1165,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323448386}
   m_CullTransparentMesh: 1
+--- !u!114 &1454226953 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1887695096216975678, guid: 20746450321252c4aa8e68d60d9df344, type: 3}
+  m_PrefabInstance: {fileID: 1201807522}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaff9715c0bcf914d885d37317a5c26d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1458056426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,6 +1697,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821545180}
   m_CullTransparentMesh: 1
+--- !u!1 &1833501350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9015831139852539644, guid: 971da5bd7ad9eb34a8b1f86f0ffe3a96, type: 3}
+  m_PrefabInstance: {fileID: 1161406264}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1983023943
 GameObject:
   m_ObjectHideFlags: 0
