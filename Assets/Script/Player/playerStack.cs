@@ -13,13 +13,13 @@ public class playerStack : MonoBehaviour
 {
     public Spawner spawner;
     public Receiver receiver;
+    public PlayerData playerData;
 
     public Stack<GameObject> stack;
     float objectHeight;
 
     [Header("# player stack info")]
     int typeNow;
-    int stackMax;
     float stackSpeed;
 
     void Awake()
@@ -31,9 +31,13 @@ public class playerStack : MonoBehaviour
 
         objectHeight = 0;
 
-        typeNow = 0;
-        stackMax = 3;
+        typeNow = -1; // -1 is none type
         stackSpeed = 0.1f;
+    }
+
+    void Start()
+    {
+        playerData = transform.parent.GetComponent<PlayerData>();
     }
 
     public void OnEnterInteraction(Collision other)
@@ -57,6 +61,14 @@ public class playerStack : MonoBehaviour
     {
         if(spawner == null)
             return;
+
+        if (playerData.maxCapacity <= spawner.stack.Count)
+            return;
+
+        //if(spawner.stack.Count == 0)
+        //{
+
+        //}
 
         if (spawner.stack.Count != 0 ||
             (spawner.stack.Count >= 1 &&
