@@ -31,7 +31,7 @@ public class playerStack : MonoBehaviour
 
         objectHeight = 0;
 
-        typeNow = -1; // -1 is none type
+        typeNow = 0; // -1 is none type
         stackSpeed = 0.1f;
     }
 
