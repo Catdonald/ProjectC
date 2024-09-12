@@ -9,53 +9,21 @@ using DG.Tweening;
 /// 플레이어의 버거를 가져가는 오브젝트 유형
 /// </summary>
 
-public class Receiver : MonoBehaviour
+public class Receiver : Stackable
 {
-    public Stack<GameObject> stack;
-    public int objectType;
-    private float _objectHeight;
-    public float objectHeight
-    {
-        get { return _objectHeight; }
-        set { _objectHeight = value; }
-    }
-
     void Awake()
     {
-        stack = new Stack<GameObject>();
+        type = eObjectType.HAMBURGER;
     }
-
-    public void ReceiveObject(GameObject obj, float objHeight)
+    public override void Enter(Collision collision)
     {
-        this.stack.Push(obj);
-        this._objectHeight = objHeight;
-
-        Vector3 pos = gameObject.transform.position;
-        pos.y = pos.y + _objectHeight * (stack.Count - 1);
-
-        StartCoroutine(UpdateObjectPos(obj, pos));
-        obj.transform.SetParent(gameObject.transform);
+        player = collision.gameObject.GetComponentInChildren<playerStack>();
     }
-
-    private IEnumerator UpdateObjectPos(GameObject obj, Vector3 targetPos)
+    public override void Interaction(Collision other)
     {
-        float elapsedTime = 0f;
-        float duration = 0.1f;
-
-        Vector3 startingPos = obj.transform.position;
-
-        while (elapsedTime < duration)
+        if(player.stack.Count > 0 && player.type == type)
         {
-            obj.transform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            ReceiveObject(player.RequestObject(), player.type, player.objectHeight);
         }
-
-        obj.transform.position = targetPos;
     }
-    public GameObject CustomerRequest()
-    {
-        return stack.Pop();
-    }
-
 }

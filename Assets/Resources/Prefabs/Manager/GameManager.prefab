@@ -47,6 +47,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 2554426912417560892, guid: 07deee93e458af646a5dc10784eb1485, type: 3}
   - {fileID: 2160545633982145074, guid: 4e245e764b3861b469322a0c74d3881e, type: 3}
+  - {fileID: 1328341206021509577, guid: c074f1af59e292d4fab7e094b8db96f4, type: 3}
 --- !u!1 &3359346414492956834
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,5 +189,9 @@ MonoBehaviour:
   GameTime: 0
   PoolManager: {fileID: 5119574723618898919}
   TableManager: {fileID: 1887695096216975678}
+  playerLevelData: []
+  staffLevelData: []
   Player: {fileID: 0}
-  playerData: {fileID: 0}
+  staffs: []
+  cookers: []
+  tables: []

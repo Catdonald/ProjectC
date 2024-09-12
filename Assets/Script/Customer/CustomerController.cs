@@ -12,7 +12,7 @@ public class CustomerController : MonoBehaviour
     public GameObject lineObject;
     public GameObject sittingChair;
     public Table touchedTable;
-    public CustomerStack customerstack;
+    public playerStack customerstack;
 
     public NavMeshAgent agent;
 
@@ -72,7 +72,7 @@ public class CustomerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        customerstack = GetComponentInChildren<CustomerStack>();
+        customerstack = GetComponentInChildren<playerStack>();
 
         orderUI = transform.GetChild(1).GetChild(0).gameObject;
         noSeatUI = transform.GetChild(1).GetChild(1).gameObject;
@@ -271,10 +271,10 @@ public class CustomerController : MonoBehaviour
         orderCountText.text = count.ToString();
     }
 
-    public void ReceiveFood(GameObject obj, float objHeight)
+    public void ReceiveFood(GameObject obj, eObjectType objType, float objHeight)
     {
         CarryingFoodHeight = objHeight;
-        customerstack.ReceiveObject(obj, objHeight);
+        customerstack.ReceiveObject(obj, objType, objHeight);
 
         OrderCount -= 1;
         CarryingFoodCount += 1;
@@ -287,7 +287,7 @@ public class CustomerController : MonoBehaviour
     {
         while (customerstack.stack.Count != 0)
         {
-            touchedTable.stack.ReceiveObject(customerstack.stack.Pop(), CarryingFoodHeight);
+            touchedTable.stack.ReceiveObject(customerstack.stack.Pop(), customerstack.type, CarryingFoodHeight);
         }
     }
 }

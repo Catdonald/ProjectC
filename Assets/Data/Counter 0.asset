@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d81a62ff029bc4984a1126d9597a1e, type: 3}
+  m_Name: Counter 0
+  m_EditorClassIdentifier: 
+  objectType: 1
+  objectID: 10
+  objectName: "\uCE74\uC6B4\uD130"
+  baseCount: 0
+  capacity:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  prices:
+  - 5
+  - 10
+  - 15
+  - 20
+  - 40
+  prefab: {fileID: 0}

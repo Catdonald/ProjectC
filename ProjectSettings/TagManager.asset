@@ -4,8 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - kitchen
-  - desk
   - Upgrade
   - Cooker
   - Table
@@ -20,7 +18,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Interactable
   - Water
   - UI
   - 

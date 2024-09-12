@@ -2710,13 +2710,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2534c38c6cce74eaf5e09c1ef96624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counter: {fileID: 0}
-  entrance: {fileID: 0}
   spawner: {fileID: 0}
+  entrance: {fileID: 0}
+  counter: {fileID: 0}
   lineObject: {fileID: 0}
   sittingChair: {fileID: 0}
   touchedTable: {fileID: 0}
-  stack: {fileID: 0}
+  customerstack: {fileID: 0}
   agent: {fileID: 0}
   currentState: 0
 --- !u!195 &823982722681992055
@@ -4401,7 +4401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6916488905635439902}
-  - component: {fileID: 1584191474328544096}
+  - component: {fileID: 7816540668219971475}
   m_Layer: 0
   m_Name: CustomerStack
   m_TagString: Untagged
@@ -4424,7 +4424,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8468764379387132818}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1584191474328544096
+--- !u!114 &7816540668219971475
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4433,9 +4433,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3474385757731009798}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac7bb0717ed61d49a6c55bcec5381c2, type: 3}
+  m_Script: {fileID: 11500000, guid: fbb0abfe45b9b844ea79b4948a82841d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  playerData: {fileID: 0}
 --- !u!1 &3493539519403762842
 GameObject:
   m_ObjectHideFlags: 0

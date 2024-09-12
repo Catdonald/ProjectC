@@ -7,16 +7,14 @@ public class Table : MonoBehaviour
 {
     public Chair[] chairs;
     public GameObject trash;
-    public TableData tableData;
-    public TableStack stack;
+    public Receiver stack;
+
     public int TrashCount { get; private set; }
     public int CarryingFoodCount { get; set; }
 
-    // Start is called before the first frame update
     void Start()
     {
-        tableData = GetComponent<TableData>();
-        stack = GetComponentInChildren<TableStack>();
+        stack = GetComponentInChildren<Receiver>();
         List<Chair> chairList = new List<Chair>();
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -43,14 +41,14 @@ public class Table : MonoBehaviour
     {
 
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Employee"))
         {
             if (TrashCount > 0)
             {
-                GameManager.instance.TableManager.CleanTable(this);
-                // 플레이어나 직원에게 쓰레기 쌓이게 해야 함.
+                StartCoroutine(StackTrashToStaff(other.gameObject));
             }
         }
     }
@@ -100,5 +98,26 @@ public class Table : MonoBehaviour
         trash.SetActive(true);
         int randomCount = Random.Range(1, 5);
         TrashCount += randomCount;
+    }
+
+    public IEnumerator StackTrashToStaff(GameObject staff)
+    {
+        while (TrashCount > 0)
+        {
+            // 쓰레기 하나를 플레이어에게 옮김
+            staff.GetComponentInChildren<playerStack>().ReceiveObject(GameManager.instance.PoolManager.Get(2), eObjectType.TRASH, 0.2f);
+            TrashCount--;
+            Debug.Log("TrasCount: " + TrashCount);
+
+            yield return new WaitForSeconds(0.2f);
+
+            // 쓰레기 개수가 0이 되면 책상 청소 함수 호출
+            if (TrashCount == 0)
+            {
+                GameManager.instance.TableManager.CleanTable(this);
+            }
+
+            yield break;
+        }
     }
 }

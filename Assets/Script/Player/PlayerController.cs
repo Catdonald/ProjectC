@@ -92,28 +92,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-
-        if (collision.gameObject.CompareTag("Cooker") ||
-            collision.gameObject.CompareTag("Storage"))
-        {
-            Debug.Log("Collision Enter");
-            playerStack.OnEnterInteraction(collision);
-        }
-    }
-
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Cooker"))
-        {
-            playerStack.InteractWithSpawner();
-        }
-        else if (collision.gameObject.CompareTag("Storage"))
-        {
-            playerStack.InteractWithReceiver();
-        }
-        else if (collision.gameObject.CompareTag("Upgrade"))
+        if (collision.gameObject.CompareTag("Upgrade"))
         {
             //Debug.Log("Collide with UpgradeButton!");
             UpgradeBox box = collision.gameObject.GetComponent<UpgradeBox>();
@@ -126,12 +107,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Cooker") ||
-            collision.gameObject.CompareTag("Storage"))
-        {
-            playerStack.OnExitInteraction();
-        }
-
         if (collision.gameObject.CompareTag("Upgrade"))
         {
             UpgradeBox box = collision.gameObject.GetComponent<UpgradeBox>();

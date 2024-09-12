@@ -32,21 +32,31 @@ public class GameManager : MonoBehaviour
     public PoolManager PoolManager;
     public TableManager TableManager;
 
-    [Header("# 플레이어 정보")]
+    [System.Serializable]
+    public struct LevelData
+    {
+        public float moveSpeed;
+        public int maxCapacity;
+    }
+
+    [Header("# level data for all objects")]
+    public List<LevelData> playerLevelData = new List<LevelData>();
+    public List<LevelData> staffLevelData = new List<LevelData>();
+
+    // 레벨 관리가 필요한 오브젝트들
+
+    [Header("# 플레이어")]
     public GameObject Player;
-    public List<PlayerData> playerLevelData = new List<PlayerData>();
 
-    [Header("# 직원 정보")]
-    public List<GameObject> staffs = new List<GameObject>();
-    public List<PlayerData> staffLevelData = new List<PlayerData>();
+    [Header("# 직원")]
+    public List<GameObject> staffs;
 
-    [Header("# 조리대 정보")]
-    public List<GameObject> cookers = new List<GameObject>();
-    public List<CookerData> cookerLevelData = new List<CookerData>();
+    [Header("# 조리대")]
+    public List<GameObject> cookers;
 
-    [Header("# 테이블 정보")]
-    public List<TableData> tableLevelData = new List<TableData>();
-    
+    [Header("# 테이블")]
+    public List<GameObject> tables;
+
 
     void Awake()
     {
@@ -85,9 +95,8 @@ public class GameManager : MonoBehaviour
     }
     private void LoadData()
     {
-        LoadDataFromCSV("PlayerLevelData", playerLevelData, ParsePlayerData);
-        LoadDataFromCSV("CookerLevelData", cookerLevelData, ParseCookerData);
-        LoadDataFromCSV("TableLevelData", tableLevelData, ParseTableData);
+        LoadDataFromCSV("PlayerLevelData", playerLevelData, ParseLevelData);
+        LoadDataFromCSV("StaffLevelData", staffLevelData, ParseLevelData);
 
         Debug.Log("데이터 로드");
     }
@@ -120,39 +129,38 @@ public class GameManager : MonoBehaviour
             dataLst.Add(data);
         }
     }
-    private PlayerData ParsePlayerData(string[] values)
+    private LevelData ParseLevelData(string[] values)
     {
-        PlayerData data = new PlayerData
+        LevelData data = new LevelData
         {
-            Level = int.Parse(values[0]),
             moveSpeed = float.Parse(values[1]),
             maxCapacity = int.Parse(values[2])
         };
 
         return data;
     }
-    private CookerData ParseCookerData(string[] values)
-    {
-        CookerData data = new CookerData
-        {
-            Level = int.Parse(values[0]),
-            spawnSpeed = float.Parse(values[1]),
-            maxCapacity = int.Parse(values[2])
-        };
+    //private CookerData ParseCookerData(string[] values)
+    //{
+    //    CookerData data = new CookerData
+    //    {
+    //        Level = int.Parse(values[0]),
+    //        spawnSpeed = float.Parse(values[1]),
+    //        maxCapacity = int.Parse(values[2])
+    //    };
 
-        return data;
-    }
-    private TableData ParseTableData(string[] values)
-    {
-        TableData data = new TableData
-        {
-            Level = int.Parse(values[0]),
-            eatSpeed = float.Parse(values[1]),
-            price = int.Parse(values[2])
-        };
+    //    return data;
+    //}
+    //private TableData ParseTableData(string[] values)
+    //{
+    //    TableData data = new TableData
+    //    {
+    //        Level = int.Parse(values[0]),
+    //        eatSpeed = float.Parse(values[1]),
+    //        price = int.Parse(values[2])
+    //    };
 
-        return data;
-    }
+    //    return data;
+    //}
 
 
 

@@ -10,58 +10,45 @@ using UnityEngine;
 /// 240822 오수안
 /// 버거를 생성하고 플레이어에게 주는 오브젝트 유형
 /// </summary>
-public class Spawner : MonoBehaviour
+public class Spawner : Stackable
 {
-    public CookerData cookerData;
-
-    bool isSpawning;
-    public Stack<GameObject> stack;
-
-    public int objectType;
-    public float objectHeight;
-
     void Awake()
     {
-        cookerData = GetComponent<CookerData>();
-        isSpawning = false;
-        stack = new Stack<GameObject>();
-
-        objectType = 0;
+        type = eObjectType.HAMBURGER;
     }
 
     void Start()
     {
-        GameObject type = GameManager.instance.PoolManager.Get(objectType);
-        objectHeight = type.GetComponent<Renderer>().bounds.size.y;
-        GameManager.instance.PoolManager.Return(type);
+        GameObject obj = GameManager.instance.PoolManager.Get((int)type);
+        objectHeight = obj.GetComponent<Renderer>().bounds.size.y;
+        GameManager.instance.PoolManager.Return(obj);
+        actingTime = 5;
     }
 
     void Update()
     {
-        if (stack.Count < cookerData.maxCapacity && !isSpawning)
+        if (stack.Count < 5 && !isActing)
         {
-            isSpawning = true;
-            StartCoroutine(SpawnObject(objectType));
+            isActing = true;
+            StartCoroutine(SpawnObject((int)type));
         }
     }
 
-    private IEnumerator SpawnObject(int index)
+    public override void Enter(Collision other)
     {
-        yield return new WaitForSeconds(cookerData.spawnSpeed);
-
-        GameObject obj = GameManager.instance.PoolManager.Get(index);
-
-        obj.transform.position = 
-            transform.position + Vector3.up * objectHeight * stack.Count;
-
-        stack.Push(obj);
-
-        isSpawning = false;
+        base.Enter(other);
+        player = other.transform.GetComponentInChildren<playerStack>();
     }
 
-    public GameObject RequestObject()
+    public override void Interaction(Collision other)
     {
-         return stack.Pop();
-    }
+        if (stack.Count == 0)
+            return;
 
+        if (player.stack.Count == 0 && player.type == eObjectType.LAST)
+            player.type = type;
+
+        if (player.type == type)
+            player.ReceiveObject(stack.Pop(), type, objectHeight);
+    }
 }

@@ -20,10 +20,10 @@ public class Counter : MonoBehaviour
         if (customer.OrderCount > 0 && 
             receiver.stack.Count > 0)
         {
-            GameObject obj = receiver.CustomerRequest();
+            GameObject obj = receiver.RequestObject();
             if (obj != null)
             {
-                customer.ReceiveFood(obj, receiver.objectHeight);
+                customer.ReceiveFood(obj, receiver.type, receiver.objectHeight);
             }
         }
     }
