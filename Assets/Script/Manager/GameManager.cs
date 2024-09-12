@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
 
     [Header("# Game Info")]
     public float GameTime;
+    public int money;
+    public int level;
+    public int exp;
+    public int[] nextEXP;
 
     [Header("# 매니저 클래스")]
     public PoolManager PoolManager;
