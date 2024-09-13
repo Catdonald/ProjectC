@@ -287,7 +287,7 @@ public class CustomerController : MonoBehaviour
     {
         while (customerstack.stack.Count != 0)
         {
-            touchedTable.stack.ReceiveObject(customerstack.stack.Pop(), customerstack.type, CarryingFoodHeight);
+            touchedTable.tableStack.ReceiveObject(customerstack.stack.Pop(), customerstack.type, CarryingFoodHeight);
         }
     }
 }

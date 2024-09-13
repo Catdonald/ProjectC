@@ -7,14 +7,15 @@ public class Table : MonoBehaviour
 {
     public Chair[] chairs;
     public GameObject trash;
-    public Receiver stack;
+    public Receiver tableStack;
 
     public int TrashCount { get; private set; }
     public int CarryingFoodCount { get; set; }
 
     void Start()
     {
-        stack = GetComponentInChildren<Receiver>();
+        tableStack = GetComponentInChildren<Receiver>();
+
         List<Chair> chairList = new List<Chair>();
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -82,7 +83,7 @@ public class Table : MonoBehaviour
 
     public void RemoveFoodOnTable()
     {
-        GameManager.instance.PoolManager.Return(stack.stack.Pop());
+        GameManager.instance.PoolManager.Return(tableStack.stack.Pop());
         CarryingFoodCount--;
     }
 
