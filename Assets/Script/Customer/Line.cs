@@ -4,58 +4,58 @@ using UnityEngine;
 
 public class Line : MonoBehaviour
 {
-    private Queue<GameObject> customerQueue;
+    private Queue<CustomerController> customerQueue;
     private int queueMaxCount = 10;
-    private GameObject[] linePositions;
-    public int currentQueueCount = 0;
+    private Transform[] linePositions;
+    public int QueueCount { get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
-        customerQueue = new Queue<GameObject>();
-        linePositions = new GameObject[queueMaxCount];
+        customerQueue = new Queue<CustomerController>();
+        linePositions = new Transform[queueMaxCount];
         for (int i = 0; i < linePositions.Length; i++)
         {
-            linePositions[i] = GameObject.Find("LinePosition" + (i + 1).ToString());
+            linePositions[i] = transform.GetChild(i);
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public bool IsQueueFull()
     {
-        if (other.gameObject.CompareTag("Customer"))
+        return QueueCount >= queueMaxCount;
+    }
+
+    public void AddCustomer(CustomerController customer)
+    {
+        customerQueue.Enqueue(customer);
+        AssignQueuePoint(customer, customerQueue.Count - 1);
+    }
+
+    public CustomerController RemoveCustomer()
+    {
+        return customerQueue.Dequeue();
+    }
+
+    public void UpdateCustomerQueue()
+    {
+        int index = 0;
+        foreach(var customer in customerQueue)
         {
-            if (customerQueue.Count < queueMaxCount)
-            {
-                CustomerController customer = other.gameObject.GetComponent<CustomerController>();
-                if (customer.GetCurrentState() == CustomerController.State.LINEMOVE)
-                {
-                    customerQueue.Enqueue(other.gameObject);
-                    customer.SetAgentDestination(linePositions[customerQueue.Count - 1].transform.position);
-                }
-            }
+            AssignQueuePoint(customer, index++);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public CustomerController Peek()
     {
-        if (other.gameObject.CompareTag("Customer"))
-        {
-            CustomerController customer = other.gameObject.GetComponent<CustomerController>();
-            if (customer.GetCurrentState() == CustomerController.State.MOVETOTABLE)
-            {
-                customerQueue.Dequeue();
-                currentQueueCount--;
-                int index = 0;
-                foreach (GameObject eachObj in customerQueue)
-                {
-                    eachObj.GetComponent<CustomerController>().SetAgentDestination(linePositions[index++].transform.position);
-                }
-            }
-        }
+        if(customerQueue.Count == 0) return null;
+        return customerQueue.Peek();
     }
 
-    public bool IsLineQueueFull()
+    void AssignQueuePoint(CustomerController customer, int index)
     {
-        return currentQueueCount >= queueMaxCount;
+        Vector3 queuePointPos = linePositions[index].position;
+        bool isFirst = index == 0;
+
+        customer.UpdateQueue(queuePointPos, isFirst);
     }
 }

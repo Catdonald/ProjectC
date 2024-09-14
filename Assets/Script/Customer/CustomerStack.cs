@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class CustomerStack : MonoBehaviour
 {
-    public Stack<GameObject> stack;
+    private Stack<GameObject> stack;
+    private StackType stackType;
+
+    public int Count => stack.Count;
+
     void Awake()
     {
         stack = new Stack<GameObject>();
@@ -20,6 +24,7 @@ public class CustomerStack : MonoBehaviour
         StartCoroutine(UpdateObjectPos(obj, pos));
         obj.transform.SetParent(gameObject.transform);
     }
+
     private IEnumerator UpdateObjectPos(GameObject obj, Vector3 targetPos)
     {
         float elapsedTime = 0f;
@@ -37,6 +42,16 @@ public class CustomerStack : MonoBehaviour
         obj.transform.position = targetPos;
     }
 
-
+    public GameObject RemoveFromStack()
+    {
+        if(stack.Count == 0)
+            return null;
+        GameObject obj = stack.Pop();
+        if(stack.Count == 0)
+        {
+            stackType = StackType.NONE;
+        }
+        return obj;
+    }
 
 }

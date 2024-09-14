@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     GameObject moveController;
 
     public playerStack playerStack;
+
+    private Animator animator;
     private PlayerData playerData;
     private Rigidbody playerRigidbody;
     private JoyStickController joystickController;
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         playerData = GetComponent<PlayerData>();
         playerRigidbody = GetComponent<Rigidbody>();
         playerRigidbody.sleepThreshold = 0.0f;
@@ -52,9 +55,18 @@ public class PlayerController : MonoBehaviour
                 Vector3 mouseDelta = mousePos - mouseClickedPos;
                 // max padSizeX = 35.0f
                 Vector3 mouseDeltaNorm = new Vector3(mouseDelta.x / 35.0f, mouseDelta.y / 35.0f, mouseDelta.z);
-                if (mouseDeltaNorm.magnitude > 1.0f)
+                float mouseDeltaMagnitude = mouseDeltaNorm.magnitude;
+                if (mouseDeltaMagnitude > 1.0f)
                 {
                     mouseDeltaNorm = mouseDelta.normalized;
+                }
+                if(mouseDeltaMagnitude > 0.0f)
+                {
+                    animator.SetBool("isMove", true);
+                }
+                else
+                {
+                    animator.SetBool("isMove", false);
                 }
                 Vector3 moveVec = new Vector3(mouseDeltaNorm.x, 0.0f, mouseDeltaNorm.y);
                 rayStartPoint = new Vector3(transform.position.x, 0.2f, transform.position.z);
@@ -87,6 +99,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             isClicked = false;
+            animator.SetBool("isMove", false);
             // touchController UI 비활성화
             moveController.SetActive(false);
         }

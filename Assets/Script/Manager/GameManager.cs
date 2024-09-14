@@ -44,9 +44,40 @@ public class GameManager : MonoBehaviour
     public List<GameObject> cookers = new List<GameObject>();
     public List<CookerData> cookerLevelData = new List<CookerData>();
 
+    [Header("# 카운터 정보")]
+    public List<GameObject> counters = new List<GameObject>();
+
     [Header("# 테이블 정보")]
     public List<TableData> tableLevelData = new List<TableData>();
-    
+
+    [Header("# 해제 가능 오브젝트")]
+    [SerializeField] private List<Unlockable> unlockables;
+
+    [Header("# UI")]
+    [SerializeField] private OrderInfo burgerOrderInfo;
+
+    [Header("# Stack Offset")]
+    [SerializeField] private float burgerOffset = 0.35f;
+    [SerializeField] private float trashOffset = 0.18f;
+    [SerializeField] private float burgerPackOffset = 0.3f;
+    [SerializeField] private float coffeeOffset = 0.35f;
+
+    public List<ObjectPile> TrashPiles {  get; private set; } = new List<ObjectPile>();
+
+    // 요리기계 Spawner
+    public List<Spawner> spawners_burger = new List<Spawner>();
+    public List<Spawner> spawners_burgerPack = new List<Spawner>();
+    //public List<Spawner> spawners_coffee = new List<Spawner>();
+
+    // 카운터 Receiver
+    public Receiver receiver_burger;
+    public Receiver receiver_burgerPack;
+    //Receiver receiver_coffee;
+
+    #region Reference Properties
+    public OrderInfo BurgerOrderInfo => burgerOrderInfo;
+    public TrashBin TrashBin { get; private set; }
+    #endregion
 
     void Awake()
     {
@@ -56,7 +87,56 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+        GameObject[] counterObjs = GameObject.FindGameObjectsWithTag("Counter");
+        foreach (GameObject counter in counterObjs)
+        {
+            counters.Add(counter);
+        }
+
+        GameObject[] cookerObjs = GameObject.FindGameObjectsWithTag("Cooker");
+        foreach (GameObject cooker in cookerObjs)
+        {
+            cookers.Add(cooker);
+        }
+
+        var spawnerObjs = GameObject.FindObjectsOfType<Spawner>();
+        foreach (Spawner spawner in spawnerObjs)
+        {
+            if (spawner.objectType == StackType.BURGER)
+            {
+                spawners_burger.Add(spawner);
+            }
+            else if (spawner.objectType == StackType.BURGERPACK)
+            {
+                spawners_burgerPack.Add(spawner);
+            }
+        }
+
+        var receiverObjs = GameObject.FindObjectsOfType<Receiver>();
+        foreach (Receiver receiver in receiverObjs)
+        {
+            if (receiver.objectType == StackType.BURGER)
+            {
+                receiver_burger = receiver;
+            }
+            else if (receiver.objectType == StackType.BURGERPACK)
+            {
+                receiver_burgerPack = receiver;
+            }
+        }
+
+        var objectPiles = GameObject.FindObjectsOfType<ObjectPile>();
+        foreach(var objectPile in objectPiles)
+        {
+            if(objectPile.StackType == StackType.TRASH)
+            {
+                TrashPiles.Add(objectPile);
+            }
+            // burgerPiles
+            // burgerPackPiles
+        }
+
+        TrashBin = GameObject.FindObjectOfType<TrashBin>();
     }
 
     void LateUpdate()
@@ -64,15 +144,39 @@ public class GameManager : MonoBehaviour
         AutoSave();
     }
 
+    public float GetStackOffset(StackType stackType)
+    {
+        float offset = 0.0f;
+        switch (stackType)
+        {
+            case StackType.NONE:
+                offset = 0.0f; 
+                break;
+            case StackType.BURGER:
+                offset = burgerOffset;
+                break;
+            case StackType.BURGERPACK:
+                offset = burgerPackOffset;
+                break;
+            case StackType.COFFEE:
+                offset = coffeeOffset;
+                break;
+            case StackType.TRASH:
+                offset = trashOffset;
+                break;
+        }
+        return offset;
+    }
+
     /// <summary>
     /// 데이터 로드, 세이브 함수
     /// </summary>
-    
+
     private void AutoSave()
     {
         GameTime += Time.deltaTime;
-        
-        if(GameTime == 10f)
+
+        if (GameTime == 10f)
         {
             GameTime = 0;
             SaveData();
@@ -154,7 +258,11 @@ public class GameManager : MonoBehaviour
         return data;
     }
 
-
+    // cooker 추가될 때 호출
+    public void AddCooker()
+    {
+        //cook
+    }
 
     // test code
     //public GameObject idText;

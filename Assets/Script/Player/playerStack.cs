@@ -19,8 +19,10 @@ public class playerStack : MonoBehaviour
     float objectHeight;
 
     [Header("# player stack info")]
-    int typeNow;
+    StackType stackType;
     float stackSpeed;
+
+    public StackType StackType => stackType;
 
     void Awake()
     {
@@ -31,7 +33,7 @@ public class playerStack : MonoBehaviour
 
         objectHeight = 0;
 
-        typeNow = -1; // -1 is none type
+        stackType = StackType.NONE; // -1 is none type
         stackSpeed = 0.1f;
     }
 
@@ -72,7 +74,7 @@ public class playerStack : MonoBehaviour
 
         if (spawner.stack.Count != 0 ||
             (spawner.stack.Count >= 1 &&
-            spawner.objectType == typeNow))
+            spawner.objectType == stackType))
         {
             GameObject obj = spawner.RequestObject();
 
@@ -94,7 +96,7 @@ public class playerStack : MonoBehaviour
     }
     public void InteractWithReceiver()
     {
-        if (stack.Count > 0 && receiver.objectType == typeNow)
+        if (stack.Count > 0 && receiver.objectType == stackType)
             receiver.ReceiveObject(stack.Pop(), objectHeight);
     }
 

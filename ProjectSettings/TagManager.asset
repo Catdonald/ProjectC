@@ -12,10 +12,12 @@ TagManager:
   - Counter
   - Storage
   - Customer
-  - Order
   - Entrance
   - Building
-  - Employee
+  - TrashBin
+  - Order
+  - Packing
+  - Staff
   layers:
   - Default
   - TransparentFX

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomerSpawner : MonoBehaviour
+public class TempSpawner : MonoBehaviour
 {
     private Line lineQueue;
     [SerializeField]
@@ -33,17 +33,23 @@ public class CustomerSpawner : MonoBehaviour
     {
         while (true)
         {
-            if (!lineQueue.IsLineQueueFull())
+            // ·£´ý¼ýÀÚ »Ì±â
+            // switch(0) -> burgerJoint
+            if (!lineQueue.IsQueueFull())
             {
-                //GameObject obj = MonoBehaviour.Instantiate(customer);
                 GameObject obj = GameManager.instance.PoolManager.Get(1);
-                obj.SetActive(true);
                 obj.transform.position = transform.position;
                 obj.transform.forward = transform.forward;
                 int randomValue = Random.Range(0, materials.Length);
-                obj.GetComponent<SkinnedMeshRenderer>().material = materials[randomValue]; 
-                lineQueue.currentQueueCount++;
+                obj.GetComponent<SkinnedMeshRenderer>().material = materials[randomValue];
+                lineQueue.QueueCount++;
+                CustomerController customer = obj.GetComponent<CustomerController>();
+                customer.entrance = GameObject.Find("Entrance_Point1");
+                customer.spawner = gameObject;
+                customer.line = lineQueue;
+                customer.orderInfo = GameManager.instance.BurgerOrderInfo;
             }
+            // switch(1)
             yield return new WaitForSeconds(spawnCoolDownTime);
         }
     }

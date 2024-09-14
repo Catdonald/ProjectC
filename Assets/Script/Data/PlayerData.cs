@@ -6,6 +6,8 @@ public class PlayerData : LevelableObject
 {
     public float moveSpeed;
     public int maxCapacity;
+    public float returnRate;
+
     void Start()
     {
         moveSpeed = GameManager.instance.playerLevelData[Level].moveSpeed;

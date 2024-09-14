@@ -1,104 +1,99 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class Table : MonoBehaviour
-{
-    public Chair[] chairs;
-    public GameObject trash;
-    public TableData tableData;
+{  
     public TableStack stack;
-    public int TrashCount { get; private set; }
-    public int CarryingFoodCount { get; set; }
+
+    #region Reference Properties
+    public bool IsSemiFull => trashPile.Count == 0 && customers.Count > 0 && customers.Count < seats.Count;
+    public bool IsEmpty => trashPile.Count == 0 && customers.Count == 0;
+    public StackType StackType => stackType;
+    #endregion
+
+    [SerializeField] private StackType stackType;
+    [SerializeField] private ObjectPile trashPile;
+    [SerializeField] private List<GameObject> seats;
+    [SerializeField] private float baseEatTime = 5.0f;
+    [SerializeField] private float baseTipChance = 0.4f;
+
+    private List<CustomerController> customers = new List<CustomerController>();
+
+    #region Table Stats
+    private float eatTime;
+    private float tipChance;
+    private int tipLevel;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        tableData = GetComponent<TableData>();
         stack = GetComponentInChildren<TableStack>();
-        List<Chair> chairList = new List<Chair>();
-        for (int i = 0; i < transform.childCount; i++)
+        // 임시
+        eatTime = baseEatTime;
+        tipChance = baseTipChance;
+        tipLevel = 0;
+    }
+    
+    public GameObject AssignSeat(CustomerController customer)
+    {
+        customers.Add(customer);
+        if(customers.Count >= seats.Count)
         {
-            Chair chair = transform.GetChild(i).gameObject.GetComponent<Chair>();
-            if (chair != null)
-            {
-                chairList.Add(chair);
-            }
+            StartCoroutine(Eating());
+        }
+        return seats[customers.Count - 1];
+    }
 
-            if (transform.GetChild(i).gameObject.name == "Trashes")
+    public void PutFoodOnTable(GameObject food)
+    {
+        stack.stack.Push(food);
+    }
+
+    IEnumerator Eating()
+    {
+        yield return new WaitUntil(() => customers.All(customer => customer.ReadyToEat));
+
+        float eatingInterval = eatTime / stack.stack.Count;
+        int trashCount = 0;
+        while (stack.stack.Count > 0)
+        {
+            yield return new WaitForSeconds(eatingInterval);
+
+            GameManager.instance.PoolManager.Return(stack.stack.Pop());
+            trashCount++;
+            LeaveTip();
+        }
+
+        while(trashCount > 0)
+        {
+            var trash = GameManager.instance.PoolManager.Get(2);
+            trashPile.AddObject(trash);
+            trashCount--;
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        foreach(var customer in customers)
+        {
+            customer.FinishEating();
+            yield return new WaitForSeconds(Random.Range(1, 4) * 0.3f);
+        }
+
+        customers.Clear();
+    }
+
+    private void LeaveTip()
+    {
+        if(Random.value < tipChance)
+        {
+            int tipAmount = Random.Range(2, 5 + tipLevel);
+            for(int i = 0; i < tipAmount; i++)
             {
-                trash = transform.GetChild(i).gameObject;
+                // TODO) 테이블 돈 쌓이는 장소 AddMoney()
             }
         }
-        chairs = new Chair[chairList.Count];
-        for (int i = 0; i < chairList.Count; i++)
-        {
-            chairs[i] = chairList[i];
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Employee"))
-        {
-            if (TrashCount > 0)
-            {
-                GameManager.instance.TableManager.CleanTable(this);
-                // 플레이어나 직원에게 쓰레기 쌓이게 해야 함.
-            }
-        }
-    }
-    public GameObject GetEmptySeat()
-    {
-        if (TrashCount <= 0)
-        {
-            foreach (Chair chair in chairs)
-            {
-                if (!chair.isChairUsing)
-                {
-                    chair.isChairUsing = true;
-                    return chair.gameObject;
-                }
-            }
-        }
-        return null;
-    }
-
-    public bool IsTableFull()
-    {
-        foreach (Chair chair in chairs)
-        {
-            if (chair.GetSittingCustomer() == null)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public void RemoveFoodOnTable()
-    {
-        GameManager.instance.PoolManager.Return(stack.stack.Pop());
-        CarryingFoodCount--;
-    }
-
-    public void CleanTable()
-    {
-        // 쓰레기 오브젝트 비활성화
-        trash.SetActive(false);
-        TrashCount = 0;
-    }
-
-    public void MakeDirtyTable()
-    {
-        trash.SetActive(true);
-        int randomCount = Random.Range(1, 5);
-        TrashCount += randomCount;
     }
 }

@@ -6,64 +6,80 @@ using UnityEngine;
 public class TableManager : MonoBehaviour
 {
     private int randomTableIndex = 0;
-    private List<Table> allTables;
-    private List<Table> emptyTables;
+    [SerializeField]
+    private List<Table> tables_burger = new List<Table>();
+    public List<Table> Tables_burger => tables_burger;
 
-    // Start is called before the first frame update
     void Start()
     {
         Table[] tableObjects = GameObject.FindObjectsOfType<Table>();
-        allTables = new List<Table>();
-        emptyTables = new List<Table>();
         foreach (Table table in tableObjects)
         {
-            allTables.Add(table);
-            emptyTables.Add(table);
+            if (table.StackType == StackType.BURGER)
+            {
+                tables_burger.Add(table);
+            }
+            else if (table.StackType == StackType.COFFEE)
+            {
+                // TODO
+            }
         }
         PickRandomTableIndex();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void PickRandomTableIndex()
     {
-        randomTableIndex = Random.Range(0, emptyTables.Count);
+        randomTableIndex = Random.Range(0, tables_burger.Count);
     }
 
-    public GameObject GetEmptySeat()
+    public GameObject GetAvailableSeat(CustomerController customer, StackType type)
     {
-        if(emptyTables.Count == 0)
+        if (type == StackType.BURGER)
         {
-            return null;
-        }
-
-        GameObject seat = emptyTables[randomTableIndex].GetEmptySeat();
-        if (seat == null)
-        {
-            emptyTables.Remove(emptyTables[randomTableIndex]);
-            if(emptyTables.Count == 0)
-            { 
+            if (tables_burger.Count == 0)
+            {
                 return null;
             }
-            PickRandomTableIndex();
-            return GetEmptySeat();
+
+            var semiFullTable = tables_burger.Where(table => table.gameObject.activeInHierarchy && table.IsSemiFull).FirstOrDefault();
+            if (semiFullTable != null)
+            {
+                return semiFullTable.AssignSeat(customer);
+            }
+
+            var emptyTables = tables_burger.Where(table => table.gameObject.activeInHierarchy && table.IsEmpty).ToList();
+            if (emptyTables.Count > 0)
+            {
+                int randomIndex = Random.Range(0, emptyTables.Count);               
+                return emptyTables[randomIndex].AssignSeat(customer);
+            }
         }
-        return seat;
+
+        return null;
     }
 
-    public void AddTable(Table table)
+    public bool HasAvailableSeat(StackType type)
     {
-        allTables.Add(table);
-        emptyTables.Add(table);
-    }
+        if (type == StackType.BURGER)
+        {
+            if (tables_burger.Count == 0)
+            {
+                return false;
+            }
 
-    public void CleanTable(Table table)
-    {
-        table.CleanTable();
-        emptyTables.Add(table);
+            var semiFullTable = tables_burger.Where(table => table.gameObject.activeInHierarchy && table.IsSemiFull).FirstOrDefault();
+            if (semiFullTable != null)
+            {
+                return true;
+            }
+
+            var emptyTables = tables_burger.Where(table => table.gameObject.activeInHierarchy && table.IsEmpty).ToList();
+            if (emptyTables.Count > 0)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

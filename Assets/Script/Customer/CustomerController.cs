@@ -8,267 +8,126 @@ public class CustomerController : MonoBehaviour
 {
     public GameObject spawner;
     public GameObject entrance;
-    public GameObject counter;
-    public GameObject lineObject;
-    public GameObject sittingChair;
-    public Table touchedTable;
+    public Line line;
+    public OrderInfo orderInfo;
     public CustomerStack customerstack;
-
     public NavMeshAgent agent;
 
-    private GameObject orderUI;
-    private Text orderCountText;
-    private GameObject noSeatUI;
-
-    [SerializeField]
-    private State currentState;
-    private BaseState enterState;
-    private BaseState lineMoveState;
-    private BaseState lineWaitState;
-    private BaseState orderState;
-    private BaseState moveToTableState;
-    private BaseState eatState;
-    private BaseState exitState;
-    private FSM fsm;
+    private Animator animator;
+    private LayerMask entranceLayer;
+    private bool startFlag = false;
 
     public int OrderCount { get; set; }
+    public bool HasOrder { get; set; }
+    public bool ReadyToEat { get; set; }
+    public int RemainOrderCount { get; set; }
     public int CarryingFoodCount { get; set; }
     public float CarryingFoodHeight { get; set; }
 
-    private bool isCollideWithEntrance = false;
-    private bool isCollideWithCounter = false;
-
-    public enum State
-    {
-        ENTER,
-        LINEMOVE,
-        LINEWAIT,
-        ORDER,
-        MOVETOTABLE,
-        EAT,
-        EXIT,
-        MAX
-    }
-
     private void Awake()
     {
-        spawner = GameObject.Find("CustomerSpawner");
-        entrance = GameObject.Find("Entrance_ArrivalPoint");
-        counter = GameObject.Find("InteractionRange_Customer");
-        lineObject = GameObject.Find("LineQueue");
         agent = GetComponent<NavMeshAgent>();
-
-        currentState = State.ENTER;
-        enterState = new Customer_EnterState(this);
-        lineMoveState = new Customer_LineMoveState(this);
-        lineWaitState = new Customer_LineWaitState(this);
-        orderState = new Customer_OrderState(this);
-        moveToTableState = new Customer_MoveToTableState(this);
-        eatState = new Customer_EatState(this);
-        exitState = new Customer_ExitState(this);
-        fsm = new FSM(enterState);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
+        animator = GetComponent<Animator>();
         customerstack = GetComponentInChildren<CustomerStack>();
-
-        orderUI = transform.GetChild(1).GetChild(0).gameObject;
-        noSeatUI = transform.GetChild(1).GetChild(1).gameObject;
-        orderCountText = orderUI.GetComponentInChildren<Text>();
-
-        orderUI.SetActive(false);
-        noSeatUI.SetActive(false);
-
-        // ∏Ò¿˚¡ˆ º≥¡§«“ ∂ß NavMeshAgent ƒƒ∆˜≥Õ∆Æ ∫Ò»∞º∫»≠ «ﬂ¥Ÿ∞° »∞º∫»≠ «ÿ¡‡æﬂ ¡¶¥Î∑Œ º≥¡§µ»¥Ÿ..
-        agent.enabled = false;
-        agent.enabled = true;
-        agent.destination = entrance.transform.position;
-
-        DecideFoodAndCount();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        switch (currentState)
-        {
-            case State.ENTER:
-                if (isCollideWithEntrance)
-                {
-                    ChangeState(State.LINEMOVE);
-                    // agent ∏Ò¿˚¡ˆ º≥¡§
-                    agent.destination = lineObject.transform.position;
-                }
-                break;
-            case State.LINEMOVE:
-                if (isCollideWithCounter)
-                {
-                    if (CheckAgentReachToDestination())
-                    {
-                        ChangeState(State.ORDER);
-                    }
-                }
-                else
-                {
-                    if (CheckAgentReachToDestination())
-                    {
-                        ChangeState(State.LINEWAIT);
-                    }
-                }
-                break;
-            case State.LINEWAIT:
-                if (agent.velocity.sqrMagnitude > 0.0f)
-                {
-                    ChangeState(State.LINEMOVE);
-                }
-                break;
-            case State.ORDER:
-                if (OrderCount == 0)
-                {
-                    orderUI.SetActive(false);
-                    // ∫Û ¿⁄∏Æ∞° ¿÷¥Ÿ∏È ±◊∞˜¿∏∑Œ ¿Ãµø
-                    sittingChair = GameManager.instance.TableManager.GetEmptySeat();
-                    if (sittingChair != null)
-                    {
-                        ChangeState(State.MOVETOTABLE);
-                        noSeatUI.SetActive(false);
-                        // ∏Ò¿˚¡ˆ º≥¡§
-                        agent.destination = sittingChair.transform.position;
-                    }
-                    else
-                    {
-                        noSeatUI.SetActive(true);
-                    }
-                }
-                break;
-            case State.MOVETOTABLE:
-                if (CheckAgentReachToDestination())
-                {
-                    sittingChair.GetComponent<Chair>().SetSittingCustomer(this);
-                    ChangeState(State.EAT);
-                }
-                break;
-            case State.EAT:
-                if (touchedTable.CarryingFoodCount == 0)
-                {
-                    ChangeState(State.EXIT);
-                }
-                break;
-            case State.EXIT:
-                if (CheckAgentReachToDestination())
-                {
-                    GameManager.instance.PoolManager.Return(gameObject);
-                }
-                break;
-        }
-        fsm.UpdateState();
-    }
-    private void ChangeState(State nextState)
-    {
-        currentState = nextState;
-        switch (currentState)
-        {
-            case State.ENTER:
-                fsm.ChangeState(enterState);
-                break;
-            case State.LINEMOVE:
-                fsm.ChangeState(lineMoveState);
-                break;
-            case State.LINEWAIT:
-                fsm.ChangeState(lineWaitState);
-                break;
-            case State.ORDER:
-                fsm.ChangeState(orderState);
-                break;
-            case State.MOVETOTABLE:
-                fsm.ChangeState(moveToTableState);
-                break;
-            case State.EAT:
-                fsm.ChangeState(eatState);
-                break;
-            case State.EXIT:
-                fsm.ChangeState(exitState);
-                break;
-        }
-    }
     private void OnEnable()
     {
-        ChangeState(State.ENTER);
+        HasOrder = false;
+        startFlag = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Entrance"))
-        {
-            isCollideWithEntrance = true;
-        }
-        else if (other.gameObject.CompareTag("Order"))
-        {
-            isCollideWithCounter = true;
-        }
-        else if (other.gameObject.CompareTag("Table"))
-        {
-            touchedTable = other.transform.gameObject.GetComponent<Table>();
-        }
+    void Start()
+    {       
+            
     }
 
-    private void OnTriggerExit(Collider other)
+    void Update()
     {
-        if (other.gameObject.CompareTag("Entrance"))
+        animator.SetBool("isMove", agent.velocity.sqrMagnitude >= 0.1f);
+
+        if(!startFlag)
         {
-            isCollideWithEntrance = false;
-        }
-        else if (other.gameObject.CompareTag("Order"))
-        {
-            isCollideWithCounter = false;
-        }
-        else if (other.gameObject.CompareTag("Table"))
-        {
-            touchedTable = null;
+            startFlag = true;
+            agent.enabled = true;
+            agent.SetDestination(entrance.transform.position);
+            StartCoroutine(Enter());
         }
     }
 
-    private bool CheckAgentReachToDestination()
+    IEnumerator Enter()
     {
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        yield return new WaitUntil(() => HasArrivedToDestination());
+
+        // ÎèÑÏ∞©ÌïòÎ©¥ Ï§Ñ nÎ≤àÏß∏ ÏûêÎ¶¨ Î∂ÄÏó¨Î∞õÎäîÎã§.
+        line.AddCustomer(this);
+    }
+
+    IEnumerator PlaceOrder()
+    {
+        yield return new WaitUntil(() => HasArrivedToDestination());
+        // Ï£ºÎ¨∏Ìï† ÏùåÏãù Í∞úÏàò Í≤∞Ï†ï
+        DecideOrderCount();
+        HasOrder = true;
+        orderInfo.ShowInfo(RemainOrderCount);
+    }
+
+    IEnumerator MoveToSeat(GameObject seat)
+    {
+        // ÎßàÏßÄÎßâ ÏùåÏãùÏù¥ Îã§ ÏåìÏùº ÎïåÍπåÏßÄ Í∏∞Îã§Î¶∞Îã§
+        yield return new WaitForSeconds(0.3f);
+
+        agent.SetDestination(seat.transform.position);
+
+        yield return new WaitUntil(() => HasArrivedToDestination());
+
+        // ÌÖåÏù¥Î∏î Î∞©Ìñ•ÏùÑ Î∞îÎùºÎ≥∏Îã§
+        while(Vector3.Angle(transform.forward, seat.transform.forward) > 0.1f)
         {
-            if (agent.velocity.sqrMagnitude == 0.0f)
-            {
-                return true;
-            }
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, seat.transform.rotation, Time.deltaTime * 270.0f);
+            yield return null;
         }
-        return false;
+
+        // Îì§Í≥†ÏûàÎçò ÏùåÏãù ÌÖåÏù¥Î∏îÏóê ÎÇ¥Î†§ÎÜìÎäîÎã§
+        var table = seat.GetComponentInParent<Table>();
+        while(customerstack.Count > 0)
+        {
+            table.PutFoodOnTable(customerstack.RemoveFromStack());
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        ReadyToEat = true;
+        animator.SetTrigger("Eat");
     }
 
-    public State GetCurrentState()
+    IEnumerator Exit()
     {
-        return currentState;
+        yield return new WaitUntil(() => HasArrivedToDestination());
+        agent.SetDestination(spawner.transform.position);
+        yield return new WaitUntil(() => HasArrivedToDestination());
+        GameManager.instance.PoolManager.Return(gameObject);
     }
 
-    public void SetAgentDestination(Vector3 position)
+    public void UpdateQueue(Vector3 queuePointPos, bool isFirst)
     {
-        agent.destination = position;
+        agent.SetDestination(queuePointPos);
+
+        if (isFirst)
+        {
+            StartCoroutine(PlaceOrder());
+        }
     }
 
-    public void DecideFoodAndCount()
+    public void AssignSeat(GameObject seat)
     {
-        // 1 ¿ÃªÛ 4 ¿Ã«œ¿« ∑£¥˝«— ¡§ºˆ
+        orderInfo.HideInfo();
+        StartCoroutine(MoveToSeat(seat));
+    }
+
+    public void DecideOrderCount()
+    {
         OrderCount = Random.Range(1, 5);
-    }
-
-    public void SetActiveOrderUI(bool active)
-    {
-        orderUI.SetActive(active);
-    }
-    public void SetActiveNoSeatUI(bool active)
-    {
-        noSeatUI.SetActive(active);
-    }
-    public void SetOrderCountText(int count)
-    {
-        orderCountText.text = count.ToString();
+        RemainOrderCount = OrderCount;
     }
 
     public void ReceiveFood(GameObject obj, float objHeight)
@@ -276,18 +135,34 @@ public class CustomerController : MonoBehaviour
         CarryingFoodHeight = objHeight;
         customerstack.ReceiveObject(obj, objHeight);
 
-        OrderCount -= 1;
+        RemainOrderCount -= 1;
         CarryingFoodCount += 1;
-        orderCountText.text = OrderCount.ToString();
 
-        Debug.Log("Customer : " + customerstack.stack.Count);
+        orderInfo.ShowInfo(RemainOrderCount);
+
+        Debug.Log("Customer : " + customerstack.Count);
     }
 
-    public void PutFoodsOnTable()
+    public void FinishEating()
     {
-        while (customerstack.stack.Count != 0)
+        agent.SetDestination(entrance.transform.position);
+        animator.SetTrigger("Leave");
+        StartCoroutine(Exit());
+    }
+
+    private bool HasArrivedToDestination()
+    {
+        if (!agent.pathPending)
         {
-            touchedTable.stack.ReceiveObject(customerstack.stack.Pop(), CarryingFoodHeight);
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0.0f)
+                {
+                    return true;
+                }
+            }
         }
+
+        return false;
     }
 }

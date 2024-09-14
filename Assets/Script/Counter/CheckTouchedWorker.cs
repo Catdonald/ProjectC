@@ -5,14 +5,13 @@ using UnityEngine.UI;
 
 public class CheckTouchedWorker : MonoBehaviour
 {
+    public EmployeeController touchedEmployee;
     Counter counter;
     Image uiImage;
-    
-    private bool isTouchedByPlayer = false;
-    private bool isTouchedByEmployee = false;
 
-    private float currentSellingGauge = 0.0f;
-    private float totalSellingGauge = 1.5f;
+    private bool isTouchedByPlayer = false;
+    // 콜라이더 영역에 Staff가 있을 때
+    private bool isTouchedByStaff = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,39 +23,28 @@ public class CheckTouchedWorker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (counter.customer == null)
-        {
-            currentSellingGauge = 0.0f;
-        }
-
-        if (isTouchedByPlayer || isTouchedByEmployee)
+        if (isTouchedByPlayer || isTouchedByStaff)
         {
             uiImage.color = Color.green;
-            currentSellingGauge += Time.deltaTime;
         }
         else
         {
             uiImage.color = Color.white;
-            currentSellingGauge = 0.0f;
-        }
-
-        if(currentSellingGauge >= totalSellingGauge)
-        {
-            // 카운터에서 햄버거 1개 판매
-            counter.SellFoodToCustomer();
-            currentSellingGauge = 0.0f;
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             isTouchedByPlayer = true;
         }
-        else if (other.gameObject.CompareTag("Employee"))
+        else if (other.gameObject.CompareTag("Staff"))
         {
-            isTouchedByEmployee = true;
+            isTouchedByStaff = true;
+            if(touchedEmployee == null)
+            {
+                touchedEmployee = other.gameObject.GetComponent<EmployeeController>();
+            }
         }
     }
 
@@ -66,10 +54,22 @@ public class CheckTouchedWorker : MonoBehaviour
         {
             isTouchedByPlayer = false;
         }
-        else if (other.gameObject.CompareTag("Employee"))
+        else if (other.gameObject.CompareTag("Staff"))
         {
-            // 직원 상태 체크
-            isTouchedByEmployee = false;
+            isTouchedByStaff = false;
+            if(touchedEmployee == other.gameObject.GetComponent<EmployeeController>())
+            {
+                touchedEmployee = null;
+            }
         }
+    }
+
+    public bool IsTouchedByPlayer()
+    {
+        return isTouchedByPlayer;
+    }
+    public bool IsTouchedByStaff()
+    {
+        return isTouchedByStaff;
     }
 }

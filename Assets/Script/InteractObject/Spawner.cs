@@ -17,8 +17,10 @@ public class Spawner : MonoBehaviour
     bool isSpawning;
     public Stack<GameObject> stack;
 
-    public int objectType;
+    public StackType objectType;
     public float objectHeight;
+
+    public int Count => stack.Count;
 
     void Awake()
     {
@@ -26,12 +28,12 @@ public class Spawner : MonoBehaviour
         isSpawning = false;
         stack = new Stack<GameObject>();
 
-        objectType = 0;
+        //objectType = StackType.NONE;
     }
 
     void Start()
     {
-        GameObject type = GameManager.instance.PoolManager.Get(objectType);
+        GameObject type = GameManager.instance.PoolManager.Get((int)objectType);
         objectHeight = type.GetComponent<Renderer>().bounds.size.y;
         GameManager.instance.PoolManager.Return(type);
     }
@@ -41,7 +43,7 @@ public class Spawner : MonoBehaviour
         if (stack.Count < cookerData.maxCapacity && !isSpawning)
         {
             isSpawning = true;
-            StartCoroutine(SpawnObject(objectType));
+            StartCoroutine(SpawnObject((int)objectType));
         }
     }
 
