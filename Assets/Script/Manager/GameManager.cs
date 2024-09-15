@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     [Header("# Game Info")]
     public float GameTime;
-    public int money;
+    public int money { get; set; }
     public int level;
     public int exp;
     public int[] nextEXP;
@@ -56,15 +56,13 @@ public class GameManager : MonoBehaviour
     public List<GameObject> staffs;
 
     [Header("# 조리대")]
-    public List<GameObject> cookers;
-
-    [Header("# 테이블")]
-    public List<GameObject> tables;
+    public List<GameObject> upgrades;
 
 
     void Awake()
     {
         instance = this;
+        money = 50;
         LoadData();
     }
 

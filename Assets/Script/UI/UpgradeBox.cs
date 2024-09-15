@@ -5,36 +5,49 @@ using UnityEngine.UI;
 
 public class UpgradeBox : MonoBehaviour
 {
-    public bool isPushed = false;
-    private Image moneyGaugeUI;
-    [SerializeField]
-    float fillSpeed = 1.5f;
+    [Header("Button info")]
+    public float allPrice;
+    public float curPrice;
+    public int width;
+    public int height;
+    public bool isActive = false;
+    public bool isPushed = true;
+
+    [Header("Image obj")]
+    public Image background;
+    public Image fill;
+
     // Start is called before the first frame update
     void Start()
     {
-        Image[] images = GetComponentsInChildren<Image>();
-        foreach(Image image in images)
-        {
-            if(image.gameObject.name == "MoneyGauge")
-            {
-                moneyGaugeUI = image;
-                break;
-            }
-        }
-        moneyGaugeUI.fillAmount = 0.0f;
+        allPrice = 100;
+        curPrice = 0;
+        fill.fillAmount = 0;
+        isActive = false;
+        isPushed = false;
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        if(isPushed)
+        if (isPushed && GameManager.instance.money > 0)
         {
-            moneyGaugeUI.fillAmount += fillSpeed * Time.deltaTime;
+            curPrice = GameManager.instance.money / allPrice;
+            StartCoroutine(Filling());
         }
 
-        if(moneyGaugeUI.fillAmount >= 1.0f)
+        if (fill.fillAmount >= 1.0f)
         {
             gameObject.SetActive(false);
+        }
+    }
+    IEnumerator Filling()
+    {
+        while (isPushed)
+        {
+            yield return new WaitForSeconds(0.1f);
+
+            fill.fillAmount = Mathf.Lerp(fill.fillAmount, curPrice, 0.0001f);
         }
     }
 }
