@@ -11,7 +11,7 @@ using DG.Tweening;
 
 public class Receiver : MonoBehaviour
 {
-    public Stack<GameObject> stack;
+    public Stack<GameObject> stack = new Stack<GameObject>();
     public StackType objectType;
     private float _objectHeight;
     public float objectHeight
@@ -22,16 +22,10 @@ public class Receiver : MonoBehaviour
     public int MaxStackCount { get; set; }
     public bool IsFull => stack.Count >= MaxStackCount;
 
-    void Awake()
+    private void Start()
     {
-        stack = new Stack<GameObject>();
-
         // юс╫ц
-        for(int i = 0; i < 90; ++i)
-        {
-            stack.Push(new GameObject());
-        }
-        MaxStackCount = 100;
+        MaxStackCount = 10;
     }
 
     public void ReceiveObject(GameObject obj, float objHeight)

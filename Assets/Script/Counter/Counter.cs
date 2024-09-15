@@ -3,27 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
-public class Counter : MonoBehaviour
+public class Counter : WorkStation
 {
-    public CounterData counterData;
-    public Line lineQueue;
-    public CustomerController firstCustomer => lineQueue.Peek();
-    public CheckTouchedWorker checkWorker;
     public GameObject casher;
+    public StackType StackType => stackType;
+    public CustomerController firstCustomer => lineQueue.Peek();
 
     [SerializeField] private StackType stackType;
-
-    private float sellingTimer = 0.0f;
-    private float sellingInterval = 1.5f;
+   
+    private Line lineQueue;
     private Receiver receiver;
+    private float sellingTimer = 0.0f;
 
-    public StackType StackType => stackType;
+    #region Counter Stats
+    [SerializeField] private float baseSellingInterval = 1.5f;
+    [SerializeField] private int basePrice = 5;
+    [SerializeField] private float priceIncrementRate = 1.25f;
+    [SerializeField] private int baseStack = 30;
+    private float sellingInterval;
+    private int sellPrice;
+    #endregion  
 
     private void Start()
     {
-        counterData = GetComponent<CounterData>();
         receiver = GetComponentInChildren<Receiver>();
-        checkWorker = GetComponentInChildren<CheckTouchedWorker>();
         lineQueue = GetComponentInChildren<Line>();
     }
 
@@ -35,7 +38,7 @@ public class Counter : MonoBehaviour
             return;
         }
 
-        if (checkWorker.IsTouchedByPlayer() || checkWorker.IsTouchedByEmployee())
+        if (HasWorker)
         {
             sellingTimer += Time.deltaTime;
         }
@@ -55,6 +58,18 @@ public class Counter : MonoBehaviour
             }
         }
     }
+
+    protected override void UpgradeStats()
+    {
+        sellingInterval = baseSellingInterval / upgradeLevel;
+        receiver.MaxStackCount = baseStack + upgradeLevel * 5;
+        sellPrice = Mathf.RoundToInt(priceIncrementRate * basePrice);
+        // TODO
+        // sellingInterval이 줄면 customerSpawner의 spawnInterval도 줄어야 할 것 같은데..
+        //int profitLevel = GameManager.Instance.GetUpgradeLevel(Upgrade.Profit);
+        //sellPrice = Mathf.RoundToInt(Mathf.Pow(priceIncrementRate, profitLevel) * basePrice);
+    }
+
     public int GetStoredFoodCount()
     {
         return receiver.stack.Count;

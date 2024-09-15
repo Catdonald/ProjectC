@@ -88,11 +88,15 @@ public class EmployeeController : MonoBehaviour
 
         // 랜덤으로 담당할 카운터 선정
         var counters = GameManager.instance.counters.Where(x => x.activeInHierarchy && x.GetComponent<Counter>().GetStoredFoodCount() > 0).ToList();
+        if(counters.Count == 0)
+        {
+            currentWork = Work.NONE;
+            yield break;
+        }
         Counter counter = counters[Random.Range(0, counters.Count)].GetComponent<Counter>();
 
         // 카운터에 플레이어나 직원이 있으면 상태 바꾸지 않는다.
-        if (counter.checkWorker.IsTouchedByPlayer() ||
-            counter.checkWorker.IsTouchedByEmployee())
+        if (counter.HasWorker)
         {
             currentWork = Work.NONE;
             yield break;
@@ -104,14 +108,13 @@ public class EmployeeController : MonoBehaviour
             yield break;
         }
         // 카운터로 목적지 설정
-        agent.SetDestination(counter.counterData.staffPlacePosition);
+        agent.SetDestination(counter.WorkingSpotPosition);
 
         // 카운터로 가는 중에 플레이어나 다른 직원이 카운터에 서면
         // 상태 none으로 바꾸고 종료
         while (!HasArrivedToDestination())
         {
-            if (counter.checkWorker.IsTouchedByPlayer() ||
-            (counter.checkWorker.touchedEmployee != null && counter.checkWorker.touchedEmployee != this))
+            if (counter.HasWorker && counter.WorkingEmployee != this)
             {
                 // 그 자리에 멈춘다
                 agent.SetDestination(transform.position);

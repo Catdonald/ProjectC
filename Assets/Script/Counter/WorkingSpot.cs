@@ -3,27 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CheckTouchedWorker : MonoBehaviour
+public class WorkingSpot : MonoBehaviour
 {
-    public EmployeeController touchedEmployee;
-    Counter counter;
-    Image uiImage;
+    private EmployeeController workingEmployee;
+    private Image uiImage;
 
-    private bool isTouchedByPlayer = false;
+    private bool isPlayerInSpot = false;
     // 콜라이더 영역에 Staff가 있을 때
-    private bool isTouchedByEmployee = false;
+    private bool isEmployeeInSpot = false;
+
+    public EmployeeController WorkingEmployee => workingEmployee;
+    public bool HasWorker => isPlayerInSpot || isEmployeeInSpot;
 
     // Start is called before the first frame update
     void Start()
     {
-        counter = transform.parent.parent.gameObject.GetComponent<Counter>();
         uiImage = GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isTouchedByPlayer || isTouchedByEmployee)
+        if (isPlayerInSpot || isEmployeeInSpot)
         {
             uiImage.color = Color.green;
         }
@@ -36,14 +37,14 @@ public class CheckTouchedWorker : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            isTouchedByPlayer = true;
+            isPlayerInSpot = true;
         }
         else if (other.gameObject.CompareTag("Employee"))
         {
-            isTouchedByEmployee = true;
-            if(touchedEmployee == null)
+            isEmployeeInSpot = true;
+            if (workingEmployee == null)
             {
-                touchedEmployee = other.gameObject.GetComponent<EmployeeController>();
+                workingEmployee = other.gameObject.GetComponent<EmployeeController>();
             }
         }
     }
@@ -52,24 +53,15 @@ public class CheckTouchedWorker : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            isTouchedByPlayer = false;
+            isPlayerInSpot = false;
         }
         else if (other.gameObject.CompareTag("Employee"))
         {
-            isTouchedByEmployee = false;
-            if(touchedEmployee == other.gameObject.GetComponent<EmployeeController>())
+            isEmployeeInSpot = false;
+            if (workingEmployee == other.gameObject.GetComponent<EmployeeController>())
             {
-                touchedEmployee = null;
+                workingEmployee = null;
             }
         }
-    }
-
-    public bool IsTouchedByPlayer()
-    {
-        return isTouchedByPlayer;
-    }
-    public bool IsTouchedByEmployee()
-    {
-        return isTouchedByEmployee;
     }
 }
