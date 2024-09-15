@@ -5,8 +5,8 @@ using UnityEngine;
 using DG.Tweening;
 
 /// <summary>
-/// 240822 ¿À¼ö¾È
-/// ÇÃ·¹ÀÌ¾î°¡ ÀÌ°í ´Ù´Ï´Â ¹ö°Å ½ºÅÃ
+/// 240822 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+/// ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Ì°ï¿½ ï¿½Ù´Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 /// </summary>
 
 public class playerStack : MonoBehaviour
