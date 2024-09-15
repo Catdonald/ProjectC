@@ -88,6 +88,10 @@ public class CustomerController : MonoBehaviour
             yield return null;
         }
 
+        agent.enabled = false;
+        transform.position += transform.forward * 0.3f;
+        transform.position += transform.up * 0.2f;
+
         // 들고있던 음식 테이블에 내려놓는다
         var table = seat.GetComponentInParent<Table>();
         while(customerstack.Count > 0)
@@ -145,6 +149,7 @@ public class CustomerController : MonoBehaviour
 
     public void FinishEating()
     {
+        agent.enabled = true;
         agent.SetDestination(entrance.transform.position);
         animator.SetTrigger("Leave");
         StartCoroutine(Exit());

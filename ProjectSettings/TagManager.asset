@@ -17,6 +17,7 @@ TagManager:
   - TrashBin
   - Order
   - Packing
+  - Employee
   - Staff
   layers:
   - Default

@@ -92,7 +92,7 @@ public class EmployeeController : MonoBehaviour
 
         // 카운터에 플레이어나 직원이 있으면 상태 바꾸지 않는다.
         if (counter.checkWorker.IsTouchedByPlayer() ||
-            counter.checkWorker.IsTouchedByStaff())
+            counter.checkWorker.IsTouchedByEmployee())
         {
             currentWork = Work.NONE;
             yield break;

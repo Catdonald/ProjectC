@@ -11,7 +11,7 @@ public class CheckTouchedWorker : MonoBehaviour
 
     private bool isTouchedByPlayer = false;
     // 콜라이더 영역에 Staff가 있을 때
-    private bool isTouchedByStaff = false;
+    private bool isTouchedByEmployee = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public class CheckTouchedWorker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isTouchedByPlayer || isTouchedByStaff)
+        if (isTouchedByPlayer || isTouchedByEmployee)
         {
             uiImage.color = Color.green;
         }
@@ -38,9 +38,9 @@ public class CheckTouchedWorker : MonoBehaviour
         {
             isTouchedByPlayer = true;
         }
-        else if (other.gameObject.CompareTag("Staff"))
+        else if (other.gameObject.CompareTag("Employee"))
         {
-            isTouchedByStaff = true;
+            isTouchedByEmployee = true;
             if(touchedEmployee == null)
             {
                 touchedEmployee = other.gameObject.GetComponent<EmployeeController>();
@@ -54,9 +54,9 @@ public class CheckTouchedWorker : MonoBehaviour
         {
             isTouchedByPlayer = false;
         }
-        else if (other.gameObject.CompareTag("Staff"))
+        else if (other.gameObject.CompareTag("Employee"))
         {
-            isTouchedByStaff = false;
+            isTouchedByEmployee = false;
             if(touchedEmployee == other.gameObject.GetComponent<EmployeeController>())
             {
                 touchedEmployee = null;
@@ -68,8 +68,8 @@ public class CheckTouchedWorker : MonoBehaviour
     {
         return isTouchedByPlayer;
     }
-    public bool IsTouchedByStaff()
+    public bool IsTouchedByEmployee()
     {
-        return isTouchedByStaff;
+        return isTouchedByEmployee;
     }
 }

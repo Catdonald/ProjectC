@@ -35,7 +35,7 @@ public class Counter : MonoBehaviour
             return;
         }
 
-        if (checkWorker.IsTouchedByPlayer() || checkWorker.IsTouchedByStaff())
+        if (checkWorker.IsTouchedByPlayer() || checkWorker.IsTouchedByEmployee())
         {
             sellingTimer += Time.deltaTime;
         }

@@ -54,7 +54,7 @@ public class ObjectPile : Interactable
     public void AddObject(GameObject obj)
     {
         objects.Push(obj);
-        // ArrangeAddedObejct()
+        Arrange();
     }
 
     public void RemoveAndStackToReceiver(Receiver receiver)
@@ -67,5 +67,10 @@ public class ObjectPile : Interactable
     public void RemoveAll()
     {
         objects.Clear();
+    }
+
+    private void Arrange()
+    {
+
     }
 }

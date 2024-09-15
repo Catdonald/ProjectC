@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    GameObject characterRoot;
+    private GameObject playerRoot;
     [SerializeField]
     GameObject moveController;
 
@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private PlayerData playerData;
     private Rigidbody playerRigidbody;
-    private JoyStickController joystickController;
+    private JoyStickController joystickController;  
 
     private Vector3 rayStartPoint;
     private Vector3 mouseClickedPos;
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
                 // 이동하는 방향 바라보기
                 if (moveVec.magnitude > 0.0f)
                 {
-                    characterRoot.transform.forward = moveVec;
+                    playerRoot.transform.forward = moveVec;
                 }
 
                 // 마우스 위치 변화한 정도 JoyStickController에 넘겨주기
