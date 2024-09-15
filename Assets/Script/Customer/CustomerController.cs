@@ -8,6 +8,8 @@ public class CustomerController : MonoBehaviour
 {
     public GameObject spawner;
     public GameObject entrance;
+    public Table touchedTable;
+    public playerStack customerstack;
     public Line line;
     public OrderInfo orderInfo;
     public CustomerStack customerstack;
@@ -137,7 +139,7 @@ public class CustomerController : MonoBehaviour
     public void ReceiveFood(GameObject obj, float objHeight)
     {
         CarryingFoodHeight = objHeight;
-        customerstack.ReceiveObject(obj, objHeight);
+        customerstack.ReceiveObject(obj, objType, objHeight);
 
         RemainOrderCount -= 1;
         CarryingFoodCount += 1;

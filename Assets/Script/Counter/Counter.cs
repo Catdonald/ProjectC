@@ -65,7 +65,7 @@ public class Counter : WorkStation
         receiver.MaxStackCount = baseStack + upgradeLevel * 5;
         sellPrice = Mathf.RoundToInt(priceIncrementRate * basePrice);
         // TODO
-        // sellingIntervalÀÌ ÁÙ¸é customerSpawnerÀÇ spawnIntervalµµ ÁÙ¾î¾ß ÇÒ °Í °°Àºµ¥..
+        // sellingIntervalï¿½ï¿½ ï¿½Ù¸ï¿½ customerSpawnerï¿½ï¿½ spawnIntervalï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½..
         //int profitLevel = GameManager.Instance.GetUpgradeLevel(Upgrade.Profit);
         //sellPrice = Mathf.RoundToInt(Mathf.Pow(priceIncrementRate, profitLevel) * basePrice);
     }
@@ -79,12 +79,12 @@ public class Counter : WorkStation
     {
         if (firstCustomer.RemainOrderCount > 0 && receiver.stack.Count > 0)
         {
-            GameObject obj = receiver.CustomerRequest();
+            GameObject obj = receiver.RequestObject();
             if (obj != null)
             {
-                firstCustomer.ReceiveFood(obj, receiver.objectHeight);
                 // TODO
                 // CollectMoney();
+                customer.ReceiveFood(obj, receiver.type, receiver.objectHeight);
             }
         }
     }

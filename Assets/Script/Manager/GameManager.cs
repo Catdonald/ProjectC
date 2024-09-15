@@ -6,12 +6,12 @@ using System.IO;
 using System;
 
 /// <summary>
-/// 240821 ¿À¼ö¾È
-/// °ÔÀÓ¸Å´ÏÀú, ½Ì±ÛÅÏ 
-/// °ÔÀÓ ¸Å´ÏÀú¸¦ ÅëÇØ ´Ù¸¥ ¸Å´ÏÀú ÀÎ½ºÅÏ½º¿¡ Á¢±Ù
+/// 240821 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+/// ï¿½ï¿½ï¿½Ó¸Å´ï¿½ï¿½ï¿½, ï¿½Ì±ï¿½ï¿½ï¿½ 
+/// ï¿½ï¿½ï¿½ï¿½ ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½Å´ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 /// </summary>
 
-// prefab test ¿ë ÀÓ½Ã µ¥ÀÌÅÍ
+// prefab test ï¿½ï¿½ ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 struct info
 {
     public int id;
@@ -27,30 +27,39 @@ public class GameManager : MonoBehaviour
 
     [Header("# Game Info")]
     public float GameTime;
+    public int money { get; set; }
+    public int level;
+    public int exp;
+    public int[] nextEXP;
 
-    [Header("# ¸Å´ÏÀú Å¬·¡½º")]
+    [Header("# ï¿½Å´ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½")]
     public PoolManager PoolManager;
     public TableManager TableManager;
 
-    [Header("# ÇÃ·¹ÀÌ¾î Á¤º¸")]
+    [System.Serializable]
+    public struct LevelData
+    {
+        public float moveSpeed;
+        public int maxCapacity;
+    }
+
+    [Header("# level data for all objects")]
+    public List<LevelData> playerLevelData = new List<LevelData>();
+    public List<LevelData> staffLevelData = new List<LevelData>();
+
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½
+
+    [Header("# ï¿½Ã·ï¿½ï¿½Ì¾ï¿½")]
     public GameObject Player;
-    public List<PlayerData> playerLevelData = new List<PlayerData>();
 
-    [Header("# Á÷¿ø Á¤º¸")]
-    public List<GameObject> staffs = new List<GameObject>();
-    public List<PlayerData> staffLevelData = new List<PlayerData>();
+    [Header("# ï¿½ï¿½ï¿½ï¿½")]
+    public List<GameObject> staffs;
 
-    [Header("# Á¶¸®´ë Á¤º¸")]
-    public List<GameObject> cookers = new List<GameObject>();
-    public List<CookerData> cookerLevelData = new List<CookerData>();
+    [Header("# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    public List<GameObject> upgrades;
 
-    [Header("# Ä«¿îÅÍ Á¤º¸")]
-    public List<GameObject> counters = new List<GameObject>();
 
-    [Header("# Å×ÀÌºí Á¤º¸")]
-    public List<TableData> tableLevelData = new List<TableData>();
-
-    [Header("# ÇØÁ¦ °¡´É ¿ÀºêÁ§Æ®")]
+    [Header("# ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
     [SerializeField] private List<Unlockable> unlockables;
 
     [Header("# UI")]
@@ -64,12 +73,12 @@ public class GameManager : MonoBehaviour
 
     public List<ObjectPile> TrashPiles {  get; private set; } = new List<ObjectPile>();
 
-    // ¿ä¸®±â°è Spawner
+    // ï¿½ä¸®ï¿½ï¿½ï¿½ Spawner
     public List<Spawner> spawners_burger = new List<Spawner>();
     public List<Spawner> spawners_burgerPack = new List<Spawner>();
     //public List<Spawner> spawners_coffee = new List<Spawner>();
 
-    // Ä«¿îÅÍ Receiver
+    // Ä«ï¿½ï¿½ï¿½ï¿½ Receiver
     public Receiver receiver_burger;
     public Receiver receiver_burgerPack;
     //Receiver receiver_coffee;
@@ -82,6 +91,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        money = 50;
         LoadData();
     }
 
@@ -169,7 +179,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// µ¥ÀÌÅÍ ·Îµå, ¼¼ÀÌºê ÇÔ¼ö
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½, ï¿½ï¿½ï¿½Ìºï¿½ ï¿½Ô¼ï¿½
     /// </summary>
 
     private void AutoSave()
@@ -185,15 +195,14 @@ public class GameManager : MonoBehaviour
 
     public void SaveData()
     {
-        Debug.Log("µ¥ÀÌÅÍ ÀúÀå");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
     }
     private void LoadData()
     {
-        LoadDataFromCSV("PlayerLevelData", playerLevelData, ParsePlayerData);
-        LoadDataFromCSV("CookerLevelData", cookerLevelData, ParseCookerData);
-        LoadDataFromCSV("TableLevelData", tableLevelData, ParseTableData);
+        LoadDataFromCSV("PlayerLevelData", playerLevelData, ParseLevelData);
+        LoadDataFromCSV("StaffLevelData", staffLevelData, ParseLevelData);
 
-        Debug.Log("µ¥ÀÌÅÍ ·Îµå");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½");
     }
 
     void LoadDataFromCSV<T>(string filename, List<T> dataLst, Func<string[], T> parser)
@@ -201,7 +210,7 @@ public class GameManager : MonoBehaviour
         TextAsset csvData = Resources.Load<TextAsset>(filename);
         if (csvData == null)
         {
-            Debug.LogError("CSV ÆÄÀÏÀ» Ã£À» ¼ö ¾ø½À´Ï´Ù: " + filename);
+            Debug.LogError("CSV ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½: " + filename);
             return;
         }
 
@@ -224,41 +233,40 @@ public class GameManager : MonoBehaviour
             dataLst.Add(data);
         }
     }
-    private PlayerData ParsePlayerData(string[] values)
+    private LevelData ParseLevelData(string[] values)
     {
-        PlayerData data = new PlayerData
+        LevelData data = new LevelData
         {
-            Level = int.Parse(values[0]),
             moveSpeed = float.Parse(values[1]),
             maxCapacity = int.Parse(values[2])
         };
 
         return data;
     }
-    private CookerData ParseCookerData(string[] values)
-    {
-        CookerData data = new CookerData
-        {
-            Level = int.Parse(values[0]),
-            spawnSpeed = float.Parse(values[1]),
-            maxCapacity = int.Parse(values[2])
-        };
+    //private CookerData ParseCookerData(string[] values)
+    //{
+    //    CookerData data = new CookerData
+    //    {
+    //        Level = int.Parse(values[0]),
+    //        spawnSpeed = float.Parse(values[1]),
+    //        maxCapacity = int.Parse(values[2])
+    //    };
 
-        return data;
-    }
-    private TableData ParseTableData(string[] values)
-    {
-        TableData data = new TableData
-        {
-            Level = int.Parse(values[0]),
-            eatSpeed = float.Parse(values[1]),
-            price = int.Parse(values[2])
-        };
+    //    return data;
+    //}
+    //private TableData ParseTableData(string[] values)
+    //{
+    //    TableData data = new TableData
+    //    {
+    //        Level = int.Parse(values[0]),
+    //        eatSpeed = float.Parse(values[1]),
+    //        price = int.Parse(values[2])
+    //    };
 
-        return data;
-    }
+    //    return data;
+    //}
 
-    // cooker Ãß°¡µÉ ¶§ È£Ãâ
+    // cooker ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½
     public void AddCooker()
     {
         //cook
@@ -269,7 +277,7 @@ public class GameManager : MonoBehaviour
     //public GameObject levelText;
     //public GameObject speedText;
 
-    //// ÀÓ½Ã µ¥ÀÌÅÍ
+    //// ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     //info info;
     //public void ChangeInfo()
     //{

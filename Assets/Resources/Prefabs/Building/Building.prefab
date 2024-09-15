@@ -135,7 +135,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1239602814156936338}
   - component: {fileID: 7473984736461048476}
-  - component: {fileID: 5945638527705467389}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -152,11 +151,11 @@ Transform:
   m_GameObject: {fileID: 126052140887361057}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.11, y: 1.22, z: 0.009999989}
+  m_LocalPosition: {x: -2.11, y: 1.22, z: 0.010000229}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 384214496727496178}
+  m_Father: {fileID: 4914817800303769504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7473984736461048476
 MonoBehaviour:
@@ -170,24 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fb7c755adb4b53488b4ef6fada4c38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cookerData: {fileID: 0}
-  objectType: 0
-  objectHeight: 0
---- !u!114 &5945638527705467389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 126052140887361057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b356954f228dcd45b1afa6eca94d427, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  experienceToNextLevel: 100
-  spawnSpeed: 0
-  maxCapacity: 0
+  player: {fileID: 0}
 --- !u!1 &288471430215058161
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,6 +763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4914817800303769504}
   - component: {fileID: 1027093150762362427}
+  - component: {fileID: 3509915728128624607}
   m_Layer: 0
   m_Name: InteractionRange
   m_TagString: Cooker
@@ -800,7 +783,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1239602814156936338}
   m_Father: {fileID: 384214496727496178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1027093150762362427
@@ -824,6 +808,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.408741, y: 0, z: 2.9069993}
   m_Center: {x: -0.95157063, y: 0.1, z: 0.47172558}
+--- !u!114 &3509915728128624607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562237277075339749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e421344dbb8ac0b408c7b1e39a7b6e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832094384255520023
 GameObject:
   m_ObjectHideFlags: 0
@@ -2138,7 +2134,6 @@ Transform:
   - {fileID: 8858938853150322400}
   - {fileID: 1429325151776963217}
   - {fileID: 4914817800303769504}
-  - {fileID: 1239602814156936338}
   m_Father: {fileID: 5486481120254541440}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &6527703877323234184
@@ -3272,11 +3267,11 @@ Transform:
   m_GameObject: {fileID: 2608202875385311296}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.99, y: 0.8820001, z: -0.1400001}
+  m_LocalPosition: {x: -2.37, y: 0.8820001, z: -0.1400001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2085063484308177395}
+  m_Father: {fileID: 7363646774155769415}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1304271297199947174
 MonoBehaviour:
@@ -3290,7 +3285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1054023cb1bbbd641b7170e018c65970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectType: 0
+  player: {fileID: 0}
 --- !u!1 &2637271700136500577
 GameObject:
   m_ObjectHideFlags: 0
@@ -3605,6 +3600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2247292531554743863}
   - component: {fileID: 8315970754117755540}
+  - component: {fileID: 6398883192571706495}
   m_Layer: 0
   m_Name: TrashBin
   m_TagString: Untagged
@@ -3650,6 +3646,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.5, y: 2, z: 4.5}
   m_Center: {x: -0.5, y: 1, z: 0}
+--- !u!114 &6398883192571706495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2880520113042752634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8800e10375fc9a442972c2738ee0505c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &2959970828112175634
 GameObject:
   m_ObjectHideFlags: 0
@@ -3784,7 +3793,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6798250279111793272}
-  - component: {fileID: 6598940921849597701}
   m_Layer: 0
   m_Name: TableStack
   m_TagString: Untagged
@@ -3807,18 +3815,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3922250657460121938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6598940921849597701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3003940858706203797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c0f793369bcc5842a1ad47cb6667084, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3062590812587675395
 GameObject:
   m_ObjectHideFlags: 0
@@ -4530,7 +4526,6 @@ GameObject:
   - component: {fileID: 3922250657460121938}
   - component: {fileID: 7686848501327637859}
   - component: {fileID: 8673087376171464764}
-  - component: {fileID: 2166778960313620765}
   m_Layer: 0
   m_Name: Table_2people
   m_TagString: Table
@@ -4572,7 +4567,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chairs: []
   trash: {fileID: 0}
-  tableData: {fileID: 0}
   stack: {fileID: 0}
 --- !u!65 &8673087376171464764
 BoxCollider:
@@ -4595,21 +4589,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.8, y: 0.2, z: 4}
   m_Center: {x: 0, y: 0.2, z: 0}
---- !u!114 &2166778960313620765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3940429631548981085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c143a300b07b56409067814b76c178b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  experienceToNextLevel: 100
-  eatSpeed: 0
-  price: 0
 --- !u!1 &4088796081860809512
 GameObject:
   m_ObjectHideFlags: 0
@@ -6791,6 +6770,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7363646774155769415}
   - component: {fileID: 6666200698753932478}
+  - component: {fileID: 6987055028716657762}
   m_Layer: 0
   m_Name: InteractionRange_BurgerStorage
   m_TagString: Storage
@@ -6810,7 +6790,8 @@ Transform:
   m_LocalPosition: {x: 3.36, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 9083722672676512292}
   m_Father: {fileID: 2085063484308177395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6666200698753932478
@@ -6834,6 +6815,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.54, y: 0, z: 3.13}
   m_Center: {x: -1.35, y: 0.1, z: 0}
+--- !u!114 &6987055028716657762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512452059100069969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf77c209952a2cf46951027770f2a0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5563959016047103617
 GameObject:
   m_ObjectHideFlags: 0
@@ -9130,7 +9123,6 @@ Transform:
   - {fileID: 8597662606838907235}
   - {fileID: 7363646774155769415}
   - {fileID: 6139320702413491218}
-  - {fileID: 9083722672676512292}
   - {fileID: 400026249330596571}
   - {fileID: 1612566754205956500}
   m_Father: {fileID: 5486481120254541440}

@@ -6,7 +6,6 @@ using UnityEngine.Tilemaps;
 
 public class Table : MonoBehaviour
 {  
-    public TableStack stack;
 
     #region Reference Properties
     public bool IsSemiFull => trashPile.Count == 0 && customers.Count > 0 && customers.Count < seats.Count;
@@ -31,8 +30,7 @@ public class Table : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stack = GetComponentInChildren<TableStack>();
-        // ÀÓ½Ã
+        // ï¿½Ó½ï¿½
         eatTime = baseEatTime;
         tipChance = baseTipChance;
         tipLevel = 0;
@@ -92,8 +90,28 @@ public class Table : MonoBehaviour
             int tipAmount = Random.Range(2, 5 + tipLevel);
             for(int i = 0; i < tipAmount; i++)
             {
-                // TODO) Å×ÀÌºí µ· ½×ÀÌ´Â Àå¼Ò AddMoney()
+                // TODO) ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ AddMoney()
             }
+        }
+    }
+    public IEnumerator StackTrashToStaff(GameObject staff)
+    {
+        while (TrashCount > 0)
+        {
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¿¡ï¿½ï¿½ ï¿½Å±ï¿½
+            staff.GetComponentInChildren<playerStack>().ReceiveObject(GameManager.instance.PoolManager.Get(2), eObjectType.TRASH, 0.2f);
+            TrashCount--;
+            Debug.Log("TrasCount: " + TrashCount);
+
+            yield return new WaitForSeconds(0.2f);
+
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ ï¿½Ç¸ï¿½ Ã¥ï¿½ï¿½ Ã»ï¿½ï¿½ ï¿½Ô¼ï¿½ È£ï¿½ï¿½
+            if (TrashCount == 0)
+            {
+                GameManager.instance.TableManager.CleanTable(this);
+            }
+            yield break;
+
         }
     }
 }

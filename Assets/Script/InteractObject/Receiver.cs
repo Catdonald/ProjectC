@@ -5,60 +5,25 @@ using UnityEngine;
 using DG.Tweening;
 
 /// <summary>
-/// 240822 ¿À¼ö¾È
-/// ÇÃ·¹ÀÌ¾îÀÇ ¹ö°Å¸¦ °¡Á®°¡´Â ¿ÀºêÁ§Æ® À¯Çü
+/// 240822 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+/// ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 /// </summary>
 
-public class Receiver : MonoBehaviour
+public class Receiver : Stackable
 {
-    public Stack<GameObject> stack = new Stack<GameObject>();
-    public StackType objectType;
-    private float _objectHeight;
-    public float objectHeight
+    void Awake()
     {
-        get { return _objectHeight; }
-        set { _objectHeight = value; }
+        type = eObjectType.HAMBURGER;
     }
-    public int MaxStackCount { get; set; }
-    public bool IsFull => stack.Count >= MaxStackCount;
-
-    private void Start()
+    public override void Enter(Collision collision)
     {
-        // ÀÓ½Ã
-        MaxStackCount = 10;
+        player = collision.gameObject.GetComponentInChildren<playerStack>();
     }
-
-    public void ReceiveObject(GameObject obj, float objHeight)
+    public override void Interaction(Collision other)
     {
-        this.stack.Push(obj);
-        this._objectHeight = objHeight;
-
-        Vector3 pos = gameObject.transform.position;
-        pos.y = pos.y + _objectHeight * (stack.Count - 1);
-
-        StartCoroutine(UpdateObjectPos(obj, pos));
-        obj.transform.SetParent(gameObject.transform);
-    }
-
-    private IEnumerator UpdateObjectPos(GameObject obj, Vector3 targetPos)
-    {
-        float elapsedTime = 0f;
-        float duration = 0.1f;
-
-        Vector3 startingPos = obj.transform.position;
-
-        while (elapsedTime < duration)
+        if(player.stack.Count > 0 && player.type == type)
         {
-            obj.transform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            ReceiveObject(player.RequestObject(), player.type, player.objectHeight);
         }
-
-        obj.transform.position = targetPos;
     }
-    public GameObject CustomerRequest()
-    {
-        return stack.Pop();
-    }
-
 }

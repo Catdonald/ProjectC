@@ -7,63 +7,48 @@ using System.Security.Cryptography;
 using UnityEngine;
 
 /// <summary>
-/// 240822 ¿À¼ö¾È
-/// ¹ö°Å¸¦ »ý¼ºÇÏ°í ÇÃ·¹ÀÌ¾î¿¡°Ô ÁÖ´Â ¿ÀºêÁ§Æ® À¯Çü
+/// 240822 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+/// ï¿½ï¿½ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¿¡ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 /// </summary>
-public class Spawner : MonoBehaviour
+public class Spawner : Stackable
 {
-    public CookerData cookerData;
-
-    bool isSpawning;
-    public Stack<GameObject> stack;
-
-    public StackType objectType;
-    public float objectHeight;
-
-    public int Count => stack.Count;
-
     void Awake()
     {
-        cookerData = GetComponent<CookerData>();
-        isSpawning = false;
-        stack = new Stack<GameObject>();
-
-        //objectType = StackType.NONE;
+        type = eObjectType.HAMBURGER;
     }
 
     void Start()
     {
-        GameObject type = GameManager.instance.PoolManager.Get((int)objectType);
-        objectHeight = type.GetComponent<Renderer>().bounds.size.y;
-        GameManager.instance.PoolManager.Return(type);
+        GameObject obj = GameManager.instance.PoolManager.Get((int)type);
+        objectHeight = obj.GetComponent<Renderer>().bounds.size.y;
+        GameManager.instance.PoolManager.Return(obj);
+        actingTime = 5;
     }
 
     void Update()
     {
-        if (stack.Count < cookerData.maxCapacity && !isSpawning)
+        if (stack.Count < 5 && !isActing)
         {
-            isSpawning = true;
-            StartCoroutine(SpawnObject((int)objectType));
+            isActing = true;
+            StartCoroutine(SpawnObject((int)type));
         }
     }
 
-    private IEnumerator SpawnObject(int index)
+    public override void Enter(Collision other)
     {
-        yield return new WaitForSeconds(cookerData.spawnSpeed);
-
-        GameObject obj = GameManager.instance.PoolManager.Get(index);
-
-        obj.transform.position = 
-            transform.position + Vector3.up * objectHeight * stack.Count;
-
-        stack.Push(obj);
-
-        isSpawning = false;
+        base.Enter(other);
+        player = other.transform.GetComponentInChildren<playerStack>();
     }
 
-    public GameObject RequestObject()
+    public override void Interaction(Collision other)
     {
-         return stack.Pop();
-    }
+        if (stack.Count == 0)
+            return;
 
+        if (player.stack.Count == 0 && player.type == eObjectType.LAST)
+            player.type = type;
+
+        if (player.type == type)
+            player.ReceiveObject(stack.Pop(), type, objectHeight);
+    }
 }
