@@ -48,8 +48,8 @@ public class GameManager : MonoBehaviour
     public List<LevelData> staffLevelData = new List<LevelData>();
 
 
-    [Header("# ")]
-    [SerializeField] private List<Unlockable> unlockables;
+    [Header("# Upgradables")]
+    [SerializeField] private List<Upgradable> upgradables = new List<Upgradable>();
 
     [Header("# UI")]
     [SerializeField] private OrderInfo burgerOrderInfo;
