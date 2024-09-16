@@ -7,8 +7,8 @@ using System.Security.Cryptography;
 using UnityEngine;
 
 /// <summary>
-/// 240822 ������
-/// ���Ÿ� �����ϰ� �÷��̾�� �ִ� ������Ʈ ����
+/// 240822 
+/// 오브젝트를 생산할 수 있는 모든 객체
 /// </summary>
 public class Spawner : Stackable
 {
