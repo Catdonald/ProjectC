@@ -14,7 +14,7 @@ public class Table : MonoBehaviour
     #endregion
 
     public Receiver tableStack;
-    private int TrashCount;
+    public int TrashCount { get; set; }
     [SerializeField] private eObjectType stackType;
     [SerializeField] private List<GameObject> seats;
     [SerializeField] private float baseEatTime = 5.0f;
@@ -94,5 +94,11 @@ public class Table : MonoBehaviour
                 // TODO) ���̺� �� ���̴� ��� AddMoney()
             }
         }
+    }
+
+    // 임시
+    public void Clean()
+    {
+        TrashCount = 0;
     }
 }

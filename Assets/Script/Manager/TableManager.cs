@@ -9,6 +9,7 @@ public class TableManager : MonoBehaviour
     [SerializeField]
     private List<Table> tables_burger = new List<Table>();
     public List<Table> Tables_burger => tables_burger;
+    public List<Table> DirtyTables => tables_burger.Where(x => x.TrashCount > 0).ToList();
 
     void Start()
     {

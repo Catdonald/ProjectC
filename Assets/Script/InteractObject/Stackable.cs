@@ -11,6 +11,10 @@ public class Stackable : MonoBehaviour, IStackObject
     public eObjectType type { get; set; } = eObjectType.LAST;
     public Stack<GameObject> stack { get; set; } = new Stack<GameObject>();
     public float objectHeight { get; set; } = 0;
+    public int Count => stack.Count;
+    public int MaxStackCount { get; set; }
+    public bool IsFull => stack.Count >= MaxStackCount;
+    
     public virtual void Enter(Collision other)
     {
         if (other.gameObject.layer != LayerMask.NameToLayer("Interactable"))
@@ -27,6 +31,7 @@ public class Stackable : MonoBehaviour, IStackObject
     }
     public virtual void ReceiveObject(GameObject obj, eObjectType objType, float objHegiht)
     {
+        if (IsFull) return;
         this.stack.Push(obj);
         this.objectHeight = objHegiht;
 

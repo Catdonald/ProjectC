@@ -145,23 +145,23 @@ public class EmployeeController : MonoBehaviour
     {
         currentWork = Work.CLEANUP;
 
-        // û���� ���̺��� ���ٸ� ���� none
-        var trashPiles = GameManager.instance.TrashPiles.Where(x => x.Count > 0).ToList();
-        if (trashPiles.Count == 0)
+        // 더러워진 테이블이 없다면 상태 none
+        var dirtyTables = GameManager.instance.TableManager.DirtyTables;
+        if (dirtyTables.Count == 0)
         {
             currentWork = Work.NONE;
             yield break;
         }
 
         // û���� ���̺��� �̵�
-        var trashPile = trashPiles[Random.Range(0, trashPiles.Count)];
-        agent.SetDestination(trashPile.transform.position);
+        var dirtyTable = dirtyTables[Random.Range(0, dirtyTables.Count)];
+        agent.SetDestination(dirtyTable.transform.position);
 
         /// TODO) TableŬ������ TrashObject �����ؼ� �ٲ���� �͵�..
         while (!HasArrivedToDestination())
         {
-            // �̵��ϴ� ���� ���̺��� �����Ⱑ �������� ���� none
-            if (trashPile.Count == 0)
+            // 가는 중에 테이블이 청소되면 상태 none
+            if (dirtyTable.TrashCount == 0)
             {
                 agent.SetDestination(transform.position);
                 currentWork = Work.NONE;
@@ -171,23 +171,23 @@ public class EmployeeController : MonoBehaviour
         }
 
         // ���̺��� ������ ��������
-        while (trashPile.Count > 0)
+        while (dirtyTable.TrashCount > 0)
         {
             // TODO
             //trashPile.RemoveAndStackToReceiver();
-            // �ӽ��ڵ�
-            trashPile.RemoveAll();
+            // 임시
+            dirtyTable.Clean();
             yield return new WaitForSeconds(0.03f);
         }
 
         yield return new WaitForSeconds(0.5f);
 
-        // ������������ �̵�
+        // 쓰레기통으로 이동
         Trashbin trashBin = GameManager.instance.TrashBin;
         agent.SetDestination(trashBin.transform.position);
         yield return new WaitUntil(() => HasArrivedToDestination());
 
-        // ��� �ִ� ������ ����
+        // TODO) 쓰레기통에 쓰레기 한개씩 넣기
         /*while(stack.Count > 0)
         {
             trashBin.ThrowToBin(stack);
