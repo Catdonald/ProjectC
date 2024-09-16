@@ -8,13 +8,14 @@ public class Table : MonoBehaviour
 {  
 
     #region Reference Properties
-    public bool IsSemiFull => trashPile.Count == 0 && customers.Count > 0 && customers.Count < seats.Count;
-    public bool IsEmpty => trashPile.Count == 0 && customers.Count == 0;
-    public StackType StackType => stackType;
+    public bool IsSemiFull => TrashCount == 0 && customers.Count > 0 && customers.Count < seats.Count;
+    public bool IsEmpty => TrashCount == 0 && customers.Count == 0;
+    public eObjectType StackType => stackType;
     #endregion
 
-    [SerializeField] private StackType stackType;
-    [SerializeField] private ObjectPile trashPile;
+    public Receiver tableStack;
+    private int TrashCount;
+    [SerializeField] private eObjectType stackType;
     [SerializeField] private List<GameObject> seats;
     [SerializeField] private float baseEatTime = 5.0f;
     [SerializeField] private float baseTipChance = 0.4f;
@@ -30,7 +31,8 @@ public class Table : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // �ӽ�
+        tableStack = GetComponentInChildren<Receiver>();
+
         eatTime = baseEatTime;
         tipChance = baseTipChance;
         tipLevel = 0;
@@ -48,28 +50,27 @@ public class Table : MonoBehaviour
 
     public void PutFoodOnTable(GameObject food)
     {
-        stack.stack.Push(food);
+        tableStack.stack.Push(food);
     }
 
     IEnumerator Eating()
     {
         yield return new WaitUntil(() => customers.All(customer => customer.ReadyToEat));
 
-        float eatingInterval = eatTime / stack.stack.Count;
+        float eatingInterval = eatTime / tableStack.stack.Count;
         int trashCount = 0;
-        while (stack.stack.Count > 0)
+        while (tableStack.stack.Count > 0)
         {
             yield return new WaitForSeconds(eatingInterval);
 
-            GameManager.instance.PoolManager.Return(stack.stack.Pop());
+            GameManager.instance.PoolManager.Return(tableStack.stack.Pop());
             trashCount++;
             LeaveTip();
         }
 
         while(trashCount > 0)
         {
-            var trash = GameManager.instance.PoolManager.Get(2);
-            trashPile.AddObject(trash);
+            TrashCount++;
             trashCount--;
             yield return new WaitForSeconds(0.05f);
         }
@@ -92,26 +93,6 @@ public class Table : MonoBehaviour
             {
                 // TODO) ���̺� �� ���̴� ��� AddMoney()
             }
-        }
-    }
-    public IEnumerator StackTrashToStaff(GameObject staff)
-    {
-        while (TrashCount > 0)
-        {
-            // ������ �ϳ��� �÷��̾�� �ű�
-            staff.GetComponentInChildren<playerStack>().ReceiveObject(GameManager.instance.PoolManager.Get(2), eObjectType.TRASH, 0.2f);
-            TrashCount--;
-            Debug.Log("TrasCount: " + TrashCount);
-
-            yield return new WaitForSeconds(0.2f);
-
-            // ������ ������ 0�� �Ǹ� å�� û�� �Լ� ȣ��
-            if (TrashCount == 0)
-            {
-                GameManager.instance.TableManager.CleanTable(this);
-            }
-            yield break;
-
         }
     }
 }

@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public int exp;
     public int[] nextEXP;
 
-    [Header("# �Ŵ��� Ŭ����")]
+    [Header("# Manager")]
     public PoolManager PoolManager;
     public TableManager TableManager;
 
@@ -47,45 +47,29 @@ public class GameManager : MonoBehaviour
     public List<LevelData> playerLevelData = new List<LevelData>();
     public List<LevelData> staffLevelData = new List<LevelData>();
 
-    // ���� ������ �ʿ��� ������Ʈ��
 
-    [Header("# �÷��̾�")]
-    public GameObject Player;
-
-    [Header("# ����")]
-    public List<GameObject> staffs;
-
-    [Header("# ������")]
-    public List<GameObject> upgrades;
-
-
-    [Header("# ���� ���� ������Ʈ")]
+    [Header("# ")]
     [SerializeField] private List<Unlockable> unlockables;
 
     [Header("# UI")]
     [SerializeField] private OrderInfo burgerOrderInfo;
 
-    [Header("# Stack Offset")]
-    [SerializeField] private float burgerOffset = 0.35f;
-    [SerializeField] private float trashOffset = 0.18f;
-    [SerializeField] private float burgerPackOffset = 0.3f;
-    [SerializeField] private float coffeeOffset = 0.35f;
-
-    public List<ObjectPile> TrashPiles {  get; private set; } = new List<ObjectPile>();
-
-    // �丮��� Spawner
+    // Spawner
     public List<Spawner> spawners_burger = new List<Spawner>();
     public List<Spawner> spawners_burgerPack = new List<Spawner>();
     //public List<Spawner> spawners_coffee = new List<Spawner>();
 
-    // ī���� Receiver
+    public List<GameObject> counters;
+    public List<GameObject> cookers;
+
+    // Receiver
     public Receiver receiver_burger;
     public Receiver receiver_burgerPack;
     //Receiver receiver_coffee;
 
     #region Reference Properties
     public OrderInfo BurgerOrderInfo => burgerOrderInfo;
-    public TrashBin TrashBin { get; private set; }
+    public Trashbin TrashBin { get; private set; }
     #endregion
 
     void Awake()
@@ -112,11 +96,11 @@ public class GameManager : MonoBehaviour
         var spawnerObjs = GameObject.FindObjectsOfType<Spawner>();
         foreach (Spawner spawner in spawnerObjs)
         {
-            if (spawner.objectType == StackType.BURGER)
+            if (spawner.type == eObjectType.HAMBURGER)
             {
                 spawners_burger.Add(spawner);
             }
-            else if (spawner.objectType == StackType.BURGERPACK)
+            else if (spawner.type == eObjectType.BURGERPACK)
             {
                 spawners_burgerPack.Add(spawner);
             }
@@ -125,63 +109,23 @@ public class GameManager : MonoBehaviour
         var receiverObjs = GameObject.FindObjectsOfType<Receiver>();
         foreach (Receiver receiver in receiverObjs)
         {
-            if (receiver.objectType == StackType.BURGER)
+            if (receiver.type == eObjectType.HAMBURGER)
             {
                 receiver_burger = receiver;
             }
-            else if (receiver.objectType == StackType.BURGERPACK)
+            else if (receiver.type == eObjectType.BURGERPACK)
             {
                 receiver_burgerPack = receiver;
             }
         }
 
-        var objectPiles = GameObject.FindObjectsOfType<ObjectPile>();
-        foreach(var objectPile in objectPiles)
-        {
-            if(objectPile.StackType == StackType.TRASH)
-            {
-                TrashPiles.Add(objectPile);
-            }
-            // burgerPiles
-            // burgerPackPiles
-        }
-
-        TrashBin = GameObject.FindObjectOfType<TrashBin>();
+        TrashBin = GameObject.FindObjectOfType<Trashbin>();
     }
 
     void LateUpdate()
     {
         AutoSave();
     }
-
-    public float GetStackOffset(StackType stackType)
-    {
-        float offset = 0.0f;
-        switch (stackType)
-        {
-            case StackType.NONE:
-                offset = 0.0f; 
-                break;
-            case StackType.BURGER:
-                offset = burgerOffset;
-                break;
-            case StackType.BURGERPACK:
-                offset = burgerPackOffset;
-                break;
-            case StackType.COFFEE:
-                offset = coffeeOffset;
-                break;
-            case StackType.TRASH:
-                offset = trashOffset;
-                break;
-        }
-        return offset;
-    }
-
-    /// <summary>
-    /// ������ �ε�, ���̺� �Լ�
-    /// </summary>
-
     private void AutoSave()
     {
         GameTime += Time.deltaTime;
@@ -195,14 +139,14 @@ public class GameManager : MonoBehaviour
 
     public void SaveData()
     {
-        Debug.Log("������ ����");
+        Debug.Log("save data");
     }
     private void LoadData()
     {
         LoadDataFromCSV("PlayerLevelData", playerLevelData, ParseLevelData);
         LoadDataFromCSV("StaffLevelData", staffLevelData, ParseLevelData);
 
-        Debug.Log("������ �ε�");
+        Debug.Log("Load data");
     }
 
     void LoadDataFromCSV<T>(string filename, List<T> dataLst, Func<string[], T> parser)
@@ -210,7 +154,7 @@ public class GameManager : MonoBehaviour
         TextAsset csvData = Resources.Load<TextAsset>(filename);
         if (csvData == null)
         {
-            Debug.LogError("CSV ������ ã�� �� �����ϴ�: " + filename);
+            Debug.LogError("CSV is not founded: " + filename);
             return;
         }
 

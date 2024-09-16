@@ -8,7 +8,6 @@ public class Stackable : MonoBehaviour, IStackObject
     public playerStack player;
     public float actingTime { get; set; } = 0;
     public bool isActing { get; set; } = false;
-    public eFurnitureType f_type { get; set; } = eFurnitureType.LAST;
     public eObjectType type { get; set; } = eObjectType.LAST;
     public Stack<GameObject> stack { get; set; } = new Stack<GameObject>();
     public float objectHeight { get; set; } = 0;

@@ -15,11 +15,11 @@ public class TableManager : MonoBehaviour
         Table[] tableObjects = GameObject.FindObjectsOfType<Table>();
         foreach (Table table in tableObjects)
         {
-            if (table.StackType == StackType.BURGER)
+            if (table.StackType == eObjectType.HAMBURGER)
             {
                 tables_burger.Add(table);
             }
-            else if (table.StackType == StackType.COFFEE)
+            else if (table.StackType == eObjectType.COFFEE)
             {
                 // TODO
             }
@@ -32,9 +32,9 @@ public class TableManager : MonoBehaviour
         randomTableIndex = Random.Range(0, tables_burger.Count);
     }
 
-    public GameObject GetAvailableSeat(CustomerController customer, StackType type)
+    public GameObject GetAvailableSeat(CustomerController customer, eObjectType type)
     {
-        if (type == StackType.BURGER)
+        if (type == eObjectType.HAMBURGER)
         {
             if (tables_burger.Count == 0)
             {
@@ -58,9 +58,9 @@ public class TableManager : MonoBehaviour
         return null;
     }
 
-    public bool HasAvailableSeat(StackType type)
+    public bool HasAvailableSeat(eObjectType type)
     {
-        if (type == StackType.BURGER)
+        if (type == eObjectType.HAMBURGER)
         {
             if (tables_burger.Count == 0)
             {

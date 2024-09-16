@@ -183,7 +183,7 @@ public class EmployeeController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // 쓰레기통으로 이동
-        TrashBin trashBin = GameManager.instance.TrashBin;
+        Trashbin trashBin = GameManager.instance.TrashBin;
         agent.SetDestination(trashBin.transform.position);
         yield return new WaitUntil(() => HasArrivedToDestination());
 

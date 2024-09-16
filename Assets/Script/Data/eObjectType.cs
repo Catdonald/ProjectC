@@ -5,17 +5,10 @@ using UnityEngine;
 public enum eObjectType : int
 {
     HAMBURGER,
+    BURGERPACK,
     TRASH,
+    COFFEE,
 
     LAST
 }
 
-public enum eFurnitureType : int
-{
-    COOKER,
-    COUNTER,
-    TABLE,
-    TRASHCAN,
-
-    LAST
-}

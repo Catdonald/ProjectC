@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trashcan : Stackable
+public class Trashbin : Stackable
 {
     void OnCollisionEnter(Collision collision)
     {

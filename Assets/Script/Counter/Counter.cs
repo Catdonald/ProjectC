@@ -6,10 +6,10 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 public class Counter : WorkStation
 {
     public GameObject casher;
-    public StackType StackType => stackType;
+    public eObjectType StackType => stackType;
     public CustomerController firstCustomer => lineQueue.Peek();
 
-    [SerializeField] private StackType stackType;
+    [SerializeField] private eObjectType stackType;
    
     private Line lineQueue;
     private Receiver receiver;
@@ -62,7 +62,7 @@ public class Counter : WorkStation
     protected override void UpgradeStats()
     {
         sellingInterval = baseSellingInterval / upgradeLevel;
-        receiver.MaxStackCount = baseStack + upgradeLevel * 5;
+        //receiver.MaxStackCount = baseStack + upgradeLevel * 5;
         sellPrice = Mathf.RoundToInt(priceIncrementRate * basePrice);
         // TODO
         // sellingInterval�� �ٸ� customerSpawner�� spawnInterval�� �پ�� �� �� ������..
@@ -82,9 +82,9 @@ public class Counter : WorkStation
             GameObject obj = receiver.RequestObject();
             if (obj != null)
             {
+                firstCustomer.ReceiveFood(obj, receiver.type, receiver.objectHeight);
                 // TODO
                 // CollectMoney();
-                customer.ReceiveFood(obj, receiver.type, receiver.objectHeight);
             }
         }
     }

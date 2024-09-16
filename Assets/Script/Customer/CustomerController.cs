@@ -12,7 +12,6 @@ public class CustomerController : MonoBehaviour
     public playerStack customerstack;
     public Line line;
     public OrderInfo orderInfo;
-    public CustomerStack customerstack;
     public NavMeshAgent agent;
 
     private Animator animator;
@@ -30,7 +29,7 @@ public class CustomerController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        customerstack = GetComponentInChildren<CustomerStack>();
+        customerstack = GetComponentInChildren<playerStack>();
     }
 
     private void OnEnable()
@@ -96,9 +95,9 @@ public class CustomerController : MonoBehaviour
 
         // 들고있던 음식 테이블에 내려놓는다
         var table = seat.GetComponentInParent<Table>();
-        while(customerstack.Count > 0)
+        while(customerstack.stack.Count > 0)
         {
-            table.PutFoodOnTable(customerstack.RemoveFromStack());
+            table.PutFoodOnTable(customerstack.stack.Pop());
             yield return new WaitForSeconds(0.05f);
         }
 
@@ -136,7 +135,7 @@ public class CustomerController : MonoBehaviour
         RemainOrderCount = OrderCount;
     }
 
-    public void ReceiveFood(GameObject obj, float objHeight)
+    public void ReceiveFood(GameObject obj,eObjectType objType , float objHeight)
     {
         CarryingFoodHeight = objHeight;
         customerstack.ReceiveObject(obj, objType, objHeight);
@@ -146,7 +145,7 @@ public class CustomerController : MonoBehaviour
 
         orderInfo.ShowInfo(RemainOrderCount);
 
-        Debug.Log("Customer : " + customerstack.Count);
+        Debug.Log("Customer : " + customerstack.stack.Count);
     }
 
     public void FinishEating()
