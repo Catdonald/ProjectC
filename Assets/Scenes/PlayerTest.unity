@@ -301,18 +301,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpgradeButton
       objectReference: {fileID: 0}
-    - target: {fileID: 2609171239804426823, guid: 71e319293a84e6e49ad6a05e66f6aca4, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2609171239804426823, guid: 71e319293a84e6e49ad6a05e66f6aca4, type: 3}
-      propertyPath: m_Center.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2609171239804426823, guid: 71e319293a84e6e49ad6a05e66f6aca4, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5747634832525016025, guid: 71e319293a84e6e49ad6a05e66f6aca4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.96
@@ -1223,10 +1211,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2248951707985048386, guid: 116973946030093428241a346e8a1769, type: 3}
+      propertyPath: m_Size.x
+      value: 9.756371
+      objectReference: {fileID: 0}
+    - target: {fileID: 2248951707985048386, guid: 116973946030093428241a346e8a1769, type: 3}
+      propertyPath: m_Size.z
+      value: 11.525502
+      objectReference: {fileID: 0}
+    - target: {fileID: 2248951707985048386, guid: 116973946030093428241a346e8a1769, type: 3}
+      propertyPath: m_Center.x
+      value: 1.4726295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2248951707985048386, guid: 116973946030093428241a346e8a1769, type: 3}
+      propertyPath: m_Center.z
+      value: 4.7972865
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857012274052753978, guid: 116973946030093428241a346e8a1769, type: 3}
+      propertyPath: m_Size.x
+      value: 9.691218
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857012274052753978, guid: 116973946030093428241a346e8a1769, type: 3}
+      propertyPath: m_Size.z
+      value: 11.653075
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857012274052753978, guid: 116973946030093428241a346e8a1769, type: 3}
+      propertyPath: m_Center.x
+      value: 1.5052056
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857012274052753978, guid: 116973946030093428241a346e8a1769, type: 3}
+      propertyPath: m_Center.z
+      value: 2.221456
+      objectReference: {fileID: 0}
     - target: {fileID: 5649692986266290965, guid: 116973946030093428241a346e8a1769, type: 3}
       propertyPath: m_Name
       value: Building
       objectReference: {fileID: 0}
+    - target: {fileID: 8484934606648633360, guid: 116973946030093428241a346e8a1769, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: ea65a1aa806537a489a70ec038c10068, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
