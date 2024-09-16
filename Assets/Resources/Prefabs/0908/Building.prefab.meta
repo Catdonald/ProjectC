@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:Assets/Resources/Prefabs/0908/Building.prefab.meta
 guid: f339681f29bf4d14e838a38d5158e609
+========
+guid: 9d5c458f49968474ca3ef1d96165362e
+>>>>>>>> Stashed changes:Assets/Resources/Prefabs/0908/MJ/cat_employee.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
