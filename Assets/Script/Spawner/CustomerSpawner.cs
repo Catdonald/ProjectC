@@ -33,7 +33,7 @@ public class TempSpawner : MonoBehaviour
     {
         while (true)
         {
-            // ·£´ý¼ýÀÚ »Ì±â
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½
             // switch(0) -> burgerJoint
             if (!lineQueue.IsQueueFull())
             {

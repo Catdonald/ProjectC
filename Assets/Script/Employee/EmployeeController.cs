@@ -86,7 +86,7 @@ public class EmployeeController : MonoBehaviour
     {
         currentWork = Work.TAKEORDER;
 
-        // ·£´ýÀ¸·Î ´ã´çÇÒ Ä«¿îÅÍ ¼±Á¤
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         var counters = GameManager.instance.counters.Where(x => x.activeInHierarchy && x.GetComponent<Counter>().GetStoredFoodCount() > 0).ToList();
         if(counters.Count == 0)
         {
@@ -95,28 +95,28 @@ public class EmployeeController : MonoBehaviour
         }
         Counter counter = counters[Random.Range(0, counters.Count)].GetComponent<Counter>();
 
-        // Ä«¿îÅÍ¿¡ ÇÃ·¹ÀÌ¾î³ª Á÷¿øÀÌ ÀÖÀ¸¸é »óÅÂ ¹Ù²ÙÁö ¾Ê´Â´Ù.
+        // Ä«ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î³ª ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½.
         if (counter.HasWorker)
         {
             currentWork = Work.NONE;
             yield break;
         }
-        // ºó ÀÚ¸®°¡ ÇÏ³ªµµ ¾øÀ¸¸é »óÅÂ none
+        // ï¿½ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ none
         if (!GameManager.instance.TableManager.HasAvailableSeat(counter.StackType))
         {
             currentWork = Work.NONE;
             yield break;
         }
-        // Ä«¿îÅÍ·Î ¸ñÀûÁö ¼³Á¤
+        // Ä«ï¿½ï¿½ï¿½Í·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         agent.SetDestination(counter.WorkingSpotPosition);
 
-        // Ä«¿îÅÍ·Î °¡´Â Áß¿¡ ÇÃ·¹ÀÌ¾î³ª ´Ù¸¥ Á÷¿øÀÌ Ä«¿îÅÍ¿¡ ¼­¸é
-        // »óÅÂ noneÀ¸·Î ¹Ù²Ù°í Á¾·á
+        // Ä«ï¿½ï¿½ï¿½Í·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß¿ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î³ª ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½
+        // ï¿½ï¿½ï¿½ï¿½ noneï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½
         while (!HasArrivedToDestination())
         {
             if (counter.HasWorker && counter.WorkingEmployee != this)
             {
-                // ±× ÀÚ¸®¿¡ ¸ØÃá´Ù
+                // ï¿½ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
                 agent.SetDestination(transform.position);
                 currentWork = Work.NONE;
                 yield break;
@@ -126,10 +126,10 @@ public class EmployeeController : MonoBehaviour
 
         transform.LookAt(counter.casher.transform.position);
 
-        // Ä«¿îÅÍ¿¡ À½½ÄÀÌ 0°³°¡ µÇ¸é »óÅÂ Á¾·á
+        // Ä«ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         while (counter.GetStoredFoodCount() > 0)
         {
-            // ºó ÀÚ¸®°¡ ÇÏ³ªµµ ¾øÀ¸¸é »óÅÂ none
+            // ï¿½ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ none
             if (!GameManager.instance.TableManager.HasAvailableSeat(counter.StackType))
             {
                 currentWork = Work.NONE;
@@ -145,7 +145,7 @@ public class EmployeeController : MonoBehaviour
     {
         currentWork = Work.CLEANUP;
 
-        // Ã»¼ÒÇÒ Å×ÀÌºíÀÌ ¾ø´Ù¸é »óÅÂ none
+        // Ã»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ none
         var trashPiles = GameManager.instance.TrashPiles.Where(x => x.Count > 0).ToList();
         if (trashPiles.Count == 0)
         {
@@ -153,14 +153,14 @@ public class EmployeeController : MonoBehaviour
             yield break;
         }
 
-        // Ã»¼ÒÇÒ Å×ÀÌºí·Î ÀÌµ¿
+        // Ã»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         var trashPile = trashPiles[Random.Range(0, trashPiles.Count)];
         agent.SetDestination(trashPile.transform.position);
 
-        /// TODO) TableÅ¬·¡½ºÀÇ TrashObject °ü·ÃÇØ¼­ ¹Ù²ã¾ßÇÒ °Íµé..
+        /// TODO) TableÅ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ TrashObject ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½ï¿½ ï¿½Íµï¿½..
         while (!HasArrivedToDestination())
         {
-            // ÀÌµ¿ÇÏ´Â µ¿¾È Å×ÀÌºíÀÇ ¾²·¹±â°¡ ¾ø¾îÁö¸é »óÅÂ none
+            // ï¿½Ìµï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½â°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ none
             if (trashPile.Count == 0)
             {
                 agent.SetDestination(transform.position);
@@ -170,24 +170,24 @@ public class EmployeeController : MonoBehaviour
             yield return null;
         }
 
-        // Å×ÀÌºíÀÇ ¾²·¹±â °¡Á®¿À±â
+        // ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         while (trashPile.Count > 0)
         {
             // TODO
             //trashPile.RemoveAndStackToReceiver();
-            // ÀÓ½ÃÄÚµå
+            // ï¿½Ó½ï¿½ï¿½Úµï¿½
             trashPile.RemoveAll();
             yield return new WaitForSeconds(0.03f);
         }
 
         yield return new WaitForSeconds(0.5f);
 
-        // ¾²·¹±âÅëÀ¸·Î ÀÌµ¿
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         Trashbin trashBin = GameManager.instance.TrashBin;
         agent.SetDestination(trashBin.transform.position);
         yield return new WaitUntil(() => HasArrivedToDestination());
 
-        // µé°í ÀÖ´Â ¾²·¹±â ºñ¿ì±â
+        // ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         /*while(stack.Count > 0)
         {
             trashBin.ThrowToBin(stack);
@@ -201,9 +201,9 @@ public class EmployeeController : MonoBehaviour
     {
         currentWork = Work.REFILLFOOD;
 
-        // ´Ù Â÷Áö ¾ÊÀº Ä«¿îÅÍ Ã£±â - receiver
-        // ¿ì¼± ÇÜ¹ö°Å Ä«¿îÅÍ¸¸...
-        // Ä«¿îÅÍ ¸ðµÎ À½½Ä ´Ù Â÷ÀÖ´Ù¸é »óÅÂ none
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ - receiver
+        // ï¿½ì¼± ï¿½Ü¹ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ï¿½Í¸ï¿½...
+        // Ä«ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ö´Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ none
         var receiver = GameManager.instance.receiver_burger;
         if (GameManager.instance.receiver_burger.IsFull)
         {
@@ -211,20 +211,20 @@ public class EmployeeController : MonoBehaviour
             yield break;
         }
 
-        // 1°³ ÀÌ»ó À½½Ä »ý¼ºÇØ³õÀº spawner Ã£±â(À§ÀÇ Ä«¿îÅÍ¿Í À½½Ä Å¸ÀÔÀÌ °°Àº)
+        // 1ï¿½ï¿½ ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø³ï¿½ï¿½ï¿½ spawner Ã£ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
         var validBurgerSpawners = GameManager.instance.spawners_burger.Where(x => x.Count > 0).ToList();
-        // ¾ø´Ù¸é »óÅÂ none
+        // ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ none
         if (validBurgerSpawners.Count == 0)
         {
             currentWork = Work.NONE;
             yield break;
         }
 
-        // spawner Áß ·£´ýÀ¸·Î °ñ¶ó¼­ À§Ä¡ ÁöÁ¤
+        // spawner ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
         var spawner = validBurgerSpawners[Random.Range(0, validBurgerSpawners.Count)];
         agent.SetDestination(spawner.transform.position);
 
-        // spawner¿¡ À½½Ä ¾øÀ¸¸é »óÅÂ none
+        // spawnerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ none
         while (!HasArrivedToDestination())
         {
             if (spawner.Count == 0)
@@ -236,7 +236,7 @@ public class EmployeeController : MonoBehaviour
             yield return null;
         }
 
-        // spawner¿¡¼­ À½½Ä ÇÑ°³¾¿ °¡Á®¿È
+        // spawnerï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /*while(spawner.Count > 0 && Stack.Height < capacity)
         {
             spawner.RemoveAndStackObject(stack);
@@ -245,11 +245,11 @@ public class EmployeeController : MonoBehaviour
         agent.SetDestination(transform.position);
         yield return new WaitForSeconds(0.5f);
 
-        // Ä«¿îÅÍ·Î ÀÌµ¿
+        // Ä«ï¿½ï¿½ï¿½Í·ï¿½ ï¿½Ìµï¿½
         agent.SetDestination(receiver.transform.position);
         yield return new WaitUntil(() => HasArrivedToDestination());
 
-        // Ä«¿îÅÍ¿¡ À½½Ä ³õ±â
+        // Ä«ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         /*while(stack.Count > 0)
         {
             if(!receiver.IsFull)
