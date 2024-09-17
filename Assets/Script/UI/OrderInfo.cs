@@ -8,13 +8,10 @@ public class OrderInfo : MonoBehaviour
     private GameObject orderUI;
     private Text orderCountText;
     private GameObject noSeatUI;
-    private Canvas canvas;
 
     // Start is called before the first frame update
     void Start()
     {
-        canvas = GetComponent<Canvas>();
-        canvas.worldCamera = Camera.main;
         orderUI = transform.GetChild(0).gameObject;
         noSeatUI = transform.GetChild(1).gameObject;
         orderCountText = orderUI.transform.GetChild(1).GetComponent<Text>();

@@ -4,8 +4,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Table : MonoBehaviour
-{  
+public class Table : Upgradable
+{
+    [SerializeField] private GameObject trashObject;
 
     #region Reference Properties
     public bool IsSemiFull => TrashCount == 0 && customers.Count > 0 && customers.Count < seats.Count;
@@ -16,13 +17,13 @@ public class Table : MonoBehaviour
     public Receiver tableStack;
     public int TrashCount { get; set; }
     [SerializeField] private eObjectType stackType;
-    [SerializeField] private List<GameObject> seats;
-    [SerializeField] private float baseEatTime = 5.0f;
-    [SerializeField] private float baseTipChance = 0.4f;
+    [SerializeField] private List<GameObject> seats = new List<GameObject>();
 
     private List<CustomerController> customers = new List<CustomerController>();
 
     #region Table Stats
+    [SerializeField, Range(1.0f, 10.0f)] private float baseEatTime = 5.0f;
+    [SerializeField, Range(0.0f, 1.0f)] private float baseTipChance = 0.4f;
     private float eatTime;
     private float tipChance;
     private int tipLevel;
@@ -32,12 +33,21 @@ public class Table : MonoBehaviour
     void Start()
     {
         tableStack = GetComponentInChildren<Receiver>();
-
+        /*
         eatTime = baseEatTime;
         tipChance = baseTipChance;
-        tipLevel = 0;
+        tipLevel = 0;*/
+
+        trashObject.SetActive(false);
     }
-    
+
+    protected override void UpgradeStats()
+    {
+        eatTime = (baseEatTime - (upgradeLevel - 1)) * seats.Count;
+        tipChance = baseTipChance + (upgradeLevel - 1) * 0.1f;
+        // TODO) tipLevel
+    }
+
     public GameObject AssignSeat(CustomerController customer)
     {
         customers.Add(customer);
@@ -58,21 +68,13 @@ public class Table : MonoBehaviour
         yield return new WaitUntil(() => customers.All(customer => customer.ReadyToEat));
 
         float eatingInterval = eatTime / tableStack.stack.Count;
-        int trashCount = 0;
         while (tableStack.stack.Count > 0)
         {
             yield return new WaitForSeconds(eatingInterval);
 
             GameManager.instance.PoolManager.Return(tableStack.stack.Pop());
-            trashCount++;
-            LeaveTip();
-        }
-
-        while(trashCount > 0)
-        {
             TrashCount++;
-            trashCount--;
-            yield return new WaitForSeconds(0.05f);
+            LeaveTip();
         }
 
         foreach(var customer in customers)
@@ -80,8 +82,9 @@ public class Table : MonoBehaviour
             customer.FinishEating();
             yield return new WaitForSeconds(Random.Range(1, 4) * 0.3f);
         }
-
         customers.Clear();
+
+        trashObject.SetActive(true);
     }
 
     private void LeaveTip()
@@ -100,5 +103,6 @@ public class Table : MonoBehaviour
     public void Clean()
     {
         TrashCount = 0;
+        trashObject.SetActive(false);
     }
 }

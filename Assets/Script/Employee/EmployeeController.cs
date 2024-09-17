@@ -7,22 +7,13 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 
 public class EmployeeController : MonoBehaviour
 {
-    public Animator animator;
-    public NavMeshAgent agent;
+    [SerializeField] private float baseSpeed = 2.5f;
+    [SerializeField] private int baseCapacity = 3;
 
-    [SerializeField]
+    private Animator animator;
+    private NavMeshAgent agent;
     private Work currentWork;
-
-    public enum Work
-    {
-        NONE,
-        TAKEORDER,
-        PACKING,
-        CLEANUP,
-        REFILLFOOD,
-        REFILLPACKAGE,
-        MAX
-    }
+    private int capacity;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +21,8 @@ public class EmployeeController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         currentWork = Work.NONE;
+        GameManager.instance.OnUpgrade += UpdateStats;
+        UpdateStats();
     }
 
     // Update is called once per frame
@@ -82,12 +75,21 @@ public class EmployeeController : MonoBehaviour
         return false;
     }
 
+    private void UpdateStats()
+    {
+        int speedLevel = GameManager.instance.GetUpgradeLevel(UpgradeType.EmployeeSpeed);
+        agent.speed = baseSpeed + (speedLevel * 0.1f);
+
+        int capacityLevel = GameManager.instance.GetUpgradeLevel(UpgradeType.EmployeeCapacity);
+        capacity = baseCapacity + capacityLevel;
+    }
+
     IEnumerator TakeOrder()
     {
         currentWork = Work.TAKEORDER;
 
         // �������� ����� ī���� ����
-        var counters = GameManager.instance.counters.Where(x => x.activeInHierarchy && x.GetComponent<Counter>().GetStoredFoodCount() > 0).ToList();
+        var counters = GameManager.instance.counters.Where(x => x.gameObject.activeInHierarchy && x.GetStoredFoodCount() > 0).ToList();
         if(counters.Count == 0)
         {
             currentWork = Work.NONE;
@@ -101,22 +103,19 @@ public class EmployeeController : MonoBehaviour
             currentWork = Work.NONE;
             yield break;
         }
-        // �� �ڸ��� �ϳ��� ������ ���� none
-        if (!GameManager.instance.TableManager.HasAvailableSeat(counter.StackType))
+        // 자리남은 테이블이 없으면 상태 none
+        if (!TableManager.Instance.HasAvailableSeat(counter.StackType))
         {
             currentWork = Work.NONE;
             yield break;
         }
-        // ī���ͷ� ������ ����
         agent.SetDestination(counter.WorkingSpotPosition);
 
-        // ī���ͷ� ���� �߿� �÷��̾ �ٸ� ������ ī���Ϳ� ����
-        // ���� none���� �ٲٰ� ����
+        // 카운터로 이동하는 중에 카운터에 플레이어나 다른 직원이 서면 상태 none
         while (!HasArrivedToDestination())
         {
             if (counter.HasWorker && counter.WorkingEmployee != this)
             {
-                // �� �ڸ��� �����
                 agent.SetDestination(transform.position);
                 currentWork = Work.NONE;
                 yield break;
@@ -126,11 +125,10 @@ public class EmployeeController : MonoBehaviour
 
         transform.LookAt(counter.casher.transform.position);
 
-        // ī���Ϳ� ������ 0���� �Ǹ� ���� ����
+        // 카운터에 음식 남아있는 동안
         while (counter.GetStoredFoodCount() > 0)
         {
-            // �� �ڸ��� �ϳ��� ������ ���� none
-            if (!GameManager.instance.TableManager.HasAvailableSeat(counter.StackType))
+            if (!TableManager.Instance.HasAvailableSeat(counter.StackType))
             {
                 currentWork = Work.NONE;
                 yield break;
@@ -146,14 +144,13 @@ public class EmployeeController : MonoBehaviour
         currentWork = Work.CLEANUP;
 
         // 더러워진 테이블이 없다면 상태 none
-        var dirtyTables = GameManager.instance.TableManager.DirtyTables;
+        var dirtyTables = TableManager.Instance.DirtyTables;
         if (dirtyTables.Count == 0)
         {
             currentWork = Work.NONE;
             yield break;
         }
 
-        // û���� ���̺��� �̵�
         var dirtyTable = dirtyTables[Random.Range(0, dirtyTables.Count)];
         agent.SetDestination(dirtyTable.transform.position);
 
@@ -170,7 +167,6 @@ public class EmployeeController : MonoBehaviour
             yield return null;
         }
 
-        // ���̺��� ������ ��������
         while (dirtyTable.TrashCount > 0)
         {
             // TODO
@@ -201,30 +197,27 @@ public class EmployeeController : MonoBehaviour
     {
         currentWork = Work.REFILLFOOD;
 
-        // �� ���� ���� ī���� ã�� - receiver
-        // �켱 �ܹ��� ī���͸�...
-        // ī���� ��� ���� �� ���ִٸ� ���� none
-        var receiver = GameManager.instance.receiver_burger;
-        if (GameManager.instance.receiver_burger.IsFull)
+        // TODO
+        // 랜덤으로 숫자 한개 뽑아서 그 숫자에 맞는 카운터 찾기
+        // 우선은 버거 카운터만..
+        var counter = GameManager.instance.counters.Where(x => x.StackType == eObjectType.HAMBURGER).First();
+        if (counter.IsFoodStorageFull())
         {
             currentWork = Work.NONE;
             yield break;
         }
 
-        // 1�� �̻� ���� �����س��� spawner ã��(���� ī���Ϳ� ���� Ÿ���� ����)
         var validBurgerSpawners = GameManager.instance.spawners_burger.Where(x => x.Count > 0).ToList();
-        // ���ٸ� ���� none
         if (validBurgerSpawners.Count == 0)
         {
             currentWork = Work.NONE;
             yield break;
         }
 
-        // spawner �� �������� ��� ��ġ ����
         var spawner = validBurgerSpawners[Random.Range(0, validBurgerSpawners.Count)];
         agent.SetDestination(spawner.transform.position);
 
-        // spawner�� ���� ������ ���� none
+        // 가는 도중 spawner에 햄버거 한개도 없으면 상태 none
         while (!HasArrivedToDestination())
         {
             if (spawner.Count == 0)
@@ -236,7 +229,7 @@ public class EmployeeController : MonoBehaviour
             yield return null;
         }
 
-        // spawner���� ���� �Ѱ��� ������
+        // TODO take foods from the spawner
         /*while(spawner.Count > 0 && Stack.Height < capacity)
         {
             spawner.RemoveAndStackObject(stack);
@@ -245,14 +238,13 @@ public class EmployeeController : MonoBehaviour
         agent.SetDestination(transform.position);
         yield return new WaitForSeconds(0.5f);
 
-        // ī���ͷ� �̵�
-        agent.SetDestination(receiver.transform.position);
+        agent.SetDestination(counter.transform.position);
         yield return new WaitUntil(() => HasArrivedToDestination());
 
-        // ī���Ϳ� ���� ����
+        // TODO put foods on the counter
         /*while(stack.Count > 0)
         {
-            if(!receiver.IsFull)
+            if(!counter.IsFoodStorageFull())
             {
                 var food = stack.RemoveFromStack();
                 receiver.AddToStack(food);
@@ -273,5 +265,15 @@ public class EmployeeController : MonoBehaviour
     {
         currentWork = Work.NONE;
         yield break;
+    }
+    public enum Work
+    {
+        NONE,
+        TAKEORDER,
+        PACKING,
+        CLEANUP,
+        REFILLFOOD,
+        REFILLPACKAGE,
+        MAX
     }
 }

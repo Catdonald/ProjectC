@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System;
+using UnityEngine.SceneManagement;
+using TMPro;
+using System.Linq;
 
 /// <summary>
 /// 240821 ������
@@ -11,87 +14,78 @@ using System;
 /// ���� �Ŵ����� ���� �ٸ� �Ŵ��� �ν��Ͻ��� ����
 /// </summary>
 
-// prefab test �� �ӽ� ������
-struct info
-{
-    public int id;
-    public string name;
-    public int level;
-    public int playerSpeed;
-    public int playerMaxStuff;
-}
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [Header("# Game Info")]
-    public float GameTime;
-    public int money { get; set; }
-    public int level;
-    public int exp;
-    public int[] nextEXP;
+    [Header("# Base Setting")]
+    [SerializeField] private int baseUpgradePrice = 250;
+    [SerializeField, Range(1.01f, 2.0f)] private float upgradeGrowthFactor = 1.5f;
+    [SerializeField] private int baseUnlockPrice = 75;
+    [SerializeField, Range(1.01f, 2.0f)] private float unlockGrowthFactor = 1.2f;
+    [SerializeField] private long startingMoney = 1000;
 
     [Header("# Manager")]
     public PoolManager PoolManager;
-    public TableManager TableManager;
 
-    [System.Serializable]
-    public struct LevelData
-    {
-        public float moveSpeed;
-        public int maxCapacity;
-    }
-
-    [Header("# level data for all objects")]
-    public List<LevelData> playerLevelData = new List<LevelData>();
-    public List<LevelData> staffLevelData = new List<LevelData>();
-
-
-    [Header("# ")]
-    [SerializeField] private List<Unlockable> unlockables;
+    [Header("# Upgradables")]
+    //[SerializeField] private UpgradableBuyer upgradableBuyer;
+    [SerializeField] private List<Upgradable> upgradables = new List<Upgradable>();
 
     [Header("# UI")]
+    //[SerializeField] private TMP_Text moneyText;
     [SerializeField] private OrderInfo burgerOrderInfo;
+    //[SerializeField] private OrderInfo burgerPackOrderInfo;
 
     // Spawner
     public List<Spawner> spawners_burger = new List<Spawner>();
     public List<Spawner> spawners_burgerPack = new List<Spawner>();
     //public List<Spawner> spawners_coffee = new List<Spawner>();
 
-    public List<GameObject> counters;
-    public List<GameObject> cookers;
-
-    // Receiver
-    public Receiver receiver_burger;
-    public Receiver receiver_burgerPack;
-    //Receiver receiver_coffee;
+    public List<Counter> counters = new List<Counter>();
 
     #region Reference Properties
     public OrderInfo BurgerOrderInfo => burgerOrderInfo;
     public Trashbin TrashBin { get; private set; }
+    public int PaidAmount
+    {
+        get => data.PaidAmount;
+        set => data.PaidAmount = value;
+    }
+    public int UnlockCount
+    {
+        get => data.UnlockCount;
+        set => data.UnlockCount = value;
+    }
     #endregion
+
+    public event System.Action OnUpgrade;
+    public event System.Action<float> OnUnlock;
+
+    private StoreData data;
+    private string storeName;
 
     void Awake()
     {
         instance = this;
-        money = 50;
-        LoadData();
+        storeName = SceneManager.GetActiveScene().name;
+        data = SaveLoadManager.LoadData<StoreData>(storeName);
+        if (data == null)
+        {
+            data = new StoreData(storeName, 0);
+        }
+        //TODO
+        // money ui
+
+        for (int i = 0; i < data.EmployeeAmount; i++)
+        {
+            // spawn employee
+        }
     }
 
     private void Start()
     {
-        GameObject[] counterObjs = GameObject.FindGameObjectsWithTag("Counter");
-        foreach (GameObject counter in counterObjs)
-        {
-            counters.Add(counter);
-        }
-
-        GameObject[] cookerObjs = GameObject.FindGameObjectsWithTag("Cooker");
-        foreach (GameObject cooker in cookerObjs)
-        {
-            cookers.Add(cooker);
-        }
+        counters = GameObject.FindObjectsOfType<Counter>().ToList();
 
         var spawnerObjs = GameObject.FindObjectsOfType<Spawner>();
         foreach (Spawner spawner in spawnerObjs)
@@ -106,47 +100,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        var receiverObjs = GameObject.FindObjectsOfType<Receiver>();
-        foreach (Receiver receiver in receiverObjs)
-        {
-            if (receiver.type == eObjectType.HAMBURGER)
-            {
-                receiver_burger = receiver;
-            }
-            else if (receiver.type == eObjectType.BURGERPACK)
-            {
-                receiver_burgerPack = receiver;
-            }
-        }
-
         TrashBin = GameObject.FindObjectOfType<Trashbin>();
-    }
-
-    void LateUpdate()
-    {
-        AutoSave();
-    }
-    private void AutoSave()
-    {
-        GameTime += Time.deltaTime;
-
-        if (GameTime == 10f)
-        {
-            GameTime = 0;
-            SaveData();
-        }
-    }
-
-    public void SaveData()
-    {
-        Debug.Log("save data");
-    }
-    private void LoadData()
-    {
-        LoadDataFromCSV("PlayerLevelData", playerLevelData, ParseLevelData);
-        LoadDataFromCSV("StaffLevelData", staffLevelData, ParseLevelData);
-
-        Debug.Log("Load data");
     }
 
     void LoadDataFromCSV<T>(string filename, List<T> dataLst, Func<string[], T> parser)
@@ -177,93 +131,136 @@ public class GameManager : MonoBehaviour
             dataLst.Add(data);
         }
     }
-    private LevelData ParseLevelData(string[] values)
+
+    public int GetLevel()
     {
-        LevelData data = new LevelData
+        return data.Level;
+    }
+
+    public void AddEXP(int value)
+    {
+        data.EXP += value;
+        // EXP UI Update
+        if(data.EXP >= data.MaxEXP)
         {
-            moveSpeed = float.Parse(values[1]),
-            maxCapacity = int.Parse(values[2])
-        };
-
-        return data;
+            LevelUp();
+        }
     }
-    //private CookerData ParseCookerData(string[] values)
-    //{
-    //    CookerData data = new CookerData
-    //    {
-    //        Level = int.Parse(values[0]),
-    //        spawnSpeed = float.Parse(values[1]),
-    //        maxCapacity = int.Parse(values[2])
-    //    };
 
-    //    return data;
-    //}
-    //private TableData ParseTableData(string[] values)
-    //{
-    //    TableData data = new TableData
-    //    {
-    //        Level = int.Parse(values[0]),
-    //        eatSpeed = float.Parse(values[1]),
-    //        price = int.Parse(values[2])
-    //    };
-
-    //    return data;
-    //}
-
-    // cooker �߰��� �� ȣ��
-    public void AddCooker()
+    public void LevelUp()
     {
-        //cook
+        data.Level++;
+        data.EXP = 0;
+        data.MaxEXP += 3;
+        // Level, EXP UI Update
     }
 
-    // test code
-    //public GameObject idText;
-    //public GameObject levelText;
-    //public GameObject speedText;
+    public int GetEXP()
+    { 
+        return data.EXP; 
+    }
 
-    //// �ӽ� ������
-    //info info;
-    //public void ChangeInfo()
-    //{
-    //    info.id = Random.Range(1, 100);
-    //    info.name = "suan";
-    //    info.level = Random.Range(1, 100);
-    //    info.playerSpeed = Random.Range(1, 100);
-    //    info.playerMaxStuff = Random.Range(1, 100);
+    public int GetMaxEXP()
+    {
+        return data.MaxEXP; 
+    }
 
-    //    ChangeText();
-    //}
+    public void AdjustMoney(int value)
+    {
+        data.Money += value;
+        // TODO) money text update
+        // update가 아니라 돈을 얻을 때 money text update 시킨다.
+    }
 
-    //public void GetData()
-    //{
-    //    Debug.Log("Loads Data");
+    public long GetMoney()
+    {
+        return data.Money;
+    }
 
-    //    info.id = PlayerPrefs.GetInt("id", 0);
-    //    info.name = PlayerPrefs.GetString("name", "default");
-    //    info.level = PlayerPrefs.GetInt("level", 0);
-    //    info.playerSpeed = PlayerPrefs.GetInt("speed", 0);
-    //    info.playerMaxStuff = PlayerPrefs.GetInt("maxStuff", 0);
+    public string GetFormattedMoney(long money)
+    {
+        if (money < 1000) return money.ToString();
+        else if (money < 1000000) return (money / 1000f).ToString("0.##") + "k";
+        else if (money < 1000000000) return (money / 1000000f).ToString("0.##") + "m";
+        else if (money < 1000000000000) return (money / 1000000000f).ToString("0.##") + "b";
+        else return (money / 1000000000000f).ToString("0.##") + "t";
+    }
 
-    //    ChangeText();
-    //}
+    public void PurchaseUpgrade(UpgradeType upgradeType)
+    {
+        int price = GetUpgradePrice(upgradeType);
+        AdjustMoney(price);
 
-    //public void SaveData()
-    //{
-    //    Debug.Log("Save Data");
+        switch(upgradeType)
+        {
+            case UpgradeType.EmployeeSpeed:
+                data.EmployeeSpeed++;
+                break;
+            case UpgradeType.EmployeeCapacity:
+                data.EmployeeCapacity++;
+                break;
+            case UpgradeType.EmployeeAmount:
+                data.EmployeeAmount++;
+                // TODO) Spawn Employee
+                break;
+                case UpgradeType.PlayerSpeed:
+                data.PlayerSpeed++;
+                break;
+                case UpgradeType.PlayerCapacity:
+                data.PlayerCapacity++;
+                break;
+            case UpgradeType.Profit:
+                data.Profit++;
+                break;
+            default:
+                break;
+        }
+        SaveLoadManager.SaveData<StoreData>(data, storeName);
+        OnUpgrade?.Invoke();
+    }
 
-    //    PlayerPrefs.SetInt("id", info.id);
-    //    PlayerPrefs.SetString("name", info.name);
-    //    PlayerPrefs.SetInt("level", info.level);
-    //    PlayerPrefs.SetInt("speed", info.playerSpeed);
-    //    PlayerPrefs.SetInt("maxStuff", info.playerMaxStuff);
+    public int GetUpgradePrice(UpgradeType upgradeType)
+    {
+        int currentLevel = GetUpgradeLevel(upgradeType);
+        return Mathf.RoundToInt(Mathf.Round(baseUpgradePrice * Mathf.Pow(upgradeGrowthFactor, currentLevel)) / 50.0f) * 50;
+    }
 
-    //    PlayerPrefs.Save();
-    //}
+    public int GetUpgradeLevel(UpgradeType upgradeType)
+    {
+        int level = 0;
+        switch (upgradeType)
+        {
+            case UpgradeType.EmployeeSpeed:
+                level = data.EmployeeSpeed;
+                break;
+            case UpgradeType.EmployeeCapacity:
+                level = data.EmployeeCapacity;
+                break;
+            case UpgradeType.EmployeeAmount:
+                level = data.EmployeeAmount;
+                break;
+            case UpgradeType.PlayerSpeed:
+                level = data.PlayerSpeed;
+                break;
+            case UpgradeType.PlayerCapacity:
+                level = data.PlayerCapacity;
+                break;
+            case UpgradeType.Profit:
+                level = data.Profit;
+                break;
+            default:
+                break;
+        }
+        return level;
+    }
+}
 
-    //void ChangeText()
-    //{
-    //    idText.GetComponent<Text>().text = info.id.ToString(); 
-    //    levelText.GetComponent<Text>().text = info.level.ToString(); 
-    //    speedText.GetComponent<Text>().text = info.playerSpeed.ToString(); 
-    //}
+public enum UpgradeType
+{
+    EmployeeSpeed,
+    EmployeeCapacity,
+    EmployeeAmount,
+    PlayerSpeed,
+    PlayerCapacity,
+    Profit
 }

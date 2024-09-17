@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpgradeBox : MonoBehaviour
+public class UpgradeBox : Interactable
 {
     [Header("Button info")]
     public float allPrice;
@@ -14,8 +14,8 @@ public class UpgradeBox : MonoBehaviour
     public bool isPushed = true;
 
     [Header("Image obj")]
-    public Image background;
-    public Image fill;
+    [SerializeField] private Image background;
+    [SerializeField] private Image fill;
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +30,9 @@ public class UpgradeBox : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (isPushed && GameManager.instance.money > 0)
+        if (isPushed && GameManager.instance.GetMoney() > 0)
         {
-            curPrice = GameManager.instance.money / allPrice;
+            curPrice = GameManager.instance.GetMoney() / allPrice;
             StartCoroutine(Filling());
         }
 
