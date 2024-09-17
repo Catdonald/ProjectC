@@ -30,9 +30,9 @@ public class UpgradeBox : Interactable
     // Update is called once per frame
     void LateUpdate()
     {
-        if (isPushed && GameManager.instance.money > 0)
+        if (isPushed && GameManager.instance.GetMoney() > 0)
         {
-            curPrice = GameManager.instance.money / allPrice;
+            curPrice = GameManager.instance.GetMoney() / allPrice;
             StartCoroutine(Filling());
         }
 

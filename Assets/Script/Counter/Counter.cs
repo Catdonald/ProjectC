@@ -62,7 +62,7 @@ public class Counter : WorkStation
     protected override void UpgradeStats()
     {
         sellingInterval = baseSellingInterval / upgradeLevel;
-        //receiver.MaxStackCount = baseStack + upgradeLevel * 5;
+        receiver.MaxStackCount = baseStack + upgradeLevel * 5;
         sellPrice = Mathf.RoundToInt(priceIncrementRate * basePrice);
         // TODO
         // sellingInterval�� �ٸ� customerSpawner�� spawnInterval�� �پ�� �� �� ������..
@@ -73,6 +73,11 @@ public class Counter : WorkStation
     public int GetStoredFoodCount()
     {
         return receiver.stack.Count;
+    }
+
+    public bool IsFoodStorageFull()
+    {
+        return receiver.IsFull;
     }
 
     private void SellFoodToCustomer()
@@ -91,7 +96,7 @@ public class Counter : WorkStation
     
     private void FindAvailableSeat()
     {
-        var seat = GameManager.instance.TableManager.GetAvailableSeat(firstCustomer, stackType);
+        var seat = TableManager.Instance.GetAvailableSeat(firstCustomer, stackType);
         if (seat != null)
         {
             var customer = lineQueue.RemoveCustomer();

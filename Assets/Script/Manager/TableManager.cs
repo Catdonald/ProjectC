@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class TableManager : MonoBehaviour
 {
-    private int randomTableIndex = 0;
+    public static TableManager Instance {  get; private set; }
     [SerializeField]
     private List<Table> tables_burger = new List<Table>();
     public List<Table> Tables_burger => tables_burger;
     public List<Table> DirtyTables => tables_burger.Where(x => x.TrashCount > 0).ToList();
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -25,12 +30,6 @@ public class TableManager : MonoBehaviour
                 // TODO
             }
         }
-        PickRandomTableIndex();
-    }
-
-    private void PickRandomTableIndex()
-    {
-        randomTableIndex = Random.Range(0, tables_burger.Count);
     }
 
     public GameObject GetAvailableSeat(CustomerController customer, eObjectType type)

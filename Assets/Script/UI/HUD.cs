@@ -23,11 +23,11 @@ public class HUD : MonoBehaviour
 
     void LateUpdate()
     {
-        switch (type)
+        /*switch (type)
         {
             case InfoType.Money:
                 {
-                    mytext.text = string.Format("{0:F0}", GameManager.instance.money);
+                    mytext.text = GameManager.instance.GetFormattedMoney();
                 }
                 break;
             case InfoType.LV:
@@ -43,6 +43,6 @@ public class HUD : MonoBehaviour
                     myslider.value = curEXP / maxEXP;
                 }
                 break;
-        }
+        }*/
     }
 }

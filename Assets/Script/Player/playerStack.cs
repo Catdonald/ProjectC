@@ -11,8 +11,6 @@ using DG.Tweening;
 
 public class playerStack : Stackable
 {
-    public PlayerData playerData;
-
     void Awake()
     {
         type = eObjectType.LAST;
@@ -20,7 +18,7 @@ public class playerStack : Stackable
 
     void Start()
     {
-        playerData = transform.parent.GetComponent<PlayerData>();
+        
     }
 
     void Update()
