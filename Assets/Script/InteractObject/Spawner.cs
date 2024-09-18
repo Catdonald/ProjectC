@@ -36,12 +36,17 @@ public class Spawner : Stackable
 
     public override void Enter(Collision other)
     {
+        if (other.gameObject.layer != LayerMask.NameToLayer("Interactable"))
+            return;
         base.Enter(other);
         player = other.transform.GetComponentInChildren<playerStack>();
     }
 
     public override void Interaction(Collision other)
     {
+        if (other.gameObject.layer != LayerMask.NameToLayer("Interactable"))
+            return;
+
         if (stack.Count == 0)
             return;
 

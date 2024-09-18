@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            // UI´Â Å¬¸¯µÇÁö ¾Ê´Â´Ù.
+            // UIï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½.
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
                 {
                     isClicked = true;
                     mouseClickedPos = Input.mousePosition;
-                    // moveController UI È°¼ºÈ­
+                    // moveController UI È°ï¿½ï¿½È­
                     moveController.SetActive(true);
                     Vector3 touchControllerPos = new Vector3(mouseClickedPos.x - Screen.width / 2, mouseClickedPos.y - Screen.height / 2, mouseClickedPos.z);
                     moveController.GetComponent<RectTransform>().localPosition = touchControllerPos;
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
         {
             if (isClicked)           
             {
-                // Å¬¸¯µÈ À§Ä¡¿Í ÇöÀç Ä¿¼­ À§Ä¡¸¦ ÅëÇØ ÀÌµ¿ ¹æÇâ ±¸ÇÏ±â
+                // Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
                 Vector3 mousePos = Input.mousePosition;
                 Vector3 mouseDelta = mousePos - mouseClickedPos;
                 // max padSizeX = 35.0f
@@ -81,8 +81,8 @@ public class PlayerController : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(rayStartPoint, moveVec, out hit, 1.0f))
                 {
-                    // Á÷¿øÀÌ³ª ¼Õ´Ô ¿ÀºêÁ§Æ®¿¡ Ãæµ¹ÇÏÁö ¾Ê¾Ò´Ù¸é
-                    // °Ç¹°ÀÌ³ª ±â°è, Ä«¿îÅÍ¿Í °°Àº ¿ÀºêÁ§Æ®¿Í ·¹ÀÌ°¡ Ãæµ¹ÇÑ °ÍÀÌ´Ù.
+                    // ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½Õ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½æµ¹ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò´Ù¸ï¿½
+                    // ï¿½Ç¹ï¿½ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½, Ä«ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½æµ¹ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½.
                     if (!hit.collider.CompareTag("Building"))
                     {
                         playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * moveSpeed);
@@ -92,13 +92,13 @@ public class PlayerController : MonoBehaviour
                 {
                     playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * moveSpeed);
                 }
-                // ÀÌµ¿ÇÏ´Â ¹æÇâ ¹Ù¶óº¸±â
+                // ï¿½Ìµï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶óº¸±ï¿½
                 if (moveVec.magnitude > 0.0f)
                 {
                     playerRoot.transform.forward = moveVec;
                 }
 
-                // ¸¶¿ì½º À§Ä¡ º¯È­ÇÑ Á¤µµ JoyStickController¿¡ ³Ñ°ÜÁÖ±â
+                // ï¿½ï¿½ï¿½ì½º ï¿½ï¿½Ä¡ ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ JoyStickControllerï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½Ö±ï¿½
                 joystickController.mouseDelta = mouseDelta;
             }
         }
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
         {
             isClicked = false;
             animator.SetBool("isMove", false);
-            // touchController UI ºñÈ°¼ºÈ­
+            // touchController UI ï¿½ï¿½È°ï¿½ï¿½È­
             moveController.SetActive(false);
         }
     }
@@ -139,8 +139,8 @@ public class PlayerController : MonoBehaviour
     private void UpdateStats()
     {
         int speedLevel = GameManager.instance.GetUpgradeLevel(UpgradeType.PlayerSpeed);
-        moveSpeed = baseSpeed + (speedLevel * 0.2f);
-
+        //moveSpeed = baseSpeed + (speedLevel * 0.2f);
+        moveSpeed = 25f;
         int capacityLevel = GameManager.instance.GetUpgradeLevel(UpgradeType.PlayerCapacity);
         Capacity = baseCapacity + (capacityLevel * 3);
     }

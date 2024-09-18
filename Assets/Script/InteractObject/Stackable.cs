@@ -12,7 +12,7 @@ public class Stackable : MonoBehaviour, IStackObject
     public Stack<GameObject> stack { get; set; } = new Stack<GameObject>();
     public float objectHeight { get; set; } = 0;
     public int Count => stack.Count;
-    public int MaxStackCount { get; set; }
+    public int MaxStackCount { get; set; } = 5;
     public bool IsFull => stack.Count >= MaxStackCount;
     
     public virtual void Enter(Collision other)
