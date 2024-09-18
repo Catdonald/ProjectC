@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerInteraction : MonoBehaviour
+public class InteractionRange : MonoBehaviour
 {
+    public Receiver stack;
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer != LayerMask.NameToLayer("Interactable"))
             return;
 
-        GetComponentInChildren<Spawner>().Enter(collision);
+        GetComponentInChildren<Receiver>().Enter(collision);
     }
 
     void OnCollisionStay(Collision collision)
@@ -17,7 +19,7 @@ public class SpawnerInteraction : MonoBehaviour
         if (collision.gameObject.layer != LayerMask.NameToLayer("Interactable"))
             return;
 
-        GetComponentInChildren<Spawner>().Interaction(collision);
+        GetComponentInChildren<Receiver>().Interaction(collision);
     }
 
     void OnCollisionExit(Collision collision)
@@ -25,6 +27,6 @@ public class SpawnerInteraction : MonoBehaviour
         if (collision.gameObject.layer != LayerMask.NameToLayer("Interactable"))
             return;
 
-        GetComponentInChildren<Spawner>().Exit();
+        GetComponentInChildren<Receiver>().Exit();
     }
 }

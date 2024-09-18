@@ -62,6 +62,11 @@ public class Counter : WorkStation
         //sellPrice = Mathf.RoundToInt(Mathf.Pow(priceIncrementRate, profitLevel) * basePrice);
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+
+    }
+
     public int GetStoredFoodCount()
     {
         return receiver.stack.Count;
