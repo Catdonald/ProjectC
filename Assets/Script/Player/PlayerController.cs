@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject playerRoot;
     [SerializeField] private GameObject moveController;
 
-    [SerializeField] private float baseSpeed = 3.0f;
+    [SerializeField] private float baseSpeed = 30.0f;
     [SerializeField] private int baseCapacity = 5;
 
     private playerStack playerStack;

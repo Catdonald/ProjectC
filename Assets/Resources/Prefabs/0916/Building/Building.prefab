@@ -2371,6 +2371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6798656978267701080}
   - component: {fileID: 2248951707985048386}
+  - component: {fileID: 6568497221612355423}
   m_Layer: 0
   m_Name: Activator
   m_TagString: Untagged
@@ -2414,6 +2415,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.756371, y: 2, z: 11.525502}
   m_Center: {x: 1.4726295, y: 1, z: 4.7972865}
+--- !u!114 &6568497221612355423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366491697506828389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea3634c9752ec84f9b70ea83199a6d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedUI: {fileID: 0}
 --- !u!1 &1459217343327722581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3642,6 +3656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7392669455513807266}
   - component: {fileID: 4857012274052753978}
+  - component: {fileID: 5058038188380844557}
   m_Layer: 0
   m_Name: Activator
   m_TagString: Untagged
@@ -3685,6 +3700,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.691218, y: 2, z: 11.653075}
   m_Center: {x: 1.5052056, y: 1, z: 2.221456}
+--- !u!114 &5058038188380844557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2326322363863536844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea3634c9752ec84f9b70ea83199a6d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedUI: {fileID: 0}
 --- !u!1 &2385210350569957908
 GameObject:
   m_ObjectHideFlags: 0
@@ -4350,7 +4378,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4885380961459376096}
   m_Layer: 0
-  m_Name: Employee_Spawner
+  m_Name: EmployeeSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -100,6 +100,9 @@ MonoBehaviour:
   unlockGrowthFactor: 1.2
   startingMoney: 1000
   PoolManager: {fileID: 290042254126803957}
+  employeeSpawner: {fileID: 0}
+  employeePrefab: {fileID: 382947474619814530, guid: 2a904ec1249322044a635bc092a92b8b, type: 3}
+  employeeSpawnRadius: 3
   upgradables: []
   burgerOrderInfo: {fileID: 0}
   spawners_burger: []

@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
     [Header("# Manager")]
     public PoolManager PoolManager;
 
+    [Header("# Employee")]
+    [SerializeField] private Transform employeeSpawner;
+    [SerializeField] private GameObject employeePrefab;
+    [SerializeField, Range(2.0f, 5.0f)] private float employeeSpawnRadius = 3.0f;
+
     [Header("# Upgradables")]
     //[SerializeField] private UpgradableBuyer upgradableBuyer;
     [SerializeField] private List<Upgradable> upgradables = new List<Upgradable>();
@@ -79,7 +84,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < data.EmployeeAmount; i++)
         {
-            // spawn employee
+            SpawnEmployee();
         }
     }
 
@@ -258,7 +263,9 @@ public class GameManager : MonoBehaviour
 
     public void SpawnEmployee()
     {
-
+        Vector2 randomCircle = UnityEngine.Random.insideUnitCircle * employeeSpawnRadius;
+        Vector3 randomPos = employeeSpawner.position + new Vector3(randomCircle.x, 0, randomCircle.y);
+        Instantiate(employeePrefab, randomPos, employeeSpawner.rotation);
     }
 }
 

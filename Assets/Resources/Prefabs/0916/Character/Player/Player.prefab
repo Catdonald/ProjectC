@@ -519,7 +519,6 @@ GameObject:
   - component: {fileID: 5825944572826704193}
   - component: {fileID: 8470268960847453988}
   - component: {fileID: 927707298224408916}
-  - component: {fileID: 5236432564641022178}
   - component: {fileID: 764923725926451389}
   - component: {fileID: 6953376925520537540}
   m_Layer: 0
@@ -583,23 +582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRoot: {fileID: 1407339281724057772}
   moveController: {fileID: 0}
-  playerStack: {fileID: 0}
---- !u!114 &5236432564641022178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3067771598544514852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe16e9011e2e195458bd39131e7d2c4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  experienceToNextLevel: 100
-  moveSpeed: 0
-  maxCapacity: 0
-  returnRate: 0
+  baseSpeed: 30
+  baseCapacity: 5
 --- !u!136 &764923725926451389
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1487,4 +1471,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  playerData: {fileID: 0}

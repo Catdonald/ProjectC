@@ -29,7 +29,7 @@ public class UpgradeHandler : MonoBehaviour
         int currentLevel = GameManager.instance.GetUpgradeLevel(upgradeType);
         for(int i = 0; i < indicators.Length; i++)
         {
-            indicators[i].color = i < currentLevel ? (currentLevel / 5 >= 1 && (currentLevel % 5 == (i + 1)) ? activeColors[1] : activeColors[0]) : Color.gray;
+            indicators[i].color = i < currentLevel ? (currentLevel / 5 >= 1 && (currentLevel % 5 >= (i + 1)) ? activeColors[1] : activeColors[0]) : Color.gray;
         }
 
         if(currentLevel < 10)

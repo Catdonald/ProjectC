@@ -216,6 +216,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 49.032, y: -15.101, z: 11.36}
+--- !u!1 &1033239441 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9212235923066362631, guid: c63314d61190776448e39ebe2a4c0dc4, type: 3}
+  m_PrefabInstance: {fileID: 6724547192965244984}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1236940825
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +289,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1997871822 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4885380961459376096, guid: 116973946030093428241a346e8a1769, type: 3}
+  m_PrefabInstance: {fileID: 6554053764848791735}
+  m_PrefabAsset: {fileID: 0}
 --- !u!20 &2075093224 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8921064249148911126, guid: 5d5e701faa3099d41b398c1eb5541d1f, type: 3}
@@ -656,6 +666,10 @@ PrefabInstance:
       propertyPath: burgerOrderInfo
       value: 
       objectReference: {fileID: 3842088280383645084}
+    - target: {fileID: 3204582313853209224, guid: c4ceb413af0b36c4e9e9ca1189f6713c, type: 3}
+      propertyPath: employeeSpawner
+      value: 
+      objectReference: {fileID: 1997871822}
     - target: {fileID: 3853376943079936069, guid: c4ceb413af0b36c4e9e9ca1189f6713c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -958,6 +972,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5058038188380844557, guid: 116973946030093428241a346e8a1769, type: 3}
+      propertyPath: linkedUI
+      value: 
+      objectReference: {fileID: 1033239441}
     - target: {fileID: 5649692986266290965, guid: 116973946030093428241a346e8a1769, type: 3}
       propertyPath: m_Name
       value: Building
