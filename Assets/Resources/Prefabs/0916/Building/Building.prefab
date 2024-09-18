@@ -3186,7 +3186,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.083333336
   m_MinRegionArea: 3
-  m_NavMeshData: {fileID: 23800000, guid: ea65a1aa806537a489a70ec038c10068, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 1c14e1c31cc223749b3df5ba129b5795, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &2130711283047459534
 GameObject:
@@ -13825,7 +13825,7 @@ GameObject:
   - component: {fileID: 1342714007019978613}
   m_Layer: 0
   m_Name: TrashBin
-  m_TagString: TrashBin
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8

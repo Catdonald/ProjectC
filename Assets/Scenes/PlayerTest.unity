@@ -464,6 +464,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4252604743282134793, guid: 75d4885ba6498974698231f24267ae3b, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -882,6 +886,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_Double
       objectReference: {fileID: 0}
+    - target: {fileID: 5685964959008742210, guid: 0ce62fdc1a1ecb54a9eaeddf8c39951c, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -966,6 +974,10 @@ PrefabInstance:
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 1c14e1c31cc223749b3df5ba129b5795, type: 2}
+    - target: {fileID: 9079321987209811835, guid: 116973946030093428241a346e8a1769, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
