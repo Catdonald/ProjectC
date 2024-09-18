@@ -5,8 +5,8 @@ using UnityEngine;
 using DG.Tweening;
 
 /// <summary>
-/// 240822 ������
-/// �÷��̾��� ���Ÿ� �������� ������Ʈ ����
+/// 240822 
+/// 오브젝트를 받을 수 있는 모든 객체
 /// </summary>
 
 public class Receiver : Stackable

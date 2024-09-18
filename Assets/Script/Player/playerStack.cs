@@ -5,8 +5,8 @@ using UnityEngine;
 using DG.Tweening;
 
 /// <summary>
-/// 240822 ������
-/// �÷��̾ �̰� �ٴϴ� ���� ����
+/// 240822
+/// 플레이어, 직원 스택
 /// </summary>
 
 public class playerStack : Stackable
