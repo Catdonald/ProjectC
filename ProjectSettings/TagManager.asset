@@ -5,19 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Upgrade
-  - Table
-  - Counter
-  - Storage
   - Building
-  - TrashBin
-  - Order
-  - Packing
   - Employee
   - TrashBin
   - Order
   - Customer
   - Entrance
-  - Cooker
   layers:
   - Default
   - TransparentFX

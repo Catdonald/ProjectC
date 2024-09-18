@@ -11,12 +11,13 @@ public class UpgradeHandler : MonoBehaviour
     [SerializeField] private TMP_Text priceLabelText;
     [SerializeField] private Image[] indicators;
 
-    private Color halfActiveColor = new Color(1.0f, 0.5f, 0.25f, 0.5f);
-    private Color activeColor = new Color(1.0f, 0.5f, 0.25f, 1.0f);
+    private List<Color> activeColors = new List<Color>();
 
     // Start is called before the first frame update
     void Start()
     {
+        activeColors.Add(new Color(1.0f, 0.5f, 0.25f, 0.5f));
+        activeColors.Add(new Color(1.0f, 0.5f, 0.25f, 1.0f));
         upgradeButton.onClick.AddListener(() =>
             GameManager.instance.PurchaseUpgrade(upgradeType)
         );
@@ -25,9 +26,22 @@ public class UpgradeHandler : MonoBehaviour
 
     private void UpdateHandler()
     {
-        // TODO
-        // 레벨에 따른 인디케이터 활성화
-        // priceLabel Text 업데이트
-        //upgradeButton.interactable = bool;
+        int currentLevel = GameManager.instance.GetUpgradeLevel(upgradeType);
+        for(int i = 0; i < indicators.Length; i++)
+        {
+            indicators[i].color = i < currentLevel ? (currentLevel / 5 >= 1 && (currentLevel % 5 == (i + 1)) ? activeColors[1] : activeColors[0]) : Color.gray;
+        }
+
+        if(currentLevel < 10)
+        {
+            int price = GameManager.instance.GetUpgradePrice(upgradeType);
+            priceLabelText.text = GameManager.instance.GetFormattedMoney(price);
+            upgradeButton.interactable = GameManager.instance.GetMoney() >= price;
+        }
+        else
+        {
+            priceLabelText.text = "MAX";
+            upgradeButton.interactable = false;
+        }
     }
 }

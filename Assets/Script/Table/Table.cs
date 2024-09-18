@@ -94,7 +94,7 @@ public class Table : Upgradable
             int tipAmount = Random.Range(2, 5 + tipLevel);
             for(int i = 0; i < tipAmount; i++)
             {
-                // TODO) ���̺� �� ���̴� ��� AddMoney()
+                // TODO) AddMoney()
             }
         }
     }
