@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
             {
                 LevelUp();
             }
+            // Level, EXP UI Update
         }
     }
 
@@ -154,7 +155,6 @@ public class GameManager : MonoBehaviour
         data.Level++;
         data.EXP = 0;
         data.MaxEXP += 3;
-        // Level, EXP UI Update
     }
 
     public int GetEXP()
