@@ -139,11 +139,13 @@ public class GameManager : MonoBehaviour
 
     public void AddEXP(int value)
     {
-        data.EXP += value;
-        // EXP UI Update
-        if(data.EXP >= data.MaxEXP)
+        for(int i = 0; i < value; ++i)
         {
-            LevelUp();
+            data.EXP++;
+            if (data.EXP >= data.MaxEXP)
+            {
+                LevelUp();
+            }
         }
     }
 
@@ -201,7 +203,7 @@ public class GameManager : MonoBehaviour
                 break;
             case UpgradeType.EmployeeAmount:
                 data.EmployeeAmount++;
-                // TODO) Spawn Employee
+                SpawnEmployee();
                 break;
                 case UpgradeType.PlayerSpeed:
                 data.PlayerSpeed++;
@@ -252,6 +254,11 @@ public class GameManager : MonoBehaviour
                 break;
         }
         return level;
+    }
+
+    public void SpawnEmployee()
+    {
+
     }
 }
 
