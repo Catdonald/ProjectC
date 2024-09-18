@@ -13,15 +13,24 @@ public class UpgradeHandler : MonoBehaviour
 
     private List<Color> activeColors = new List<Color>();
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         activeColors.Add(new Color(1.0f, 0.5f, 0.25f, 0.5f));
         activeColors.Add(new Color(1.0f, 0.5f, 0.25f, 1.0f));
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {      
         upgradeButton.onClick.AddListener(() =>
             GameManager.instance.PurchaseUpgrade(upgradeType)
         );
         GameManager.instance.OnUpgrade += UpdateHandler;
+    }
+
+    private void OnEnable()
+    {
+        UpdateHandler();
     }
 
     private void UpdateHandler()
@@ -36,7 +45,9 @@ public class UpgradeHandler : MonoBehaviour
         {
             int price = GameManager.instance.GetUpgradePrice(upgradeType);
             priceLabelText.text = GameManager.instance.GetFormattedMoney(price);
-            upgradeButton.interactable = GameManager.instance.GetMoney() >= price;
+            
+            bool hasEnoughMoney = GameManager.instance.GetMoney() >= price;
+            upgradeButton.interactable = hasEnoughMoney;
         }
         else
         {

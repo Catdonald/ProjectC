@@ -5,24 +5,19 @@ using UnityEngine;
 public class Line : MonoBehaviour
 {
     private Queue<CustomerController> customerQueue;
-    private int queueMaxCount = 10;
     private Transform[] linePositions;
-    public int QueueCount { get; set; }
+
+    public int QueueCount => customerQueue.Count;
 
     // Start is called before the first frame update
     void Start()
     {
         customerQueue = new Queue<CustomerController>();
-        linePositions = new Transform[queueMaxCount];
+        linePositions = new Transform[10];
         for (int i = 0; i < linePositions.Length; i++)
         {
             linePositions[i] = transform.GetChild(i);
         }
-    }
-
-    public bool IsQueueFull()
-    {
-        return QueueCount >= queueMaxCount;
     }
 
     public void AddCustomer(CustomerController customer)

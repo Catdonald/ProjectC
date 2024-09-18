@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     [Header("# UI")]
     //[SerializeField] private TMP_Text moneyText;
-    [SerializeField] private OrderInfo burgerOrderInfo;
+    [SerializeField] private OrderInfo[] orderInfo; // 0: burger, 1: sub-menu
     //[SerializeField] private OrderInfo burgerPackOrderInfo;
 
     // Spawner
@@ -49,8 +49,7 @@ public class GameManager : MonoBehaviour
 
     public List<Counter> counters = new List<Counter>();
 
-    #region Reference Properties
-    public OrderInfo BurgerOrderInfo => burgerOrderInfo;
+    #region Reference Properties 
     public Trashbin TrashBin { get; private set; }
     public int PaidAmount
     {
@@ -77,10 +76,9 @@ public class GameManager : MonoBehaviour
         data = SaveLoadManager.LoadData<StoreData>(storeName);
         if (data == null)
         {
-            data = new StoreData(storeName, 0);
+            data = new StoreData(storeName, startingMoney);
         }
-        //TODO
-        // money ui
+        AdjustMoney(0);
 
         for (int i = 0; i < data.EmployeeAmount; i++)
         {
@@ -106,6 +104,15 @@ public class GameManager : MonoBehaviour
         }
 
         TrashBin = GameObject.FindObjectOfType<Trashbin>();
+
+        /// 임시코드 - Entrance_burgerJoint, Counter_Burger, BurgerMachine unlock
+        UnlockCount = 3;
+        /// --------
+
+        for(int i = 0; i < UnlockCount; i++)
+        {
+            upgradables[i].Upgrade(false);
+        }
     }
 
     void LoadDataFromCSV<T>(string filename, List<T> dataLst, Func<string[], T> parser)
@@ -196,7 +203,7 @@ public class GameManager : MonoBehaviour
     public void PurchaseUpgrade(UpgradeType upgradeType)
     {
         int price = GetUpgradePrice(upgradeType);
-        AdjustMoney(price);
+        AdjustMoney(-price);
 
         switch(upgradeType)
         {
@@ -259,6 +266,11 @@ public class GameManager : MonoBehaviour
                 break;
         }
         return level;
+    }
+
+    public OrderInfo GetOrderInfo(int index)
+    {
+        return orderInfo[index];
     }
 
     public void SpawnEmployee()

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class CustomerController : MonoBehaviour
 {
-    public GameObject spawner;
     public GameObject entrance;
+    public Transform spawnPoint;
     public Table touchedTable;
     public playerStack customerstack;
     public Line line;
@@ -108,7 +108,7 @@ public class CustomerController : MonoBehaviour
     IEnumerator Exit()
     {
         yield return new WaitUntil(() => HasArrivedToDestination());
-        agent.SetDestination(spawner.transform.position);
+        agent.SetDestination(spawnPoint.position);
         yield return new WaitUntil(() => HasArrivedToDestination());
         GameManager.instance.PoolManager.Return(gameObject);
     }

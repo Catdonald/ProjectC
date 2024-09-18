@@ -27,7 +27,7 @@ public class Spawner : Stackable
 
     void Update()
     {
-        if (stack.Count < 5 && !isActing)
+        if (stack.Count < MaxStackCount && !isActing)
         {
             isActing = true;
             StartCoroutine(SpawnObject((int)type));

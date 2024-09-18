@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject playerRoot;
     [SerializeField] private GameObject moveController;
 
-    [SerializeField] private float baseSpeed = 30.0f;
+    [SerializeField] private float baseSpeed = 10.0f;
     [SerializeField] private int baseCapacity = 5;
 
     private playerStack playerStack;
@@ -109,30 +109,6 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isMove", false);
             // touchController UI 비활성화
             moveController.SetActive(false);
-        }
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Upgrade"))
-        {
-            UpgradeBox box = collision.gameObject.GetComponent<UpgradeBox>();
-            if (box != null)
-            {
-                box.isPushed = true;
-            }
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Upgrade"))
-        {
-            UpgradeBox box = collision.gameObject.GetComponent<UpgradeBox>();
-            if (box != null)
-            {
-                box.isPushed = false;
-            }
         }
     }
 
