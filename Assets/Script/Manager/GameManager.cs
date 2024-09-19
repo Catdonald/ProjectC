@@ -117,6 +117,9 @@ public class GameManager : MonoBehaviour
     public void SetNowUpgradableObject()
     {
         upgradeIndex++;
+        if (upgradables.Count < upgradeIndex)
+            upgradeIndex = 0;
+
         currentUpgradableObj = upgradables[upgradeIndex];
 
         Vector3 pos = currentUpgradableObj.transform.Find("UpgradePoint").position;

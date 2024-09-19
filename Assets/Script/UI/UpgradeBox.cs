@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UpgradeBox : Interactable
 {
     [Header("Button info")]
-    public float allPrice;
+    public float Price;
     public float curPrice;
     public int width;  
     public int height;
@@ -21,10 +21,11 @@ public class UpgradeBox : Interactable
     // Start is called before the first frame update
     void Start()
     {
-        allPrice = 100;
+        Price = 100;
         curPrice = 0;
         fill.fillAmount = 0;
         isPushed = false;
+        priceText.text = Price.ToString();
     }
     protected override void OnPlayerEnter()
     {
@@ -40,20 +41,22 @@ public class UpgradeBox : Interactable
     {
         if (isPushed && GameManager.instance.GetMoney() > 0)
         {
-            curPrice = GameManager.instance.GetMoney() / allPrice;
+            curPrice = GameManager.instance.GetMoney() / Price;
             StartCoroutine(Filling());
         }
 
         if (fill.fillAmount >= 1.0f)
         {
             GameManager.instance.currentUpgradableObj.GetComponent<Upgradable>().Upgrade();
+            Price *= 1.2f;
             SetOrigin();
         }
     }
     void SetOrigin()
     {
         curPrice = 0;
-        fill.fillAmount = 0;
+        fill.fillAmount = 0.0f;
+        priceText.text = Price.ToString();
     }
     IEnumerator Filling()
     {
