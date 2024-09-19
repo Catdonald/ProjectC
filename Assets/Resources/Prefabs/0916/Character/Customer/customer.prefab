@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 5015965617408517454}
   - component: {fileID: 4723217751268881626}
   m_Layer: 0
-  m_Name: customer (1)
+  m_Name: customer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

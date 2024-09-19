@@ -9,7 +9,7 @@ public class UpgradeBox : Interactable
     [Header("Button info")]
     public float allPrice;
     public float curPrice;
-    public int width;
+    public int width;  
     public int height;
     public bool isPushed = true;
 

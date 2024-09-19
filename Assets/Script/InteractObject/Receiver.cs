@@ -25,5 +25,5 @@ public class Receiver : Stackable
         {
             ReceiveObject(player.RequestObject(), player.type, player.objectHeight);
         }
-    }
+    } 
 }
