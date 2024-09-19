@@ -18,7 +18,7 @@ public class playerStack : Stackable
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -31,6 +31,11 @@ public class playerStack : Stackable
 
     public override void ReceiveObject(GameObject obj, eObjectType objType, float objHegiht)
     {
-        base.ReceiveObject(obj, objType, objHegiht);
+        if (stack.Count == 0 ||
+            (stack.Count > 0 && objType == type))
+        {
+            base.ReceiveObject(obj, objType, objHegiht);
+            type = objType;
+        }
     }
 }

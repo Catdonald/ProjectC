@@ -14,12 +14,12 @@ public class Spawner : Stackable
 {
     void Awake()
     {
-        type = eObjectType.HAMBURGER;
+        
     }
 
     void Start()
     {
-        GameObject obj = GameManager.instance.PoolManager.Get(0);
+        GameObject obj = GameManager.instance.PoolManager.Get((int)type);
         objectHeight = obj.GetComponent<Renderer>().bounds.size.y;
         GameManager.instance.PoolManager.Return(obj);
         actingTime = 5;

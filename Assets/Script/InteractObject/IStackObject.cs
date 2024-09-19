@@ -4,9 +4,9 @@ using UnityEngine;
 
 public interface IStackObject
 {
+
     float actingTime { get; set; }
     bool isActing { get; set; }
-    eObjectType type { get; set; }
     Stack<GameObject> stack { get; set; }
     float objectHeight { get; set; }
 

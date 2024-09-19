@@ -13,7 +13,7 @@ public class Receiver : Stackable
 {
     void Awake()
     {
-        type = eObjectType.HAMBURGER;
+        
     }
     public override void Enter(Collision collision)
     {
