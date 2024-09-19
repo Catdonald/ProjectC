@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class FoodMachine : Upgradable
 {
-    [SerializeField] private float baseProductionInterval = 2.0f;
+    [SerializeField] private float baseProductionInterval = 5.0f;
     [SerializeField] private int baseCapacity = 6;
 
-    private Spawner spawner;
+    [SerializeField] private Spawner spawner;
 
     private void Start()
     {

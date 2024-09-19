@@ -10,7 +10,6 @@ public class UpgradeBox : Interactable
     public float curPrice;
     public int width;
     public int height;
-    public bool isActive = false;
     public bool isPushed = true;
 
     [Header("Image obj")]
@@ -23,7 +22,14 @@ public class UpgradeBox : Interactable
         allPrice = 100;
         curPrice = 0;
         fill.fillAmount = 0;
-        isActive = false;
+        isPushed = false;
+    }
+    protected override void OnPlayerEnter()
+    {
+        isPushed = true;
+    }
+    protected override void OnPlayerExit()
+    {
         isPushed = false;
     }
 
@@ -38,8 +44,15 @@ public class UpgradeBox : Interactable
 
         if (fill.fillAmount >= 1.0f)
         {
-            gameObject.SetActive(false);
+            var now = GameManager.instance.currentUpgradableObj.GetComponent<Upgradable>();
+            GameManager.instance.currentUpgradableObj.GetComponent<FoodMachine>().Upgrade();
+            SetOrigin();
         }
+    }
+    void SetOrigin()
+    {
+        curPrice = 0;
+        fill.fillAmount = 0;
     }
     IEnumerator Filling()
     {
