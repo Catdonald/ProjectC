@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Upgradable : MonoBehaviour
-{
-    [SerializeField] private static int objectCount = 0;
-    
+{   
     [SerializeField] private Vector3 buyingPosition = Vector3.zero;
     protected int upgradeLevel = 0;
 

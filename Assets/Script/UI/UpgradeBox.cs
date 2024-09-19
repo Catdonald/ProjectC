@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,7 @@ public class UpgradeBox : Interactable
     [Header("Image obj")]
     [SerializeField] private Image background;
     [SerializeField] private Image fill;
+    [SerializeField] private TextMeshProUGUI priceText;
 
     // Start is called before the first frame update
     void Start()
@@ -44,8 +46,7 @@ public class UpgradeBox : Interactable
 
         if (fill.fillAmount >= 1.0f)
         {
-            var now = GameManager.instance.currentUpgradableObj.GetComponent<Upgradable>();
-            GameManager.instance.currentUpgradableObj.GetComponent<FoodMachine>().Upgrade();
+            GameManager.instance.currentUpgradableObj.GetComponent<Upgradable>().Upgrade();
             SetOrigin();
         }
     }

@@ -16,7 +16,7 @@ public class FoodMachine : Upgradable
 
     protected override void UpgradeStats()
     {
-        spawner.actingTime = baseProductionInterval / upgradeLevel;
-        spawner.MaxStackCount = baseCapacity * upgradeLevel;
+        //spawner.actingTime = baseProductionInterval / upgradeLevel;
+        //spawner.MaxStackCount = baseCapacity * upgradeLevel;
     }
 }
