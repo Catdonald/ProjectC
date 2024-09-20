@@ -175,7 +175,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5489382721417582929}
-  - component: {fileID: 9042778804684353812}
   m_Layer: 0
   m_Name: Trashes
   m_TagString: Untagged
@@ -202,27 +201,6 @@ Transform:
   - {fileID: 4131459450446532458}
   m_Father: {fileID: 4533019946698549941}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &9042778804684353812
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2855868262037276143}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &4473164960507678934
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1286100233962460429}
   - component: {fileID: 5502200567855627841}
+  - component: {fileID: 2260516413220065159}
   m_Layer: 0
   m_Name: Table_Double
   m_TagString: Untagged
@@ -363,6 +342,27 @@ MonoBehaviour:
   - {fileID: 7931052543443979796}
   baseEatTime: 5
   baseTipChance: 0.4
+--- !u!65 &2260516413220065159
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5685964959008742210}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6500670614666421664
 GameObject:
   m_ObjectHideFlags: 0

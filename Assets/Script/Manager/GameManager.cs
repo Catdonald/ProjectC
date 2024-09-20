@@ -88,9 +88,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        counters = GameObject.FindObjectsOfType<Counter>().ToList();
+        counters = GameObject.FindObjectsOfType<Counter>(true).ToList();
 
-        var spawnerObjs = GameObject.FindObjectsOfType<Spawner>();
+        var spawnerObjs = GameObject.FindObjectsOfType<Spawner>(true);
         foreach (Spawner spawner in spawnerObjs)
         {
             if (spawner.type == eObjectType.HAMBURGER)

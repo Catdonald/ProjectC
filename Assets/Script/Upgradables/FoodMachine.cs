@@ -8,11 +8,6 @@ public class FoodMachine : Upgradable
     [SerializeField] private int baseCapacity = 6;
     [SerializeField] private Spawner spawner;
 
-    private void Start()
-    {
-        
-    }
-
     protected override void UpgradeStats()
     {
         spawner.actingTime = baseProductionInterval / upgradeLevel;

@@ -115,8 +115,7 @@ public class PlayerController : MonoBehaviour
     private void UpdateStats()
     {
         int speedLevel = GameManager.instance.GetUpgradeLevel(UpgradeType.PlayerSpeed);
-        //moveSpeed = baseSpeed + (speedLevel * 0.2f);
-        moveSpeed = 25f;
+        moveSpeed = baseSpeed + (speedLevel * 0.2f);
         int capacityLevel = GameManager.instance.GetUpgradeLevel(UpgradeType.PlayerCapacity);
         Capacity = baseCapacity + (capacityLevel * 3);
     }

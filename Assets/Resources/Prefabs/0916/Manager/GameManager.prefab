@@ -46,8 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 2554426912417560892, guid: 07deee93e458af646a5dc10784eb1485, type: 3}
-  - {fileID: 4453294053387319946, guid: ccfc1c57c0f0dd9409721c1dd48363af, type: 3}
+  - {fileID: 1128540469741714582, guid: 0fbbd600a6b46904f95acebcb9644c51, type: 3}
   - {fileID: 1328341206021509577, guid: c074f1af59e292d4fab7e094b8db96f4, type: 3}
+  - {fileID: 3537722718153681998, guid: dc90b8d7e990d8b409bb26cf3b917d8d, type: 3}
 --- !u!1 &5184143070185599910
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,8 +104,12 @@ MonoBehaviour:
   employeeSpawner: {fileID: 0}
   employeePrefab: {fileID: 382947474619814530, guid: 2a904ec1249322044a635bc092a92b8b, type: 3}
   employeeSpawnRadius: 3
-  upgradables: []
-  burgerOrderInfo: {fileID: 0}
+  upgradables:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  orderInfo:
+  - {fileID: 0}
   spawners_burger: []
   spawners_burgerPack: []
   counters: []

@@ -14,6 +14,8 @@ public class Stackable : MonoBehaviour, IStackObject
     public int Count => stack.Count;
     public int MaxStackCount { get; set; } = 5;
     public bool IsFull => stack.Count >= MaxStackCount;
+
+    public Vector3 PeekPoint => transform.position + new Vector3(0, objectHeight * Count, 0);
     
     public virtual void Enter(Collision other)
     {

@@ -9,7 +9,7 @@ public class WorkingSpot : MonoBehaviour
     private Image uiImage;
 
     private bool isPlayerInSpot = false;
-    // 콜라이더 영역에 Staff가 있을 때
+    // 콜라이더 영역에 Employee가 있을 때
     private bool isEmployeeInSpot = false;
 
     public EmployeeController WorkingEmployee => workingEmployee;

@@ -11,13 +11,13 @@ public class Counter : WorkStation
 
     [SerializeField] private eObjectType stackType;
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Receiver receiver;
     private Queue<CustomerController> spawnQueue = new Queue<CustomerController>();
     private int maxQueueCount = 10;
 
     private Material[] materials;
 
     private Line lineQueue;
-    private Receiver receiver;
     private float sellingTimer = 0.0f;
     private float spawnTimer = 0.0f;
 
@@ -32,10 +32,8 @@ public class Counter : WorkStation
     #endregion  
 
     private void Start()
-    {
-        receiver = GetComponentInChildren<Receiver>();
+    {       
         lineQueue = GetComponentInChildren<Line>();
-
         materials = new Material[4];
         for (int i = 0; i < materials.Length; i++)
         {
@@ -57,14 +55,8 @@ public class Counter : WorkStation
         receiver.MaxStackCount = baseStack + upgradeLevel * 5;
         sellPrice = Mathf.RoundToInt(priceIncrementRate * basePrice);
         // TODO
-        // sellingInterval�� �ٸ� customerSpawner�� spawnInterval�� �پ�� �� �� ������..
         //int profitLevel = GameManager.Instance.GetUpgradeLevel(Upgrade.Profit);
         //sellPrice = Mathf.RoundToInt(Mathf.Pow(priceIncrementRate, profitLevel) * basePrice);
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-
     }
 
     public int GetStoredFoodCount()
@@ -82,7 +74,7 @@ public class Counter : WorkStation
         spawnTimer += Time.deltaTime;
         if (spawnTimer >= spawnInterval && spawnQueue.Count < maxQueueCount)
         {
-            GameObject obj = GameManager.instance.PoolManager.Get(1);
+            GameObject obj = GameManager.instance.PoolManager.Get((int)PoolItem.Customer);
             int randomValue = Random.Range(0, materials.Length);
             obj.GetComponent<SkinnedMeshRenderer>().material = materials[randomValue];
             CustomerController customer = obj.GetComponent<CustomerController>();

@@ -7,10 +7,7 @@ TagManager:
   - Upgrade
   - Building
   - Employee
-  - TrashBin
-  - Order
   - Customer
-  - Entrance
   layers:
   - Default
   - TransparentFX

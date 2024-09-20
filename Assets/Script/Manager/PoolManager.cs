@@ -52,3 +52,12 @@ public class PoolManager : MonoBehaviour
         obj.transform.SetParent(this.transform);
     }
 }
+
+
+public enum PoolItem
+{
+    Burger,
+    BurgerPack,
+    Trash,
+    Customer,
+}

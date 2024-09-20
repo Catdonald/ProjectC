@@ -10,9 +10,9 @@ public class Upgradable : MonoBehaviour
     //private List<UpgradeMesh> upgradeMeshes;
     public Vector3 BuyingPosition => transform.TransformPoint(buyingPosition);
     
-    void Start()
+    protected void Awake()
     {
-        
+        gameObject.SetActive(false);
     }
 
     public virtual void Upgrade(bool effectOn = true)
