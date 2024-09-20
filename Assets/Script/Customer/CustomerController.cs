@@ -9,7 +9,7 @@ public class CustomerController : MonoBehaviour
     public GameObject entrance;
     public Transform spawnPoint;
     public Table touchedTable;
-    public playerStack customerstack;
+    public Receiver customerstack;
     public Line line;
     public OrderInfo orderInfo;
     public NavMeshAgent agent;
@@ -29,7 +29,7 @@ public class CustomerController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        customerstack = GetComponentInChildren<playerStack>();
+        customerstack = GetComponentInChildren<Receiver>();
     }
 
     private void OnEnable()
