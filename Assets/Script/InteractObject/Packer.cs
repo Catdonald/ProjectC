@@ -38,7 +38,7 @@ public class Packer : MonoBehaviour
 
         if (box == null)
         {
-            box = GameManager.instance.PoolManager.Get(3);
+            box = GameManager.instance.PoolManager.Get(4);
             box.transform.position = transform.position;
         }
 

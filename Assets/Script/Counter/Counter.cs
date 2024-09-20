@@ -32,7 +32,7 @@ public class Counter : WorkStation
     #endregion  
 
     private void Start()
-    {       
+    {
         lineQueue = GetComponentInChildren<Line>();
         materials = new Material[4];
         for (int i = 0; i < materials.Length; i++)
