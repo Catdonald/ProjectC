@@ -4,22 +4,11 @@ using UnityEngine;
 
 public class Entrance : Upgradable
 {
-    [SerializeField] private MeshRenderer[] entranceMeshes;
-    [SerializeField] private BoxCollider entranceColli;
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    [Header("unActive")]
+    [SerializeField] private BoxCollider unActiveEntranceColli;
 
     protected override void UpgradeStats()
     {
-        entranceColli.enabled = false;
-
-        foreach(MeshRenderer mesh in entranceMeshes)
-        {
-            mesh.enabled = true;
-        }
+        unActiveEntranceColli.enabled = false;
     }
 }

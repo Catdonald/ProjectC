@@ -17,6 +17,11 @@ public abstract class Interactable : MonoBehaviour
                 OnPlayerEnter();
             }
         }
+
+        if(other.CompareTag("Customer"))
+        {
+            OnCustomerEnter();
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -26,8 +31,16 @@ public abstract class Interactable : MonoBehaviour
             player = null;
             OnPlayerExit();
         }
+
+        if (other.CompareTag("Customer"))
+        {
+            OnCustomerExit();
+        }
     }
 
     protected virtual void OnPlayerEnter() { }
     protected virtual void OnPlayerExit() { }
+
+    protected virtual void OnCustomerEnter() { }
+    protected virtual void OnCustomerExit() { }
 }
