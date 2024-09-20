@@ -5,10 +5,9 @@ using DG.Tweening;
 
 public class PackageTable : WorkStation
 {
-    [SerializeField] private eObjectType stackType;
     [SerializeField] private Transform packageBox;
     [SerializeField] private Receiver foodReceiver;
-    [SerializeField] private Receiver packageReceiver;
+    [SerializeField] private Giver packageStorage;
 
     const int maxPackingCount = 4;
     private int currentPackingCount = 0;
@@ -76,9 +75,9 @@ public class PackageTable : WorkStation
         var burgerPack = GameManager.instance.PoolManager.Get((int)PoolItem.BurgerPack);
         burgerPack.transform.position = packageBox.position;
         // 트윈
-        burgerPack.transform.DOJump(packageReceiver.PeekPoint, 5f, 1, 0.5f).WaitForCompletion();
+        burgerPack.transform.DOJump(packageStorage.PeekPoint, 5f, 1, 0.5f).WaitForCompletion();
         // 버거팩 stack에 추가
-        packageReceiver.ReceiveObject(burgerPack, eObjectType.BURGERPACK, packageReceiver.objectHeight);
+        packageStorage.ReceiveObject(burgerPack, eObjectType.BURGERPACK, packageStorage.objectHeight);
         // 박스 오브젝트 켜기
         packageBox.gameObject.SetActive(true);
     }

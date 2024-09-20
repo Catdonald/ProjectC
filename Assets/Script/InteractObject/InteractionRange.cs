@@ -4,14 +4,33 @@ using UnityEngine;
 
 public class InteractionRange : MonoBehaviour
 {
-    public Receiver stack;
+    public enum eRangeType { SPAWNER, RECEIVER, GIVER }
+    public eRangeType rangeType;
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer != LayerMask.NameToLayer("Interactable"))
             return;
 
-        GetComponentInChildren<Receiver>().Enter(collision);
+        switch (rangeType)
+        {
+            case eRangeType.SPAWNER:
+                {
+                    GetComponentInChildren<Spawner>().Enter(collision);
+                }
+                break;
+            case eRangeType.RECEIVER:
+                {
+                    GetComponentInChildren<Receiver>().Enter(collision);
+                }
+                break;
+            case eRangeType.GIVER:
+                {
+                    GetComponentInChildren<Giver>().Enter(collision);
+                }
+                break;
+        }
+
     }
 
     void OnCollisionStay(Collision collision)
@@ -19,7 +38,24 @@ public class InteractionRange : MonoBehaviour
         if (collision.gameObject.layer != LayerMask.NameToLayer("Interactable"))
             return;
 
-        GetComponentInChildren<Receiver>().Interaction(collision);
+        switch (rangeType)
+        {
+            case eRangeType.SPAWNER:
+                {
+                    GetComponentInChildren<Spawner>().Interaction(collision);
+                }
+                break;
+            case eRangeType.RECEIVER:
+                {
+                    GetComponentInChildren<Receiver>().Interaction(collision);
+                }
+                break;
+            case eRangeType.GIVER:
+                {
+                    GetComponentInChildren<Giver>().Interaction(collision);
+                }
+                break;
+        }
     }
 
     void OnCollisionExit(Collision collision)
@@ -27,6 +63,23 @@ public class InteractionRange : MonoBehaviour
         if (collision.gameObject.layer != LayerMask.NameToLayer("Interactable"))
             return;
 
-        GetComponentInChildren<Receiver>().Exit();
+        switch (rangeType)
+        {
+            case eRangeType.SPAWNER:
+                {
+                    GetComponentInChildren<Spawner>().Exit();
+                }
+                break;
+            case eRangeType.RECEIVER:
+                {
+                    GetComponentInChildren<Receiver>().Exit();
+                }
+                break;
+            case eRangeType.GIVER:
+                {
+                    GetComponentInChildren<Giver>().Exit();
+                }
+                break;
+        }
     }
 }

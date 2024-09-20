@@ -8,7 +8,8 @@ public class Stackable : MonoBehaviour, IStackObject
     public playerStack player;
     public float actingTime { get; set; } = 0;
     public bool isActing { get; set; } = false;
-    public eObjectType type { get; set; } = eObjectType.LAST;
+
+    public eObjectType type;
     public Stack<GameObject> stack { get; set; } = new Stack<GameObject>();
     public float objectHeight { get; set; } = 0;
     public int Count => stack.Count;
@@ -73,9 +74,20 @@ public class Stackable : MonoBehaviour, IStackObject
 
         while (elapsedTime < duration)
         {
+            // 목표 지점의 X, Z 좌표를 targetObject의 위치로 업데이트
             targetPos.x = targetObject.transform.position.x;
             targetPos.z = targetObject.transform.position.z;
-            obj.transform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime / duration);
+
+            // 기본적인 Lerp로 X, Z 축 이동
+            Vector3 newPosition = Vector3.Lerp(startingPos, targetPos, elapsedTime / duration);
+
+            // Y 축에 점프 효과 추가 (포물선 모양)
+            float normalizedTime = elapsedTime / duration;
+            newPosition.y += Mathf.Sin(normalizedTime * Mathf.PI) * 1;
+
+            // 오브젝트 위치 갱신
+            obj.transform.position = newPosition;
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -93,7 +105,16 @@ public class Stackable : MonoBehaviour, IStackObject
 
         while (elapsedTime < duration)
         {
-            obj.transform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime / duration);
+            // 기본적인 Lerp로 X, Z 축 이동
+            Vector3 newPosition = Vector3.Lerp(startingPos, targetPos, elapsedTime / duration);
+
+            // Y 축에 점프 효과 추가 (포물선 모양)
+            float normalizedTime = elapsedTime / duration;
+            newPosition.y += Mathf.Sin(normalizedTime * Mathf.PI) * 1;
+
+            // 오브젝트의 위치를 갱신
+            obj.transform.position = newPosition;
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }

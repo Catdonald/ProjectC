@@ -1,29 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UpgradeBox : Interactable
 {
     [Header("Button info")]
-    public float allPrice;
+    public float Price;
     public float curPrice;
-    public int width;
+    public int width;  
     public int height;
-    public bool isActive = false;
     public bool isPushed = true;
 
     [Header("Image obj")]
     [SerializeField] private Image background;
     [SerializeField] private Image fill;
+    [SerializeField] private TextMeshProUGUI priceText;
 
     // Start is called before the first frame update
     void Start()
     {
-        allPrice = 100;
+        Price = 100;
         curPrice = 0;
         fill.fillAmount = 0;
-        isActive = false;
+        isPushed = false;
+        priceText.text = Price.ToString();
+    }
+    protected override void OnPlayerEnter()
+    {
+        isPushed = true;
+    }
+    protected override void OnPlayerExit()
+    {
         isPushed = false;
     }
 
@@ -32,14 +41,22 @@ public class UpgradeBox : Interactable
     {
         if (isPushed && GameManager.instance.GetMoney() > 0)
         {
-            curPrice = GameManager.instance.GetMoney() / allPrice;
+            curPrice = GameManager.instance.GetMoney() / Price;
             StartCoroutine(Filling());
         }
 
         if (fill.fillAmount >= 1.0f)
         {
-            gameObject.SetActive(false);
+            GameManager.instance.currentUpgradableObj.GetComponent<Upgradable>().Upgrade();
+            Price *= 1.2f;
+            SetOrigin();
         }
+    }
+    void SetOrigin()
+    {
+        curPrice = 0;
+        fill.fillAmount = 0.0f;
+        priceText.text = Price.ToString();
     }
     IEnumerator Filling()
     {

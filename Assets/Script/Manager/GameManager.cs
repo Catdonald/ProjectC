@@ -7,11 +7,11 @@ using System;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Linq;
+using DG.Tweening;
+using System.Text;
 
 /// <summary>
-/// 240821 ������
-/// ���ӸŴ���, �̱��� 
-/// ���� �Ŵ����� ���� �ٸ� �Ŵ��� �ν��Ͻ��� ����
+/// Game Manager
 /// </summary>
 
 public class GameManager : MonoBehaviour
@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int baseUnlockPrice = 75;
     [SerializeField, Range(1.01f, 2.0f)] private float unlockGrowthFactor = 1.2f;
     [SerializeField] private long startingMoney = 1000;
+    [SerializeField] private int startingMaxExp = 10;
 
     [Header("# Manager")]
     public PoolManager PoolManager;
@@ -34,8 +35,10 @@ public class GameManager : MonoBehaviour
     [SerializeField, Range(2.0f, 5.0f)] private float employeeSpawnRadius = 3.0f;
 
     [Header("# Upgradables")]
-    //[SerializeField] private UpgradableBuyer upgradableBuyer;
-    [SerializeField] private List<Upgradable> upgradables = new List<Upgradable>();
+    //[SerializeField] private UpgradeBox upgradeBox;
+    [SerializeField] private GameObject upgradeButton;
+    public List<Upgradable> upgradables = new List<Upgradable>();
+    [SerializeField] public Upgradable currentUpgradableObj;
 
     [Header("# UI")]
     //[SerializeField] private TMP_Text moneyText;
@@ -66,17 +69,17 @@ public class GameManager : MonoBehaviour
     public event System.Action OnUpgrade;
     public event System.Action<float> OnUnlock;
 
-    private StoreData data;
+    public StoreData data;
     private string storeName;
 
     void Awake()
     {
         instance = this;
-        storeName = SceneManager.GetActiveScene().name;
+        storeName = "store name";
         data = SaveLoadManager.LoadData<StoreData>(storeName);
         if (data == null)
         {
-            data = new StoreData(storeName, startingMoney);
+            data = new StoreData(storeName, startingMoney, startingMaxExp, 1);
         }
         AdjustMoney(0);
 
@@ -88,7 +91,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        counters = GameObject.FindObjectsOfType<Counter>(true).ToList();
+        counters = GameObject.FindObjectsOfType<Counter>().ToList();
 
         var spawnerObjs = GameObject.FindObjectsOfType<Spawner>(true);
         foreach (Spawner spawner in spawnerObjs)
@@ -143,6 +146,7 @@ public class GameManager : MonoBehaviour
             dataLst.Add(data);
         }
     }
+    
 
     public int GetLevel()
     {
@@ -154,11 +158,10 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < value; ++i)
         {
             data.EXP++;
-            if (data.EXP >= data.MaxEXP)
+            if (data.EXP >= data.NextEXP)
             {
                 LevelUp();
             }
-            // Level, EXP UI Update
         }
     }
 
@@ -166,7 +169,7 @@ public class GameManager : MonoBehaviour
     {
         data.Level++;
         data.EXP = 0;
-        data.MaxEXP += 3;
+        data.NextEXP += 3;
     }
 
     public int GetEXP()
@@ -176,14 +179,12 @@ public class GameManager : MonoBehaviour
 
     public int GetMaxEXP()
     {
-        return data.MaxEXP; 
+        return data.NextEXP; 
     }
 
     public void AdjustMoney(int value)
     {
         data.Money += value;
-        // TODO) money text update
-        // update가 아니라 돈을 얻을 때 money text update 시킨다.
     }
 
     public long GetMoney()

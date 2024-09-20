@@ -23,26 +23,26 @@ public class HUD : MonoBehaviour
 
     void LateUpdate()
     {
-        /*switch (type)
+        switch (type)
         {
             case InfoType.Money:
                 {
-                    mytext.text = GameManager.instance.GetFormattedMoney();
+                    mytext.text = GameManager.instance.GetFormattedMoney(GameManager.instance.data.Money);
                 }
                 break;
             case InfoType.LV:
                 {
-                    mytext.text = string.Format("LV {0:F0}", GameManager.instance.level);
+                    mytext.text = string.Format("LV {0:F0}", GameManager.instance.data.Level);
                 }
                 break;
             case InfoType.EXP:
                 {
-                    int curEXP = GameManager.instance.exp;
-                    int maxEXP = GameManager.instance.nextEXP[GameManager.instance.level];
+                    int curEXP = GameManager.instance.data.EXP;
+                    int maxEXP = GameManager.instance.data.NextEXP;
 
                     myslider.value = curEXP / maxEXP;
                 }
                 break;
-        }*/
+        }
     }
 }

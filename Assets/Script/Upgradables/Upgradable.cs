@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Upgradable : MonoBehaviour
-{
+{   
     [SerializeField] private Vector3 buyingPosition = Vector3.zero;
     protected int upgradeLevel = 0;
 
@@ -20,7 +20,7 @@ public class Upgradable : MonoBehaviour
         upgradeLevel++;
         if (upgradeLevel > 1)
         {
-            // ¸Þ½¬ ¾÷±×·¹ÀÌµå
+            // ï¿½Þ½ï¿½ ï¿½ï¿½ï¿½×·ï¿½ï¿½Ìµï¿½
         }
         else
         {
@@ -30,7 +30,7 @@ public class Upgradable : MonoBehaviour
         //unlock effect on
         if (!effectOn)
             return;
-        // ¾÷±×·¹ÀÌµå µÈ ¸Þ½¬ °³¼ö¸¸Å­ ÀÌÆåÆ® Àç»ý
+        // ï¿½ï¿½ï¿½×·ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ ï¿½Þ½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½
     }
 
     protected virtual void UpgradeStats() { }
