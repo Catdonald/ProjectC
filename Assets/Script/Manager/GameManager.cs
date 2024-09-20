@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     [Header("# Upgradables")]
     //[SerializeField] private UpgradeBox upgradeBox;
+    private int upgradeIndex = -1;
     [SerializeField] private GameObject upgradeButton;
     public List<Upgradable> upgradables = new List<Upgradable>();
     [SerializeField] public Upgradable currentUpgradableObj;
@@ -88,9 +89,10 @@ public class GameManager : MonoBehaviour
             SpawnEmployee();
         }
     }
-
     private void Start()
     {
+        SetNowUpgradableObject();
+
         counters = GameObject.FindObjectsOfType<Counter>().ToList();
 
         var spawnerObjs = GameObject.FindObjectsOfType<Spawner>(true);
@@ -107,15 +109,19 @@ public class GameManager : MonoBehaviour
         }
 
         TrashBin = GameObject.FindObjectOfType<Trashbin>();
+    }
+    public void SetNowUpgradableObject()
+    {
+        upgradeIndex++;
+        if (upgradables.Count < upgradeIndex)
+            upgradeIndex = 0;
 
-        /// 임시코드 - Entrance_burgerJoint, Counter_Burger, BurgerMachine unlock
-        UnlockCount = 3;
-        /// --------
+        currentUpgradableObj = upgradables[upgradeIndex];
 
-        for(int i = 0; i < UnlockCount; i++)
-        {
-            upgradables[i].Upgrade(false);
-        }
+        Vector3 pos = currentUpgradableObj.transform.Find("UpgradePoint").position;
+        pos.y = 0.18f;
+
+        upgradeButton.transform.position = pos;
     }
 
     void LoadDataFromCSV<T>(string filename, List<T> dataLst, Func<string[], T> parser)
@@ -146,7 +152,7 @@ public class GameManager : MonoBehaviour
             dataLst.Add(data);
         }
     }
-    
+
 
     public int GetLevel()
     {
@@ -155,7 +161,7 @@ public class GameManager : MonoBehaviour
 
     public void AddEXP(int value)
     {
-        for(int i = 0; i < value; ++i)
+        for (int i = 0; i < value; ++i)
         {
             data.EXP++;
             if (data.EXP >= data.NextEXP)
@@ -173,13 +179,13 @@ public class GameManager : MonoBehaviour
     }
 
     public int GetEXP()
-    { 
-        return data.EXP; 
+    {
+        return data.EXP;
     }
 
     public int GetMaxEXP()
     {
-        return data.NextEXP; 
+        return data.NextEXP;
     }
 
     public void AdjustMoney(int value)
@@ -206,7 +212,7 @@ public class GameManager : MonoBehaviour
         int price = GetUpgradePrice(upgradeType);
         AdjustMoney(-price);
 
-        switch(upgradeType)
+        switch (upgradeType)
         {
             case UpgradeType.EmployeeSpeed:
                 data.EmployeeSpeed++;
@@ -218,10 +224,10 @@ public class GameManager : MonoBehaviour
                 data.EmployeeAmount++;
                 SpawnEmployee();
                 break;
-                case UpgradeType.PlayerSpeed:
+            case UpgradeType.PlayerSpeed:
                 data.PlayerSpeed++;
                 break;
-                case UpgradeType.PlayerCapacity:
+            case UpgradeType.PlayerCapacity:
                 data.PlayerCapacity++;
                 break;
             case UpgradeType.Profit:
