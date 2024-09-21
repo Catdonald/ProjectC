@@ -33,11 +33,6 @@ public class Table : Upgradable
     void Start()
     {
         tableStack = GetComponentInChildren<Receiver>();
-        /*
-        eatTime = baseEatTime;
-        tipChance = baseTipChance;
-        tipLevel = 0;*/
-
         trashObject.SetActive(false);
     }
 

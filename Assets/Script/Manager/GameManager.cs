@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
     public List<Counter> counters = new List<Counter>();
 
     #region Reference Properties 
+    public DriveThruCounter DriveThruCounter { get; private set; }
     public Trashbin TrashBin { get; private set; }
     public int PaidAmount
     {
@@ -91,7 +92,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        counters = GameObject.FindObjectsOfType<Counter>().ToList();
+        counters = GameObject.FindObjectsOfType<Counter>(true).ToList();
 
         var spawnerObjs = GameObject.FindObjectsOfType<Spawner>(true);
         foreach (Spawner spawner in spawnerObjs)
@@ -106,10 +107,11 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        DriveThruCounter = GameObject.FindObjectOfType<DriveThruCounter>(true);
         TrashBin = GameObject.FindObjectOfType<Trashbin>();
 
-        /// 임시코드 - Entrance_burgerJoint, Counter_Burger, BurgerMachine unlock
-        UnlockCount = 3;
+        /// 임시코드
+        UnlockCount = 6;
         /// --------
 
         for(int i = 0; i < UnlockCount; i++)

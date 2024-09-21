@@ -6,34 +6,33 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 public class Counter : WorkStation
 {
     public GameObject casher;
-    public eObjectType StackType => stackType;
+    public eObjectType StackType => receiver.type;
     public CustomerController firstCustomer => lineQueue.Peek();
-
-    [SerializeField] private eObjectType stackType;
-    [SerializeField] private Transform spawnPoint;
-    [SerializeField] private Receiver receiver;
-    private Queue<CustomerController> spawnQueue = new Queue<CustomerController>();
-    private int maxQueueCount = 10;
-
-    private Material[] materials;
-
-    private Line lineQueue;
-    private float sellingTimer = 0.0f;
-    private float spawnTimer = 0.0f;
 
     #region Counter Stats
     [SerializeField] private float baseInterval = 1.5f;
     [SerializeField] private int basePrice = 5;
     [SerializeField] private float priceIncrementRate = 1.25f;
     [SerializeField] private int baseStack = 30;
+    #endregion  
+    [SerializeField] private Transform customerSpawnPoint;
+    [SerializeField] private Transform entrancePoint;
+    [SerializeField] private Receiver receiver;
+    
+    private Queue<CustomerController> spawnQueue = new Queue<CustomerController>();
+    private Queue<CustomerController> lineQueue = new Queue<CustomerController>();
+    private Line line;
+    private Material[] materials;
+    private float sellingTimer = 0.0f;
+    private float spawnTimer = 0.0f;
     private float sellingInterval;
     private float spawnInterval;
     private int sellPrice;
-    #endregion  
+    const int maxQueueCount = 10;   
 
     private void Start()
     {
-        lineQueue = GetComponentInChildren<Line>();
+        line = GetComponentInChildren<Line>();
         materials = new Material[4];
         for (int i = 0; i < materials.Length; i++)
         {
@@ -54,9 +53,8 @@ public class Counter : WorkStation
         spawnInterval = (baseInterval * 3) - upgradeLevel;
         receiver.MaxStackCount = baseStack + upgradeLevel * 5;
         sellPrice = Mathf.RoundToInt(priceIncrementRate * basePrice);
-        // TODO
-        //int profitLevel = GameManager.Instance.GetUpgradeLevel(Upgrade.Profit);
-        //sellPrice = Mathf.RoundToInt(Mathf.Pow(priceIncrementRate, profitLevel) * basePrice);
+        int profitLevel = GameManager.instance.GetUpgradeLevel(UpgradeType.Profit);
+        sellPrice = Mathf.RoundToInt(Mathf.Pow(priceIncrementRate, profitLevel) * basePrice);
     }
 
     public int GetStoredFoodCount()
@@ -69,37 +67,42 @@ public class Counter : WorkStation
         return receiver.IsFull;
     }
 
+    public void AddCustomer(CustomerController customer)
+    {
+        lineQueue.Enqueue(customer);
+        AssignQueuePoint(customer, lineQueue.Count - 1);
+    }
+
     private void SpawnCustomer()
     {
         spawnTimer += Time.deltaTime;
         if (spawnTimer >= spawnInterval && spawnQueue.Count < maxQueueCount)
         {
+            spawnTimer = 0.0f;
             GameObject obj = GameManager.instance.PoolManager.Get((int)PoolItem.Customer);
             int randomValue = Random.Range(0, materials.Length);
             obj.GetComponent<SkinnedMeshRenderer>().material = materials[randomValue];
+            obj.transform.position = customerSpawnPoint.position;
+            obj.transform.forward = customerSpawnPoint.forward;
             CustomerController customer = obj.GetComponent<CustomerController>();
-            obj.transform.position = spawnPoint.position;
-            obj.transform.forward = spawnPoint.forward;
-            customer.spawnPoint = spawnPoint;
-            customer.line = lineQueue;
+            customer.spawnPoint = customerSpawnPoint;
+            customer.counter = this;
+            customer.entrance = entrancePoint;
             if (StackType == eObjectType.HAMBURGER)
             {
-                customer.entrance = GameObject.Find("Entrance_Point1");
                 customer.orderInfo = GameManager.instance.GetOrderInfo(0);
             }
             else
             {
-                customer.entrance = GameObject.Find("Entrance_Point2");
                 customer.orderInfo = GameManager.instance.GetOrderInfo(1);
             }
             spawnQueue.Enqueue(customer);
-            spawnTimer = 0.0f;
         }
     }
 
     private void SellFoodToCustomer()
     {
-        if (lineQueue.QueueCount == 0 || firstCustomer == null || !firstCustomer.HasOrder)
+        if (lineQueue.Count == 0 || firstCustomer == null || !firstCustomer.HasOrder)
         {
             sellingTimer = 0.0f;
             return;
@@ -117,7 +120,7 @@ public class Counter : WorkStation
         if (sellingTimer >= sellingInterval)
         {
             sellingTimer = 0.0f;
-            if (firstCustomer.RemainOrderCount > 0 && receiver.stack.Count > 0)
+            if (firstCustomer.OrderCount > 0 && receiver.Count > 0)
             {
                 GameObject obj = receiver.RequestObject();
                 if (obj != null)
@@ -128,20 +131,20 @@ public class Counter : WorkStation
                 }
             }
 
-            if (firstCustomer.RemainOrderCount == 0)
+            if (firstCustomer.OrderCount == 0)
             {
                 FindAvailableSeat();
             }
         }
     }
-
+    
     private void FindAvailableSeat()
     {
-        var seat = TableManager.Instance.GetAvailableSeat(firstCustomer, stackType);
+        var seat = TableManager.Instance.GetAvailableSeat(firstCustomer, StackType);
         if (seat != null)
         {
             spawnQueue.Dequeue();
-            var customer = lineQueue.RemoveCustomer();
+            var customer = lineQueue.Dequeue();
             customer.AssignSeat(seat);
             StartCoroutine(UpdateQueue());
         }
@@ -150,7 +153,19 @@ public class Counter : WorkStation
     IEnumerator UpdateQueue()
     {
         yield return new WaitForSeconds(0.5f);
-        lineQueue.UpdateCustomerQueue();
+        int index = 0;
+        foreach (var customer in lineQueue)
+        {
+            AssignQueuePoint(customer, index++);
+        }
+    }
+
+    private void AssignQueuePoint(CustomerController customer, int index)
+    {
+        Vector3 queuePointPos = line.GetLinePosition(index);
+        bool isFirst = index == 0;
+
+        customer.UpdateQueue(queuePointPos, isFirst);
     }
 
     private void CollectMoney(int value)

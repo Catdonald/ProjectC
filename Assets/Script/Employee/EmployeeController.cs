@@ -56,6 +56,9 @@ public class EmployeeController : MonoBehaviour
             case 4:
                 StartCoroutine(PackingBurgerPack());
                 break;
+            case 5:
+                StartCoroutine(TakeDriveThruOrder());
+                break;
         }
     }
 
@@ -88,7 +91,6 @@ public class EmployeeController : MonoBehaviour
     {
         currentWork = Work.TAKEORDER;
 
-        // �������� ����� ī���� ����
         var counters = GameManager.instance.counters.Where(x => x.gameObject.activeInHierarchy && x.GetStoredFoodCount() > 0).ToList();
         if(counters.Count == 0)
         {
@@ -97,7 +99,7 @@ public class EmployeeController : MonoBehaviour
         }
         Counter counter = counters[Random.Range(0, counters.Count)].GetComponent<Counter>();
 
-        // ī���Ϳ� �÷��̾ ������ ������ ���� �ٲ��� �ʴ´�.
+        // 카운터에 다른 직원이나 플레이어가 있으면 상태 none
         if (counter.HasWorker)
         {
             currentWork = Work.NONE;
@@ -133,6 +135,49 @@ public class EmployeeController : MonoBehaviour
                 currentWork = Work.NONE;
                 yield break;
             }
+            yield return null;
+        }
+
+        currentWork = Work.NONE;
+    }
+
+    IEnumerator TakeDriveThruOrder()
+    {
+        currentWork = Work.TAKEDTORDER;
+
+        var dtCounters = GameManager.instance.DriveThruCounter;
+        if (!dtCounters.gameObject.activeInHierarchy)
+        {
+            currentWork = Work.NONE;
+            yield break;
+        }
+
+        // 카운터에 다른 직원이나 플레이어가 있으면 상태 none
+        if (dtCounters.HasWorker)
+        {
+            currentWork = Work.NONE;
+            yield break;
+        }
+        
+        agent.SetDestination(dtCounters.WorkingSpotPosition);
+
+        // 카운터로 이동하는 중에 카운터에 플레이어나 다른 직원이 서면 상태 none
+        while (!HasArrivedToDestination())
+        {
+            if (dtCounters.HasWorker && dtCounters.WorkingEmployee != this)
+            {
+                agent.SetDestination(transform.position);
+                currentWork = Work.NONE;
+                yield break;
+            }
+            yield return null;
+        }
+
+        transform.LookAt(dtCounters.casher.transform.position);
+
+        // 카운터에 음식 남아있는 동안
+        while (dtCounters.GetStoredFoodCount() > 0)
+        {
             yield return null;
         }
 
@@ -270,6 +315,7 @@ public class EmployeeController : MonoBehaviour
     {
         NONE,
         TAKEORDER,
+        TAKEDTORDER,
         PACKING,
         CLEANUP,
         REFILLFOOD,

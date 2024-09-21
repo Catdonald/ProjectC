@@ -4,53 +4,43 @@ using UnityEngine;
 
 public class Line : MonoBehaviour
 {
-    private Queue<CustomerController> customerQueue;
-    private Transform[] linePositions;
-
-    public int QueueCount => customerQueue.Count;
+    private List<Vector3> linePositions = new List<Vector3>();
+    public List<Vector3> LinePositions => linePositions;
 
     // Start is called before the first frame update
     void Start()
     {
-        customerQueue = new Queue<CustomerController>();
-        linePositions = new Transform[10];
-        for (int i = 0; i < linePositions.Length; i++)
+        foreach(Transform child in transform)
         {
-            linePositions[i] = transform.GetChild(i);
+            linePositions.Add(child.position);
         }
     }
 
-    public void AddCustomer(CustomerController customer)
+    public Vector3 GetLinePosition(int index)
     {
-        customerQueue.Enqueue(customer);
-        AssignQueuePoint(customer, customerQueue.Count - 1);
+        return linePositions[index];
     }
 
-    public CustomerController RemoveCustomer()
+#if UNITY_EDITOR
+    [SerializeField] private Color pointColor = Color.blue;
+    [SerializeField] private Color lineColor = Color.green;
+    [SerializeField] private float pointSize = 0.3f;
+    private void OnDrawGizmos()
     {
-        return customerQueue.Dequeue();
-    }
-
-    public void UpdateCustomerQueue()
-    {
-        int index = 0;
-        foreach(var customer in customerQueue)
+        Gizmos.color = pointColor;
+        for(int i = 0; i < transform.childCount; i++)
         {
-            AssignQueuePoint(customer, index++);
+            Transform child = transform.GetChild(i);
+            Gizmos.DrawSphere(child.position, pointSize);
+        }
+
+        Gizmos.color = lineColor;
+        for(int i = 0; i < transform.childCount - 1; i++)
+        {
+            Transform startPosition = transform.GetChild(i);
+            Transform endPosition = transform.GetChild(i+1);
+            Gizmos.DrawLine(startPosition.position, endPosition.position);
         }
     }
-
-    public CustomerController Peek()
-    {
-        if(customerQueue.Count == 0) return null;
-        return customerQueue.Peek();
-    }
-
-    void AssignQueuePoint(CustomerController customer, int index)
-    {
-        Vector3 queuePointPos = linePositions[index].position;
-        bool isFirst = index == 0;
-
-        customer.UpdateQueue(queuePointPos, isFirst);
-    }
+#endif
 }

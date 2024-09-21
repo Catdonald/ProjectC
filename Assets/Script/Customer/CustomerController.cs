@@ -6,14 +6,15 @@ using UnityEngine.UI;
 
 public class CustomerController : MonoBehaviour
 {
-    public GameObject entrance;
+    public Transform entrance;
     public Transform spawnPoint;
-    public Table touchedTable;
     public Receiver customerstack;
-    public Line line;
+    public Counter counter;
     public OrderInfo orderInfo;
-    public NavMeshAgent agent;
 
+    [SerializeField] private int maxOrderCount = 5;
+
+    private NavMeshAgent agent;
     private Animator animator;
     private LayerMask entranceLayer;
     private bool startFlag = false;
@@ -21,9 +22,7 @@ public class CustomerController : MonoBehaviour
     public int OrderCount { get; set; }
     public bool HasOrder { get; set; }
     public bool ReadyToEat { get; set; }
-    public int RemainOrderCount { get; set; }
     public int CarryingFoodCount { get; set; }
-    public float CarryingFoodHeight { get; set; }
 
     private void Awake()
     {
@@ -38,11 +37,6 @@ public class CustomerController : MonoBehaviour
         startFlag = false;
     }
 
-    void Start()
-    {       
-            
-    }
-
     void Update()
     {
         animator.SetBool("isMove", agent.velocity.sqrMagnitude >= 0.1f);
@@ -51,7 +45,7 @@ public class CustomerController : MonoBehaviour
         {
             startFlag = true;
             agent.enabled = true;
-            agent.SetDestination(entrance.transform.position);
+            agent.SetDestination(entrance.position);
             StartCoroutine(Enter());
         }
     }
@@ -61,7 +55,7 @@ public class CustomerController : MonoBehaviour
         yield return new WaitUntil(() => HasArrivedToDestination());
 
         // 도착하면 줄 n번째 자리 부여받는다.
-        line.AddCustomer(this);
+        counter.AddCustomer(this);
     }
 
     IEnumerator PlaceOrder()
@@ -70,7 +64,7 @@ public class CustomerController : MonoBehaviour
         // 주문할 음식 개수 결정
         DecideOrderCount();
         HasOrder = true;
-        orderInfo.ShowInfo(RemainOrderCount);
+        orderInfo.ShowInfo(OrderCount);
     }
 
     IEnumerator MoveToSeat(GameObject seat)
@@ -131,19 +125,17 @@ public class CustomerController : MonoBehaviour
 
     public void DecideOrderCount()
     {
-        OrderCount = Random.Range(1, 5);
-        RemainOrderCount = OrderCount;
+        OrderCount = Random.Range(1, maxOrderCount);
     }
 
     public void ReceiveFood(GameObject obj,eObjectType objType , float objHeight)
     {
-        CarryingFoodHeight = objHeight;
         customerstack.ReceiveObject(obj, objType, objHeight);
 
-        RemainOrderCount -= 1;
+        OrderCount -= 1;
         CarryingFoodCount += 1;
 
-        orderInfo.ShowInfo(RemainOrderCount);
+        orderInfo.ShowInfo(OrderCount);
 
         Debug.Log("Customer : " + customerstack.stack.Count);
     }
@@ -151,7 +143,7 @@ public class CustomerController : MonoBehaviour
     public void FinishEating()
     {
         agent.enabled = true;
-        agent.SetDestination(entrance.transform.position);
+        agent.SetDestination(entrance.position);
         animator.SetTrigger("Leave");
         StartCoroutine(Exit());
     }

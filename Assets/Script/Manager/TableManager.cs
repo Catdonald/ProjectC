@@ -18,7 +18,7 @@ public class TableManager : MonoBehaviour
 
     void Start()
     {
-        Table[] tableObjects = GameObject.FindObjectsOfType<Table>();
+        Table[] tableObjects = GameObject.FindObjectsOfType<Table>(true);
         foreach (Table table in tableObjects)
         {
             if (table.StackType == eObjectType.HAMBURGER)

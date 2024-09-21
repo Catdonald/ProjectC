@@ -75,7 +75,7 @@ public class PackageTable : WorkStation
         var burgerPack = GameManager.instance.PoolManager.Get((int)PoolItem.BurgerPack);
         burgerPack.transform.position = packageBox.position;
         // 트윈
-        burgerPack.transform.DOJump(packageStorage.PeekPoint, 5f, 1, 0.5f).WaitForCompletion();
+        //burgerPack.transform.DOJump(packageStorage.PeekPoint, 5f, 1, 0.5f).WaitForCompletion();
         // 버거팩 stack에 추가
         packageStorage.ReceiveObject(burgerPack, eObjectType.BURGERPACK, packageStorage.objectHeight);
         // 박스 오브젝트 켜기
