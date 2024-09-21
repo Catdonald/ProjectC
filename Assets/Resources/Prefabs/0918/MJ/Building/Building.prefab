@@ -1656,6 +1656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0, z: 0}
+  unActiveEntranceColli: {fileID: 0}
 --- !u!114 &8722219037788894480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15064,7 +15065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  type: 0
+  type: 2
 --- !u!1 &5642261232064666316
 GameObject:
   m_ObjectHideFlags: 0
@@ -20838,7 +20839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  type: 0
+  type: 2
 --- !u!1 &7378869497766111125
 GameObject:
   m_ObjectHideFlags: 0

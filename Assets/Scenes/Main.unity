@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building
       objectReference: {fileID: 0}
+    - target: {fileID: 6736196839058653777, guid: 328702c1a661b4046bc2283eceee2257, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: b152aba08ef192244bd04e79e18982c3, type: 2}
     - target: {fileID: 7379664419883808793, guid: 328702c1a661b4046bc2283eceee2257, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -173,6 +177,14 @@ PrefabInstance:
     - target: {fileID: 7379664419883808793, guid: 328702c1a661b4046bc2283eceee2257, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735122950029369932, guid: 328702c1a661b4046bc2283eceee2257, type: 3}
+      propertyPath: m_Area
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735122950029369932, guid: 328702c1a661b4046bc2283eceee2257, type: 3}
+      propertyPath: m_OverrideArea
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

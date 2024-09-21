@@ -33,4 +33,19 @@ public class Upgradable : MonoBehaviour
     }
 
     protected virtual void UpgradeStats() { }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.magenta;
+        Vector3 center = BuyingPosition;
+        Vector3 size = new Vector3(2.0f, 0.2f, 2.0f);
+        Gizmos.DrawCube(center, size);
+
+        GUIStyle style = new GUIStyle();
+        style.alignment = TextAnchor.MiddleCenter;
+        style.normal.textColor = Color.white;
+        UnityEditor.Handles.Label(center + Vector3.up * 0.5f, "Buying\nPoint", style);
+    }
+#endif
 }
