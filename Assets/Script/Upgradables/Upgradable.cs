@@ -20,7 +20,7 @@ public class Upgradable : MonoBehaviour
         upgradeLevel++;
         if (upgradeLevel > 1)
         {
-            // �޽� ���׷��̵�
+            // change mesh
         }
         else
         {
@@ -30,7 +30,6 @@ public class Upgradable : MonoBehaviour
         //unlock effect on
         if (!effectOn)
             return;
-        // ���׷��̵� �� �޽� ������ŭ ����Ʈ ���
     }
 
     protected virtual void UpgradeStats() { }

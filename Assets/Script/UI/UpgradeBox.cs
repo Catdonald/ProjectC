@@ -50,6 +50,9 @@ public class UpgradeBox : Interactable
             GameManager.instance.currentUpgradableObj.GetComponent<Upgradable>().Upgrade();
             Price *= 1.2f;
             SetOrigin();
+            GameManager.instance.SetNowUpgradableObject();
+
+            // TODO ) 카메라 이동 및 이펙트
         }
     }
     void SetOrigin()
