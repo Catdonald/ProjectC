@@ -91,7 +91,7 @@ public class CustomerController : MonoBehaviour
         var table = seat.GetComponentInParent<Table>();
         while(customerstack.stack.Count > 0)
         {
-            table.PutFoodOnTable(customerstack.stack.Pop());
+            table.PutFoodOnTable(customerstack.stack.Pop(), customerstack.objectHeight);
             yield return new WaitForSeconds(0.05f);
         }
 

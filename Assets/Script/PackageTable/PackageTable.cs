@@ -40,6 +40,8 @@ public class PackageTable : WorkStation
             packingTimer = 0.0f;
             if (HasWorker && foodReceiver.Count > 0)
             {
+                // 박스 오브젝트 켜기
+                packageBox.gameObject.SetActive(true);
                 var food = foodReceiver.RequestObject();
                 food.transform.DOJump(packageBox.GetChild(currentPackingCount).position, 5f, 1, 0.3f)
                     .OnComplete(() =>
@@ -78,7 +80,5 @@ public class PackageTable : WorkStation
         //burgerPack.transform.DOJump(packageStorage.PeekPoint, 5f, 1, 0.5f).WaitForCompletion();
         // 버거팩 stack에 추가
         packageStorage.ReceiveObject(burgerPack, eObjectType.BURGERPACK, packageStorage.objectHeight);
-        // 박스 오브젝트 켜기
-        packageBox.gameObject.SetActive(true);
     }
 }

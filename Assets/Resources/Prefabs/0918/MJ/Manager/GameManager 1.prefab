@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2941530906484730196
+--- !u!1 &106018547413898120
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1976500197185272602}
-  - component: {fileID: 3208928466100005884}
+  - component: {fileID: 5348716768151459447}
+  - component: {fileID: 2112567368137892325}
   m_Layer: 0
   m_Name: PoolManager
   m_TagString: Untagged
@@ -17,28 +17,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1976500197185272602
+--- !u!4 &5348716768151459447
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2941530906484730196}
+  m_GameObject: {fileID: 106018547413898120}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1972999256178155110}
+  m_Father: {fileID: 5765126258177966835}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3208928466100005884
+--- !u!114 &2112567368137892325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2941530906484730196}
+  m_GameObject: {fileID: 106018547413898120}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e8d6d54435be33499b9da7f7994199d, type: 3}
@@ -51,7 +51,7 @@ MonoBehaviour:
   - {fileID: 1328341206021509577, guid: c074f1af59e292d4fab7e094b8db96f4, type: 3}
   - {fileID: 1427645375272350630, guid: 6e77ff67a9545d7449550334280d3223, type: 3}
   - {fileID: 1186681637551314459, guid: fb87359a7a64b3945985c69ce7a7c5a2, type: 3}
---- !u!1 &3633839433128561248
+--- !u!1 &211480257133636963
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,39 +59,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1972999256178155110}
-  - component: {fileID: 7153409794385538572}
+  - component: {fileID: 5765126258177966835}
+  - component: {fileID: 1715859453042597115}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GameManager 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1972999256178155110
+--- !u!4 &5765126258177966835
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3633839433128561248}
+  m_GameObject: {fileID: 211480257133636963}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1976500197185272602}
-  - {fileID: 145344577582325224}
+  - {fileID: 5348716768151459447}
+  - {fileID: 8970063302899087535}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7153409794385538572
+--- !u!114 &1715859453042597115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3633839433128561248}
+  m_GameObject: {fileID: 211480257133636963}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3bd02a5db0fbc30459e2dd71d8923398, type: 3}
@@ -103,7 +103,7 @@ MonoBehaviour:
   unlockGrowthFactor: 1.2
   startingMoney: 1000
   startingMaxExp: 10
-  PoolManager: {fileID: 3208928466100005884}
+  PoolManager: {fileID: 2112567368137892325}
   employeeSpawner: {fileID: 0}
   employeePrefab: {fileID: 382947474619814530, guid: 2a904ec1249322044a635bc092a92b8b, type: 3}
   employeeSpawnRadius: 3
@@ -127,7 +127,7 @@ MonoBehaviour:
   spawners_burger: []
   spawners_burgerPack: []
   counters: []
---- !u!1 &5160311128174626595
+--- !u!1 &900571325703942991
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 145344577582325224}
+  - component: {fileID: 8970063302899087535}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -143,18 +143,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &145344577582325224
+--- !u!4 &8970063302899087535
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5160311128174626595}
+  m_GameObject: {fileID: 900571325703942991}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1972999256178155110}
+  m_Father: {fileID: 5765126258177966835}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

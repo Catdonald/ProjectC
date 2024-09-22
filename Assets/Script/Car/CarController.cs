@@ -20,7 +20,7 @@ public class CarController : MonoBehaviour
 
     void Start()
     {
-        orderInfo = GameManager.instance.GetOrderInfo(0);
+        orderInfo = GameManager.instance.GetOrderInfo(2);
     }
 
     public void Init(Line line, Vector3 exitPoint, int queueNumber)

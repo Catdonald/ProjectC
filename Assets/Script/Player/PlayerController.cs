@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("isMove", mouseDeltaMagnitude > 0.0f);
                 
                 Vector3 moveVec = new Vector3(mouseDeltaNorm.x, 0.0f, mouseDeltaNorm.y);
-                rayStartPoint = new Vector3(transform.position.x, 0.2f, transform.position.z);
+                rayStartPoint = new Vector3(transform.position.x, 0.5f, transform.position.z);
                 Debug.DrawRay(rayStartPoint, moveVec * 1.0f, Color.red);
                 RaycastHit hit;
                 if (Physics.Raycast(rayStartPoint, moveVec, out hit, 1.0f))

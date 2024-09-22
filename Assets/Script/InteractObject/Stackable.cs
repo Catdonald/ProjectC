@@ -46,6 +46,7 @@ public class Stackable : MonoBehaviour, IStackObject
     }
     public virtual GameObject RequestObject()
     {
+        if(stack.Count == 0) return null;
         return stack.Pop();
     }
     public virtual IEnumerator SpawnObject(int type)

@@ -43,8 +43,7 @@ public class GameManager : MonoBehaviour
 
     [Header("# UI")]
     //[SerializeField] private TMP_Text moneyText;
-    [SerializeField] private OrderInfo[] orderInfo; // 0: burger, 1: sub-menu
-    //[SerializeField] private OrderInfo burgerPackOrderInfo;
+    [SerializeField] private OrderInfo[] orderInfo; // 0: burger, 1: sub-menu, 2: driveThru
 
     // Spawner
     public List<Spawner> spawners_burger = new List<Spawner>();
@@ -111,6 +110,14 @@ public class GameManager : MonoBehaviour
 
         DriveThruCounter = GameObject.FindObjectOfType<DriveThruCounter>(true);
         TrashBin = GameObject.FindObjectOfType<Trashbin>();
+
+        /// 디버깅용 임시코드
+        /*data.UnlockCount = 10;
+        for(int i = 0; i < data.UnlockCount; ++i)
+        {
+            upgradables[i].Upgrade(false);
+        }*/
+        ///
     }
     public void SetNowUpgradableObject()
     {

@@ -9,6 +9,6 @@ public class Entrance : Upgradable
 
     protected override void UpgradeStats()
     {
-        unActiveEntranceColli.enabled = false;
+        //unActiveEntranceColli.enabled = false;
     }
 }

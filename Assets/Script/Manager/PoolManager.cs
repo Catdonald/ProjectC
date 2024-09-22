@@ -58,6 +58,8 @@ public enum PoolItem
 {
     Burger,
     BurgerPack,
+    Coffee,
     Trash,
+    EmptyCup,
     Customer,
 }

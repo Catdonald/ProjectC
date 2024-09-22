@@ -7,12 +7,15 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 
 public class EmployeeController : MonoBehaviour
 {
+    public playerStack Stack => stack;
+
     [SerializeField] private float baseSpeed = 2.5f;
     [SerializeField] private int baseCapacity = 3;
 
     private Animator animator;
     private NavMeshAgent agent;
     private Work currentWork;
+    private playerStack stack;
     private int capacity;
 
     // Start is called before the first frame update
@@ -214,10 +217,7 @@ public class EmployeeController : MonoBehaviour
 
         while (dirtyTable.TrashCount > 0)
         {
-            // TODO
-            //trashPile.RemoveAndStackToReceiver();
-            // 임시
-            dirtyTable.Clean();
+            dirtyTable.trashStack.RemoveAndStackObject(stack);
             yield return new WaitForSeconds(0.03f);
         }
 
@@ -229,11 +229,11 @@ public class EmployeeController : MonoBehaviour
         yield return new WaitUntil(() => HasArrivedToDestination());
 
         // TODO) 쓰레기통에 쓰레기 한개씩 넣기
-        /*while(stack.Count > 0)
+        while(stack.Count > 0)
         {
             trashBin.ThrowToBin(stack);
             yield return new WaitForSeconds(0.03f);
-        }*/
+        }
         yield return new WaitForSeconds(0.5f);
         currentWork = Work.NONE;
     }
