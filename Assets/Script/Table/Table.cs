@@ -19,7 +19,7 @@ public class Table : Upgradable
     public int TrashCount => trashStack.Count;
     [SerializeField] private List<GameObject> seats = new List<GameObject>();
 
-    private List<CustomerController> customers = new List<CustomerController>();
+    [SerializeField] private List<CustomerController> customers = new List<CustomerController>();
 
     #region Table Stats
     [SerializeField, Range(1.0f, 10.0f)] private float baseEatTime = 5.0f;

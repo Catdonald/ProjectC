@@ -215,7 +215,7 @@ public class EmployeeController : MonoBehaviour
             yield return null;
         }
 
-        while (dirtyTable.TrashCount > 0)
+        while (!stack.IsFull)
         {
             dirtyTable.trashStack.RemoveAndStackObject(stack);
             yield return new WaitForSeconds(0.03f);

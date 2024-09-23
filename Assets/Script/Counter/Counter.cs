@@ -19,7 +19,7 @@ public class Counter : WorkStation
     [SerializeField] private Transform customerSpawnPoint;
     [SerializeField] private Transform entrancePoint;
     [SerializeField] private Receiver receiver;
-    
+
     private Queue<CustomerController> spawnQueue = new Queue<CustomerController>();
     private Queue<CustomerController> lineQueue = new Queue<CustomerController>();
     private Line line;
@@ -29,7 +29,7 @@ public class Counter : WorkStation
     private float sellingInterval;
     private float spawnInterval;
     private int sellPrice;
-    const int maxQueueCount = 10;   
+    const int maxQueueCount = 10;
 
     private void Start()
     {
@@ -107,26 +107,23 @@ public class Counter : WorkStation
             return;
         }
 
-        if (HasWorker)
-        {
-            sellingTimer += Time.deltaTime;
-        }
-        else
-        {
-            sellingTimer = 0.0f;
-        }
+        sellingTimer += Time.deltaTime;
 
         if (sellingTimer >= sellingInterval)
         {
             sellingTimer = 0.0f;
-            if (firstCustomer.OrderCount > 0 && receiver.Count > 0)
+            if (HasWorker)
             {
-                GameObject obj = receiver.RequestObject();
-                if (obj != null)
+
+                if (firstCustomer.OrderCount > 0 && receiver.Count > 0)
                 {
-                    firstCustomer.ReceiveFood(obj, receiver.type, receiver.objectHeight);
-                    // TODO
-                    // CollectMoney();
+                    GameObject obj = receiver.RequestObject();
+                    if (obj != null)
+                    {
+                        firstCustomer.ReceiveFood(obj, receiver.type, receiver.objectHeight);
+                        // TODO
+                        // CollectMoney();
+                    }
                 }
             }
 
@@ -136,7 +133,7 @@ public class Counter : WorkStation
             }
         }
     }
-    
+
     private void FindAvailableSeat()
     {
         var seat = TableManager.Instance.GetAvailableSeat(firstCustomer, StackType);
