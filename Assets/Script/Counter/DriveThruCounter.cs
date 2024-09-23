@@ -5,8 +5,12 @@ using UnityEngine;
 public class DriveThruCounter : WorkStation
 {
     public GameObject casher;
+    public Receiver Receiver => receiver;
     public eObjectType StackType => receiver.type;
     public CarController firstCar => cars.Peek();
+    public int GetStoredFoodCount => receiver.stack.Count;
+    public bool IsStorageFull => receiver.IsFull;
+
     #region Counter Stats
     [SerializeField] private float baseInterval = 1.5f;
     [SerializeField] private int basePrice = 20;
@@ -28,13 +32,11 @@ public class DriveThruCounter : WorkStation
     private bool isFinishServing = false;
     const int maxQueueCount = 10;
 
-    // Start is called before the first frame update
     void Start()
     {
         line = GetComponentInChildren<Line>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         SpawnCar();
@@ -51,20 +53,10 @@ public class DriveThruCounter : WorkStation
         sellPrice = Mathf.RoundToInt(Mathf.Pow(priceIncrementRate, profitLevel) * basePrice);
     }
 
-    public int GetStoredFoodCount()
-    {
-        return receiver.stack.Count;
-    }
-
-    public bool IsFoodStorageFull()
-    {
-        return receiver.IsFull;
-    }
-
     private void SpawnCar()
     {
         spawnTimer += Time.deltaTime;
-        if(spawnTimer >= spawnInterval && cars.Count < maxQueueCount)
+        if (spawnTimer >= spawnInterval && cars.Count < maxQueueCount)
         {
             spawnTimer = 0.0f;
             int randomNum = Random.Range(0, carPrefabs.Length);
@@ -82,29 +74,25 @@ public class DriveThruCounter : WorkStation
             return;
         }
 
-        if(HasWorker)
-        {
-            sellingTimer += Time.deltaTime;
-        }
-        else
-        {
-            sellingTimer = 0.0f;
-        }
+        sellingTimer += Time.deltaTime;
 
-        if(sellingTimer >= sellingInterval)
+        if (sellingTimer >= sellingInterval)
         {
             sellingTimer = 0.0f;
-            if(firstCar.OrderCount > 0 && receiver.Count > 0)
+            if (HasWorker)
             {
-                GameObject obj = receiver.RequestObject();
-                if(obj != null)
+                if (firstCar.OrderCount > 0 && receiver.Count > 0)
                 {
-                    firstCar.ReceiveFood(obj.transform);
-                    // TODO
-                    // CollectMoney();
+                    GameObject obj = receiver.RequestObject();
+                    if (obj != null)
+                    {
+                        firstCar.ReceiveFood(obj.transform);
+                        // TODO
+                        // CollectMoney();
+                    }
                 }
             }
-            if(firstCar.OrderCount == 0 && !isFinishServing)
+            if (firstCar.OrderCount == 0 && !isFinishServing)
             {
                 StartCoroutine(FinishServing());
             }
@@ -119,7 +107,7 @@ public class DriveThruCounter : WorkStation
         var car = cars.Dequeue();
         car.Exit();
 
-        foreach(var eachCar in cars)
+        foreach (var eachCar in cars)
         {
             eachCar.UpdateQueue();
         }

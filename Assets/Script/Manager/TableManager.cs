@@ -8,7 +8,6 @@ public class TableManager : MonoBehaviour
     public static TableManager Instance { get; private set; }
     [SerializeField]
     private List<Table> tables = new List<Table>();
-    public List<Table> Tables => tables;
     public List<Table> DirtyTables => tables.Where(x => x.TrashCount > 0).ToList();
 
     private void Awake()

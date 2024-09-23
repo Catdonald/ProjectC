@@ -41,21 +41,19 @@ public class GameManager : MonoBehaviour
     public List<Upgradable> upgradables = new List<Upgradable>();
     [SerializeField] public Upgradable currentUpgradableObj;
 
-    [Header("# UI")]
-    //[SerializeField] private TMP_Text moneyText;
-    // 0: burger, 1: sub-menu, 2: driveThru, 3: kioskFisrt, 4: kioskSecond
-    [SerializeField] private OrderInfo[] orderInfo; 
+    [Header("# UI")]    
+    [SerializeField] private OrderInfo[] orderInfo; // 0: burger, 1: sub-menu, 2: driveThru
     [SerializeField] private KioskOrderInfo[] kioskOrderInfo; 
 
     // Spawner
     public List<Spawner> spawners_burger = new List<Spawner>();
-    public List<Spawner> spawners_burgerPack = new List<Spawner>();
-    //public List<Spawner> spawners_subMenu = new List<Spawner>();
+    public List<Spawner> spawners_subMenu = new List<Spawner>();
 
     public List<Counter> counters = new List<Counter>();
 
     #region Reference Properties 
     public DriveThruCounter DriveThruCounter { get; private set; }
+    public PackageTable PackageTable { get; private set; }
     public Trashbin TrashBin { get; private set; }
     public int PaidAmount
     {
@@ -104,13 +102,14 @@ public class GameManager : MonoBehaviour
             {
                 spawners_burger.Add(spawner);
             }
-            else if (spawner.type == eObjectType.BURGERPACK)
+            else if (spawner.type == eObjectType.SUBMENU)
             {
-                spawners_burgerPack.Add(spawner);
+                spawners_subMenu.Add(spawner);
             }
         }
 
         DriveThruCounter = GameObject.FindObjectOfType<DriveThruCounter>(true);
+        PackageTable = GameObject.FindObjectOfType<PackageTable>(true);
         TrashBin = GameObject.FindObjectOfType<Trashbin>();
 
         /// µð¹ö±ë¿ë

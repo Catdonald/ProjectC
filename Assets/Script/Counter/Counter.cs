@@ -9,6 +9,8 @@ public class Counter : WorkStation
     public Receiver Receiver => receiver;
     public eObjectType StackType => receiver.type;
     public CustomerController firstCustomer => lineQueue.Peek();
+    public int GetStoredFoodCount => receiver.stack.Count;
+    public bool IsStorageFull => receiver.IsFull;
 
     #region Counter Stats
     [SerializeField] private float baseInterval = 1.5f;
@@ -55,16 +57,6 @@ public class Counter : WorkStation
         receiver.MaxStackCount = baseStack + upgradeLevel * 5;
         int profitLevel = GameManager.instance.GetUpgradeLevel(UpgradeType.Profit);
         sellPrice = Mathf.RoundToInt(Mathf.Pow(priceIncrementRate, profitLevel) * basePrice);
-    }
-
-    public int GetStoredFoodCount()
-    {
-        return receiver.stack.Count;
-    }
-
-    public bool IsFoodStorageFull()
-    {
-        return receiver.IsFull;
     }
 
     public void AddCustomer(CustomerController customer)
@@ -114,7 +106,6 @@ public class Counter : WorkStation
             sellingTimer = 0.0f;
             if (HasWorker)
             {
-
                 if (firstCustomer.OrderCount > 0 && receiver.Count > 0)
                 {
                     GameObject obj = receiver.RequestObject();

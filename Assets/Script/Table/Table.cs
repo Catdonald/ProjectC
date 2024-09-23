@@ -34,6 +34,8 @@ public class Table : Upgradable
     {
         tableStack = GetComponentInChildren<Receiver>();
         trashStack = GetComponentInChildren<Giver>();
+        tableStack.MaxStackCount = 50;
+        trashStack.MaxStackCount = 50;
         trashObject.SetActive(false);
     }
 
@@ -41,8 +43,7 @@ public class Table : Upgradable
     {
         eatTime = (baseEatTime - (upgradeLevel - 1)) * seats.Count;
         tipChance = baseTipChance + (upgradeLevel - 1) * 0.1f;
-        tableStack.MaxStackCount = 50;
-        // TODO) tipLevel
+        tipLevel = GameManager.instance.GetUpgradeLevel(UpgradeType.Profit);
     }
 
     public GameObject AssignSeat(CustomerController customer)

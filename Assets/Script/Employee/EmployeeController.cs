@@ -23,6 +23,7 @@ public class EmployeeController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        stack = GetComponentInChildren<playerStack>();
         currentWork = Work.NONE;
         GameManager.instance.OnUpgrade += UpdateStats;
         UpdateStats();
@@ -41,7 +42,7 @@ public class EmployeeController : MonoBehaviour
         {
             return;
         }
-        
+
         switch (Random.Range(0, ((int)Work.MAX) - 1))
         {
             case 0:
@@ -51,15 +52,21 @@ public class EmployeeController : MonoBehaviour
                 StartCoroutine(CleanTable());
                 break;
             case 2:
-                StartCoroutine(RefillBurger());
+                StartCoroutine(RefillBurgerToCounter());
                 break;
             case 3:
-                StartCoroutine(RefillPackage());
+                StartCoroutine(RefillBurgerToPackageTable());
                 break;
             case 4:
-                StartCoroutine(PackingBurgerPack());
+                StartCoroutine(RefillPackage());
                 break;
             case 5:
+                StartCoroutine(RefillSubMenu());
+                break;
+            case 6:
+                StartCoroutine(PackingBurgerPack());
+                break;
+            case 7:
                 StartCoroutine(TakeDriveThruOrder());
                 break;
         }
@@ -94,8 +101,8 @@ public class EmployeeController : MonoBehaviour
     {
         currentWork = Work.TAKEORDER;
 
-        var counters = GameManager.instance.counters.Where(x => x.gameObject.activeInHierarchy && x.GetStoredFoodCount() > 0).ToList();
-        if(counters.Count == 0)
+        var counters = GameManager.instance.counters.Where(x => x.gameObject.activeInHierarchy && x.GetStoredFoodCount > 0).ToList();
+        if (counters.Count == 0)
         {
             currentWork = Work.NONE;
             yield break;
@@ -131,7 +138,7 @@ public class EmployeeController : MonoBehaviour
         transform.LookAt(counter.casher.transform.position);
 
         // 카운터에 음식 남아있는 동안
-        while (counter.GetStoredFoodCount() > 0)
+        while (counter.GetStoredFoodCount > 0)
         {
             if (!TableManager.Instance.HasAvailableSeat(counter.StackType))
             {
@@ -155,13 +162,13 @@ public class EmployeeController : MonoBehaviour
             yield break;
         }
 
-        // 카운터에 다른 직원이나 플레이어가 있으면 상태 none
-        if (dtCounters.HasWorker)
+        // 카운터에 다른 직원이나 플레이어가 있거나 음식 없으면 상태 none
+        if (dtCounters.HasWorker || dtCounters.GetStoredFoodCount == 0)
         {
             currentWork = Work.NONE;
             yield break;
         }
-        
+
         agent.SetDestination(dtCounters.WorkingSpotPosition);
 
         // 카운터로 이동하는 중에 카운터에 플레이어나 다른 직원이 서면 상태 none
@@ -179,7 +186,7 @@ public class EmployeeController : MonoBehaviour
         transform.LookAt(dtCounters.casher.transform.position);
 
         // 카운터에 음식 남아있는 동안
-        while (dtCounters.GetStoredFoodCount() > 0)
+        while (dtCounters.GetStoredFoodCount > 0)
         {
             yield return null;
         }
@@ -202,7 +209,6 @@ public class EmployeeController : MonoBehaviour
         var dirtyTable = dirtyTables[Random.Range(0, dirtyTables.Count)];
         agent.SetDestination(dirtyTable.transform.position);
 
-        /// TODO) TableŬ������ TrashObject �����ؼ� �ٲ���� �͵�..
         while (!HasArrivedToDestination())
         {
             // 가는 중에 테이블이 청소되면 상태 none
@@ -229,7 +235,7 @@ public class EmployeeController : MonoBehaviour
         yield return new WaitUntil(() => HasArrivedToDestination());
 
         // TODO) 쓰레기통에 쓰레기 한개씩 넣기
-        while(stack.Count > 0)
+        while (stack.Count > 0)
         {
             trashBin.ThrowToBin(stack);
             yield return new WaitForSeconds(0.03f);
@@ -238,15 +244,12 @@ public class EmployeeController : MonoBehaviour
         currentWork = Work.NONE;
     }
 
-    IEnumerator RefillBurger()
+    IEnumerator RefillBurgerToCounter()
     {
-        currentWork = Work.REFILLFOOD;
+        currentWork = Work.REFILLBURGERTOCOUNTER;
 
-        // TODO
-        // 랜덤으로 숫자 한개 뽑아서 그 숫자에 맞는 카운터 찾기
-        // 우선은 버거 카운터만..
         var counter = GameManager.instance.counters.Where(x => x.StackType == eObjectType.HAMBURGER).First();
-        if (counter.IsFoodStorageFull())
+        if (counter.IsStorageFull)
         {
             currentWork = Work.NONE;
             yield break;
@@ -275,12 +278,12 @@ public class EmployeeController : MonoBehaviour
         }
 
         // take foods from the spawner
-        while(spawner.Count > 0 && !Stack.IsFull)
+        while (spawner.Count > 0 && !Stack.IsFull)
         {
             var food = spawner.RequestObject();
-            if(food != null)
+            if (food != null)
             {
-                Stack.ReceiveObject(food, spawner.type, Stack.objectHeight);
+                Stack.ReceiveObject(food, spawner.type, spawner.objectHeight);
             }
             yield return new WaitForSeconds(0.03f);
         }
@@ -291,12 +294,75 @@ public class EmployeeController : MonoBehaviour
         yield return new WaitUntil(() => HasArrivedToDestination());
 
         // put foods on the counter
-        while(stack.Count > 0)
+        while (stack.Count > 0)
         {
-            if(!counter.IsFoodStorageFull())
+            if (!counter.IsStorageFull)
             {
                 var food = stack.RequestObject();
-                counter.Receiver.ReceiveObject(food, stack.type, counter.Receiver.objectHeight);
+                counter.Receiver.ReceiveObject(food, stack.type, stack.objectHeight);
+            }
+            yield return new WaitForSeconds(0.03f);
+        }
+        yield return new WaitForSeconds(0.5f);
+        currentWork = Work.NONE;
+    }
+
+    IEnumerator RefillBurgerToPackageTable()
+    {
+        currentWork = Work.REFILLBURGERTOPACKAGETABLE;
+
+        var packageTable = GameManager.instance.PackageTable;
+        if (packageTable.IsFoodStorageFull)
+        {
+            currentWork = Work.NONE;
+            yield break;
+        }
+
+        var validBurgerSpawners = GameManager.instance.spawners_burger.Where(x => x.Count > 0).ToList();
+        if (validBurgerSpawners.Count == 0)
+        {
+            currentWork = Work.NONE;
+            yield break;
+        }
+
+        var spawner = validBurgerSpawners[Random.Range(0, validBurgerSpawners.Count)];
+        agent.SetDestination(spawner.transform.position);
+
+        // 가는 도중 spawner에 햄버거 한개도 없으면 상태 none
+        while (!HasArrivedToDestination())
+        {
+            if (spawner.Count == 0)
+            {
+                agent.SetDestination(transform.position);
+                currentWork = Work.NONE;
+                yield break;
+            }
+            yield return null;
+        }
+
+        // take foods from the spawner
+        while (spawner.Count > 0 && !Stack.IsFull)
+        {
+            var food = spawner.RequestObject();
+            if (food != null)
+            {
+                Stack.ReceiveObject(food, spawner.type, spawner.objectHeight);
+            }
+            yield return new WaitForSeconds(0.03f);
+        }
+        agent.SetDestination(transform.position);
+        yield return new WaitForSeconds(0.5f);
+
+        agent.SetDestination(packageTable.transform.position);
+        yield return new WaitUntil(() => HasArrivedToDestination());
+
+        // put foods on the counter
+        while (stack.Count > 0)
+        {
+            if (!packageTable.IsFoodStorageFull)
+            {
+                var food = stack.RequestObject();
+                packageTable.foodReceiver.ReceiveObject(food, stack.type, stack.objectHeight);
             }
             yield return new WaitForSeconds(0.03f);
         }
@@ -306,17 +372,159 @@ public class EmployeeController : MonoBehaviour
 
     IEnumerator RefillPackage()
     {
-        //TODO
+        currentWork = Work.REFILLPACKAGE;
+        // dtCounter에 package 가득 차있다면 상태 none
+        var dtCounter = GameManager.instance.DriveThruCounter;
+        if (dtCounter.IsStorageFull)
+        {
+            currentWork = Work.NONE;
+            yield break;
+        }
+
+        // packageTable에 package 한개도 없으면 상태 none
+        var packageTable = GameManager.instance.PackageTable;
+        if (packageTable.GetStoredPackageCount == 0)
+        {
+            currentWork = Work.NONE;
+            yield break;
+        }
+
+        agent.SetDestination(packageTable.transform.position);
+
+        // 가는 도중 packageTable에에 패키지 한개도 없으면 상태 none
+        while (!HasArrivedToDestination())
+        {
+            if (packageTable.GetStoredPackageCount == 0)
+            {
+                agent.SetDestination(transform.position);
+                currentWork = Work.NONE;
+                yield break;
+            }
+            yield return null;
+        }
+
+        // take packages from the packageTable
+        while (packageTable.GetStoredPackageCount > 0 && !stack.IsFull)
+        {
+            var package = packageTable.packageStack.RequestObject();
+            if (package != null)
+            {
+                stack.ReceiveObject(package, packageTable.packageStack.type, packageTable.packageStack.objectHeight);
+            }
+            yield return new WaitForSeconds(0.03f);
+        }
+        agent.SetDestination(transform.position);
+        yield return new WaitForSeconds(0.5f);
+
+        agent.SetDestination(dtCounter.transform.position);
+        yield return new WaitUntil(() => HasArrivedToDestination());
+
+        // put foods on the counter
+        while (stack.Count > 0)
+        {
+            if (!dtCounter.IsStorageFull)
+            {
+                var package = stack.RequestObject();
+                dtCounter.Receiver.ReceiveObject(package, stack.type, stack.objectHeight);
+            }
+            yield return new WaitForSeconds(0.03f);
+        }
+        yield return new WaitForSeconds(0.5f);
         currentWork = Work.NONE;
-        yield break;
+    }
+
+    IEnumerator RefillSubMenu()
+    {
+        currentWork = Work.REFILLSUBMENU;
+
+        var counter = GameManager.instance.counters.Where(x => x.StackType == eObjectType.SUBMENU).First();
+        if (counter.IsStorageFull)
+        {
+            currentWork = Work.NONE;
+            yield break;
+        }
+
+        var validSubmenuSpawners = GameManager.instance.spawners_subMenu.Where(x => x.Count > 0).ToList();
+        if (validSubmenuSpawners.Count == 0)
+        {
+            currentWork = Work.NONE;
+            yield break;
+        }
+
+        var spawner = validSubmenuSpawners[Random.Range(0, validSubmenuSpawners.Count)];
+        agent.SetDestination(spawner.transform.position);
+
+        // 가는 도중 spawner에 음식 한개도 없으면 상태 none
+        while (!HasArrivedToDestination())
+        {
+            if (spawner.Count == 0)
+            {
+                agent.SetDestination(transform.position);
+                currentWork = Work.NONE;
+                yield break;
+            }
+            yield return null;
+        }
+
+        // take foods from the spawner
+        while (spawner.Count > 0 && !Stack.IsFull)
+        {
+            var food = spawner.RequestObject();
+            if (food != null)
+            {
+                Stack.ReceiveObject(food, spawner.type, spawner.objectHeight);
+            }
+            yield return new WaitForSeconds(0.03f);
+        }
+        agent.SetDestination(transform.position);
+        yield return new WaitForSeconds(0.5f);
+
+        agent.SetDestination(counter.transform.position);
+        yield return new WaitUntil(() => HasArrivedToDestination());
+
+        // put foods on the counter
+        while (stack.Count > 0)
+        {
+            if (!counter.IsStorageFull)
+            {
+                var food = stack.RequestObject();
+                counter.Receiver.ReceiveObject(food, stack.type, stack.objectHeight);
+            }
+            yield return new WaitForSeconds(0.03f);
+        }
+        yield return new WaitForSeconds(0.5f);
+        currentWork = Work.NONE;
     }
 
     IEnumerator PackingBurgerPack()
     {
-        //TODO
+        currentWork = Work.PACKING;
+
+        var packageTable = GameManager.instance.PackageTable;
+        if (packageTable.HasWorker || packageTable.IsPackageStorageFull || packageTable.GetStoredFoodCount == 0)
+        {
+            currentWork = Work.NONE;
+            yield break;
+        }
+
+        agent.SetDestination(packageTable.WorkingSpotPosition);
+        yield return new WaitUntil(() => HasArrivedToDestination());
+
+        // 테이블 향해 회전
+        while (Vector3.Angle(transform.forward, packageTable.transform.forward) > 0.1f)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, packageTable.transform.rotation, Time.deltaTime * 270.0f);
+            yield return null;
+        }
+
+        while (packageTable.GetStoredFoodCount > 0)
+        {
+            yield return null;
+        }
+
         currentWork = Work.NONE;
-        yield break;
     }
+
     public enum Work
     {
         NONE,
@@ -324,8 +532,10 @@ public class EmployeeController : MonoBehaviour
         TAKEDTORDER,
         PACKING,
         CLEANUP,
-        REFILLFOOD,
+        REFILLBURGERTOCOUNTER,
+        REFILLBURGERTOPACKAGETABLE,
         REFILLPACKAGE,
+        REFILLSUBMENU,
         MAX
     }
 }

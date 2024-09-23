@@ -77,7 +77,7 @@ public class KioskCustomer : MonoBehaviour
         }
 
         // 도착하면 말풍선 띄우기 - 주문 중
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         orderingBubbleUI.SetActive(true);
         int repeatNum = 0;
         String bubbleText = ".";
@@ -91,7 +91,7 @@ public class KioskCustomer : MonoBehaviour
             }
             textUI.text = bubbleText;
             repeatNum++;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.0f);
         }
         orderingBubbleUI.SetActive(false);
         // 주문완료
