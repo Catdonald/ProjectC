@@ -1,15 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Upgradable;
+
+[System.Serializable]
+public class MeshGroup
+{
+    public List<Mesh> meshes; // Mesh 리스트
+}
 
 public class Upgradable : MonoBehaviour
-{   
+{
     [SerializeField] private Vector3 buyingPosition = Vector3.zero;
+    [SerializeField] private Transform upgradePosition;
     protected int upgradeLevel = 0;
 
-    //private List<UpgradeMesh> upgradeMeshes;
+    // 메시 모양을 변경
+    [SerializeField] private MeshFilter[] meshFilter;
+    [SerializeField] private List<MeshGroup> upgradeMeshes;
+
     public Vector3 BuyingPosition => transform.TransformPoint(buyingPosition);
-    
+
     protected void Awake()
     {
         gameObject.SetActive(false);
@@ -20,11 +31,15 @@ public class Upgradable : MonoBehaviour
         upgradeLevel++;
         if (upgradeLevel > 1)
         {
-            // change mesh
+            for(int i = 0; i < meshFilter.Length; ++i)
+            {
+                meshFilter[i].mesh = upgradeMeshes[upgradeLevel - 1].meshes[i];
+            }
         }
         else
         {
             gameObject.SetActive(true);
+            buyingPosition = upgradePosition.localPosition;
         }
         UpgradeStats();
         //unlock effect on
