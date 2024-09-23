@@ -43,12 +43,14 @@ public class GameManager : MonoBehaviour
 
     [Header("# UI")]
     //[SerializeField] private TMP_Text moneyText;
-    [SerializeField] private OrderInfo[] orderInfo; // 0: burger, 1: sub-menu, 2: driveThru
+    // 0: burger, 1: sub-menu, 2: driveThru, 3: kioskFisrt, 4: kioskSecond
+    [SerializeField] private OrderInfo[] orderInfo; 
+    [SerializeField] private KioskOrderInfo[] kioskOrderInfo; 
 
     // Spawner
     public List<Spawner> spawners_burger = new List<Spawner>();
     public List<Spawner> spawners_burgerPack = new List<Spawner>();
-    //public List<Spawner> spawners_coffee = new List<Spawner>();
+    //public List<Spawner> spawners_subMenu = new List<Spawner>();
 
     public List<Counter> counters = new List<Counter>();
 
@@ -60,10 +62,10 @@ public class GameManager : MonoBehaviour
         get => data.PaidAmount;
         set => data.PaidAmount = value;
     }
-    public int UnlockCount
+    public int UpgradeCount
     {
-        get => data.UnlockCount;
-        set => data.UnlockCount = value;
+        get => data.UpgradeCount;
+        set => data.UpgradeCount = value;
     }
     #endregion
 
@@ -91,7 +93,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        SetNowUpgradableObject();
+        //SetNowUpgradableObject();
 
         counters = GameObject.FindObjectsOfType<Counter>(true).ToList();
 
@@ -111,12 +113,12 @@ public class GameManager : MonoBehaviour
         DriveThruCounter = GameObject.FindObjectOfType<DriveThruCounter>(true);
         TrashBin = GameObject.FindObjectOfType<Trashbin>();
 
-        /// 디버깅용 임시코드
-        /*data.UnlockCount = 10;
-        for(int i = 0; i < data.UnlockCount; ++i)
+        /// 디버깅용
+        data.UpgradeCount = 11;
+        for(int i = 0; i < data.UpgradeCount; ++i)
         {
             upgradables[i].Upgrade(false);
-        }*/
+        }
         ///
     }
     public void SetNowUpgradableObject()
@@ -241,6 +243,10 @@ public class GameManager : MonoBehaviour
                 break;
             case UpgradeType.Profit:
                 data.Profit++;
+                foreach(var upgradable in upgradables)
+                {
+                    upgradable.UpgradeStats();
+                }
                 break;
             default:
                 break;
@@ -287,6 +293,11 @@ public class GameManager : MonoBehaviour
     public OrderInfo GetOrderInfo(int index)
     {
         return orderInfo[index];
+    }
+
+    public KioskOrderInfo GetKioskOrderInfo(int index)
+    {
+        return kioskOrderInfo[index];
     }
 
     public void SpawnEmployee()

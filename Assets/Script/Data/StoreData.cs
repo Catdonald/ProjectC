@@ -19,7 +19,7 @@ public class StoreData
     public int PlayerCapacity { get; set; }
     public int Profit { get; set; }
 
-    public int UnlockCount { get; set; }
+    public int UpgradeCount { get; set; }
     public int PaidAmount { get; set; }
     public bool IsUnlocked { get; set; } // Is All Objects are unlocked in the store
 

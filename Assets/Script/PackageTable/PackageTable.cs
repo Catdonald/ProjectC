@@ -25,7 +25,7 @@ public class PackageTable : WorkStation
         Packing();
     }
 
-    protected override void UpgradeStats()
+    public override void UpgradeStats()
     {
         packingInterval = baseInterval / upgradeLevel;
         packingCapacity = baseCapacity + upgradeLevel * 5;

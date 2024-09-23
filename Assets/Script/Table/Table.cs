@@ -37,7 +37,7 @@ public class Table : Upgradable
         trashObject.SetActive(false);
     }
 
-    protected override void UpgradeStats()
+    public override void UpgradeStats()
     {
         eatTime = (baseEatTime - (upgradeLevel - 1)) * seats.Count;
         tipChance = baseTipChance + (upgradeLevel - 1) * 0.1f;
@@ -75,7 +75,7 @@ public class Table : Upgradable
                 var trashObj = GameManager.instance.PoolManager.Get((int)eObjectType.TRASH);
                 trashStack.stack.Push(trashObj);
             }
-            else if (StackType == eObjectType.COFFEE)
+            else if (StackType == eObjectType.SUBMENU)
             {
                 var trashObj = GameManager.instance.PoolManager.Get((int)eObjectType.EMPTYCUP);
                 trashStack.stack.Push(trashObj);

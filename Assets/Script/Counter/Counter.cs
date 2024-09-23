@@ -6,6 +6,7 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 public class Counter : WorkStation
 {
     public GameObject casher;
+    public Receiver Receiver => receiver;
     public eObjectType StackType => receiver.type;
     public CustomerController firstCustomer => lineQueue.Peek();
 
@@ -47,12 +48,11 @@ public class Counter : WorkStation
         SellFoodToCustomer();
     }
 
-    protected override void UpgradeStats()
+    public override void UpgradeStats()
     {
         sellingInterval = baseInterval / upgradeLevel;
         spawnInterval = (baseInterval * 3) - upgradeLevel;
         receiver.MaxStackCount = baseStack + upgradeLevel * 5;
-        sellPrice = Mathf.RoundToInt(priceIncrementRate * basePrice);
         int profitLevel = GameManager.instance.GetUpgradeLevel(UpgradeType.Profit);
         sellPrice = Mathf.RoundToInt(Mathf.Pow(priceIncrementRate, profitLevel) * basePrice);
     }
@@ -85,17 +85,16 @@ public class Counter : WorkStation
             obj.transform.position = customerSpawnPoint.position;
             obj.transform.forward = customerSpawnPoint.forward;
             CustomerController customer = obj.GetComponent<CustomerController>();
-            customer.spawnPoint = customerSpawnPoint;
-            customer.counter = this;
-            customer.entrance = entrancePoint;
+            OrderInfo orderInfo;
             if (StackType == eObjectType.HAMBURGER)
             {
-                customer.orderInfo = GameManager.instance.GetOrderInfo(0);
+                orderInfo = GameManager.instance.GetOrderInfo(0);
             }
             else
             {
-                customer.orderInfo = GameManager.instance.GetOrderInfo(1);
+                orderInfo = GameManager.instance.GetOrderInfo(1);
             }
+            customer.Init(customerSpawnPoint, entrancePoint, this, orderInfo);
             spawnQueue.Enqueue(customer);
         }
     }

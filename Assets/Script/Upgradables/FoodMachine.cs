@@ -13,7 +13,7 @@ public class FoodMachine : Upgradable
         spawner = GetComponentInChildren<Spawner>();
     }
 
-    protected override void UpgradeStats()
+    public override void UpgradeStats()
     {
         spawner.actingTime = baseProductionInterval / upgradeLevel;
         spawner.MaxStackCount = baseCapacity * upgradeLevel;

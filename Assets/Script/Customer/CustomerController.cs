@@ -6,14 +6,13 @@ using UnityEngine.UI;
 
 public class CustomerController : MonoBehaviour
 {
-    public Transform entrance;
-    public Transform spawnPoint;
-    public Receiver customerstack;
-    public Counter counter;
-    public OrderInfo orderInfo;
-
     [SerializeField] private int maxOrderCount = 5;
 
+    private Transform entrance;
+    private Transform spawnPoint;
+    private Receiver customerstack;
+    private Counter counter;
+    private OrderInfo orderInfo;
     private NavMeshAgent agent;
     private Animator animator;
     private LayerMask entranceLayer;
@@ -22,7 +21,6 @@ public class CustomerController : MonoBehaviour
     public int OrderCount { get; set; }
     public bool HasOrder { get; set; }
     public bool ReadyToEat { get; set; }
-    public int CarryingFoodCount { get; set; }
 
     private void Awake()
     {
@@ -50,6 +48,14 @@ public class CustomerController : MonoBehaviour
         }
     }
 
+    public void Init(Transform spawnPoint, Transform entrance, Counter counter, OrderInfo orderInfo)
+    {
+        this.spawnPoint = spawnPoint;
+        this.entrance = entrance;
+        this.counter = counter;
+        this.orderInfo = orderInfo;
+    }
+
     IEnumerator Enter()
     {
         yield return new WaitUntil(() => HasArrivedToDestination());
@@ -61,8 +67,7 @@ public class CustomerController : MonoBehaviour
     IEnumerator PlaceOrder()
     {
         yield return new WaitUntil(() => HasArrivedToDestination());
-        // 주문할 음식 개수 결정
-        DecideOrderCount();
+        OrderCount = Random.Range(1, maxOrderCount);
         HasOrder = true;
         orderInfo.ShowInfo(OrderCount);
     }
@@ -123,18 +128,10 @@ public class CustomerController : MonoBehaviour
         StartCoroutine(MoveToSeat(seat));
     }
 
-    public void DecideOrderCount()
-    {
-        OrderCount = Random.Range(1, maxOrderCount);
-    }
-
     public void ReceiveFood(GameObject obj,eObjectType objType , float objHeight)
     {
         customerstack.ReceiveObject(obj, objType, objHeight);
-
         OrderCount -= 1;
-        CarryingFoodCount += 1;
-
         orderInfo.ShowInfo(OrderCount);
 
         Debug.Log("Customer : " + customerstack.stack.Count);

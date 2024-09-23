@@ -51,7 +51,7 @@ public class EmployeeController : MonoBehaviour
                 StartCoroutine(CleanTable());
                 break;
             case 2:
-                StartCoroutine(RefillFood());
+                StartCoroutine(RefillBurger());
                 break;
             case 3:
                 StartCoroutine(RefillPackage());
@@ -238,7 +238,7 @@ public class EmployeeController : MonoBehaviour
         currentWork = Work.NONE;
     }
 
-    IEnumerator RefillFood()
+    IEnumerator RefillBurger()
     {
         currentWork = Work.REFILLFOOD;
 
@@ -274,40 +274,46 @@ public class EmployeeController : MonoBehaviour
             yield return null;
         }
 
-        // TODO take foods from the spawner
-        /*while(spawner.Count > 0 && Stack.Height < capacity)
+        // take foods from the spawner
+        while(spawner.Count > 0 && !Stack.IsFull)
         {
-            spawner.RemoveAndStackObject(stack);
+            var food = spawner.RequestObject();
+            if(food != null)
+            {
+                Stack.ReceiveObject(food, spawner.type, Stack.objectHeight);
+            }
             yield return new WaitForSeconds(0.03f);
-        }*/
+        }
         agent.SetDestination(transform.position);
         yield return new WaitForSeconds(0.5f);
 
         agent.SetDestination(counter.transform.position);
         yield return new WaitUntil(() => HasArrivedToDestination());
 
-        // TODO put foods on the counter
-        /*while(stack.Count > 0)
+        // put foods on the counter
+        while(stack.Count > 0)
         {
             if(!counter.IsFoodStorageFull())
             {
-                var food = stack.RemoveFromStack();
-                receiver.AddToStack(food);
+                var food = stack.RequestObject();
+                counter.Receiver.ReceiveObject(food, stack.type, counter.Receiver.objectHeight);
             }
             yield return new WaitForSeconds(0.03f);
-        }*/
+        }
         yield return new WaitForSeconds(0.5f);
         currentWork = Work.NONE;
     }
 
     IEnumerator RefillPackage()
     {
+        //TODO
         currentWork = Work.NONE;
         yield break;
     }
 
     IEnumerator PackingBurgerPack()
     {
+        //TODO
         currentWork = Work.NONE;
         yield break;
     }

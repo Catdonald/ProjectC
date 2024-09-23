@@ -51,6 +51,7 @@ MonoBehaviour:
   - {fileID: 1328341206021509577, guid: c074f1af59e292d4fab7e094b8db96f4, type: 3}
   - {fileID: 1427645375272350630, guid: 6e77ff67a9545d7449550334280d3223, type: 3}
   - {fileID: 1186681637551314459, guid: fb87359a7a64b3945985c69ce7a7c5a2, type: 3}
+  - {fileID: 6796140489729130045, guid: a597f94a505a29d43a400a0dff1ff1f1, type: 3}
 --- !u!1 &211480257133636963
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,9 +120,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   currentUpgradableObj: {fileID: 0}
   orderInfo:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  kioskOrderInfo:
   - {fileID: 0}
   - {fileID: 0}
   spawners_burger: []

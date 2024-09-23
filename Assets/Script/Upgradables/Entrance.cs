@@ -7,7 +7,7 @@ public class Entrance : Upgradable
     [Header("unActive")]
     [SerializeField] private BoxCollider unActiveEntranceColli;
 
-    protected override void UpgradeStats()
+    public override void UpgradeStats()
     {
         //unActiveEntranceColli.enabled = false;
     }

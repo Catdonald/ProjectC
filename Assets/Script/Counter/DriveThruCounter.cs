@@ -41,7 +41,7 @@ public class DriveThruCounter : WorkStation
         SellPackage();
     }
 
-    protected override void UpgradeStats()
+    public override void UpgradeStats()
     {
         sellingInterval = baseInterval / upgradeLevel;
         spawnInterval = (baseInterval * 3) - upgradeLevel;

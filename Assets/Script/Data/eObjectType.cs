@@ -6,7 +6,7 @@ public enum eObjectType : int
 {
     HAMBURGER,
     BURGERPACK,
-    COFFEE,
+    SUBMENU,
     TRASH,
     EMPTYCUP,
     LAST
