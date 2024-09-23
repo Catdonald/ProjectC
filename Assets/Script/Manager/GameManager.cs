@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        //SetNowUpgradableObject();
+        SetNowUpgradableObject();
 
         counters = GameObject.FindObjectsOfType<Counter>(true).ToList();
 
