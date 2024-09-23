@@ -1252,7 +1252,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.1
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 6cf9f833c5462ea449a9fee213197a72, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: b152aba08ef192244bd04e79e18982c3, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &460380353315168845
 GameObject:
@@ -11968,7 +11968,7 @@ GameObject:
   - component: {fileID: 3277306150331311813}
   m_Layer: 0
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12457,7 +12457,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c1d4893e6bd11446bde4bd1366bacd5, type: 2}
+  - {fileID: 2100000, guid: a1c251fa6a407174c9b9975325cdebae, type: 2}
   - {fileID: 2100000, guid: 14865931e66d13b4b80959abc7c93553, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -12514,8 +12514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OverrideArea: 0
-  m_Area: 0
+  m_OverrideArea: 1
+  m_Area: 1
   m_OverrideGenerateLinks: 0
   m_GenerateLinks: 0
   m_IgnoreFromBuild: 0
@@ -21614,7 +21614,7 @@ GameObject:
   - component: {fileID: 5379253325411585369}
   m_Layer: 0
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

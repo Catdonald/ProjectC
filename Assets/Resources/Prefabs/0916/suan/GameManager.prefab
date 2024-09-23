@@ -46,9 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 2554426912417560892, guid: 07deee93e458af646a5dc10784eb1485, type: 3}
-  - {fileID: 3537722718153681998, guid: dc90b8d7e990d8b409bb26cf3b917d8d, type: 3}
+  - {fileID: 1128540469741714582, guid: 0fbbd600a6b46904f95acebcb9644c51, type: 3}
+  - {fileID: 604629266808990718, guid: bd3e16b0115453c4a9eed4c79c9a257d, type: 3}
   - {fileID: 1328341206021509577, guid: c074f1af59e292d4fab7e094b8db96f4, type: 3}
-  - {fileID: 75900384269542254, guid: e718cdb17d75f8b4d81610ef08b8343c, type: 3}
+  - {fileID: 1427645375272350630, guid: 6e77ff67a9545d7449550334280d3223, type: 3}
+  - {fileID: 1186681637551314459, guid: fb87359a7a64b3945985c69ce7a7c5a2, type: 3}
 --- !u!1 &3633839433128561248
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,9 +113,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  upgradeIndex: 0
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   currentUpgradableObj: {fileID: 0}
-  burgerOrderInfo: {fileID: 0}
+  orderInfo:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   spawners_burger: []
   spawners_burgerPack: []
   counters: []

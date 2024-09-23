@@ -41,30 +41,29 @@ public class GameManager : MonoBehaviour
     public List<Upgradable> upgradables = new List<Upgradable>();
     [SerializeField] public Upgradable currentUpgradableObj;
 
-    [Header("# UI")]
-    //[SerializeField] private TMP_Text moneyText;
-    [SerializeField] private OrderInfo[] orderInfo; // 0: burger, 1: sub-menu
-    //[SerializeField] private OrderInfo burgerPackOrderInfo;
+    [Header("# UI")]    
+    [SerializeField] private OrderInfo[] orderInfo; // 0: burger, 1: sub-menu, 2: driveThru
+    [SerializeField] private KioskOrderInfo[] kioskOrderInfo; 
 
     // Spawner
     public List<Spawner> spawners_burger = new List<Spawner>();
-    public List<Spawner> spawners_burgerPack = new List<Spawner>();
-    //public List<Spawner> spawners_coffee = new List<Spawner>();
+    public List<Spawner> spawners_subMenu = new List<Spawner>();
 
     public List<Counter> counters = new List<Counter>();
 
     #region Reference Properties 
     public DriveThruCounter DriveThruCounter { get; private set; }
+    public PackageTable PackageTable { get; private set; }
     public Trashbin TrashBin { get; private set; }
     public int PaidAmount
     {
         get => data.PaidAmount;
         set => data.PaidAmount = value;
     }
-    public int UnlockCount
+    public int UpgradeCount
     {
-        get => data.UnlockCount;
-        set => data.UnlockCount = value;
+        get => data.UpgradeCount;
+        set => data.UpgradeCount = value;
     }
     #endregion
 
@@ -92,7 +91,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        SetNowUpgradableObject();
+        //SetNowUpgradableObject();
 
         counters = GameObject.FindObjectsOfType<Counter>(true).ToList();
 
@@ -103,14 +102,23 @@ public class GameManager : MonoBehaviour
             {
                 spawners_burger.Add(spawner);
             }
-            else if (spawner.type == eObjectType.BURGERPACK)
+            else if (spawner.type == eObjectType.SUBMENU)
             {
-                spawners_burgerPack.Add(spawner);
+                spawners_subMenu.Add(spawner);
             }
         }
 
         DriveThruCounter = GameObject.FindObjectOfType<DriveThruCounter>(true);
+        PackageTable = GameObject.FindObjectOfType<PackageTable>(true);
         TrashBin = GameObject.FindObjectOfType<Trashbin>();
+
+        /// µð¹ö±ë¿ë
+        data.UpgradeCount = 11;
+        for(int i = 0; i < data.UpgradeCount; ++i)
+        {
+            upgradables[i].Upgrade(false);
+        }
+        ///
     }
     public void SetNowUpgradableObject()
     {
@@ -234,6 +242,10 @@ public class GameManager : MonoBehaviour
                 break;
             case UpgradeType.Profit:
                 data.Profit++;
+                foreach(var upgradable in upgradables)
+                {
+                    upgradable.UpgradeStats();
+                }
                 break;
             default:
                 break;
@@ -280,6 +292,11 @@ public class GameManager : MonoBehaviour
     public OrderInfo GetOrderInfo(int index)
     {
         return orderInfo[index];
+    }
+
+    public KioskOrderInfo GetKioskOrderInfo(int index)
+    {
+        return kioskOrderInfo[index];
     }
 
     public void SpawnEmployee()

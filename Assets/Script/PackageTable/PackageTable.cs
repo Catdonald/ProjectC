@@ -5,27 +5,33 @@ using DG.Tweening;
 
 public class PackageTable : WorkStation
 {
-    [SerializeField] private Transform packageBox;
-    [SerializeField] private Receiver foodReceiver;
-    [SerializeField] private Giver packageStorage;
+    public int GetStoredFoodCount => foodReceiver.stack.Count;
+    public bool IsFoodStorageFull => foodReceiver.IsFull;
+    public int GetStoredPackageCount => packageStack.stack.Count;
+    public bool IsPackageStorageFull => packageStack.IsFull;
 
-    const int maxPackingCount = 4;
-    private int currentPackingCount = 0;
-    private float packingTimer = 0.0f;
+    public Receiver foodReceiver;
+    public Giver packageStack;
+    [SerializeField] private Transform packageBox;
 
     #region PackageTable Stats
     [SerializeField] private float baseInterval = 1.5f;
     [SerializeField] private int baseCapacity = 30;
     #endregion
+
     private float packingInterval;
+    private float packingTimer = 0.0f;
     private int packingCapacity;
+    private int currentPackingCount = 0;
+
+    const int maxPackingCount = 4;
 
     void Update()
     {
         Packing();
     }
 
-    protected override void UpgradeStats()
+    public override void UpgradeStats()
     {
         packingInterval = baseInterval / upgradeLevel;
         packingCapacity = baseCapacity + upgradeLevel * 5;
@@ -38,8 +44,10 @@ public class PackageTable : WorkStation
         if (packingTimer >= packingInterval)
         {
             packingTimer = 0.0f;
-            if (HasWorker && foodReceiver.Count > 0)
+            if (HasWorker && foodReceiver.Count > 0 && !packageStack.IsFull)
             {
+                // 박스 오브젝트 켜기
+                packageBox.gameObject.SetActive(true);
                 var food = foodReceiver.RequestObject();
                 food.transform.DOJump(packageBox.GetChild(currentPackingCount).position, 5f, 1, 0.3f)
                     .OnComplete(() =>
@@ -50,7 +58,7 @@ public class PackageTable : WorkStation
                         currentPackingCount++;
 
                         // count가 max 이상이면
-                        if(currentPackingCount >= maxPackingCount)
+                        if (currentPackingCount >= maxPackingCount)
                         {
                             currentPackingCount = 0;
                             StartCoroutine(FinishPacking());
@@ -77,8 +85,6 @@ public class PackageTable : WorkStation
         // 트윈
         //burgerPack.transform.DOJump(packageStorage.PeekPoint, 5f, 1, 0.5f).WaitForCompletion();
         // 버거팩 stack에 추가
-        packageStorage.ReceiveObject(burgerPack, eObjectType.BURGERPACK, packageStorage.objectHeight);
-        // 박스 오브젝트 켜기
-        packageBox.gameObject.SetActive(true);
+        packageStack.ReceiveObject(burgerPack, eObjectType.BURGERPACK, packageStack.objectHeight);
     }
 }

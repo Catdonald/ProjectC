@@ -47,7 +47,7 @@ public class Upgradable : MonoBehaviour
             return;
     }
 
-    protected virtual void UpgradeStats() { }
+    public virtual void UpgradeStats() { }
 
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()

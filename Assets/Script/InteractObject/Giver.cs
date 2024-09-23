@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Giver : Stackable
 {
+    [SerializeField] GameObject linkedObject;
+
     void Start()
     {
         GameObject obj = GameManager.instance.PoolManager.Get(3);
@@ -31,7 +33,18 @@ public class Giver : Stackable
             player.type = type;
 
         if (player.type == type)
+        {
             player.ReceiveObject(stack.Pop(), type, objectHeight);
+            if (linkedObject != null && stack.Count == 0)
+                linkedObject.SetActive(false);
+        }
     }
 
+    public void RemoveAndStackObject(playerStack playerStack)
+    {
+        var removeObj = stack.Pop();
+        if(linkedObject != null && stack.Count == 0)
+            linkedObject.SetActive(false);
+        playerStack.ReceiveObject(removeObj, type, objectHeight);
+    }
 }
