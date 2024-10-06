@@ -7,11 +7,12 @@ using UnityEngine.UI;
 public class UpgradeBox : Interactable
 {
     [Header("Button info")]
-    public float Price;
-    public float curPrice;
-    public int width;  
+    public int maxPrice;
+    public int curPrice;
+    public int width;
     public int height;
-    public bool isPushed = true;
+    public bool isPushed = false;
+    public bool isFilling = false;
 
     [Header("Image obj")]
     [SerializeField] private Image background;
@@ -21,11 +22,11 @@ public class UpgradeBox : Interactable
     // Start is called before the first frame update
     void Start()
     {
-        Price = 100;
+        maxPrice = 100;
         curPrice = 0;
         fill.fillAmount = 0;
         isPushed = false;
-        priceText.text = Price.ToString();
+        priceText.text = maxPrice.ToString();
     }
     protected override void OnPlayerEnter()
     {
@@ -39,18 +40,19 @@ public class UpgradeBox : Interactable
     // Update is called once per frame
     void LateUpdate()
     {
-        if (isPushed && GameManager.instance.GetMoney() > 0)
+        if (isPushed && GameManager.instance.GetMoney() > 0 && !isFilling)
         {
-            curPrice = GameManager.instance.GetMoney() / Price;
             StartCoroutine(Filling());
         }
 
         if (fill.fillAmount >= 1.0f)
         {
+            isFilling = false;
+
             GameManager.instance.currentUpgradableObj.GetComponent<Upgradable>().Upgrade();
-            Price *= 1.2f;
-            SetOrigin();
+            maxPrice *= 2;
             GameManager.instance.SetNowUpgradableObject();
+            SetOrigin();
 
             // TODO ) 카메라 이동 및 이펙트
         }
@@ -59,15 +61,30 @@ public class UpgradeBox : Interactable
     {
         curPrice = 0;
         fill.fillAmount = 0.0f;
-        priceText.text = Price.ToString();
+        priceText.text = maxPrice.ToString();
     }
     IEnumerator Filling()
     {
-        while (isPushed)
-        {
-            yield return new WaitForSeconds(0.1f);
+        isFilling = true;
 
-            fill.fillAmount = Mathf.Lerp(fill.fillAmount, curPrice, 0.0001f);
+        while (isPushed && GameManager.instance.data.Money > 0 && curPrice < maxPrice && isFilling)
+        {
+            GameManager.instance.data.Money--;
+            curPrice++;
+
+            fill.fillAmount = (float)curPrice / (float)maxPrice;
+
+            if (curPrice >= maxPrice)
+            {
+                curPrice = maxPrice;
+                fill.fillAmount = 1f;
+                isFilling = false;
+                yield break;
+            }
+
+            yield return new WaitForSeconds(0.01f);
         }
+
+        isFilling = false;
     }
 }
