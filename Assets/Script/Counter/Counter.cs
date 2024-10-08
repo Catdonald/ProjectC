@@ -25,6 +25,7 @@ public class Counter : WorkStation
     private Queue<CustomerController> spawnQueue = new Queue<CustomerController>();
     private Queue<CustomerController> lineQueue = new Queue<CustomerController>();
     private Line line;
+    private MoneyPile moneyPile;
     private Material[] materials;
     private float sellingTimer = 0.0f;
     private float spawnTimer = 0.0f;
@@ -36,6 +37,7 @@ public class Counter : WorkStation
     private void Start()
     {
         line = GetComponentInChildren<Line>();
+        moneyPile = GetComponentInChildren<MoneyPile>();
         materials = new Material[4];
         for (int i = 0; i < materials.Length; i++)
         {
@@ -71,7 +73,7 @@ public class Counter : WorkStation
         if (spawnTimer >= spawnInterval && spawnQueue.Count < maxQueueCount)
         {
             spawnTimer = 0.0f;
-            GameObject obj = GameManager.instance.PoolManager.Get((int)PoolItem.Customer);
+            GameObject obj = GameManager.instance.PoolManager.SpawnObject("Customer");
             int randomValue = Random.Range(0, materials.Length);
             obj.GetComponent<SkinnedMeshRenderer>().material = materials[randomValue];
             obj.transform.position = customerSpawnPoint.position;
@@ -112,8 +114,7 @@ public class Counter : WorkStation
                     if (obj != null)
                     {
                         firstCustomer.ReceiveFood(obj, receiver.type, receiver.objectHeight);
-                        // TODO
-                        // CollectMoney();
+                        CollectMoney();
                     }
                 }
             }
@@ -155,9 +156,12 @@ public class Counter : WorkStation
         customer.UpdateQueue(queuePointPos, isFirst);
     }
 
-    private void CollectMoney(int value)
+    private void CollectMoney()
     {
-        // TODO)
+        for (int i = 0; i < sellPrice; i++)
+        {
+            moneyPile.AddMoney();
+        }
     }
 
 }

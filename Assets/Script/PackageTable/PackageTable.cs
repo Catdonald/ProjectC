@@ -80,7 +80,7 @@ public class PackageTable : WorkStation
         packageBox.gameObject.SetActive(false);
 
         // 버거팩 오브젝트 풀에서 꺼내오기
-        var burgerPack = GameManager.instance.PoolManager.Get((int)PoolItem.BurgerPack);
+        var burgerPack = GameManager.instance.PoolManager.SpawnObject("Burger_Package");
         burgerPack.transform.position = packageBox.position;
         // 트윈
         //burgerPack.transform.DOJump(packageStorage.PeekPoint, 5f, 1, 0.5f).WaitForCompletion();

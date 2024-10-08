@@ -1712,9 +1712,9 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.1
+  m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 24f67050b0d3f614fa5abd7494cb101a, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 73fdd3b70b94f634fa080cda07861203, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &723235862173336251
 GameObject:
@@ -2326,6 +2326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6491467088557078855}
   - component: {fileID: 5142548485001409984}
+  - component: {fileID: 5472385313106696239}
   m_Layer: 0
   m_Name: Hinge_Left
   m_TagString: Untagged
@@ -2370,6 +2371,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 3, z: 2}
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &5472385313106696239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956688134850428837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6588db3e286a243ba69f5a471cf0a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSomeoneIn: 0
+  entranceMeshes: {fileID: 4503113818856864170}
 --- !u!1 &1049364860094246235
 GameObject:
   m_ObjectHideFlags: 0
@@ -4327,6 +4342,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0, z: 0}
+  meshFilter: []
+  upgradeMeshes: []
 --- !u!1 &1927538862582975681
 GameObject:
   m_ObjectHideFlags: 0
@@ -7448,6 +7465,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0, z: 0}
+  meshFilter: []
+  upgradeMeshes: []
 --- !u!1 &3196789597064570213
 GameObject:
   m_ObjectHideFlags: 0
@@ -11696,7 +11715,7 @@ Transform:
   m_GameObject: {fileID: 5022562529229708954}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.5, y: 0.15, z: -17.325}
+  m_LocalPosition: {x: -9, y: 0.15, z: -17.325}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11792,6 +11811,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0, z: 0}
+  meshFilter: []
+  upgradeMeshes: []
   unActiveEntranceColli: {fileID: 0}
 --- !u!114 &548715801810494828
 MonoBehaviour:
@@ -11989,6 +12010,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0, z: 0}
+  meshFilter: []
+  upgradeMeshes: []
   unActiveEntranceColli: {fileID: 0}
 --- !u!1 &5078008271585021422
 GameObject:
@@ -13927,7 +13950,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 11.0487, y: 0.15, z: -17.5}
-  m_LocalScale: {x: 2.7146924, y: 0.2, z: 1}
+  m_LocalScale: {x: 3.018059, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8699109417524205001}
@@ -19681,6 +19704,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1254899204895237955}
   - component: {fileID: 139436214538605058}
+  - component: {fileID: 3910077623940057504}
   m_Layer: 0
   m_Name: Hinge_Right
   m_TagString: Untagged
@@ -19725,6 +19749,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 3, z: 2}
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &3910077623940057504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7858369562757631678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6588db3e286a243ba69f5a471cf0a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSomeoneIn: 0
+  entranceMeshes: {fileID: 7293585555478485555}
 --- !u!1 &7947771431225878348
 GameObject:
   m_ObjectHideFlags: 0
@@ -20508,8 +20546,8 @@ Transform:
   m_GameObject: {fileID: 8331327910918167693}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.5, y: 0.15, z: -17.5}
-  m_LocalScale: {x: 0.925, y: 0.2, z: 1}
+  m_LocalPosition: {x: -9.0245, y: 0.15, z: -17.5}
+  m_LocalScale: {x: 0.6201813, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8699109417524205001}

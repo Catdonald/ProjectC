@@ -73,12 +73,12 @@ public class Table : Upgradable
             GameManager.instance.PoolManager.Return(tableStack.stack.Pop());
             if (StackType == eObjectType.HAMBURGER)
             {
-                var trashObj = GameManager.instance.PoolManager.Get((int)eObjectType.TRASH);
+                var trashObj = GameManager.instance.PoolManager.SpawnObject("Trash");
                 trashStack.stack.Push(trashObj);
             }
             else if (StackType == eObjectType.SUBMENU)
             {
-                var trashObj = GameManager.instance.PoolManager.Get((int)eObjectType.EMPTYCUP);
+                var trashObj = GameManager.instance.PoolManager.SpawnObject("EmptyCup");
                 trashStack.stack.Push(trashObj);
             }
             LeaveTip();

@@ -53,7 +53,7 @@ public class Stackable : MonoBehaviour, IStackObject
     {
         yield return new WaitForSeconds(actingTime);
 
-        GameObject obj = GameManager.instance.PoolManager.Get(type);
+        GameObject obj = GameManager.instance.PoolManager.SpawnObject(type);
 
         obj.transform.position =
             transform.position + Vector3.up * objectHeight * stack.Count;

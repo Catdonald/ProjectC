@@ -24,6 +24,7 @@ public class DriveThruCounter : WorkStation
 
     private Queue<CarController> cars = new Queue<CarController>();
     private Line line;
+    private MoneyPile moneyPile;
     private float sellingTimer = 0.0f;
     private float spawnTimer = 0.0f;
     private float sellingInterval;
@@ -35,6 +36,7 @@ public class DriveThruCounter : WorkStation
     void Start()
     {
         line = GetComponentInChildren<Line>();
+        moneyPile = GetComponentInChildren<MoneyPile>();
     }
 
     void Update()
@@ -87,8 +89,7 @@ public class DriveThruCounter : WorkStation
                     if (obj != null)
                     {
                         firstCar.ReceiveFood(obj.transform);
-                        // TODO
-                        // CollectMoney();
+                        CollectMoney();
                     }
                 }
             }
@@ -116,8 +117,11 @@ public class DriveThruCounter : WorkStation
         isFinishServing = true;
     }
 
-    private void CollectMoney(int value)
+    private void CollectMoney()
     {
-        // TODO
+        for(int i = 0; i < sellPrice; i++)
+        {
+            moneyPile.AddMoney();
+        }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -12,55 +13,75 @@ public class PoolManager : MonoBehaviour
 {
     [Header("Pooling objects")]
     [Tooltip("add list of gameobject for pooling")]
-    public GameObject[] prefabs;
-    List<GameObject>[] pools;
-    void Awake()
-    {
-        pools = new List<GameObject>[prefabs.Length];
+    [SerializeField] private List<GameObject> prefabs;
+    private Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
-        for (int i = 0; i < pools.Length; i++)
+    void Start()
+    {
+        foreach (GameObject obj in prefabs)
         {
-            pools[i] = new List<GameObject>();
+            Queue<GameObject> pool = new Queue<GameObject>();
+            for (int i = 0; i < 20; i++)
+            {
+
+                GameObject newObj = Instantiate(obj, transform);
+                newObj.name = obj.name;
+                newObj.SetActive(false);
+                pool.Enqueue(newObj);
+            }
+            poolDictionary.Add(obj.name, pool);
         }
     }
-    public GameObject Get(int index)
+
+    public GameObject SpawnObject(string prefabName)
     {
-        GameObject select = null;
-
-        foreach (GameObject obj in pools[index])
+        if (!poolDictionary.ContainsKey(prefabName))
         {
-            if (!obj.activeSelf)
-            {
-                select = obj; 
-                obj.SetActive(true);
-                break;
-            }
+            Debug.LogWarning("PoolManager does not contain " + prefabName);
+            return null;
         }
 
-        if(!select)
+        Queue<GameObject> objectPool = poolDictionary[prefabName];
+        if (objectPool.Count == 0)
         {
-            select = Instantiate(prefabs[index], this.transform);
-            pools[index].Add(select);
+            GameObject newObj = Instantiate(prefabs.FirstOrDefault(x => x.name == prefabName), transform);
+            newObj.name = prefabName;
+            return newObj;
         }
 
-        return select;
+        GameObject obj = objectPool.Dequeue();
+        obj.SetActive(true);
+        return obj;
+    }
+
+    public GameObject SpawnObject(int index)
+    {
+        if(index >= poolDictionary.Count)
+        {
+            return null;
+        }
+
+        string prefabName = poolDictionary.ElementAt(index).Key;
+        Queue<GameObject> objectPool = poolDictionary.ElementAt(index).Value;
+        if (objectPool.Count == 0)
+        {
+            GameObject newObj = Instantiate(prefabs.FirstOrDefault(x => x.name == prefabName), transform);
+            newObj.name = prefabName;
+            return newObj;
+        }
+
+        GameObject obj = objectPool.Dequeue();
+        obj.SetActive(true);
+        return obj;
     }
 
     public void Return(GameObject obj)
     {
         obj.SetActive(false);
-        obj.transform.SetParent(this.transform);
+        string prefabName = obj.name;
+        if(poolDictionary.ContainsKey(prefabName))
+        {
+            poolDictionary[prefabName].Enqueue(obj);
+        }
     }
-}
-
-
-public enum PoolItem
-{
-    Burger,
-    BurgerPack,
-    SubMenu,
-    Trash,
-    EmptyCup,
-    Customer,
-    KioskCustomer,
 }

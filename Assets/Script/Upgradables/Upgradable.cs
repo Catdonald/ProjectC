@@ -12,7 +12,7 @@ public class MeshGroup
 public class Upgradable : MonoBehaviour
 {
     [SerializeField] private Vector3 buyingPosition = Vector3.zero;
-    [SerializeField] private Transform upgradePosition;
+    //[SerializeField] private Transform upgradePosition;
     protected int upgradeLevel = 0;
 
     // 메시 모양을 변경
@@ -39,7 +39,7 @@ public class Upgradable : MonoBehaviour
         else
         {
             gameObject.SetActive(true);
-            buyingPosition = upgradePosition.localPosition;
+            //buyingPosition = upgradePosition.localPosition;
         }
         UpgradeStats();
         //unlock effect on

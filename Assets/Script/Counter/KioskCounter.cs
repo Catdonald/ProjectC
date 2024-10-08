@@ -65,7 +65,7 @@ public class KioskCounter : Upgradable
         if (spawnTimer >= spawnInterval && HasAvailableKiosk())
         {
             spawnTimer = 0.0f;
-            GameObject obj = GameManager.instance.PoolManager.Get((int)PoolItem.KioskCustomer);
+            GameObject obj = GameManager.instance.PoolManager.SpawnObject("Customer_kiosk");
             int randomValue = Random.Range(0, materials.Length);
             obj.GetComponent<SkinnedMeshRenderer>().material = materials[randomValue];
             obj.transform.position = customerSpawnPoint.position;
