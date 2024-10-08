@@ -54,7 +54,7 @@ public class Door : Interactable
 
     IEnumerator OpenDoor(Collider other)
     {
-        //Vector3 forwardDirection = other.transform.forward; // 플레이어가 바라보는 방향
+        //Vector3 forwardDirection = other.transform.GetChild(1).forward; // 플레이어가 바라보는 방향
         //Vector3 rightDirection = Vector3.Cross(forwardDirection, -other.transform.right); // 오른쪽 방향 벡터
 
         while (curRot < 90)

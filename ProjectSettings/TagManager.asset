@@ -8,12 +8,7 @@ TagManager:
   - Employee
   - Upgrade
   - Customer
-  - Cooker
-  - Counter
-  - Order
-  - Storage
-  - Entrance
-  - Table
+  - BGM
   layers:
   - Default
   - TransparentFX

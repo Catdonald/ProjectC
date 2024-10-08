@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     [Header("# Manager")]
     public PoolManager PoolManager;
+    public SoundManager SoundManager;
 
     [Header("# Employee")]
     [SerializeField] private Transform employeeSpawner;
@@ -113,11 +114,11 @@ public class GameManager : MonoBehaviour
         TrashBin = GameObject.FindObjectOfType<Trashbin>();
 
         /// µð¹ö±ë¿ë
-        data.UpgradeCount = 11;
-        for(int i = 0; i < data.UpgradeCount; ++i)
-        {
-            upgradables[i].Upgrade(false);
-        }
+        //data.UpgradeCount = 11;
+        //for(int i = 0; i < data.UpgradeCount; ++i)
+        //{
+        //    upgradables[i].Upgrade(false);
+        //}
         ///
     }
     public void SetNowUpgradableObject()

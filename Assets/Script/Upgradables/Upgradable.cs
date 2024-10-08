@@ -6,7 +6,7 @@ using static Upgradable;
 [System.Serializable]
 public class MeshGroup
 {
-    public List<Mesh> meshes; // Mesh ¸®½ºÆ®
+    public List<Mesh> meshes; // Mesh ï¿½ï¿½ï¿½ï¿½Æ®
 }
 
 public class Upgradable : MonoBehaviour
@@ -15,7 +15,7 @@ public class Upgradable : MonoBehaviour
     //[SerializeField] private Transform upgradePosition;
     protected int upgradeLevel = 0;
 
-    // ¸Þ½Ã ¸ð¾çÀ» º¯°æ
+    // ï¿½Þ½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     [SerializeField] private MeshFilter[] meshFilter;
     [SerializeField] private List<MeshGroup> upgradeMeshes;
 
@@ -39,6 +39,10 @@ public class Upgradable : MonoBehaviour
         else
         {
             gameObject.SetActive(true);
+
+            if(gameObject.GetComponent<AudioSource>())
+                GameManager.instance.SoundManager.sfx.Add(gameObject.GetComponent<AudioSource>());
+
             //buyingPosition = upgradePosition.localPosition;
         }
         UpgradeStats();
