@@ -6,10 +6,27 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
     public GameObject settingsPanel;  // 설정창 패널
+    public Slider soundSlider;
+    public Button quitButton;
 
-    public Slider bgmSlider;
-    public Slider sfxSlider;
-      
-    public Button quitButton;         
-    public Button toggleMenuButton;   // 설정창 켜고 끄는 버튼
+    public Button enterMenu;
+    public Button exitMenu;
+
+    void Start()
+    {
+        soundSlider.value = GameManager.instance.SoundManager.soundVol;
+        settingsPanel.SetActive(false);
+    }
+    void Update()
+    {
+        GameManager.instance.SoundManager.SetVolume(soundSlider.value);
+    }
+    public void SetMenuCanvasOn(bool isOn)
+    {
+        settingsPanel.SetActive(isOn);
+    }
+    public void ExitGame()
+    {
+        
+    }
 }
