@@ -8,6 +8,7 @@ TagManager:
   - Building
   - Employee
   - Customer
+  - BGM
   layers:
   - Default
   - TransparentFX

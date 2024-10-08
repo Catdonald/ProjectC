@@ -19,9 +19,13 @@ public class UpgradeBox : Interactable
     [SerializeField] private Image fill;
     [SerializeField] private TextMeshProUGUI priceText;
 
+    private IncreasePitch sound;
+
     // Start is called before the first frame update
     void Start()
     {
+        sound = GetComponent<IncreasePitch>();
+
         maxPrice = 100;
         curPrice = 0;
         fill.fillAmount = 0;
@@ -48,6 +52,7 @@ public class UpgradeBox : Interactable
         if (fill.fillAmount >= 1.0f)
         {
             isFilling = false;
+            sound.QuitSound();
 
             GameManager.instance.currentUpgradableObj.GetComponent<Upgradable>().Upgrade();
             maxPrice *= 2;
@@ -55,6 +60,7 @@ public class UpgradeBox : Interactable
             SetOrigin();
 
             // TODO ) 카메라 이동 및 이펙트
+            
         }
     }
     void SetOrigin()
@@ -66,6 +72,7 @@ public class UpgradeBox : Interactable
     IEnumerator Filling()
     {
         isFilling = true;
+        sound.PlaySound();
 
         while (isPushed && GameManager.instance.data.Money > 0 && curPrice < maxPrice && isFilling)
         {
@@ -79,6 +86,7 @@ public class UpgradeBox : Interactable
                 curPrice = maxPrice;
                 fill.fillAmount = 1f;
                 isFilling = false;
+                sound.QuitSound();
                 yield break;
             }
 
@@ -86,5 +94,6 @@ public class UpgradeBox : Interactable
         }
 
         isFilling = false;
+        sound.QuitSound();
     }
 }

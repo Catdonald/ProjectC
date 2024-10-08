@@ -39,6 +39,10 @@ public class Upgradable : MonoBehaviour
         else
         {
             gameObject.SetActive(true);
+
+            if(gameObject.GetComponent<AudioSource>())
+                GameManager.instance.SoundManager.sfx.Add(gameObject.GetComponent<AudioSource>());
+
             buyingPosition = upgradePosition.localPosition;
         }
         UpgradeStats();
