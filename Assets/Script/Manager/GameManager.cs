@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField, Range(1.01f, 2.0f)] private float upgradeGrowthFactor = 1.5f;
     [SerializeField] private int baseUnlockPrice = 75;
     [SerializeField, Range(1.01f, 2.0f)] private float unlockGrowthFactor = 1.2f;
-    [SerializeField] private long startingMoney = 1000;
+    [SerializeField] private long startingMoney = 10000;
     [SerializeField] private int startingMaxExp = 10;
 
     [Header("# Manager")]
