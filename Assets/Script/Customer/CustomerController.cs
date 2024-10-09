@@ -27,6 +27,7 @@ public class CustomerController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         customerstack = GetComponentInChildren<Receiver>();
+        entranceLayer = 1 << LayerMask.NameToLayer("Entrance");
     }
 
     private void OnEnable()
@@ -56,9 +57,32 @@ public class CustomerController : MonoBehaviour
         this.orderInfo = orderInfo;
     }
 
+    IEnumerator CheckEntrance()
+    {
+        RaycastHit hit;
+        while(!Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, 0.5f, entranceLayer, QueryTriggerInteraction.Collide))
+        {
+            yield return null;
+        }
+
+        var doors = hit.transform.GetComponentsInChildren<Door>();
+        foreach(var door in doors)
+        {
+            door.OpenDoor(transform);
+        }
+
+        yield return new WaitForSeconds(1.0f);
+
+        foreach(var door in doors)
+        {
+            door.CloseDoor();
+        }
+    }
+
     IEnumerator Enter()
     {
         yield return new WaitUntil(() => HasArrivedToDestination());
+        StartCoroutine(CheckEntrance());
 
         // 도착하면 줄 n번째 자리 부여받는다.
         counter.AddCustomer(this);
@@ -106,6 +130,7 @@ public class CustomerController : MonoBehaviour
 
     IEnumerator Exit()
     {
+        StartCoroutine(CheckEntrance());
         yield return new WaitUntil(() => HasArrivedToDestination());
         agent.SetDestination(spawnPoint.position);
         yield return new WaitUntil(() => HasArrivedToDestination());
