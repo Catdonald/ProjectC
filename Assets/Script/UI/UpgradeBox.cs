@@ -57,7 +57,7 @@ public class UpgradeBox : Interactable
             sound.QuitSound();
 
             GameManager.instance.currentUpgradableObj.GetComponent<Upgradable>().Upgrade();
-            maxPrice *= 2;
+            maxPrice *= 1;
             GameManager.instance.SetNowUpgradableObject();
             SetOrigin();
 

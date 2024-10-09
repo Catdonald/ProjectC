@@ -75,11 +75,13 @@ public class Table : Upgradable
             {
                 var trashObj = GameManager.instance.PoolManager.SpawnObject("Trash");
                 trashStack.stack.Push(trashObj);
+                trashObj.transform.position = transform.position;
             }
             else if (StackType == eObjectType.SUBMENU)
             {
                 var trashObj = GameManager.instance.PoolManager.SpawnObject("EmptyCup");
                 trashStack.stack.Push(trashObj);
+                trashObj.transform.position = transform.position;
             }
             LeaveTip();
         }
