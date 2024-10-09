@@ -6,8 +6,8 @@ public class CameraController : MonoBehaviour
 {
     public Camera mainCamera;
 
-    public float moveDuration = 1.0f; 
-    public float stayDuration = 1.0f; 
+    public float moveDuration = 0.2f; 
+    public float stayDuration = 0.2f; 
 
     private Vector3 originalPosition; 
 
