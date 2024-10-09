@@ -54,6 +54,7 @@ public class UpgradeBox : Interactable
         if (fill.fillAmount >= 1.0f)
         {
             isFilling = false;
+            isPushed = false;
             sound.QuitSound();
 
             GameManager.instance.currentUpgradableObj.GetComponent<Upgradable>().Upgrade();
@@ -89,7 +90,7 @@ public class UpgradeBox : Interactable
 
             fill.fillAmount = (float)curPrice / (float)maxPrice;
 
-            if (curPrice >= maxPrice)
+            if (curPrice == maxPrice)
             {
                 curPrice = maxPrice;
                 fill.fillAmount = 1f;
