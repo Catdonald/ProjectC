@@ -15512,7 +15512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245c3f3c3eec801478d712499378c1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: 0}
+  buyingPosition: {x: 0, y: 0.02, z: 0}
   meshFilter: []
   upgradeMeshes: []
   unActiveEntranceColli: {fileID: 0}

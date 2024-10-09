@@ -924,7 +924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: 2.86}
+  buyingPosition: {x: 0, y: 0.02, z: 2.86}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 1011230918534033113}
@@ -1566,7 +1566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fb65e18e659c45932149d21628e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: 0}
+  buyingPosition: {x: 0, y: 0.02, z: 0}
   meshFilter: []
   upgradeMeshes: []
   baseProductionInterval: 4
@@ -2842,7 +2842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: 4.13}
+  buyingPosition: {x: 0, y: 0.02, z: 4.13}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 4951531104578538152}
@@ -3945,7 +3945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: 2.31}
+  buyingPosition: {x: 0, y: 0.02, z: 2.31}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 6316244146486562080}
@@ -4263,7 +4263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: -2.34, y: 0, z: 0}
+  buyingPosition: {x: -2.34, y: 0.02, z: 0}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 8172807290706834204}
@@ -5514,7 +5514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: 2.25}
+  buyingPosition: {x: 0, y: 0.02, z: 2.25}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 5307299286437731344}
@@ -5576,7 +5576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: -2.69}
+  buyingPosition: {x: 0, y: 0.02, z: -2.69}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 4611252470014989051}
@@ -6567,7 +6567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: -1.98, y: 0, z: 0}
+  buyingPosition: {x: -1.98, y: 0.02, z: 0}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 4844379782455082052}
@@ -7915,7 +7915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: 3}
+  buyingPosition: {x: 0, y: 0.02, z: 3}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 7035826158830050447}
@@ -10040,7 +10040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: -2.82}
+  buyingPosition: {x: 0, y: 0.02, z: -2.82}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 852481109197478979}
@@ -13561,7 +13561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: 2.95}
+  buyingPosition: {x: 0, y: 0.02, z: 2.95}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 8287815895815509272}
@@ -14535,7 +14535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: 2.31}
+  buyingPosition: {x: 0, y: 0.02, z: 2.31}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 1160630098419240343}
@@ -15168,7 +15168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: 2.23}
+  buyingPosition: {x: 0, y: 0.02, z: 2.23}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 4470483006976511501}
@@ -15315,7 +15315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: -2.28}
+  buyingPosition: {x: 0, y: 0.02, z: -2.28}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 6754447026546432627}
@@ -18053,7 +18053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: 3.32}
+  buyingPosition: {x: 0, y: 0.02, z: 3.32}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 1268549623391919645}
@@ -19524,7 +19524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a32f8727c6662498356158f0409fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: -4.05, y: 0, z: 0}
+  buyingPosition: {x: -4.05, y: 0.02, z: 0}
   meshFilter: []
   upgradeMeshes: []
   worker: {fileID: 9058744813812916539}
@@ -19588,7 +19588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: 2.72}
+  buyingPosition: {x: 0, y: 0.02, z: 2.72}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 3034270585647936229}
@@ -20136,7 +20136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a32f8727c6662498356158f0409fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: 0}
+  buyingPosition: {x: 0, y: 0.02, z: 0}
   meshFilter: []
   upgradeMeshes: []
   worker: {fileID: 2873954098836481996}
@@ -21258,7 +21258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fb65e18e659c45932149d21628e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: 0}
+  buyingPosition: {x: 0, y: 0.02, z: 0}
   meshFilter: []
   upgradeMeshes: []
   baseProductionInterval: 4
@@ -21807,7 +21807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: -2.59, y: 0, z: 0}
+  buyingPosition: {x: -2.59, y: 0.02, z: 0}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 3624682381859671050}
@@ -21872,7 +21872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: -2.1}
+  buyingPosition: {x: 0, y: 0.02, z: -2.1}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 6005277469569186775}
@@ -22122,7 +22122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 3.75, y: 0, z: 0}
+  buyingPosition: {x: 3.75, y: 0.02, z: 0}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 3082721363744246105}
@@ -22208,7 +22208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: -1.77, y: 0, z: 0}
+  buyingPosition: {x: -1.77, y: 0.02, z: 0}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 590296318163220943}
@@ -23399,7 +23399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a160024de581424382ef697cc15145a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: -1.43, y: 0, z: 2.45}
+  buyingPosition: {x: -1.43, y: 0.02, z: 2.45}
   meshFilter: []
   upgradeMeshes: []
   worker: {fileID: 4612568878305129784}
@@ -24388,7 +24388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 3.69, y: 0, z: 0}
+  buyingPosition: {x: 3.69, y: 0.02, z: 0}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 4713059339527558909}
@@ -25930,7 +25930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: 2.6}
+  buyingPosition: {x: 0, y: 0.02, z: 2.6}
   meshFilter: []
   upgradeMeshes: []
   trashObject: {fileID: 3675353628882025710}
@@ -29100,7 +29100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc978677214e234f9f21c2c1bc8de44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0, z: 0}
+  buyingPosition: {x: 0, y: 0.02, z: 0}
   meshFilter: []
   upgradeMeshes: []
   baseInterval: 1
@@ -29293,7 +29293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0205fb451787ed24bb7b241dfd2360d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: -2.24, y: 0, z: 2.47}
+  buyingPosition: {x: -2.24, y: 0.02, z: 2.47}
   meshFilter: []
   upgradeMeshes: []
   worker: {fileID: 5944890032584912442}
@@ -30732,7 +30732,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 690292002748717173, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: m_Name
-      value: BurgerCooker (2)
+      value: BurgerCooker
       objectReference: {fileID: 0}
     - target: {fileID: 2031079686175380940, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30778,6 +30778,10 @@ PrefabInstance:
       propertyPath: buyingPosition.x
       value: -4.37
       objectReference: {fileID: 0}
+    - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: buyingPosition.y
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6999112866716342989, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
@@ -30799,7 +30803,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 690292002748717173, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: m_Name
-      value: BurgerCooker (3)
+      value: BurgerCooker (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2031079686175380940, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30844,6 +30848,10 @@ PrefabInstance:
     - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: buyingPosition.x
       value: -4.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: buyingPosition.y
+      value: 0.02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

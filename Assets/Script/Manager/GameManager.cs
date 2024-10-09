@@ -36,11 +36,8 @@ public class GameManager : MonoBehaviour
     [SerializeField, Range(2.0f, 5.0f)] private float employeeSpawnRadius = 3.0f;
 
     [Header("# Upgradables")]
-    //[SerializeField] private UpgradeBox upgradeBox;
-    private int upgradeIndex = -1;
-    [SerializeField] private GameObject upgradeButton;
+    [SerializeField] private UpgradeBox upgradeButton;
     public List<Upgradable> upgradables = new List<Upgradable>();
-    [SerializeField] public Upgradable currentUpgradableObj;
 
     [Header("# UI")]    
     [SerializeField] private OrderInfo[] orderInfo; // 0: burger, 1: sub-menu, 2: driveThru
@@ -74,6 +71,8 @@ public class GameManager : MonoBehaviour
     public StoreData data;
     private string storeName;
 
+    private CameraController upgradableCam;
+
     void Awake()
     {
         instance = this;
@@ -90,10 +89,9 @@ public class GameManager : MonoBehaviour
             SpawnEmployee();
         }
     }
+
     private void Start()
     {
-        SetNowUpgradableObject();
-
         counters = GameObject.FindObjectsOfType<Counter>(true).ToList();
 
         var spawnerObjs = GameObject.FindObjectsOfType<Spawner>(true);
@@ -113,26 +111,14 @@ public class GameManager : MonoBehaviour
         PackageTable = GameObject.FindObjectOfType<PackageTable>(true);
         TrashBin = GameObject.FindObjectOfType<Trashbin>();
 
-        /// 디버깅용
-        //data.UpgradeCount = 11;
-        //for(int i = 0; i < data.UpgradeCount; ++i)
-        //{
-        //    upgradables[i].Upgrade(false);
-        //}
-        ///
-    }
-    public void SetNowUpgradableObject()
-    {
-        upgradeIndex++;
-        if (upgradables.Count < upgradeIndex)
-            upgradeIndex = 0;
+        upgradableCam = GameObject.FindObjectOfType<CameraController>();
 
-        currentUpgradableObj = upgradables[upgradeIndex];
+        for (int i = 0; i < data.UpgradeCount; ++i)
+        {
+            upgradables[i].Upgrade(false);
+        }
 
-        Vector3 pos = currentUpgradableObj.BuyingPosition;
-        pos.y = 0.18f;
-
-        upgradeButton.transform.position = pos;
+        UpdateUpgradeButton();
     }
 
     void LoadDataFromCSV<T>(string filename, List<T> dataLst, Func<string[], T> parser)
@@ -164,6 +150,49 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void UpdateUpgradeButton()
+    {
+        if(upgradables.Count == 0)
+        {
+            Debug.LogWarning("There are no upgradables in the scene. Please add the upgradables to proceed.");
+            return;
+        }
+
+        if(UpgradeCount < upgradables.Count)
+        {
+            var upgradable = upgradables[UpgradeCount];
+            upgradeButton.transform.position = upgradable.BuyingPosition;
+            int price = Mathf.RoundToInt(Mathf.Round(baseUnlockPrice * Mathf.Pow(unlockGrowthFactor, UpgradeCount)) / 5.0f) * 5;
+            upgradeButton.Initialize(price, PaidAmount);
+        }
+        else
+        {
+            data.IsUnlocked = true;
+            upgradeButton.gameObject.SetActive(false);
+        }
+    }
+
+    public void BuyUpgradable()
+    {
+        /// upgrade와 effect 재생, 카메라 이동, 그리고 save
+        upgradables[UpgradeCount].Upgrade();
+        UpgradeCount++;
+        PaidAmount = 0;
+        UpdateUpgradeButton();
+
+        // effect, sound
+
+        // camera move
+        Vector3 upgradablePosition = upgradables[UpgradeCount].BuyingPosition;
+        Vector3 nextPos;
+        nextPos.x = upgradablePosition.x - 5;
+        nextPos.y = Camera.main.transform.position.y;
+        nextPos.z = upgradablePosition.z - 5;
+        upgradableCam.ShowPosition(nextPos);
+
+        // save
+        SaveLoadManager.SaveData<StoreData>(data, storeName);
+    }
 
     public int GetLevel()
     {
