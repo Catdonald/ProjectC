@@ -27,7 +27,7 @@ public class UpgradeBox : Interactable
 
     protected override void OnPlayerEnter()
     {
-        StartCoroutine(Pay());
+        StartCoroutine(Filling());
     }
 
     protected override void OnPlayerExit()
@@ -50,11 +50,12 @@ public class UpgradeBox : Interactable
         priceText.text = GameManager.instance.GetFormattedMoney(upgradePrice - paidAmount);
     }
 
-    IEnumerator Pay()
+    IEnumerator Filling()
     {
         yield return new WaitForSeconds(2.0f);
-        while(player != null && paidAmount < upgradePrice && playerMoney > 0)
+        while (player != null && paidAmount < upgradePrice && playerMoney > 0)
         {
+            // 1원씩 지불하면 가격 비쌀수록 채우는데 오래 걸려서 보정함.
             float paymentRate = upgradePrice * payingInterval / payingTime;
             paymentRate = Mathf.Min(playerMoney, paymentRate);
             int payment = Mathf.Max(1, Mathf.RoundToInt(paymentRate));
@@ -62,6 +63,7 @@ public class UpgradeBox : Interactable
             UpdatePayAmount(payment);
             GameManager.instance.AdjustMoney(-payment);
 
+            // money animation
             var moneyObj = GameManager.instance.PoolManager.SpawnObject("Money");
             moneyObj.transform.position = player.transform.position + Vector3.up * 1.75f;
             moneyObj.transform.DOJump(transform.position, 3.0f, 1, 0.5f)

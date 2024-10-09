@@ -1,91 +1,48 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : Interactable
 {
-    [SerializeField] private bool isSomeoneIn;
-    [SerializeField] private MeshRenderer entranceMeshes;
-    private float curRot = 0;
-    private Coroutine doorCoroutine;
+    [SerializeField] private Transform doorTransform;
+    [SerializeField] private float openDuration = 0.4f;
+    [SerializeField] private float closeDuration = 0.5f;
+    private Vector3 openAngle = new Vector3(0, 90, 0);
+    private bool isOpen = false;
 
-    protected override void OnPlayerEnter(Collider other)
+    protected override void OnPlayerEnter()
     {
-        if (doorCoroutine == null)
-        {
-            doorCoroutine = StartCoroutine(OpenDoor(other));
-        }
-    }
-    protected override void OnPlayerStay(Collider other)
-    {
-        if (doorCoroutine == null)
-        {
-            doorCoroutine = StartCoroutine(OpenDoor(other));
-        }
-    }
-    protected override void OnPlayerExit(Collider other)
-    {
-        if (doorCoroutine == null)
-        {
-            doorCoroutine = StartCoroutine(CloseDoor(other));
-        }
-    }
-    protected override void OnCustomerEnter(Collider other)
-    {
-        if (doorCoroutine == null)
-        {
-            doorCoroutine = StartCoroutine(OpenDoor(other));
-        }
-    }
-    protected override void OnCustomerStay(Collider other)
-    {
-        if (doorCoroutine == null)
-        {
-            doorCoroutine = StartCoroutine(OpenDoor(other));
-        }
-    }
-    protected override void OnCustomerExit(Collider other)
-    {
-        if (doorCoroutine == null)
-        {
-            doorCoroutine = StartCoroutine(CloseDoor(other));
-        }
+        OpenDoor(player.transform);
     }
 
-    IEnumerator OpenDoor(Collider other)
+    protected override void OnPlayerExit()
     {
-       // Vector3 forwardDirection = other.transform.GetChild(1).forward; // 플레이어가 바라보는 방향
-
-        while (curRot < 90)
-        {
-            float rotationThisFrame = Time.deltaTime * 400;
-            curRot += rotationThisFrame;
-
-            entranceMeshes.transform.Rotate(other.transform.up, rotationThisFrame);
-
-            yield return null;
-        }
-
-        curRot = 90;
-
-        doorCoroutine = null;
+        CloseDoor();
     }
 
-    IEnumerator CloseDoor(Collider other)
+    public void OpenDoor(Transform interactor)
     {
-
-        while (curRot > 0)
+        if (isOpen)
         {
-            float rotationThisFrame = Time.deltaTime * 400;
-            curRot -= rotationThisFrame;
-
-            entranceMeshes.transform.Rotate(-other.transform.up, rotationThisFrame);
-
-            yield return null;
+            return;
         }
 
-        curRot = 0;
+        isOpen = true;
+        Vector3 direction = (interactor.position - transform.position).normalized;
+        float dotProduct = Vector3.Dot(transform.forward, direction);
+        Vector3 targetAngle = openAngle * Mathf.Sign(dotProduct);
+        doorTransform.DOLocalRotate(targetAngle, openDuration, RotateMode.LocalAxisAdd);
+    }
 
-        doorCoroutine = null;
+    public void CloseDoor()
+    {
+        if(player != null)
+        {
+            return;
+        }
+
+        isOpen = false;
+        doorTransform.DOLocalRotate(Vector3.zero, closeDuration).SetEase(Ease.OutBounce);
     }
 }
