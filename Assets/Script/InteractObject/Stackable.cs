@@ -44,6 +44,7 @@ public class Stackable : MonoBehaviour, IStackObject
         StartCoroutine(UpdateObjectPos(obj, pos, gameObject));
         obj.transform.SetParent(gameObject.transform);
     }
+    
     public virtual GameObject RequestObject()
     {
         if(stack.Count == 0) return null;

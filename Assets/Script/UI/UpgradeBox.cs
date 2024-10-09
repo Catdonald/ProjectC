@@ -20,11 +20,13 @@ public class UpgradeBox : Interactable
     [SerializeField] private TextMeshProUGUI priceText;
 
     private IncreasePitch sound;
+    private CameraController cam;
 
     // Start is called before the first frame update
     void Start()
     {
         sound = GetComponent<IncreasePitch>();
+        cam = GetComponent<CameraController>();
 
         maxPrice = 100;
         curPrice = 0;
@@ -52,15 +54,21 @@ public class UpgradeBox : Interactable
         if (fill.fillAmount >= 1.0f)
         {
             isFilling = false;
+            isPushed = false;
             sound.QuitSound();
 
             GameManager.instance.currentUpgradableObj.GetComponent<Upgradable>().Upgrade();
-            maxPrice *= 2;
+            maxPrice *= 1;
             GameManager.instance.SetNowUpgradableObject();
             SetOrigin();
 
             // TODO ) 카메라 이동 및 이펙트
-            
+
+            Vector3 nextPos;
+            nextPos.x = transform.position.x - 5;
+            nextPos.y = Camera.main.transform.position.y;
+            nextPos.z = transform.position.z - 5;
+            cam.ShowPosition(nextPos);
         }
     }
     void SetOrigin()
@@ -73,6 +81,7 @@ public class UpgradeBox : Interactable
     {
         isFilling = true;
         sound.PlaySound();
+        int frame = maxPrice / 3;
 
         while (isPushed && GameManager.instance.data.Money > 0 && curPrice < maxPrice && isFilling)
         {
@@ -81,7 +90,7 @@ public class UpgradeBox : Interactable
 
             fill.fillAmount = (float)curPrice / (float)maxPrice;
 
-            if (curPrice >= maxPrice)
+            if (curPrice == maxPrice)
             {
                 curPrice = maxPrice;
                 fill.fillAmount = 1f;
@@ -90,7 +99,7 @@ public class UpgradeBox : Interactable
                 yield break;
             }
 
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.01f / frame);
         }
 
         isFilling = false;

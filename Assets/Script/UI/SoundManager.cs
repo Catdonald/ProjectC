@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
 
     void Awake()
     {
-        soundVol = 50;
+        soundVol = 0.5f;
     }
     void Start()
     {
