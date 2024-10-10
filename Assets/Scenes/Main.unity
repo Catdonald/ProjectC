@@ -520,6 +520,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &663910452 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7678980360646109223, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+  m_PrefabInstance: {fileID: 6356389955421411775}
+  m_PrefabAsset: {fileID: 0}
 --- !u!33 &664527483 stripped
 MeshFilter:
   m_CorrespondingSourceObject: {fileID: 135111116415279766, guid: 94501bc169326ba46bf06438581f5092, type: 3}
@@ -786,6 +791,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1364431233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3234750747912832858, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+  m_PrefabInstance: {fileID: 6356389955421411775}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1375517443 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3152371590665401408, guid: 94501bc169326ba46bf06438581f5092, type: 3}
@@ -2968,6 +2978,10 @@ PrefabInstance:
       propertyPath: upgradeMeshes.Array.data[3].meshes.Array.data[4]
       value: 
       objectReference: {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
+    - target: {fileID: 3234750747912832858, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3394183739924542952, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: tableStack
       value: 
@@ -3224,6 +3238,10 @@ PrefabInstance:
       propertyPath: meshFilter.Array.data[1]
       value: 
       objectReference: {fileID: 664527483}
+    - target: {fileID: 3849361320406872295, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: upgradeMeshes.Array.data[0].deleted
+      value: 
+      objectReference: {fileID: 1364431233}
     - target: {fileID: 4085882210268421513, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: tableStack
       value: 
@@ -4212,6 +4230,10 @@ PrefabInstance:
       propertyPath: upgradeMeshes.Array.data[3].meshes.Array.data[2]
       value: 
       objectReference: {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
+    - target: {fileID: 8295277435784519578, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: upgradeMeshes.Array.data[0].deleted
+      value: 
+      objectReference: {fileID: 663910452}
     - target: {fileID: 8615528339217851023, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: tableStack
       value: 

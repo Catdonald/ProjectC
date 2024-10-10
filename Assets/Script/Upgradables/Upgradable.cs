@@ -6,7 +6,8 @@ using static Upgradable;
 [System.Serializable]
 public class MeshGroup
 {
-    public List<Mesh> meshes; // Mesh ����Ʈ
+    public List<Mesh> meshes; // Mesh
+    public GameObject deleted;
 }
 
 public class Upgradable : MonoBehaviour
@@ -34,6 +35,9 @@ public class Upgradable : MonoBehaviour
             {
                 meshFilter[i].mesh = upgradeMeshes[upgradeLevel - 1].meshes[i];
             }
+
+            if (upgradeMeshes[upgradeLevel - 1].deleted)
+                upgradeMeshes[upgradeLevel - 1].deleted.SetActive(false);
         }
         else
         {
