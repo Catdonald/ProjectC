@@ -48,5 +48,6 @@ public class CameraController : MonoBehaviour
         }
 
         transform.position = targetPosition;
+        GameManager.instance.isStaticMode = false;
     }
 }
