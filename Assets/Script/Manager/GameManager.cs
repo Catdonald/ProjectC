@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
     [SerializeField, Range(1.01f, 2.0f)] private float unlockGrowthFactor = 1.2f;
     [SerializeField] private long startingMoney = 10000;
     [SerializeField] private int startingMaxExp = 10;
-    public bool isStaticMode { get; set; }
 
     [Header("# Manager")]
     public PoolManager PoolManager;
@@ -80,7 +79,7 @@ public class GameManager : MonoBehaviour
     public StoreData data;
     private string storeName;
 
-    private CameraController upgradableCam;
+    public CameraController upgradableCam;
 
     void Awake()
     {

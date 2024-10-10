@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public bool IsMoving { get; private set; } = false;
+    public bool IsMoving { get; set; } = false;
 
     private float moveDuration = 0.2f; 
     private float stayDuration = 2.0f;
@@ -32,7 +32,6 @@ public class CameraController : MonoBehaviour
         yield return new WaitForSeconds(stayDuration);
 
         yield return StartCoroutine(MoveToPosition(Camera.main.transform, originalPosition, moveDuration));
-        IsMoving = false;
     }
 
     IEnumerator MoveToPosition(Transform transform, Vector3 targetPosition, float duration)
@@ -48,6 +47,6 @@ public class CameraController : MonoBehaviour
         }
 
         transform.position = targetPosition;
-        GameManager.instance.isStaticMode = false;
+        IsMoving = false;
     }
 }

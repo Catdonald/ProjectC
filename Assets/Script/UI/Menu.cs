@@ -26,9 +26,9 @@ public class Menu : MonoBehaviour
         settingsPanel.SetActive(isOn);
 
         if (isOn)
-            GameManager.instance.isStaticMode = true;
+            GameManager.instance.upgradableCam.IsMoving = true;
         else
-            GameManager.instance.isStaticMode = false;
+            GameManager.instance.upgradableCam.IsMoving = false;
     }
     public void ExitGame()
     {
