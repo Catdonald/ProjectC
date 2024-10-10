@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.isStaticMode)
+            return;
+
         if(Input.GetMouseButtonDown(0))
         {
             // UI�� Ŭ������ �ʴ´�.

@@ -25,6 +25,8 @@ public class CameraController : MonoBehaviour
 
     IEnumerator MoveCamera(Vector3 targetPosition)
     {
+        GameManager.instance.isStaticMode = true;
+
         yield return StartCoroutine(MoveToPosition(Camera.main.transform, targetPosition, moveDuration));
 
         yield return new WaitForSeconds(stayDuration);
@@ -45,5 +47,6 @@ public class CameraController : MonoBehaviour
         }
 
         transform.position = targetPosition;
+        GameManager.instance.isStaticMode = false;
     }
 }

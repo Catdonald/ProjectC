@@ -24,6 +24,11 @@ public class Menu : MonoBehaviour
     public void SetMenuCanvasOn(bool isOn)
     {
         settingsPanel.SetActive(isOn);
+
+        if (isOn)
+            GameManager.instance.isStaticMode = true;
+        else
+            GameManager.instance.isStaticMode = false;
     }
     public void ExitGame()
     {
