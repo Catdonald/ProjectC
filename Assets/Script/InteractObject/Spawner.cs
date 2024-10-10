@@ -50,10 +50,7 @@ public class Spawner : Stackable
         if (stack.Count == 0)
             return;
 
-        if (player.stack.Count == 0 && player.type == eObjectType.LAST)
-            player.type = type;
-
-        if (player.type == type)
-            player.ReceiveObject(stack.Pop(), type, objectHeight);
+        if (player.StackType == eObjectType.LAST || player.StackType == type)
+            player.AddToStack(stack.Pop(), type);
     }
 }

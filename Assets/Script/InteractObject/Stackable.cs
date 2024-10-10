@@ -63,10 +63,7 @@ public class Stackable : MonoBehaviour, IStackObject
 
         isActing = false;
     }
-    public virtual IEnumerator DestryObject()
-    {
-        yield return new WaitForSeconds(actingTime);
-    }
+    
     public virtual IEnumerator UpdateObjectPos(GameObject obj, Vector3 targetPos, GameObject targetObject)
     {
         float elapsedTime = 0f;
@@ -121,6 +118,6 @@ public class Stackable : MonoBehaviour, IStackObject
             yield return null;
         }
 
-        obj.transform.position = targetPos;
+        obj.transform.position = targetPos;        
     }
 }

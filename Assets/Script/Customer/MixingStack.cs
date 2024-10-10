@@ -12,7 +12,7 @@ public class MixingStack : MonoBehaviour
     public void AddToStack(GameObject obj, eObjectType type)
     {
         if (obj == null) return;
-        float objHeight = GetStackOffset(type);
+        float objHeight = GameManager.instance.GetStackOffset(type);
         Vector3 peekPoint = transform.position + Vector3.up * height;
         height += objHeight;
         obj.transform.DOJump(peekPoint, 5.0f, 1, 0.3f)
@@ -34,15 +34,4 @@ public class MixingStack : MonoBehaviour
         height = 0.0f;
     }
 
-    private float GetStackOffset(eObjectType type)
-    {
-        if (type == eObjectType.HAMBURGER)
-        {
-            return 0.4f;
-        }
-        else
-        {
-            return 0.5f;
-        }
-    }
 }

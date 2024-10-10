@@ -18,7 +18,7 @@ public class Trashbin : Interactable
         if(throwTimer >= throwInterval)
         {
             throwTimer = 0f;
-            var thrownObj = player.Stack.RequestObject();
+            var thrownObj = player.Stack.RemoveFromStack();
             if (thrownObj == null)
                 return;
             thrownObj.transform.DOJump(transform.TransformPoint(throwOffset), 5.0f, 1, 0.5f)
@@ -31,7 +31,7 @@ public class Trashbin : Interactable
 
     public void ThrowToBin(playerStack stack)
     {
-        var thrownObj = stack.RequestObject();
+        var thrownObj = stack.RemoveFromStack();
         thrownObj.transform.DOJump(transform.TransformPoint(throwOffset), 5.0f, 1, 0.5f)
                 .OnComplete(() =>
                 {

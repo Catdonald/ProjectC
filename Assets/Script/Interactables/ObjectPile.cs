@@ -28,7 +28,7 @@ public class ObjectPile : Interactable
     // Update is called once per frame
     void Update()
     {
-        if(player == null || objects.Count == 0)
+        if (player == null || objects.Count == 0)
         {
             return;
         }
@@ -43,14 +43,11 @@ public class ObjectPile : Interactable
 
     protected virtual void Drop()
     {
-        if(player.Stack.type == eObjectType.LAST || player.Stack.type == stackType)
+        if (player.Stack.StackType == eObjectType.LAST || player.Stack.StackType == stackType)
         {
-            if(!player.Stack.IsFull)
-            {
-                var removedObj = objects.Pop();
-                player.Stack.ReceiveObject(removedObj, stackType, spacing.y);
-                // TODO) Sound
-            }
+            var removedObj = objects.Pop();
+            player.Stack.AddToStack(removedObj, stackType);
+            // TODO) Sound
         }
     }
 
@@ -80,9 +77,9 @@ public class ObjectPile : Interactable
     {
         pileCenter = new Vector3((length - 1) * spacing.x * 0.5f, 0, (width - 1) * spacing.z * 0.5f);
         Gizmos.color = Color.yellow;
-        for(int i = 0; i < length; i++)
+        for (int i = 0; i < length; i++)
         {
-            for(int j = 0; j < width; j++)
+            for (int j = 0; j < width; j++)
             {
                 Vector3 position = transform.position + new Vector3(i * spacing.x - pileCenter.x, spacing.y / 2.0f, j * spacing.z - pileCenter.z);
                 Gizmos.DrawWireCube(position, spacing);

@@ -16,7 +16,7 @@ public class EmployeeController : MonoBehaviour
     private NavMeshAgent agent;
     private Work currentWork;
     private playerStack stack;
-    private int capacity;
+    //private int capacity;
 
     // Start is called before the first frame update
     void Start()
@@ -94,7 +94,7 @@ public class EmployeeController : MonoBehaviour
         agent.speed = baseSpeed + (speedLevel * 0.1f);
 
         int capacityLevel = GameManager.instance.GetUpgradeLevel(UpgradeType.EmployeeCapacity);
-        capacity = baseCapacity + capacityLevel;
+        stack.Capacity = baseCapacity + capacityLevel;
     }
 
     IEnumerator TakeOrder()
@@ -221,7 +221,7 @@ public class EmployeeController : MonoBehaviour
             yield return null;
         }
 
-        while (!stack.IsFull)
+        while (dirtyTable.trashStack.Count > 0 && stack.Height < stack.Capacity)
         {
             dirtyTable.trashStack.RemoveAndStackObject(stack);
             yield return new WaitForSeconds(0.03f);
@@ -278,12 +278,12 @@ public class EmployeeController : MonoBehaviour
         }
 
         // take foods from the spawner
-        while (spawner.Count > 0 && !Stack.IsFull)
+        while (spawner.Count > 0 && stack.Height < stack.Capacity)
         {
             var food = spawner.RequestObject();
             if (food != null)
             {
-                Stack.ReceiveObject(food, spawner.type, spawner.objectHeight);
+                Stack.AddToStack(food, spawner.type);
             }
             yield return new WaitForSeconds(0.03f);
         }
@@ -298,8 +298,8 @@ public class EmployeeController : MonoBehaviour
         {
             if (!counter.IsStorageFull)
             {
-                var food = stack.RequestObject();
-                counter.Receiver.ReceiveObject(food, stack.type, stack.objectHeight);
+                var food = stack.RemoveFromStack();
+                counter.Receiver.ReceiveObject(food, stack.StackType, GameManager.instance.GetStackOffset(stack.StackType));
             }
             yield return new WaitForSeconds(0.03f);
         }
@@ -341,12 +341,12 @@ public class EmployeeController : MonoBehaviour
         }
 
         // take foods from the spawner
-        while (spawner.Count > 0 && !Stack.IsFull)
+        while (spawner.Count > 0 && stack.Height < stack.Capacity)
         {
             var food = spawner.RequestObject();
             if (food != null)
             {
-                Stack.ReceiveObject(food, spawner.type, spawner.objectHeight);
+                Stack.AddToStack(food, spawner.type);
             }
             yield return new WaitForSeconds(0.03f);
         }
@@ -361,8 +361,8 @@ public class EmployeeController : MonoBehaviour
         {
             if (!packageTable.IsFoodStorageFull)
             {
-                var food = stack.RequestObject();
-                packageTable.foodReceiver.ReceiveObject(food, stack.type, stack.objectHeight);
+                var food = stack.RemoveFromStack();
+                packageTable.foodReceiver.ReceiveObject(food, stack.StackType, GameManager.instance.GetStackOffset(stack.StackType));
             }
             yield return new WaitForSeconds(0.03f);
         }
@@ -404,12 +404,12 @@ public class EmployeeController : MonoBehaviour
         }
 
         // take packages from the packageTable
-        while (packageTable.GetStoredPackageCount > 0 && !stack.IsFull)
+        while (packageTable.GetStoredPackageCount > 0 && stack.Height < stack.Capacity)
         {
             var package = packageTable.packageStack.RequestObject();
             if (package != null)
             {
-                stack.ReceiveObject(package, packageTable.packageStack.type, packageTable.packageStack.objectHeight);
+                stack.AddToStack(package, packageTable.packageStack.type);
             }
             yield return new WaitForSeconds(0.03f);
         }
@@ -424,8 +424,8 @@ public class EmployeeController : MonoBehaviour
         {
             if (!dtCounter.IsStorageFull)
             {
-                var package = stack.RequestObject();
-                dtCounter.Receiver.ReceiveObject(package, stack.type, stack.objectHeight);
+                var package = stack.RemoveFromStack();
+                dtCounter.Receiver.ReceiveObject(package, stack.StackType, GameManager.instance.GetStackOffset(stack.StackType));
             }
             yield return new WaitForSeconds(0.03f);
         }
@@ -467,12 +467,12 @@ public class EmployeeController : MonoBehaviour
         }
 
         // take foods from the spawner
-        while (spawner.Count > 0 && !Stack.IsFull)
+        while (spawner.Count > 0 && stack.Height < stack.Capacity)
         {
             var food = spawner.RequestObject();
             if (food != null)
             {
-                Stack.ReceiveObject(food, spawner.type, spawner.objectHeight);
+                Stack.AddToStack(food, spawner.type);
             }
             yield return new WaitForSeconds(0.03f);
         }
@@ -487,8 +487,8 @@ public class EmployeeController : MonoBehaviour
         {
             if (!counter.IsStorageFull)
             {
-                var food = stack.RequestObject();
-                counter.Receiver.ReceiveObject(food, stack.type, stack.objectHeight);
+                var food = stack.RemoveFromStack();
+                counter.Receiver.ReceiveObject(food, stack.StackType, GameManager.instance.GetStackOffset(stack.StackType));
             }
             yield return new WaitForSeconds(0.03f);
         }

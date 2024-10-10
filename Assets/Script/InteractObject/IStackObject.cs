@@ -16,7 +16,6 @@ public interface IStackObject
     public void ReceiveObject(GameObject obj, eObjectType objType, float objHegiht);
     public GameObject RequestObject();
     IEnumerator SpawnObject(int type);
-    IEnumerator DestryObject();
     IEnumerator UpdateObjectPos(GameObject obj, Vector3 targetPos, GameObject targetObject);
     IEnumerator UpdateObjectPos(GameObject obj, Vector3 targetPos);
 }

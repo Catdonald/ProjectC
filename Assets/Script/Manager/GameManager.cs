@@ -39,9 +39,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UpgradeBox upgradeButton;
     public List<Upgradable> upgradables = new List<Upgradable>();
 
-    [Header("# UI")]    
+    [Header("# UI")]
     [SerializeField] private OrderInfo[] orderInfo; // 0: burger, 1: sub-menu, 2: driveThru
-    [SerializeField] private KioskOrderInfo[] kioskOrderInfo; 
+    [SerializeField] private KioskOrderInfo[] kioskOrderInfo;
+
+    [Header("# Offset")]
+    [SerializeField] private float burgerOffset = 0.4f;
+    [SerializeField] private float burgerPackOffset = 0.3f;
+    [SerializeField] private float submenuOffset = 0.5f;
+    [SerializeField] private float trashOffset = 0.18f;
+    [SerializeField] private float emptyCupOffset = 0.5f;
 
     // Spawner
     public List<Spawner> spawners_burger = new List<Spawner>();
@@ -152,13 +159,13 @@ public class GameManager : MonoBehaviour
 
     private void UpdateUpgradeButton()
     {
-        if(upgradables.Count == 0)
+        if (upgradables.Count == 0)
         {
             Debug.LogWarning("There are no upgradables in the scene. Please add the upgradables to proceed.");
             return;
         }
 
-        if(UpgradeCount < upgradables.Count)
+        if (UpgradeCount < upgradables.Count)
         {
             var upgradable = upgradables[UpgradeCount];
             upgradeButton.transform.position = upgradable.BuyingPosition;
@@ -272,7 +279,7 @@ public class GameManager : MonoBehaviour
                 break;
             case UpgradeType.Profit:
                 data.Profit++;
-                foreach(var upgradable in upgradables)
+                foreach (var upgradable in upgradables)
                 {
                     upgradable.UpgradeStats();
                 }
@@ -317,6 +324,25 @@ public class GameManager : MonoBehaviour
                 break;
         }
         return level;
+    }
+
+    public float GetStackOffset(eObjectType type)
+    {
+        switch (type)
+        {
+            case eObjectType.HAMBURGER:
+                return burgerOffset;
+            case eObjectType.BURGERPACK:
+                return burgerPackOffset;
+            case eObjectType.SUBMENU:
+                return submenuOffset;
+            case eObjectType.TRASH:
+                return trashOffset;
+            case eObjectType.EMPTYCUP:
+                return emptyCupOffset;
+            default:
+                return 0.0f;
+        }
     }
 
     public OrderInfo GetOrderInfo(int index)

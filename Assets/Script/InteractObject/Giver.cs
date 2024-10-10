@@ -29,12 +29,9 @@ public class Giver : Stackable
         if (stack.Count == 0)
             return;
 
-        if (player.stack.Count == 0 && player.type == eObjectType.LAST)
-            player.type = type;
-
-        if (player.type == type)
+        if (player.StackType == eObjectType.LAST || player.StackType == type)
         {
-            player.ReceiveObject(stack.Pop(), type, objectHeight);
+            player.AddToStack(stack.Pop(), type);
             if (linkedObject != null && stack.Count == 0)
                 linkedObject.SetActive(false);
         }
@@ -45,6 +42,6 @@ public class Giver : Stackable
         var removeObj = stack.Pop();
         if(linkedObject != null && stack.Count == 0)
             linkedObject.SetActive(false);
-        playerStack.ReceiveObject(removeObj, type, objectHeight);
+        playerStack.AddToStack(removeObj, type);
     }
 }

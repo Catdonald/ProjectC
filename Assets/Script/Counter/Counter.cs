@@ -113,7 +113,7 @@ public class Counter : WorkStation
                     GameObject obj = receiver.RequestObject();
                     if (obj != null)
                     {
-                        firstCustomer.ReceiveFood(obj, receiver.type, receiver.objectHeight);
+                        firstCustomer.ReceiveFood(obj, receiver.type, GameManager.instance.GetStackOffset(receiver.type));
                         CollectMoney();
                     }
                 }

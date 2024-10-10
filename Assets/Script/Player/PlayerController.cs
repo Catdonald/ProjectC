@@ -22,9 +22,8 @@ public class PlayerController : MonoBehaviour
     private bool isClicked = false;
     private float moveSpeed;
 
+    public Vector3 mouseDelta;
     public playerStack Stack => playerStack;
-    public int Capacity { get; private set; }
-
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +40,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        mouseDelta = Vector2.zero;
+        if (Input.GetMouseButtonDown(0))
         {
             // UI�� Ŭ������ �ʴ´�.
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
             {
                 // Ŭ���� ��ġ�� ���� Ŀ�� ��ġ�� ���� �̵� ���� ���ϱ�
                 Vector3 mousePos = Input.mousePosition;
-                Vector3 mouseDelta = mousePos - mouseClickedPos;
+                mouseDelta = mousePos - mouseClickedPos;
                 // max padSizeX = 35.0f
                 Vector3 mouseDeltaNorm = new Vector3(mouseDelta.x / 35.0f, mouseDelta.y / 35.0f, mouseDelta.z);
                 float mouseDeltaMagnitude = mouseDeltaNorm.magnitude;
@@ -107,7 +107,6 @@ public class PlayerController : MonoBehaviour
         {
             isClicked = false;
             animator.SetBool("isMove", false);
-            // touchController UI ��Ȱ��ȭ
             moveController.SetActive(false);
         }
     }
@@ -117,6 +116,6 @@ public class PlayerController : MonoBehaviour
         int speedLevel = GameManager.instance.GetUpgradeLevel(UpgradeType.PlayerSpeed);
         moveSpeed = baseSpeed + (speedLevel * 0.2f);
         int capacityLevel = GameManager.instance.GetUpgradeLevel(UpgradeType.PlayerCapacity);
-        Capacity = baseCapacity + (capacityLevel * 3);
+        Stack.Capacity = baseCapacity + (capacityLevel * 3);
     }
 }

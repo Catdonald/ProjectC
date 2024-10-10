@@ -29910,6 +29910,10 @@ PrefabInstance:
       propertyPath: buyingPosition.y
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: baseProductionInterval
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6999112866716342989, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}

@@ -21,9 +21,9 @@ public class Receiver : Stackable
     }
     public override void Interaction(Collision other)
     {
-        if(player.stack.Count > 0 && player.type == type)
+        if(player.Count > 0 && player.StackType == type)
         {
-            ReceiveObject(player.RequestObject(), player.type, player.objectHeight);
+            ReceiveObject(player.RemoveFromStack(), type, GameManager.instance.GetStackOffset(type));
         }
     } 
 }
