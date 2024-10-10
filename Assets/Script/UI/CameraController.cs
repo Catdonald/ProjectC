@@ -6,8 +6,8 @@ public class CameraController : MonoBehaviour
 {
     public bool IsMoving { get; private set; } = false;
 
-    [SerializeField] private float moveDuration = 0.2f; 
-    [SerializeField] private float stayDuration = 2.0f;
+    private float moveDuration = 0.2f; 
+    private float stayDuration = 2.0f;
     
     private Camera mainCamera;
     private Vector3 originalPosition; 
