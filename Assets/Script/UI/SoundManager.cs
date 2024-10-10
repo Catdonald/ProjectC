@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    [Header("Sound Management")]
     public float soundVol;
     public List<AudioSource> sounds;
     [SerializeField] private AudioSource bgm;
@@ -14,12 +15,19 @@ public class SoundManager : MonoBehaviour
     private Dictionary<string, AudioClip> bgms;
     private Dictionary<string, AudioClip> sfxs;
 
+    [Header("Pitch")]
+    [SerializeField] private float pitchIncrease = 0.1f; // 피치가 증가할 양
+    [SerializeField] private float maxPitch = 4.0f;     // 피치가 최대 도달할 값
+    [SerializeField] private float initialPitch = 1.0f; // 초기 피치 값
+    [SerializeField] private string soundName;
+
     void Awake()
     {
         soundVol = 0.5f; 
 
         bgms = new Dictionary<string, AudioClip>();
         sfxs = new Dictionary<string, AudioClip>();
+        sfx.Stop();
     }
     void Start()
     {
@@ -75,5 +83,31 @@ public class SoundManager : MonoBehaviour
 
         bgm.volume = vol;
         sfx.volume = vol;
+    }
+    public float GetSFXSoundLength(string name)
+    {
+        return sfxs[name].length;
+    }
+
+    public void PlayPitchSound(string name)
+    {
+        PlaySFX(name);
+        Invoke(nameof(OnSoundComplete), GetSFXSoundLength(soundName));
+    }
+
+    private void OnSoundComplete()
+    {
+        if (sfx.pitch < maxPitch)
+        {
+            sfx.pitch += pitchIncrease;
+        }
+
+        PlayPitchSound(sfx.clip.name);
+    }
+    public void QuitPitchSound()
+    {
+        CancelInvoke(nameof(OnSoundComplete));
+        sfx.Stop();
+        sfx.pitch = initialPitch;
     }
 }

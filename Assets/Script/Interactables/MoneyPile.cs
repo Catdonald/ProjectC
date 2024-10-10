@@ -22,7 +22,6 @@ public class MoneyPile : ObjectPile
         moneyObj.transform.position = objects.Peek().transform.position;
         moneyObj.transform.DOJump(player.transform.position + Vector3.up * 2, 3.0f, 1, 0.5f)
             .OnComplete(() => GameManager.instance.PoolManager.Return(moneyObj));
-        // TODO) Sound
     }
 
     protected override void OnPlayerEnter()
@@ -35,6 +34,7 @@ public class MoneyPile : ObjectPile
         isCollectingMoney = true;
         GameManager.instance.AdjustMoney(hiddenMoney);
         hiddenMoney = 0;
+        GameManager.instance.SoundManager.PlayPitchSound("SFX_money");
 
         while (player != null && objects.Count > 0)
         {
@@ -61,6 +61,7 @@ public class MoneyPile : ObjectPile
         }
 
         isCollectingMoney = false;
+        GameManager.instance.SoundManager.QuitPitchSound();
     }
 
     public void AddMoney()

@@ -13,17 +13,10 @@ public class UpgradeBox : Interactable
     [SerializeField] private Image fill;
     [SerializeField] private TextMeshProUGUI priceText;
 
-    private IncreasePitch sound;
     private int upgradePrice;
     private int paidAmount;
 
     private long playerMoney => GameManager.instance.GetMoney();
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        sound = GetComponent<IncreasePitch>();
-    }
 
     protected override void OnPlayerEnter()
     {
@@ -32,7 +25,7 @@ public class UpgradeBox : Interactable
 
     protected override void OnPlayerExit()
     {
-        sound.QuitSound();
+        GameManager.instance.SoundManager.QuitPitchSound();
     }
 
     public void Initialize(int upgradePrice, int paidAmount)
@@ -53,7 +46,7 @@ public class UpgradeBox : Interactable
     IEnumerator Filling()
     {
         yield return new WaitForSeconds(2.0f);
-        sound.PlaySound();
+        GameManager.instance.SoundManager.PlayPitchSound("SFX_money");
         while (player != null && paidAmount < upgradePrice && playerMoney > 0)
         {
             // 1원씩 지불하면 가격 비쌀수록 채우는데 오래 걸려서 보정함.
@@ -72,11 +65,11 @@ public class UpgradeBox : Interactable
 
             if (paidAmount >= upgradePrice)
             {
-                sound.QuitSound();
+                GameManager.instance.SoundManager.QuitPitchSound();
                 GameManager.instance.BuyUpgradable();
             }
             yield return new WaitForSeconds(payingInterval);
         }
-        sound.QuitSound();
+        GameManager.instance.SoundManager.QuitPitchSound();
     }
 }
