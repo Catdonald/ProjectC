@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UpgradeBox upgradeButton;
     public List<Upgradable> upgradables = new List<Upgradable>();
 
+    [Header("# Effects")]
+    [SerializeField] private ParticleSystem upgradeParticle;
+
     [Header("# UI")]
     [SerializeField] private OrderInfo[] orderInfo; // 0: burger, 1: sub-menu, 2: driveThru
     [SerializeField] private KioskOrderInfo[] kioskOrderInfo;
@@ -189,6 +192,9 @@ public class GameManager : MonoBehaviour
         UpdateUpgradeButton();
 
         // effect, sound
+        upgradeParticle.transform.position = upgradables[UpgradeCount - 1].transform.position;
+        upgradeParticle.Play();
+        //SoundManager.PlaySFX("Upgrade");
 
         // camera move
         Vector3 upgradablePosition = upgradables[UpgradeCount].BuyingPosition;

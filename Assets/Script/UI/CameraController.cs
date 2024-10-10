@@ -27,6 +27,7 @@ public class CameraController : MonoBehaviour
     IEnumerator MoveCamera(Vector3 targetPosition)
     {
         IsMoving = true;
+        yield return new WaitForSeconds(1.5f);
         yield return StartCoroutine(MoveToPosition(Camera.main.transform, targetPosition, moveDuration));
 
         yield return new WaitForSeconds(stayDuration);
