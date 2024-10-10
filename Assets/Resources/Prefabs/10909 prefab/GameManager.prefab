@@ -202,9 +202,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   upgradeParticle: {fileID: 4995594721774948730}
   orderInfo:
   - {fileID: 0}
@@ -221,6 +218,7 @@ MonoBehaviour:
   spawners_burger: []
   spawners_subMenu: []
   counters: []
+  upgradableCam: {fileID: 0}
 --- !u!1 &9201031985188762969
 GameObject:
   m_ObjectHideFlags: 0
