@@ -32,7 +32,7 @@ public class HUD : MonoBehaviour
                 break;
             case InfoType.LV:
                 {
-                    mytext.text = string.Format("LV {0:F0}", GameManager.instance.data.Level);
+                    mytext.text = string.Format("{0:F0}%", GameManager.instance.data.Level);
                 }
                 break;
             case InfoType.EXP:
