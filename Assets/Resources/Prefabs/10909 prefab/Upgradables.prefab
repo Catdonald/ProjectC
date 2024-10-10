@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 1011230918534033113}
 --- !u!1 &32213771130386836
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,7 +358,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.25, y: -0.05}
+  m_AnchoredPosition: {x: 1.3, y: -0.05}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3451632056388077475
@@ -951,11 +951,11 @@ MonoBehaviour:
     - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 1011230918534033113}
-  tableStack: {fileID: 5372494735280108872}
-  trashStack: {fileID: 2338412239715301925}
+  tableStack: {fileID: 6927811816606547098}
+  trashStack: {fileID: 8848912259301121365}
   seats:
-  - {fileID: 2379612061857723175}
-  - {fileID: 4861529971212750072}
+  - {fileID: 2837577232222025949}
+  - {fileID: 1845889745947772661}
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 8287815895815509272}
 --- !u!1 &467446570272232147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,7 +1712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: 1.95}
+  m_AnchoredPosition: {x: -1.4, y: 1.95}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &121006892203821713
@@ -2084,7 +2084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 6754447026546432627}
 --- !u!1 &547345708161963966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2413,7 +2413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 4713059339527558909}
 --- !u!1 &577531579814758567
 GameObject:
   m_ObjectHideFlags: 0
@@ -3611,7 +3611,7 @@ Transform:
   m_GameObject: {fileID: 869071604072220992}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.25, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3875,10 +3875,10 @@ MonoBehaviour:
     - {fileID: -5398476151015165417, guid: 120342987741c0d4fbb00ddcad89978e, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 6316244146486562080}
-  tableStack: {fileID: 2420143445478976862}
-  trashStack: {fileID: 476403080631141060}
+  tableStack: {fileID: 2603626876285250964}
+  trashStack: {fileID: 4898380530500957628}
   seats:
-  - {fileID: 7363209134763800117}
+  - {fileID: 3698431467086846507}
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
@@ -4011,7 +4011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 3082721363744246105}
 --- !u!1 &970852780505467878
 GameObject:
   m_ObjectHideFlags: 0
@@ -4090,11 +4090,11 @@ MonoBehaviour:
     - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 8172807290706834204}
-  tableStack: {fileID: 3779632275545673468}
-  trashStack: {fileID: 6115762784885838693}
+  tableStack: {fileID: 9194390766126968915}
+  trashStack: {fileID: 8602098939694965726}
   seats:
-  - {fileID: 7011974112684255430}
-  - {fileID: 4459293368244442448}
+  - {fileID: 6623988242209373081}
+  - {fileID: 8834421584257992981}
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
@@ -4410,7 +4410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 4470483006976511501}
 --- !u!1 &1087962618345666963
 GameObject:
   m_ObjectHideFlags: 0
@@ -5292,10 +5292,10 @@ MonoBehaviour:
     - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 4611252470014989051}
-  tableStack: {fileID: 8053001262168191167}
-  trashStack: {fileID: 2356433760458458154}
+  tableStack: {fileID: 578403665744915173}
+  trashStack: {fileID: 6521441834988476426}
   seats:
-  - {fileID: 1206139819999979156}
+  - {fileID: 692683763944708908}
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
@@ -5676,7 +5676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 590296318163220943}
 --- !u!1 &1489438562166253893
 GameObject:
   m_ObjectHideFlags: 0
@@ -6089,7 +6089,7 @@ Transform:
   m_GameObject: {fileID: 1576880767502847027}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0.95000005, z: -0.2}
+  m_LocalPosition: {x: 1.25, y: 0.95000005, z: -0.2}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6223,11 +6223,11 @@ MonoBehaviour:
     - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 4844379782455082052}
-  tableStack: {fileID: 3779632275545673468}
-  trashStack: {fileID: 6115762784885838693}
+  tableStack: {fileID: 8106375010834267560}
+  trashStack: {fileID: 7242095880360737671}
   seats:
-  - {fileID: 7011974112684255430}
-  - {fileID: 4459293368244442448}
+  - {fileID: 8576965186451631342}
+  - {fileID: 2555603500473049392}
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
@@ -6525,7 +6525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 3675353628882025710}
 --- !u!1 &1716135322392306390
 GameObject:
   m_ObjectHideFlags: 0
@@ -6960,7 +6960,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 7035826158830050447}
 --- !u!1 &1940466241366153346
 GameObject:
   m_ObjectHideFlags: 0
@@ -7123,7 +7123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 6316244146486562080}
 --- !u!1 &1953383130305537428
 GameObject:
   m_ObjectHideFlags: 0
@@ -7594,11 +7594,11 @@ MonoBehaviour:
     - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 7035826158830050447}
-  tableStack: {fileID: 3779632275545673468}
-  trashStack: {fileID: 6115762784885838693}
+  tableStack: {fileID: 3093218537581746149}
+  trashStack: {fileID: 6268823809745359809}
   seats:
-  - {fileID: 7011974112684255430}
-  - {fileID: 4459293368244442448}
+  - {fileID: 7903468659983201131}
+  - {fileID: 4727477749477763789}
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
@@ -7679,7 +7679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 4844379782455082052}
 --- !u!1 &2202648936178177613
 GameObject:
   m_ObjectHideFlags: 0
@@ -8945,7 +8945,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: -0.2}
+  m_AnchoredPosition: {x: -1.4, y: -0.2}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4215621763940466937
@@ -10351,7 +10351,7 @@ Transform:
   m_GameObject: {fileID: 2873954098836481996}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -1, y: 0.02, z: 1.94}
+  m_LocalPosition: {x: -1.5, y: 0.02, z: 1.94}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10835,7 +10835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 1268549623391919645}
 --- !u!1 &2994355818392771786
 GameObject:
   m_ObjectHideFlags: 0
@@ -10927,7 +10927,7 @@ Transform:
   m_GameObject: {fileID: 3022913226474979673}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 1.22, z: -0.13}
+  m_LocalPosition: {x: -1.35, y: 1.22, z: -0.13}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11759,7 +11759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 6005277469569186775}
 --- !u!1 &3446574754871234505
 GameObject:
   m_ObjectHideFlags: 0
@@ -12382,7 +12382,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1.5}
+  m_LocalScale: {x: 1.25, y: 1, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1778367485779543903}
@@ -12859,11 +12859,11 @@ MonoBehaviour:
     - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 8287815895815509272}
-  tableStack: {fileID: 5372494735280108872}
-  trashStack: {fileID: 2338412239715301925}
+  tableStack: {fileID: 1077367837266916782}
+  trashStack: {fileID: 3080355430190043440}
   seats:
-  - {fileID: 2379612061857723175}
-  - {fileID: 4861529971212750072}
+  - {fileID: 4211393436408414371}
+  - {fileID: 5962255923512765147}
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
@@ -14346,10 +14346,10 @@ MonoBehaviour:
     - {fileID: -5398476151015165417, guid: 120342987741c0d4fbb00ddcad89978e, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 4470483006976511501}
-  tableStack: {fileID: 2420143445478976862}
-  trashStack: {fileID: 476403080631141060}
+  tableStack: {fileID: 4163397982265683485}
+  trashStack: {fileID: 8262272172933717331}
   seats:
-  - {fileID: 7363209134763800117}
+  - {fileID: 5553982587048229058}
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
@@ -15256,7 +15256,7 @@ Transform:
   m_GameObject: {fileID: 4612568878305129784}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1, y: 0.02, z: 1.94}
+  m_LocalPosition: {x: 1.3, y: 0.02, z: 1.94}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15525,7 +15525,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: -0.2}
+  m_AnchoredPosition: {x: 1.5, y: -0.2}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6229131006116149559
@@ -17121,11 +17121,11 @@ MonoBehaviour:
     - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 1268549623391919645}
-  tableStack: {fileID: 5372494735280108872}
-  trashStack: {fileID: 2338412239715301925}
+  tableStack: {fileID: 3499444353218587681}
+  trashStack: {fileID: 2748442927171589834}
   seats:
-  - {fileID: 2379612061857723175}
-  - {fileID: 4861529971212750072}
+  - {fileID: 881234298152341845}
+  - {fileID: 7170266389681342518}
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
@@ -17496,7 +17496,7 @@ Transform:
   m_GameObject: {fileID: 5268213627664436359}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.25, y: 1.23, z: -0.05}
+  m_LocalPosition: {x: 1.3, y: 1.23, z: -0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18166,7 +18166,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: 1.95}
+  m_AnchoredPosition: {x: -1.45, y: 1.95}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8742982161832850059
@@ -18984,7 +18984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 8172807290706834204}
 --- !u!1 &5754041213950132164
 GameObject:
   m_ObjectHideFlags: 0
@@ -20393,7 +20393,7 @@ Transform:
   m_GameObject: {fileID: 6056395787375770846}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 1, z: -0.14999974}
+  m_LocalPosition: {x: -1.4, y: 1, z: -0.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20776,13 +20776,13 @@ MonoBehaviour:
     - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 6005277469569186775}
-  tableStack: {fileID: 6989934188099834594}
-  trashStack: {fileID: 4277240644488660671}
+  tableStack: {fileID: 1120577258790431373}
+  trashStack: {fileID: 5639085558114791655}
   seats:
-  - {fileID: 162678935107794959}
-  - {fileID: 9217795711903706980}
-  - {fileID: 1128454577545363655}
-  - {fileID: 1161219158144552081}
+  - {fileID: 6172487280607140061}
+  - {fileID: 2699022835568583063}
+  - {fileID: 751604507188876745}
+  - {fileID: 7752978737837752033}
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
@@ -21059,13 +21059,13 @@ MonoBehaviour:
     - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 3082721363744246105}
-  tableStack: {fileID: 7248107364582026031}
-  trashStack: {fileID: 8892026970575716329}
+  tableStack: {fileID: 8373353260446468702}
+  trashStack: {fileID: 4517743985033687012}
   seats:
-  - {fileID: 1734902428925922262}
-  - {fileID: 6011659183444035634}
-  - {fileID: 7279468984068154324}
-  - {fileID: 6625899470936303013}
+  - {fileID: 5457745608145088458}
+  - {fileID: 7646923559662976168}
+  - {fileID: 1500444192410941964}
+  - {fileID: 4732554049570104803}
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
@@ -21168,11 +21168,11 @@ MonoBehaviour:
     - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 590296318163220943}
-  tableStack: {fileID: 3779632275545673468}
-  trashStack: {fileID: 6115762784885838693}
+  tableStack: {fileID: 4495913612532812513}
+  trashStack: {fileID: 2488928102389497697}
   seats:
-  - {fileID: 7011974112684255430}
-  - {fileID: 4459293368244442448}
+  - {fileID: 4551682883214522051}
+  - {fileID: 8321632191156880558}
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
@@ -22419,7 +22419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 1160630098419240343}
 --- !u!1 &6708666117429107340
 GameObject:
   m_ObjectHideFlags: 0
@@ -23138,7 +23138,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 1.95}
+  m_AnchoredPosition: {x: 1.3, y: 1.95}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1219160421890000076
@@ -23258,7 +23258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 4611252470014989051}
 --- !u!1 &6858447012061794582
 GameObject:
   m_ObjectHideFlags: 0
@@ -24946,11 +24946,11 @@ MonoBehaviour:
     - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 3675353628882025710}
-  tableStack: {fileID: 3779632275545673468}
-  trashStack: {fileID: 6115762784885838693}
+  tableStack: {fileID: 4668562075482901529}
+  trashStack: {fileID: 1111419714828917420}
   seats:
-  - {fileID: 7011974112684255430}
-  - {fileID: 4459293368244442448}
+  - {fileID: 2386644664907502149}
+  - {fileID: 8394339080959546217}
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
@@ -26365,7 +26365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   type: 3
-  linkedObject: {fileID: 3624682381859671050}
+  linkedObject: {fileID: 852481109197478979}
 --- !u!1 &8168165344069801751
 GameObject:
   m_ObjectHideFlags: 0
@@ -27796,7 +27796,7 @@ Transform:
   m_GameObject: {fileID: 8750057785427587270}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 0.95000005, z: -0.20000005}
+  m_LocalPosition: {x: -1.25, y: 0.95000005, z: -0.20000005}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28472,7 +28472,7 @@ Transform:
   m_GameObject: {fileID: 9011520140964705886}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.99, y: 0.8820001, z: -0.1400001}
+  m_LocalPosition: {x: 1.25, y: 0.8820001, z: -0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28719,7 +28719,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1.5}
+  m_LocalScale: {x: 1.25, y: 1, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7546401863454080070}
@@ -28843,7 +28843,7 @@ Transform:
   m_GameObject: {fileID: 9058744813812916539}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -1, y: 0.02, z: 1.94}
+  m_LocalPosition: {x: -1.3, y: 0.02, z: 1.94}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:

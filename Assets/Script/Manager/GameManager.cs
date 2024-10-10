@@ -58,11 +58,11 @@ public class GameManager : MonoBehaviour
     public List<Spawner> spawners_subMenu = new List<Spawner>();
 
     public List<Counter> counters = new List<Counter>();
+    public List<Trashbin> trashBins = new List<Trashbin>();
 
     #region Reference Properties 
     public DriveThruCounter DriveThruCounter { get; private set; }
     public PackageTable PackageTable { get; private set; }
-    public Trashbin TrashBin { get; private set; }
     public int PaidAmount
     {
         get => data.PaidAmount;
@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         counters = GameObject.FindObjectsOfType<Counter>(true).ToList();
+        trashBins = GameObject.FindObjectsOfType<Trashbin>().ToList();
 
         var spawnerObjs = GameObject.FindObjectsOfType<Spawner>(true);
         foreach (Spawner spawner in spawnerObjs)
@@ -120,7 +121,6 @@ public class GameManager : MonoBehaviour
 
         DriveThruCounter = GameObject.FindObjectOfType<DriveThruCounter>(true);
         PackageTable = GameObject.FindObjectOfType<PackageTable>(true);
-        TrashBin = GameObject.FindObjectOfType<Trashbin>();
 
         upgradableCam = GameObject.FindObjectOfType<CameraController>();
 

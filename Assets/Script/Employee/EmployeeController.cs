@@ -220,7 +220,7 @@ public class EmployeeController : MonoBehaviour
             yield return null;
         }
 
-        while (dirtyTable.trashStack.Count > 0 && stack.Height < stack.Capacity)
+        while (dirtyTable.trashStack.Count > 0)
         {
             dirtyTable.trashStack.RemoveAndStackObject(stack);
             yield return new WaitForSeconds(0.03f);
@@ -229,7 +229,18 @@ public class EmployeeController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // 쓰레기통으로 이동
-        Trashbin trashBin = GameManager.instance.TrashBin;
+        var trashBins = GameManager.instance.trashBins;
+        Trashbin trashBin = trashBins[0];
+        float minDistance = float.MaxValue;
+        foreach (var bin in trashBins)
+        {
+           float distance = Vector3.Distance(transform.position, bin.transform.position);
+            if(distance < minDistance)
+            {
+                minDistance = distance;
+                trashBin = bin;
+            }
+        }
         agent.SetDestination(trashBin.transform.position);
         yield return new WaitUntil(() => HasArrivedToDestination());
 
