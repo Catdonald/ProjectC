@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
     public StoreData data;
     private string storeName;
 
-    private CameraController upgradableCam;
+    public CameraController upgradableCam;
 
     void Awake()
     {

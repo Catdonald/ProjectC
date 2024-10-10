@@ -24,6 +24,11 @@ public class Menu : MonoBehaviour
     public void SetMenuCanvasOn(bool isOn)
     {
         settingsPanel.SetActive(isOn);
+
+        if (isOn)
+            GameManager.instance.upgradableCam.IsMoving = true;
+        else
+            GameManager.instance.upgradableCam.IsMoving = false;
     }
     public void ExitGame()
     {

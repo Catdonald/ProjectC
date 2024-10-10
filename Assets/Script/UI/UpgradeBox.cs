@@ -53,6 +53,7 @@ public class UpgradeBox : Interactable
     IEnumerator Filling()
     {
         yield return new WaitForSeconds(2.0f);
+        sound.PlaySound();
         while (player != null && paidAmount < upgradePrice && playerMoney > 0)
         {
             // 1원씩 지불하면 가격 비쌀수록 채우는데 오래 걸려서 보정함.
@@ -68,7 +69,6 @@ public class UpgradeBox : Interactable
             moneyObj.transform.position = player.transform.position + Vector3.up * 1.75f;
             moneyObj.transform.DOJump(transform.position, 3.0f, 1, 0.5f)
                 .OnComplete(() => GameManager.instance.PoolManager.Return(moneyObj));
-            sound.PlaySound();
 
             if (paidAmount >= upgradePrice)
             {
