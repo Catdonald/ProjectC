@@ -33,6 +33,7 @@ public class CameraController : MonoBehaviour
         yield return new WaitForSeconds(stayDuration);
 
         yield return StartCoroutine(MoveToPosition(Camera.main.transform, originalPosition, moveDuration));
+        IsMoving = false;
     }
 
     IEnumerator MoveToPosition(Transform transform, Vector3 targetPosition, float duration)
@@ -48,6 +49,5 @@ public class CameraController : MonoBehaviour
         }
 
         transform.position = targetPosition;
-        IsMoving = false;
     }
 }
