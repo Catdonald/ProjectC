@@ -41,68 +41,70 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         mouseDelta = Vector2.zero;
-        if (Input.GetMouseButtonDown(0))
+        if (GameManager.instance.IsUpgradableCamMoving == false)
         {
-            // UI�� Ŭ������ �ʴ´�.
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Input.GetMouseButtonDown(0))
             {
-                if (EventSystem.current.IsPointerOverGameObject() == false)
+                // UI�� Ŭ������ �ʴ´�.
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit))
                 {
-                    isClicked = true;
-                    mouseClickedPos = Input.mousePosition;
-                    // moveController UI Ȱ��ȭ
-                    moveController.SetActive(true);
-                    Vector3 touchControllerPos = new Vector3(mouseClickedPos.x - Screen.width / 2, mouseClickedPos.y - Screen.height / 2, mouseClickedPos.z);
-                    moveController.GetComponent<RectTransform>().localPosition = touchControllerPos;
+                    if (EventSystem.current.IsPointerOverGameObject() == false)
+                    {
+                        isClicked = true;
+                        mouseClickedPos = Input.mousePosition;
+                        // moveController UI Ȱ��ȭ
+                        moveController.SetActive(true);
+                        Vector3 touchControllerPos = new Vector3(mouseClickedPos.x - Screen.width / 2, mouseClickedPos.y - Screen.height / 2, mouseClickedPos.z);
+                        moveController.GetComponent<RectTransform>().localPosition = touchControllerPos;
+                    }
                 }
             }
-        }
-        if (Input.GetMouseButton(0))
-        {
-            if (isClicked)           
+            if (Input.GetMouseButton(0))
             {
-                // Ŭ���� ��ġ�� ���� Ŀ�� ��ġ�� ���� �̵� ���� ���ϱ�
-                Vector3 mousePos = Input.mousePosition;
-                mouseDelta = mousePos - mouseClickedPos;
-                // max padSizeX = 35.0f
-                Vector3 mouseDeltaNorm = new Vector3(mouseDelta.x / 35.0f, mouseDelta.y / 35.0f, mouseDelta.z);
-                float mouseDeltaMagnitude = mouseDeltaNorm.magnitude;
-                if (mouseDeltaMagnitude > 1.0f)
+                if (isClicked)
                 {
-                    mouseDeltaNorm = mouseDelta.normalized;
-                }
-                animator.SetBool("isMove", mouseDeltaMagnitude > 0.0f);
-                
-                Vector3 moveVec = new Vector3(mouseDeltaNorm.x, 0.0f, mouseDeltaNorm.y);
-                rayStartPoint = new Vector3(transform.position.x, 0.5f, transform.position.z);
-                Debug.DrawRay(rayStartPoint, moveVec * 1.0f, Color.red);
-                RaycastHit hit;
-                if (Physics.Raycast(rayStartPoint, moveVec, out hit, 1.0f))
-                {
-                    // �����̳� �մ� ������Ʈ�� �浹���� �ʾҴٸ�
-                    // �ǹ��̳� ���, ī���Ϳ� ���� ������Ʈ�� ���̰� �浹�� ���̴�.
-                    if (!hit.collider.CompareTag("Building"))
+                    // Ŭ���� ��ġ�� ���� Ŀ�� ��ġ�� ���� �̵� ���� ���ϱ�
+                    Vector3 mousePos = Input.mousePosition;
+                    mouseDelta = mousePos - mouseClickedPos;
+                    // max padSizeX = 35.0f
+                    Vector3 mouseDeltaNorm = new Vector3(mouseDelta.x / 35.0f, mouseDelta.y / 35.0f, mouseDelta.z);
+                    float mouseDeltaMagnitude = mouseDeltaNorm.magnitude;
+                    if (mouseDeltaMagnitude > 1.0f)
+                    {
+                        mouseDeltaNorm = mouseDelta.normalized;
+                    }
+                    animator.SetBool("isMove", mouseDeltaMagnitude > 0.0f);
+
+                    Vector3 moveVec = new Vector3(mouseDeltaNorm.x, 0.0f, mouseDeltaNorm.y);
+                    rayStartPoint = new Vector3(transform.position.x, 0.5f, transform.position.z);
+                    Debug.DrawRay(rayStartPoint, moveVec * 1.0f, Color.red);
+                    RaycastHit hit;
+                    if (Physics.Raycast(rayStartPoint, moveVec, out hit, 1.0f))
+                    {
+                        // �����̳� �մ� ������Ʈ�� �浹���� �ʾҴٸ�
+                        // �ǹ��̳� ���, ī���Ϳ� ���� ������Ʈ�� ���̰� �浹�� ���̴�.
+                        if (!hit.collider.CompareTag("Building"))
+                        {
+                            playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * moveSpeed);
+                        }
+                    }
+                    else
                     {
                         playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * moveSpeed);
                     }
-                }
-                else
-                {
-                    playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * moveSpeed);
-                }
-                // �̵��ϴ� ���� �ٶ󺸱�
-                if (moveVec.magnitude > 0.0f)
-                {
-                    playerRoot.transform.forward = moveVec;
-                }
+                    // �̵��ϴ� ���� �ٶ󺸱�
+                    if (moveVec.magnitude > 0.0f)
+                    {
+                        playerRoot.transform.forward = moveVec;
+                    }
 
-                // ���콺 ��ġ ��ȭ�� ���� JoyStickController�� �Ѱ��ֱ�
-                joystickController.mouseDelta = mouseDelta;
+                    // ���콺 ��ġ ��ȭ�� ���� JoyStickController�� �Ѱ��ֱ�
+                    joystickController.mouseDelta = mouseDelta;
+                }
             }
         }
-
         if (Input.GetMouseButtonUp(0))
         {
             isClicked = false;

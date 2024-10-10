@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Camera mainCamera;
+    public bool IsMoving { get; private set; } = false;
 
-    public float moveDuration = 0.2f; 
-    public float stayDuration = 0.2f; 
-
+    [SerializeField] private float moveDuration = 0.2f; 
+    [SerializeField] private float stayDuration = 2.0f;
+    
+    private Camera mainCamera;
     private Vector3 originalPosition; 
 
     // Start is called before the first frame update
@@ -25,11 +26,13 @@ public class CameraController : MonoBehaviour
 
     IEnumerator MoveCamera(Vector3 targetPosition)
     {
+        IsMoving = true;
         yield return StartCoroutine(MoveToPosition(Camera.main.transform, targetPosition, moveDuration));
 
         yield return new WaitForSeconds(stayDuration);
 
         yield return StartCoroutine(MoveToPosition(Camera.main.transform, originalPosition, moveDuration));
+        IsMoving = false;
     }
 
     IEnumerator MoveToPosition(Transform transform, Vector3 targetPosition, float duration)

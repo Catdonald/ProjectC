@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
         get => data.UpgradeCount;
         set => data.UpgradeCount = value;
     }
+    public bool IsUpgradableCamMoving => upgradableCam.IsMoving;
     #endregion
 
     public event System.Action OnUpgrade;
