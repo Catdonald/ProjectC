@@ -15,7 +15,6 @@ public class Upgradable : MonoBehaviour
     [SerializeField] private Vector3 buyingPosition = Vector3.zero;
     protected int upgradeLevel = 0;
 
-    // �޽� ����� ����
     [SerializeField] private MeshFilter[] meshFilter;
     [SerializeField] private List<MeshGroup> upgradeMeshes;
 
@@ -47,7 +46,7 @@ public class Upgradable : MonoBehaviour
                 GameManager.instance.SoundManager.sounds.Add(gameObject.GetComponent<AudioSource>());
         }
         UpgradeStats();
-        //unlock effect on
+
         if (!effectOn)
             return;
     }

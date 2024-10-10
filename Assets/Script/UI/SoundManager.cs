@@ -27,17 +27,9 @@ public class SoundManager : MonoBehaviour
 
         bgms = new Dictionary<string, AudioClip>();
         sfxs = new Dictionary<string, AudioClip>();
-        sfx.Stop();
     }
     void Start()
     {
-        AudioSource[] allAudio = FindObjectsOfType<AudioSource>();
-
-        foreach (AudioSource audioSource in allAudio)
-        {
-            sounds.Add(audioSource);
-        }
-
         for (int i = 0; i < bgmClips.Length; i++)
         {
             bgms.Add(bgmClips[i].name, bgmClips[i]);
@@ -51,12 +43,21 @@ public class SoundManager : MonoBehaviour
         SetVolume(soundVol);
 
         PlayBGM("BGM_main");
+        StopSFX();
     }
 
     public void PlayBGM(string name)
     {
         bgm.clip = bgms[name];
         bgm.Play();
+    }
+    public void StopBGM()
+    {
+        bgm.Stop();
+    }
+    public void StopSFX()
+    {
+        sfx.Stop();
     }
     public void PlaySFX(string name, bool isLoop = false)
     {
