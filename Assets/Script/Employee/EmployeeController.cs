@@ -16,7 +16,6 @@ public class EmployeeController : MonoBehaviour
     private NavMeshAgent agent;
     private Work currentWork;
     private playerStack stack;
-    //private int capacity;
 
     // Start is called before the first frame update
     void Start()
@@ -221,7 +220,7 @@ public class EmployeeController : MonoBehaviour
             yield return null;
         }
 
-        while (dirtyTable.trashStack.Count > 0 && stack.Height < stack.Capacity)
+        while (dirtyTable.trashStack.Count > 0)
         {
             dirtyTable.trashStack.RemoveAndStackObject(stack);
             yield return new WaitForSeconds(0.03f);
@@ -230,7 +229,18 @@ public class EmployeeController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // 쓰레기통으로 이동
-        Trashbin trashBin = GameManager.instance.TrashBin;
+        var trashBins = GameManager.instance.trashBins;
+        Trashbin trashBin = trashBins[0];
+        float minDistance = float.MaxValue;
+        foreach (var bin in trashBins)
+        {
+           float distance = Vector3.Distance(transform.position, bin.transform.position);
+            if(distance < minDistance)
+            {
+                minDistance = distance;
+                trashBin = bin;
+            }
+        }
         agent.SetDestination(trashBin.transform.position);
         yield return new WaitUntil(() => HasArrivedToDestination());
 
@@ -248,8 +258,8 @@ public class EmployeeController : MonoBehaviour
     {
         currentWork = Work.REFILLBURGERTOCOUNTER;
 
-        var counter = GameManager.instance.counters.Where(x => x.StackType == eObjectType.HAMBURGER).First();
-        if (counter.IsStorageFull)
+        var counter = GameManager.instance.counters.Where(x => x.StackType == eObjectType.HAMBURGER && x.gameObject.activeInHierarchy).FirstOrDefault();
+        if (!counter || counter.IsStorageFull)
         {
             currentWork = Work.NONE;
             yield break;
@@ -298,8 +308,9 @@ public class EmployeeController : MonoBehaviour
         {
             if (!counter.IsStorageFull)
             {
+                eObjectType type = stack.StackType;
                 var food = stack.RemoveFromStack();
-                counter.Receiver.ReceiveObject(food, stack.StackType, GameManager.instance.GetStackOffset(stack.StackType));
+                counter.Receiver.ReceiveObject(food, type, GameManager.instance.GetStackOffset(type));
             }
             yield return new WaitForSeconds(0.03f);
         }
@@ -312,7 +323,7 @@ public class EmployeeController : MonoBehaviour
         currentWork = Work.REFILLBURGERTOPACKAGETABLE;
 
         var packageTable = GameManager.instance.PackageTable;
-        if (packageTable.IsFoodStorageFull)
+        if (!packageTable.gameObject.activeInHierarchy || packageTable.IsFoodStorageFull)
         {
             currentWork = Work.NONE;
             yield break;
@@ -361,8 +372,9 @@ public class EmployeeController : MonoBehaviour
         {
             if (!packageTable.IsFoodStorageFull)
             {
+                eObjectType type = stack.StackType;
                 var food = stack.RemoveFromStack();
-                packageTable.foodReceiver.ReceiveObject(food, stack.StackType, GameManager.instance.GetStackOffset(stack.StackType));
+                packageTable.foodReceiver.ReceiveObject(food, type, GameManager.instance.GetStackOffset(type));
             }
             yield return new WaitForSeconds(0.03f);
         }
@@ -375,7 +387,7 @@ public class EmployeeController : MonoBehaviour
         currentWork = Work.REFILLPACKAGE;
         // dtCounter에 package 가득 차있다면 상태 none
         var dtCounter = GameManager.instance.DriveThruCounter;
-        if (dtCounter.IsStorageFull)
+        if (!dtCounter.gameObject.activeInHierarchy || dtCounter.IsStorageFull)
         {
             currentWork = Work.NONE;
             yield break;
@@ -424,8 +436,9 @@ public class EmployeeController : MonoBehaviour
         {
             if (!dtCounter.IsStorageFull)
             {
+                eObjectType type = stack.StackType;
                 var package = stack.RemoveFromStack();
-                dtCounter.Receiver.ReceiveObject(package, stack.StackType, GameManager.instance.GetStackOffset(stack.StackType));
+                dtCounter.Receiver.ReceiveObject(package, type, GameManager.instance.GetStackOffset(type));
             }
             yield return new WaitForSeconds(0.03f);
         }
@@ -437,8 +450,8 @@ public class EmployeeController : MonoBehaviour
     {
         currentWork = Work.REFILLSUBMENU;
 
-        var counter = GameManager.instance.counters.Where(x => x.StackType == eObjectType.SUBMENU).First();
-        if (counter.IsStorageFull)
+        var counter = GameManager.instance.counters.Where(x => x.StackType == eObjectType.SUBMENU && x.gameObject.activeInHierarchy).FirstOrDefault();
+        if (!counter || counter.IsStorageFull)
         {
             currentWork = Work.NONE;
             yield break;
@@ -487,8 +500,9 @@ public class EmployeeController : MonoBehaviour
         {
             if (!counter.IsStorageFull)
             {
+                eObjectType type = stack.StackType;
                 var food = stack.RemoveFromStack();
-                counter.Receiver.ReceiveObject(food, stack.StackType, GameManager.instance.GetStackOffset(stack.StackType));
+                counter.Receiver.ReceiveObject(food, type, GameManager.instance.GetStackOffset(type));
             }
             yield return new WaitForSeconds(0.03f);
         }

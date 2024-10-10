@@ -18,7 +18,7 @@ public class playerStack : MonoBehaviour
     public int Height { get; private set; }
     public int Count => stack.Count;
     public eObjectType StackType { get; private set; }
-    public int Capacity;
+    public int Capacity = 5;
     private List<GameObject> stack = new List<GameObject>();
 
     private float StackOffset => GameManager.instance.GetStackOffset(StackType);
