@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,102 +8,75 @@ using UnityEngine.UI;
 public class UpgradeBox : Interactable
 {
     [Header("Button info")]
-    public int maxPrice;
-    public int curPrice;
-    public int width;
-    public int height;
-    public bool isPushed = false;
-    public bool isFilling = false;
-
-    [Header("Image obj")]
-    [SerializeField] private Image background;
+    [SerializeField] private float payingInterval = 0.03f;
+    [SerializeField] private float payingTime = 3f;
     [SerializeField] private Image fill;
     [SerializeField] private TextMeshProUGUI priceText;
 
     private IncreasePitch sound;
-    private CameraController cam;
+    private int upgradePrice;
+    private int paidAmount;
+
+    private long playerMoney => GameManager.instance.GetMoney();
 
     // Start is called before the first frame update
     void Start()
     {
         sound = GetComponent<IncreasePitch>();
-        cam = GetComponent<CameraController>();
-
-        maxPrice = 100;
-        curPrice = 0;
-        fill.fillAmount = 0;
-        isPushed = false;
-        priceText.text = maxPrice.ToString();
     }
+
     protected override void OnPlayerEnter()
     {
-        isPushed = true;
+        StartCoroutine(Filling());
     }
+
     protected override void OnPlayerExit()
     {
-        isPushed = false;
+        sound.QuitSound();
     }
 
-    // Update is called once per frame
-    void LateUpdate()
+    public void Initialize(int upgradePrice, int paidAmount)
     {
-        if (isPushed && GameManager.instance.GetMoney() > 0 && !isFilling)
-        {
-            StartCoroutine(Filling());
-        }
-
-        if (fill.fillAmount >= 1.0f)
-        {
-            isFilling = false;
-            isPushed = false;
-            sound.QuitSound();
-
-            GameManager.instance.currentUpgradableObj.GetComponent<Upgradable>().Upgrade();
-            maxPrice *= 1;
-            GameManager.instance.SetNowUpgradableObject();
-            SetOrigin();
-
-            // TODO ) ī�޶� �̵� �� ����Ʈ
-
-            Vector3 nextPos;
-            nextPos.x = transform.position.x - 5;
-            nextPos.y = Camera.main.transform.position.y;
-            nextPos.z = transform.position.z - 5;
-            cam.ShowPosition(nextPos);
-        }
+        this.upgradePrice = upgradePrice;
+        this.paidAmount = paidAmount;
+        UpdatePayAmount(0);
     }
-    void SetOrigin()
+
+    private void UpdatePayAmount(int value)
     {
-        curPrice = 0;
-        fill.fillAmount = 0.0f;
-        priceText.text = maxPrice.ToString();
+        paidAmount += value;
+        GameManager.instance.PaidAmount = paidAmount;
+        fill.fillAmount = (float)paidAmount / upgradePrice;
+        priceText.text = GameManager.instance.GetFormattedMoney(upgradePrice - paidAmount);
     }
+
     IEnumerator Filling()
     {
-        isFilling = true;
-        sound.PlaySound();
-        int frame = maxPrice / 3;
-
-        while (isPushed && GameManager.instance.data.Money > 0 && curPrice < maxPrice && isFilling)
+        yield return new WaitForSeconds(2.0f);
+        while (player != null && paidAmount < upgradePrice && playerMoney > 0)
         {
-            GameManager.instance.data.Money--;
-            curPrice++;
+            // 1원씩 지불하면 가격 비쌀수록 채우는데 오래 걸려서 보정함.
+            float paymentRate = upgradePrice * payingInterval / payingTime;
+            paymentRate = Mathf.Min(playerMoney, paymentRate);
+            int payment = Mathf.Max(1, Mathf.RoundToInt(paymentRate));
 
-            fill.fillAmount = (float)curPrice / (float)maxPrice;
+            UpdatePayAmount(payment);
+            GameManager.instance.AdjustMoney(-payment);
 
-            if (curPrice == maxPrice)
+            // money animation
+            var moneyObj = GameManager.instance.PoolManager.SpawnObject("Money");
+            moneyObj.transform.position = player.transform.position + Vector3.up * 1.75f;
+            moneyObj.transform.DOJump(transform.position, 3.0f, 1, 0.5f)
+                .OnComplete(() => GameManager.instance.PoolManager.Return(moneyObj));
+            sound.PlaySound();
+
+            if (paidAmount >= upgradePrice)
             {
-                curPrice = maxPrice;
-                fill.fillAmount = 1f;
-                isFilling = false;
                 sound.QuitSound();
-                yield break;
+                GameManager.instance.BuyUpgradable();
             }
-
-            yield return new WaitForSeconds(0.01f / frame);
+            yield return new WaitForSeconds(payingInterval);
         }
-
-        isFilling = false;
         sound.QuitSound();
     }
 }
