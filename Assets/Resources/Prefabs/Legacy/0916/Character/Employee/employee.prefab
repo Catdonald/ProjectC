@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 2.5
-  baseCapacity: 3
+  baseCapacity: 4
 --- !u!195 &2142167931713495240
 NavMeshAgent:
   m_ObjectHideFlags: 0

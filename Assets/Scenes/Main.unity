@@ -1625,6 +1625,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3527531453024274342, guid: e571a8b3a5bc7804b9c63ca6e3d8adb2, type: 3}
+      propertyPath: baseCapacity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3527531453024274342, guid: e571a8b3a5bc7804b9c63ca6e3d8adb2, type: 3}
       propertyPath: moveController
       value: 
       objectReference: {fileID: 3212226724548481570}
