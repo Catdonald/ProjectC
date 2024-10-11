@@ -1414,7 +1414,27 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 139302814074634291, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139302814074634291, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139302814074634291, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139302814074634291, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 332049552551213794, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_Value
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 332049552551213794, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_WholeNumbers
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1231608097409212078, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
@@ -1505,8 +1525,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas_ScreenSpace
       objectReference: {fileID: 0}
+    - target: {fileID: 6934517967661892978, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7196417712190389530, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148786464683292682, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148786464683292682, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148786464683292682, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148786464683292682, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148786464683292682, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148786464683292682, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148786464683292682, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
