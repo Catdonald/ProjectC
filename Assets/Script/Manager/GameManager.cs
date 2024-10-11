@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
 
         upgradableCam = GameObject.FindObjectOfType<CameraController>();
         player = GameObject.FindObjectOfType<PlayerController>();
-        UpgradeCount = 12;
+        
         for (int i = 0; i < UpgradeCount; ++i)
         {
             upgradables[i].Upgrade(false);
