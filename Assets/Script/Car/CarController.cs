@@ -48,6 +48,7 @@ public class CarController : MonoBehaviour
             {
                 currentLineIndex--;
                 MoveToNextLinePosition();
+                GameManager.instance.SoundManager.PlaySFX("SFX_carHorn");
             }
             else if (queueNumber == 0)
             {

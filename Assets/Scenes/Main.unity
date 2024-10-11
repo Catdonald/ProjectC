@@ -986,7 +986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7176116462830611392, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
       propertyPath: sfxClips.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7176116462830611392, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
       propertyPath: sfxClips.Array.data[1]
@@ -996,6 +996,10 @@ PrefabInstance:
       propertyPath: sfxClips.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 7862bbe6db7d05a45872b947004aa91c, type: 3}
+    - target: {fileID: 7176116462830611392, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
+      propertyPath: sfxClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 58b4c99f25fdb924bae62f91f3bf63ce, type: 3}
     - target: {fileID: 9208546872888492888, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
