@@ -21,8 +21,10 @@ public class CameraController : MonoBehaviour
     public void ShowPosition(Vector3 pos)
     {
         originalPosition = Camera.main.transform.position;
-
-        StartCoroutine(MoveCamera(pos));
+        Vector3 targetPos = Camera.main.transform.localPosition;
+        targetPos.x += pos.x;
+        targetPos.z += pos.z;
+        StartCoroutine(MoveCamera(targetPos));
     }
 
     IEnumerator MoveCamera(Vector3 targetPosition)

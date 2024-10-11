@@ -271,6 +271,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &416240121 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3342157950540936702, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+  m_PrefabInstance: {fileID: 6926385734106981282}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3a72a6ccfe44e4cadd3d1663ec4835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &464224423 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4085882210268421513, guid: 94501bc169326ba46bf06438581f5092, type: 3}
@@ -526,6 +537,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2227726940140494795, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
+      propertyPath: sceneFader
+      value: 
+      objectReference: {fileID: 416240121}
     - target: {fileID: 2227726940140494795, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
       propertyPath: upgradeButton
       value: 

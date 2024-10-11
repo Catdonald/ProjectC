@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ParticleSystem upgradeParticle;
 
     [Header("# UI")]
+    [SerializeField] private SceneFader sceneFader;
     [SerializeField] private OrderInfo[] orderInfo; // 0: burger, 1: sub-menu, 2: driveThru
     [SerializeField] private KioskOrderInfo[] kioskOrderInfo;
 
@@ -105,6 +106,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        sceneFader.FadeOut(() => 
+        {
+            upgradableCam.waitDuration = 0.0f;
+            Vector3 upgradablePosition = upgradables[UpgradeCount].BuyingPosition;
+            upgradableCam.ShowPosition(upgradablePosition);
+        });
+
         counters = GameObject.FindObjectsOfType<Counter>(true).ToList();
         trashBins = GameObject.FindObjectsOfType<Trashbin>().ToList();
 
@@ -202,7 +210,7 @@ public class GameManager : MonoBehaviour
         // entrance unlock 시 애니메이션 재생
         if (UpgradeCount == 0 || UpgradeCount == 51)
         {
-            GameManager.instance.upgradableCam.waitDuration = 3.0f;
+            upgradableCam.waitDuration = 3.0f;
             FindObjectOfType<PlayerController>().Animator.SetTrigger("unlockEntrance");
         }
         UpgradeCount++;
@@ -216,11 +224,7 @@ public class GameManager : MonoBehaviour
 
         // camera move
         Vector3 upgradablePosition = upgradables[UpgradeCount].BuyingPosition;
-        Vector3 nextPos;
-        nextPos.x = upgradablePosition.x + Camera.main.transform.localPosition.x;
-        nextPos.y = Camera.main.transform.localPosition.y;
-        nextPos.z = upgradablePosition.z + Camera.main.transform.localPosition.z;
-        upgradableCam.ShowPosition(nextPos);
+        upgradableCam.ShowPosition(upgradablePosition);
 
         // save
         SaveLoadManager.SaveData<StoreData>(data, storeName);
