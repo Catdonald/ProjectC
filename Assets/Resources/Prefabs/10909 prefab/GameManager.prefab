@@ -354,6 +354,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1416102238039927890, guid: 6d3d12efd6c31e54fbb8f3b86f7c85c2, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2173041036801871594, guid: 6d3d12efd6c31e54fbb8f3b86f7c85c2, type: 3}
       propertyPath: m_Name
       value: SoundManager
@@ -438,7 +442,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

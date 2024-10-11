@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Entrance : Upgradable
 {
-    [Header("unActive")]
-    [SerializeField] private BoxCollider unActiveEntranceColli;
-
+    private PlayerController playerController;
+    private void Start()
+    {
+        playerController = FindObjectOfType<PlayerController>();
+    }
     public override void UpgradeStats()
     {
-        //unActiveEntranceColli.enabled = false;
+        
     }
 }

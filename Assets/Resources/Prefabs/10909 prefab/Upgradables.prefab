@@ -940,16 +940,6 @@ MonoBehaviour:
     - {fileID: -2121453986361370752, guid: e19d8e0295992c34387e7a9ba75367fd, type: 3}
     - {fileID: -2121453986361370752, guid: e19d8e0295992c34387e7a9ba75367fd, type: 3}
     deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -4136152209513726184, guid: 3612424753735374e9cbb9bc5b5dfd81, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -4136152209513726184, guid: 4b93843aef11cb046ab57a53d46cd650, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
-    deleted: {fileID: 0}
   trashObject: {fileID: 1011230918534033113}
   tableStack: {fileID: 6927811816606547098}
   trashStack: {fileID: 8848912259301121365}
@@ -1598,12 +1588,6 @@ MonoBehaviour:
     deleted: {fileID: 0}
   - meshes:
     - {fileID: -3713697362117608212, guid: 1d2fa3280ee9eb44ca5c05c6d30c07d4, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -3713697362117608212, guid: e0a1505563597974e88984012cb1b418, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -3713697362117608212, guid: 3aed866c6959cdf48bfeba27706b4ad1, type: 3}
     deleted: {fileID: 0}
   baseProductionInterval: 4
   baseCapacity: 8
@@ -2811,16 +2795,6 @@ MonoBehaviour:
     - {fileID: -2121453986361370752, guid: e19d8e0295992c34387e7a9ba75367fd, type: 3}
     - {fileID: -2121453986361370752, guid: e19d8e0295992c34387e7a9ba75367fd, type: 3}
     deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -4136152209513726184, guid: 3612424753735374e9cbb9bc5b5dfd81, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -4136152209513726184, guid: 4b93843aef11cb046ab57a53d46cd650, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
-    deleted: {fileID: 0}
   trashObject: {fileID: 4951531104578538152}
   tableStack: {fileID: 5372494735280108872}
   trashStack: {fileID: 2338412239715301925}
@@ -3866,14 +3840,6 @@ MonoBehaviour:
     - {fileID: 6734038946372740491, guid: 219c8d270b54f4c4799389ef0792309a, type: 3}
     - {fileID: -5398476151015165417, guid: d2a58aa80f19a83468866c2ecf691842, type: 3}
     deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: a5d8acfbb7584db44a4a5a085b23ffbd, type: 3}
-    - {fileID: -5398476151015165417, guid: 20389c097e03e8845881996931585989, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: 0bfc10aab3a95e04f877ca8769b88e90, type: 3}
-    - {fileID: -5398476151015165417, guid: 120342987741c0d4fbb00ddcad89978e, type: 3}
-    deleted: {fileID: 0}
   trashObject: {fileID: 6316244146486562080}
   tableStack: {fileID: 2603626876285250964}
   trashStack: {fileID: 4898380530500957628}
@@ -4078,16 +4044,6 @@ MonoBehaviour:
     - {fileID: 6734038946372740491, guid: 219c8d270b54f4c4799389ef0792309a, type: 3}
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: a5d8acfbb7584db44a4a5a085b23ffbd, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: 0bfc10aab3a95e04f877ca8769b88e90, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 8172807290706834204}
   tableStack: {fileID: 9194390766126968915}
@@ -5283,14 +5239,6 @@ MonoBehaviour:
     - {fileID: -4136152209513726184, guid: 138e42f433c2fa54482f626a53eb0031, type: 3}
     - {fileID: -2121453986361370752, guid: e19d8e0295992c34387e7a9ba75367fd, type: 3}
     deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -4136152209513726184, guid: 3612424753735374e9cbb9bc5b5dfd81, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -4136152209513726184, guid: 4b93843aef11cb046ab57a53d46cd650, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
-    deleted: {fileID: 0}
   trashObject: {fileID: 4611252470014989051}
   tableStack: {fileID: 578403665744915173}
   trashStack: {fileID: 6521441834988476426}
@@ -6211,16 +6159,6 @@ MonoBehaviour:
     - {fileID: 6734038946372740491, guid: 219c8d270b54f4c4799389ef0792309a, type: 3}
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: a5d8acfbb7584db44a4a5a085b23ffbd, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: 0bfc10aab3a95e04f877ca8769b88e90, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 4844379782455082052}
   tableStack: {fileID: 8106375010834267560}
@@ -7582,16 +7520,6 @@ MonoBehaviour:
     - {fileID: 6734038946372740491, guid: 219c8d270b54f4c4799389ef0792309a, type: 3}
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: a5d8acfbb7584db44a4a5a085b23ffbd, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: 0bfc10aab3a95e04f877ca8769b88e90, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 7035826158830050447}
   tableStack: {fileID: 3093218537581746149}
@@ -9514,14 +9442,6 @@ MonoBehaviour:
   - meshes:
     - {fileID: -4136152209513726184, guid: 138e42f433c2fa54482f626a53eb0031, type: 3}
     - {fileID: -2121453986361370752, guid: e19d8e0295992c34387e7a9ba75367fd, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -4136152209513726184, guid: 3612424753735374e9cbb9bc5b5dfd81, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -4136152209513726184, guid: 4b93843aef11cb046ab57a53d46cd650, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 852481109197478979}
   tableStack: {fileID: 8053001262168191167}
@@ -12848,16 +12768,6 @@ MonoBehaviour:
     - {fileID: -2121453986361370752, guid: e19d8e0295992c34387e7a9ba75367fd, type: 3}
     - {fileID: -2121453986361370752, guid: e19d8e0295992c34387e7a9ba75367fd, type: 3}
     deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -4136152209513726184, guid: 3612424753735374e9cbb9bc5b5dfd81, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -4136152209513726184, guid: 4b93843aef11cb046ab57a53d46cd650, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
-    deleted: {fileID: 0}
   trashObject: {fileID: 8287815895815509272}
   tableStack: {fileID: 1077367837266916782}
   trashStack: {fileID: 3080355430190043440}
@@ -13686,14 +13596,6 @@ MonoBehaviour:
     - {fileID: 6734038946372740491, guid: 219c8d270b54f4c4799389ef0792309a, type: 3}
     - {fileID: -5398476151015165417, guid: d2a58aa80f19a83468866c2ecf691842, type: 3}
     deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: a5d8acfbb7584db44a4a5a085b23ffbd, type: 3}
-    - {fileID: -5398476151015165417, guid: 20389c097e03e8845881996931585989, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: 0bfc10aab3a95e04f877ca8769b88e90, type: 3}
-    - {fileID: -5398476151015165417, guid: 120342987741c0d4fbb00ddcad89978e, type: 3}
-    deleted: {fileID: 0}
   trashObject: {fileID: 1160630098419240343}
   tableStack: {fileID: 2420143445478976862}
   trashStack: {fileID: 476403080631141060}
@@ -14337,14 +14239,6 @@ MonoBehaviour:
     - {fileID: 6734038946372740491, guid: 219c8d270b54f4c4799389ef0792309a, type: 3}
     - {fileID: -5398476151015165417, guid: d2a58aa80f19a83468866c2ecf691842, type: 3}
     deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: a5d8acfbb7584db44a4a5a085b23ffbd, type: 3}
-    - {fileID: -5398476151015165417, guid: 20389c097e03e8845881996931585989, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: 0bfc10aab3a95e04f877ca8769b88e90, type: 3}
-    - {fileID: -5398476151015165417, guid: 120342987741c0d4fbb00ddcad89978e, type: 3}
-    deleted: {fileID: 0}
   trashObject: {fileID: 4470483006976511501}
   tableStack: {fileID: 4163397982265683485}
   trashStack: {fileID: 8262272172933717331}
@@ -14427,20 +14321,6 @@ MonoBehaviour:
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -2211200919588437516, guid: 7586e42142f7cf94daa31cf6ca628c75, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -2211200919588437516, guid: c20bda94e99d14a458b29d2fd074c892, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 6754447026546432627}
   tableStack: {fileID: 6989934188099834594}
@@ -17110,16 +16990,6 @@ MonoBehaviour:
     - {fileID: -2121453986361370752, guid: e19d8e0295992c34387e7a9ba75367fd, type: 3}
     - {fileID: -2121453986361370752, guid: e19d8e0295992c34387e7a9ba75367fd, type: 3}
     deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -4136152209513726184, guid: 3612424753735374e9cbb9bc5b5dfd81, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -4136152209513726184, guid: 4b93843aef11cb046ab57a53d46cd650, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
-    deleted: {fileID: 0}
   trashObject: {fileID: 1268549623391919645}
   tableStack: {fileID: 3499444353218587681}
   trashStack: {fileID: 2748442927171589834}
@@ -18483,14 +18353,6 @@ MonoBehaviour:
     - {fileID: -1526101117349070256, guid: 0b6a861fa0e9a4748b649f3fddd72cd5, type: 3}
     - {fileID: -2710898579618712159, guid: 4f4782c2577d37a478ac07764f7bc944, type: 3}
     deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -1526101117349070256, guid: 1d6114c62040eed4095296d677793916, type: 3}
-    - {fileID: -2710898579618712159, guid: fbef3dafbd5454d4a9a48f33d36a1ccc, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -1526101117349070256, guid: 0ac68e010bb4ed247a7a301a5d292241, type: 3}
-    - {fileID: -2710898579618712159, guid: 9ac9792a7a41eeb4bbf0cf91e4daa712, type: 3}
-    deleted: {fileID: 0}
   worker: {fileID: 9058744813812916539}
   workingSpot: {fileID: 8604380530354437458}
   casher: {fileID: 8750057785427587270}
@@ -19046,12 +18908,6 @@ MonoBehaviour:
     deleted: {fileID: 0}
   - meshes:
     - {fileID: -8711877923660593118, guid: 1de36a3570c514e429d62d5e88e0707a, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -8711877923660593118, guid: 06084bd8dfb99c548a3b2692c98e2468, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -8711877923660593118, guid: 426486b5fd7a22041a17aad54b060a56, type: 3}
     deleted: {fileID: 0}
   worker: {fileID: 2873954098836481996}
   workingSpot: {fileID: 1316059870192621147}
@@ -20099,12 +19955,6 @@ MonoBehaviour:
   - meshes:
     - {fileID: -3713697362117608212, guid: 1d2fa3280ee9eb44ca5c05c6d30c07d4, type: 3}
     deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -3713697362117608212, guid: e0a1505563597974e88984012cb1b418, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -3713697362117608212, guid: 3aed866c6959cdf48bfeba27706b4ad1, type: 3}
-    deleted: {fileID: 0}
   baseProductionInterval: 4
   baseCapacity: 8
   spawner: {fileID: 4140107147635171054}
@@ -20667,16 +20517,6 @@ MonoBehaviour:
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
     deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: a5d8acfbb7584db44a4a5a085b23ffbd, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: 0bfc10aab3a95e04f877ca8769b88e90, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
-    deleted: {fileID: 0}
   trashObject: {fileID: 3624682381859671050}
   tableStack: {fileID: 3779632275545673468}
   trashStack: {fileID: 6115762784885838693}
@@ -20760,20 +20600,6 @@ MonoBehaviour:
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -2211200919588437516, guid: 7586e42142f7cf94daa31cf6ca628c75, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -2211200919588437516, guid: c20bda94e99d14a458b29d2fd074c892, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 6005277469569186775}
   tableStack: {fileID: 1120577258790431373}
@@ -21044,20 +20870,6 @@ MonoBehaviour:
     - {fileID: -2121453986361370752, guid: e19d8e0295992c34387e7a9ba75367fd, type: 3}
     - {fileID: -2121453986361370752, guid: e19d8e0295992c34387e7a9ba75367fd, type: 3}
     deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -4136152209513726184, guid: 3612424753735374e9cbb9bc5b5dfd81, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -4136152209513726184, guid: 4b93843aef11cb046ab57a53d46cd650, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
-    deleted: {fileID: 0}
   trashObject: {fileID: 3082721363744246105}
   tableStack: {fileID: 8373353260446468702}
   trashStack: {fileID: 4517743985033687012}
@@ -21156,16 +20968,6 @@ MonoBehaviour:
     - {fileID: 6734038946372740491, guid: 219c8d270b54f4c4799389ef0792309a, type: 3}
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: a5d8acfbb7584db44a4a5a085b23ffbd, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: 0bfc10aab3a95e04f877ca8769b88e90, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 590296318163220943}
   tableStack: {fileID: 4495913612532812513}
@@ -22356,8 +22158,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: -1.43, y: 0.02, z: 2.45}
-  meshFilter: []
-  upgradeMeshes: []
+  meshFilter:
+  - {fileID: 2222851643558370086}
+  - {fileID: 3437970496360601762}
+  upgradeMeshes:
+  - meshes:
+    - {fileID: -1526101117349070256, guid: b1ec33dc8ed87e84db90103ac1487ac2, type: 3}
+    - {fileID: -2710898579618712159, guid: cfe35d06755bd6a47bd86c8b42d016cf, type: 3}
+    deleted: {fileID: 0}
+  - meshes:
+    - {fileID: -1526101117349070256, guid: 0b6a861fa0e9a4748b649f3fddd72cd5, type: 3}
+    - {fileID: -2710898579618712159, guid: 4f4782c2577d37a478ac07764f7bc944, type: 3}
+    deleted: {fileID: 0}
   worker: {fileID: 4612568878305129784}
   workingSpot: {fileID: 7568691325695291179}
   casher: {fileID: 1576880767502847027}
@@ -23365,20 +23177,6 @@ MonoBehaviour:
     - {fileID: -2121453986361370752, guid: e19d8e0295992c34387e7a9ba75367fd, type: 3}
     - {fileID: -2121453986361370752, guid: e19d8e0295992c34387e7a9ba75367fd, type: 3}
     - {fileID: -2121453986361370752, guid: e19d8e0295992c34387e7a9ba75367fd, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -4136152209513726184, guid: 3612424753735374e9cbb9bc5b5dfd81, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    - {fileID: -2121453986361370752, guid: 568b04cf6b3b8e042965e2e1046e1997, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: -4136152209513726184, guid: 4b93843aef11cb046ab57a53d46cd650, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
-    - {fileID: -2121453986361370752, guid: bb4836bc8c9aec04b8c06d36a2331efc, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 4713059339527558909}
   tableStack: {fileID: 7248107364582026031}
@@ -24934,16 +24732,6 @@ MonoBehaviour:
     - {fileID: 6734038946372740491, guid: 219c8d270b54f4c4799389ef0792309a, type: 3}
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
     - {fileID: 6449288739317159836, guid: cdee4c746b9099b4ea806af6feca9360, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: a5d8acfbb7584db44a4a5a085b23ffbd, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    - {fileID: 6449288739317159836, guid: 2256ecf6fb4096748b15016b28bceab7, type: 3}
-    deleted: {fileID: 0}
-  - meshes:
-    - {fileID: 6734038946372740491, guid: 0bfc10aab3a95e04f877ca8769b88e90, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
-    - {fileID: 6449288739317159836, guid: d50d6798648f50e4b896e261fbea3e9d, type: 3}
     deleted: {fileID: 0}
   trashObject: {fileID: 3675353628882025710}
   tableStack: {fileID: 4668562075482901529}
@@ -27937,8 +27725,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: 2}
-  meshFilter: []
-  upgradeMeshes: []
+  meshFilter:
+  - {fileID: 3552058331796497232}
+  - {fileID: 4369666525412135576}
+  - {fileID: 4331440178233891067}
+  upgradeMeshes:
+  - meshes:
+    - {fileID: -8711877923660593118, guid: c2a00b2cdc609414486fbe609a1aacbd, type: 3}
+    - {fileID: 6191006585576940517, guid: cec2e0a405fbbad469d3836ccbc64872, type: 3}
+    - {fileID: 6191006585576940517, guid: cec2e0a405fbbad469d3836ccbc64872, type: 3}
+    deleted: {fileID: 0}
+  - meshes:
+    - {fileID: -8711877923660593118, guid: 8cfe532fdd88a844d83580961f991f95, type: 3}
+    - {fileID: 6191006585576940517, guid: 39b66458cdc4caa49ac9697f00e0c55a, type: 3}
+    - {fileID: 6191006585576940517, guid: 39b66458cdc4caa49ac9697f00e0c55a, type: 3}
+    deleted: {fileID: 0}
   baseInterval: 1
   basePrice_firstFood: 5
   basePrice_secondFood: 5
@@ -28130,8 +27931,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: -2.24, y: 0.02, z: 2.47}
-  meshFilter: []
-  upgradeMeshes: []
+  meshFilter:
+  - {fileID: 7114441593672668933}
+  upgradeMeshes:
+  - meshes:
+    - {fileID: -1526101117349070256, guid: b1ec33dc8ed87e84db90103ac1487ac2, type: 3}
+    deleted: {fileID: 0}
+  - meshes:
+    - {fileID: -1526101117349070256, guid: 0b6a861fa0e9a4748b649f3fddd72cd5, type: 3}
+    deleted: {fileID: 0}
   worker: {fileID: 5944890032584912442}
   workingSpot: {fileID: 1163503309526519867}
   foodReceiver: {fileID: 3644407524815722542}
@@ -29467,6 +29275,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: upgradeMeshes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: upgradeMeshes.Array.data[0].deleted
       value: 
       objectReference: {fileID: 7678980360646109223}
@@ -29560,6 +29372,10 @@ PrefabInstance:
     - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: buyingPosition.y
       value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: upgradeMeshes.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: upgradeMeshes.Array.data[0].deleted

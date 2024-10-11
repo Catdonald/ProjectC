@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) || GameManager.instance.IsUpgradableCamMoving)
         {
             isClicked = false;
             animator.SetBool("isMove", false);

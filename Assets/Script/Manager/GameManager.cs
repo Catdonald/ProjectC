@@ -84,6 +84,8 @@ public class GameManager : MonoBehaviour
 
     public CameraController upgradableCam;
 
+    private PlayerController player;
+
     void Awake()
     {
         instance = this;
@@ -123,13 +125,23 @@ public class GameManager : MonoBehaviour
         PackageTable = GameObject.FindObjectOfType<PackageTable>(true);
 
         upgradableCam = GameObject.FindObjectOfType<CameraController>();
+        player = GameObject.FindObjectOfType<PlayerController>();
 
-        for (int i = 0; i < data.UpgradeCount; ++i)
+        for (int i = 0; i < UpgradeCount; ++i)
         {
             upgradables[i].Upgrade(false);
         }
 
         UpdateUpgradeButton();
+
+        if(UpgradeCount == 0)
+        {
+            player.transform.position = new Vector3(-3.75f, 0.16f, -21.5f);
+        }
+        else
+        {
+            player.transform.position = new Vector3(0f, 0.16f, 0f);
+        }
     }
 
     void LoadDataFromCSV<T>(string filename, List<T> dataLst, Func<string[], T> parser)
