@@ -48,7 +48,6 @@ public class CarController : MonoBehaviour
             {
                 currentLineIndex--;
                 MoveToNextLinePosition();
-                GameManager.instance.SoundManager.PlaySFX("SFX_carHorn");
             }
             else if (queueNumber == 0)
             {
@@ -80,6 +79,7 @@ public class CarController : MonoBehaviour
         OrderCount = Random.Range(1, maxOrderCount);
         HasOrder = true;
         orderInfo.ShowInfo(OrderCount);
+        GameManager.instance.SoundManager.PlaySFX("SFX_carHorn");
     }
 
     public void ReceiveFood(Transform package)

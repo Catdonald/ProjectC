@@ -24,6 +24,7 @@ public class Receiver : Stackable
         if(player.Count > 0 && player.StackType == type)
         {
             ReceiveObject(player.RemoveFromStack(), type, GameManager.instance.GetStackOffset(type));
+            GameManager.instance.SoundManager.PlaySFX("SFX_pop");
         }
     } 
 }

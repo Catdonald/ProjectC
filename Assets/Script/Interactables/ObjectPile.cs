@@ -47,7 +47,7 @@ public class ObjectPile : Interactable
         {
             var removedObj = objects.Pop();
             player.Stack.AddToStack(removedObj, stackType);
-            // TODO) Sound
+            GameManager.instance.SoundManager.PlaySFX("SFX_stack");
         }
     }
 

@@ -1505,10 +1505,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas_ScreenSpace
       objectReference: {fileID: 0}
-    - target: {fileID: 6525895863917096202, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7196417712190389530, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

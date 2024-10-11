@@ -220,7 +220,7 @@ public class GameManager : MonoBehaviour
         // effect, sound
         upgradeParticle.transform.position = upgradables[UpgradeCount - 1].transform.position;
         upgradeParticle.Play();
-        SoundManager.PlaySFX("SFX_upgradeButton");
+        SoundManager.PlaySFX("SFX_upgrade");
 
         // camera move
         Vector3 upgradablePosition = upgradables[UpgradeCount].BuyingPosition;

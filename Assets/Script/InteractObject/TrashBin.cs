@@ -25,6 +25,7 @@ public class Trashbin : Interactable
                 .OnComplete(() =>
                 {
                     GameManager.instance.PoolManager.Return(thrownObj);
+                    GameManager.instance.SoundManager.PlaySFX("SFX_bin");
                 });
         }
     }

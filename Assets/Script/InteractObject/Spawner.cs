@@ -51,6 +51,9 @@ public class Spawner : Stackable
             return;
 
         if (player.StackType == eObjectType.LAST || player.StackType == type)
+        {
             player.AddToStack(stack.Pop(), type);
+            GameManager.instance.SoundManager.PlaySFX("SFX_stack");
+        }
     }
 }
