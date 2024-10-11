@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
 
         upgradableCam = GameObject.FindObjectOfType<CameraController>();
         player = GameObject.FindObjectOfType<PlayerController>();
-
+        
         for (int i = 0; i < UpgradeCount; ++i)
         {
             upgradables[i].Upgrade(false);
@@ -149,6 +149,14 @@ public class GameManager : MonoBehaviour
         else
         {
             player.transform.position = new Vector3(0f, 0.16f, 0f);
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SoundManager.PlaySFX("SFX_upgrade");
         }
     }
 
