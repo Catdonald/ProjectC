@@ -3847,6 +3847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 15.08, y: 0.42, z: 8.98}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter: []
   upgradeMeshes: []
 --- !u!1 &1214167121461086373
@@ -4657,7 +4658,7 @@ GameObject:
   - component: {fileID: 7046531788903025405}
   - component: {fileID: 611883086185050046}
   - component: {fileID: 4399533413965764943}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14304,9 +14305,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: -4}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter: []
   upgradeMeshes: []
-  unActiveEntranceColli: {fileID: 0}
 --- !u!114 &1309388382652503708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15550,9 +15551,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: -4}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter: []
   upgradeMeshes: []
-  unActiveEntranceColli: {fileID: 0}
 --- !u!114 &5288818193926994116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18786,6 +18787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 15.03, y: 0.42, z: 6.13}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter: []
   upgradeMeshes: []
 --- !u!1 &7261879863923101354
