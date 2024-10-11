@@ -46,7 +46,6 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                // UI�� Ŭ������ �ʴ´�.
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit))
@@ -66,7 +65,6 @@ public class PlayerController : MonoBehaviour
             {
                 if (isClicked)
                 {
-                    // Ŭ���� ��ġ�� ���� Ŀ�� ��ġ�� ���� �̵� ���� ���ϱ�
                     Vector3 mousePos = Input.mousePosition;
                     mouseDelta = mousePos - mouseClickedPos;
                     // max padSizeX = 35.0f
@@ -84,8 +82,6 @@ public class PlayerController : MonoBehaviour
                     RaycastHit hit;
                     if (Physics.Raycast(rayStartPoint, moveVec, out hit, 1.0f))
                     {
-                        // �����̳� �մ� ������Ʈ�� �浹���� �ʾҴٸ�
-                        // �ǹ��̳� ���, ī���Ϳ� ���� ������Ʈ�� ���̰� �浹�� ���̴�.
                         if (!hit.collider.CompareTag("Building"))
                         {
                             playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * moveSpeed);
@@ -95,13 +91,12 @@ public class PlayerController : MonoBehaviour
                     {
                         playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * moveSpeed);
                     }
-                    // �̵��ϴ� ���� �ٶ󺸱�
+
                     if (moveVec.magnitude > 0.0f)
                     {
                         playerRoot.transform.forward = moveVec;
                     }
 
-                    // ���콺 ��ġ ��ȭ�� ���� JoyStickController�� �Ѱ��ֱ�
                     joystickController.mouseDelta = mouseDelta;
                 }
             }
