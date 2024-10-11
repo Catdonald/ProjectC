@@ -925,6 +925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: 4.13}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 4656566108177796007}
   - {fileID: 2733258386450311925}
@@ -1580,6 +1581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 2.75, y: 0.02, z: 0}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 897938705071497859}
   upgradeMeshes:
@@ -2780,6 +2782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: 4.13}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 8354310230791643897}
   - {fileID: 3801805577551084851}
@@ -3828,6 +3831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: 2.31}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 7500905635935884306}
   - {fileID: 1554688245422197731}
@@ -4030,6 +4034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: -2, y: 0.02, z: 0}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 9090092478966879122}
   - {fileID: 7877824530766697900}
@@ -5227,6 +5232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: -2.82}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 6111865105908124104}
   - {fileID: 8385459147836081334}
@@ -6145,6 +6151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: -2, y: 0.02, z: 0}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 5350221483423994498}
   - {fileID: 323421992944614123}
@@ -7506,6 +7513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: 3}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 118722764303598511}
   - {fileID: 799080962722672004}
@@ -9431,6 +9439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: -2.82}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 1596627902397499705}
   - {fileID: 2576835782839941463}
@@ -11310,7 +11319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def00d5617b3ce849a34b7cf71199e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stackType: 0
+  stackType: 5
   length: 4
   width: 2
   spacing: {x: 0.4, y: 0.1, z: 0.8}
@@ -12753,6 +12762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: 4.13}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 6985681113417084558}
   - {fileID: 3782320027580170802}
@@ -13584,6 +13594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: 2.31}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 5778846373763306696}
   - {fileID: 271568249048507377}
@@ -14227,6 +14238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: 2.31}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 380987822688139939}
   - {fileID: 6578608934097615547}
@@ -14301,6 +14313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: 2.5}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 5704438940911411511}
   - {fileID: 4689098114458371145}
@@ -16975,6 +16988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: 4.13}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 2543128075116584595}
   - {fileID: 254440791680767441}
@@ -18341,6 +18355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: -4.05, y: 0.02, z: 0}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 3909644854078315647}
   - {fileID: 6950803396553498964}
@@ -18900,6 +18915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 1.5, y: 0.02, z: 2}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 4962263818198905149}
   upgradeMeshes:
@@ -19946,6 +19962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 2.75, y: 0.02, z: 0}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 740631817403767146}
   upgradeMeshes:
@@ -20502,6 +20519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: -2, y: 0.02, z: 0}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 6835843695538524260}
   - {fileID: 6142291565029219931}
@@ -20580,6 +20598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: 2.5}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 7139978501238857842}
   - {fileID: 2716208537081114462}
@@ -20849,6 +20868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 3.69, y: 0.02, z: 0}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 2606838784038295584}
   - {fileID: 7301481555999809621}
@@ -20954,6 +20974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: -2, y: 0.02, z: 0}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 476787265293395293}
   - {fileID: 2230699606394583114}
@@ -22158,6 +22179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: -1.43, y: 0.02, z: 2.45}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 0}
   - {fileID: 0}
@@ -23157,6 +23179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 3.69, y: 0.02, z: 0}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 6228604949877044524}
   - {fileID: 5094041972712195604}
@@ -24718,6 +24741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: 3}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 3313133810458058327}
   - {fileID: 8565427376841576693}
@@ -27725,6 +27749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: 0, y: 0.02, z: 2}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 3552058331796497232}
   - {fileID: 4369666525412135576}
@@ -27931,6 +27956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyingPosition: {x: -2.24, y: 0.02, z: 2.47}
+  punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 7114441593672668933}
   upgradeMeshes:

@@ -17,6 +17,8 @@ public class KioskCounter : Upgradable
     [SerializeField] private Receiver subMenuReceiver;
 
     private KioskCustomer[] kioskCustomers;
+    private Material[] materials;
+    private MoneyPile moneyPile;
 
     private float sellingTimer = 0.0f;
     private float spawnTimer = 0.0f;
@@ -27,13 +29,13 @@ public class KioskCounter : Upgradable
     private bool isFirstMenuSelling = false;
     private bool isSecondMenuSelling = false;
     private const int maxQueueCount = 2;
-    private Material[] materials;
 
     // Start is called before the first frame update
     void Start()
     {
         kioskCustomers = new KioskCustomer[maxQueueCount];
         materials = new Material[4];
+        moneyPile = GetComponentInChildren<MoneyPile>();
         for (int i = 0; i < materials.Length; i++)
         {
             string path = "Materials/CatMat" + (i + 1).ToString();
@@ -130,8 +132,7 @@ public class KioskCounter : Upgradable
                 {
                     var food = burgerReceiver.RequestObject();
                     customer.ReceiveFirstFood(food);
-                    // TODO
-                    // CollectMoney();
+                    CollectMoney(sellPrice_firstFood);
                 }
                 index++;
                 index %= 2;
@@ -161,8 +162,7 @@ public class KioskCounter : Upgradable
                 {
                     var food = subMenuReceiver.RequestObject();
                     customer.ReceiveSecondFood(food);
-                    // TODO
-                    // CollectMoney();
+                    CollectMoney(sellPrice_secondFood);
                 }
                 index++;
                 index %= 2;
@@ -199,5 +199,13 @@ public class KioskCounter : Upgradable
             }
         }
         return true;
+    }
+
+    private void CollectMoney(int sellPrice)
+    {
+        for (int i = 0; i < sellPrice; i++)
+        {
+            moneyPile.AddMoney();
+        }
     }
 }

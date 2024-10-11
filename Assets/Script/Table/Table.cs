@@ -21,6 +21,8 @@ public class Table : Upgradable
 
     [SerializeField] private List<CustomerController> customers = new List<CustomerController>();
 
+    private MoneyPile moneyPile;
+
     #region Table Stats
     [SerializeField, Range(1.0f, 10.0f)] private float baseEatTime = 5.0f;
     [SerializeField, Range(0.0f, 1.0f)] private float baseTipChance = 0.4f;
@@ -34,6 +36,7 @@ public class Table : Upgradable
     {
         tableStack = GetComponentInChildren<Receiver>();
         trashStack = GetComponentInChildren<Giver>();
+        moneyPile = GetComponentInChildren<MoneyPile>();
         tableStack.MaxStackCount = 50;
         trashStack.MaxStackCount = 50;
         trashObject.SetActive(false);
@@ -103,7 +106,7 @@ public class Table : Upgradable
             int tipAmount = Random.Range(2, 5 + tipLevel);
             for (int i = 0; i < tipAmount; i++)
             {
-                // TODO) AddMoney()
+                moneyPile.AddMoney();
             }
         }
     }
