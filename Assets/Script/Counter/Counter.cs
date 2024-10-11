@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+#if UNITY_EDITOR
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
+#endif
 
 public class Counter : WorkStation
 {

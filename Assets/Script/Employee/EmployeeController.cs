@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
+#if UNITY_EDITOR
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
+#endif
 public class EmployeeController : MonoBehaviour
 {
     public playerStack Stack => stack;
