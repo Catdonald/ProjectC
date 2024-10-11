@@ -59,20 +59,10 @@ public class SoundManager : MonoBehaviour
     {
         sfx.Stop();
     }
-    public void PlaySFX(string name, bool isLoop = false)
+    public void PlaySFX(string name)
     {
         sfx.clip = sfxs[name];
-        
-        if(isLoop)
-        {
-            sfx.loop = true;
-        }
-        else
-        {
-            sfx.loop = false;
-        }
-
-        sfx.Play();
+        sfx.PlayOneShot(sfx.clip);
     }
 
     public void SetVolume(float vol)
@@ -108,7 +98,6 @@ public class SoundManager : MonoBehaviour
     public void QuitPitchSound()
     {
         CancelInvoke(nameof(OnSoundComplete));
-        sfx.Stop();
         sfx.pitch = initialPitch;
     }
 }

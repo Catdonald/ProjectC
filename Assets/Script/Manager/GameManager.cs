@@ -152,6 +152,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SoundManager.PlaySFX("SFX_upgrade");
+        }
+    }
+
     void LoadDataFromCSV<T>(string filename, List<T> dataLst, Func<string[], T> parser)
     {
         TextAsset csvData = Resources.Load<TextAsset>(filename);
