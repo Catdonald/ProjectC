@@ -8920,7 +8920,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 84110282449227688, guid: d6ea552f683632746bae301cd5631678, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 84110282449227688, guid: d6ea552f683632746bae301cd5631678, type: 3}
       propertyPath: m_Interactable
@@ -8929,6 +8929,14 @@ PrefabInstance:
     - target: {fileID: 315141747436811641, guid: d6ea552f683632746bae301cd5631678, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 315141747436811641, guid: d6ea552f683632746bae301cd5631678, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 315141747436811641, guid: d6ea552f683632746bae301cd5631678, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1679829950064634623, guid: d6ea552f683632746bae301cd5631678, type: 3}
       propertyPath: m_Text
@@ -9134,6 +9142,10 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontStyle
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7317548734994280504, guid: d6ea552f683632746bae301cd5631678, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8304464720070435984, guid: d6ea552f683632746bae301cd5631678, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -9149,6 +9161,22 @@ PrefabInstance:
     - target: {fileID: 8304464720070435984, guid: d6ea552f683632746bae301cd5631678, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 59
+      objectReference: {fileID: 0}
+    - target: {fileID: 8405742796338171200, guid: d6ea552f683632746bae301cd5631678, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8405742796338171200, guid: d6ea552f683632746bae301cd5631678, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8405742796338171200, guid: d6ea552f683632746bae301cd5631678, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8405742796338171200, guid: d6ea552f683632746bae301cd5631678, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
