@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 mouseDelta;
     public playerStack Stack => playerStack;
+    public Animator Animator => animator;
 
     // Start is called before the first frame update
     void Start()

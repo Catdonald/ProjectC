@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class MeshGroup
 public class Upgradable : MonoBehaviour
 {
     [SerializeField] private Vector3 buyingPosition = Vector3.zero;
+    [SerializeField] private Vector3 punchScale = new Vector3(0.1f, 0.2f, 0.1f);
     protected int upgradeLevel = 0;
 
     [SerializeField] private MeshFilter[] meshFilter;
@@ -25,7 +27,7 @@ public class Upgradable : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public virtual void Upgrade(bool effectOn = true)
+    public virtual void Upgrade(bool animate = true)
     {
         upgradeLevel++;
         if (upgradeLevel > 1)
@@ -48,8 +50,10 @@ public class Upgradable : MonoBehaviour
         }
         UpgradeStats();
 
-        if (!effectOn)
+        if (!animate)
             return;
+
+        transform.DOPunchScale(punchScale, 0.3f).OnComplete(()=> transform.localScale = Vector3.one);
     }
 
     public virtual void UpgradeStats() { }

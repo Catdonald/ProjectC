@@ -950,26 +950,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7176116462830611392, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
-      propertyPath: sfxClips.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7176116462830611392, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
-      propertyPath: sfxClips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 41b8cd34a5341b54086a0817dc009a2d, type: 3}
-    - target: {fileID: 7176116462830611392, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
-      propertyPath: sfxClips.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 7862bbe6db7d05a45872b947004aa91c, type: 3}
-    - target: {fileID: 7176116462830611392, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
-      propertyPath: sfxClips.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 58b4c99f25fdb924bae62f91f3bf63ce, type: 3}
-    - target: {fileID: 9208546872888492888, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1353,102 +1333,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgradables
       objectReference: {fileID: 0}
-    - target: {fileID: 2915637121169241077, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3152371590665401408, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3201435419949849241, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3394183739924542952, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3412241588360758392, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3849361320406872295, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3849361320406872295, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.data[0].deleted
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3849361320406872295, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.data[0].meshes.Array.data[0]
-      value: 
-      objectReference: {fileID: 2755073039738189750, guid: 1420863906f314c4fba6b68d4cfd9283, type: 3}
-    - target: {fileID: 3849361320406872295, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.data[1].meshes.Array.data[0]
-      value: 
-      objectReference: {fileID: 2755073039738189750, guid: 2b1bd5f9ded24214f854186d1992d629, type: 3}
-    - target: {fileID: 4085882210268421513, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4106167059432115908, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4112353293892115347, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: meshFilter.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4112353293892115347, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: meshFilter.Array.data[0]
-      value: 
-      objectReference: {fileID: 1211977667}
-    - target: {fileID: 4112353293892115347, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: meshFilter.Array.data[1]
-      value: 
-      objectReference: {fileID: 831012374}
-    - target: {fileID: 4112353293892115347, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4112353293892115347, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.data[0].meshes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4112353293892115347, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.data[1].meshes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4112353293892115347, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.data[0].meshes.Array.data[0]
-      value: 
-      objectReference: {fileID: -1526101117349070256, guid: b1ec33dc8ed87e84db90103ac1487ac2, type: 3}
-    - target: {fileID: 4112353293892115347, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.data[0].meshes.Array.data[1]
-      value: 
-      objectReference: {fileID: -2710898579618712159, guid: cfe35d06755bd6a47bd86c8b42d016cf, type: 3}
-    - target: {fileID: 4112353293892115347, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.data[1].meshes.Array.data[0]
-      value: 
-      objectReference: {fileID: -1526101117349070256, guid: 0b6a861fa0e9a4748b649f3fddd72cd5, type: 3}
-    - target: {fileID: 4112353293892115347, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.data[1].meshes.Array.data[1]
-      value: 
-      objectReference: {fileID: -2710898579618712159, guid: 4f4782c2577d37a478ac07764f7bc944, type: 3}
-    - target: {fileID: 4244515275796464934, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4329832664915024442, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4678064946066056671, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4746390159190929467, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1500,30 +1384,6 @@ PrefabInstance:
     - target: {fileID: 7894806821522185238, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7951220635314289579, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295277435784519578, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295277435784519578, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.data[0].deleted
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295277435784519578, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.data[0].meshes.Array.data[0]
-      value: 
-      objectReference: {fileID: 2755073039738189750, guid: 1420863906f314c4fba6b68d4cfd9283, type: 3}
-    - target: {fileID: 8295277435784519578, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.data[1].meshes.Array.data[0]
-      value: 
-      objectReference: {fileID: 2755073039738189750, guid: 2b1bd5f9ded24214f854186d1992d629, type: 3}
-    - target: {fileID: 8615528339217851023, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: upgradeMeshes.Array.size
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

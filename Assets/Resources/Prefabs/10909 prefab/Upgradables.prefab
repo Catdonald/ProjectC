@@ -1538,7 +1538,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 40, y: 0.16017246, z: 10.75}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7300919648684681081}
@@ -1565,8 +1565,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 0, z: 3.3849692}
-  m_Center: {x: 0, y: 0.02, z: 0.7924821}
+  m_Size: {x: 4, y: 0, z: 5}
+  m_Center: {x: 0, y: 0.02, z: 1.25}
 --- !u!114 &2915637121169241077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1579,7 +1579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fb65e18e659c45932149d21628e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 2, y: 0.02, z: 0}
+  buyingPosition: {x: 2.75, y: 0.02, z: 0}
   meshFilter:
   - {fileID: 897938705071497859}
   upgradeMeshes:
@@ -4029,7 +4029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: -2.59, y: 0.02, z: 0}
+  buyingPosition: {x: -2, y: 0.02, z: 0}
   meshFilter:
   - {fileID: 9090092478966879122}
   - {fileID: 7877824530766697900}
@@ -4264,8 +4264,8 @@ Transform:
   m_GameObject: {fileID: 1056694187265327783}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 1.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 2.25}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4228654515317161620}
@@ -6144,7 +6144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: -2.59, y: 0.02, z: 0}
+  buyingPosition: {x: -2, y: 0.02, z: 0}
   meshFilter:
   - {fileID: 5350221483423994498}
   - {fileID: 323421992944614123}
@@ -11978,7 +11978,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4228654515317161620}
@@ -13391,7 +13391,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8809945616564684245}
@@ -14273,7 +14273,7 @@ Transform:
   m_GameObject: {fileID: 4371104057201791432}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.16, z: -11}
+  m_LocalPosition: {x: 0.5, y: 0.16, z: -11.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14300,7 +14300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0.02, z: -2.28}
+  buyingPosition: {x: 0, y: 0.02, z: 2.5}
   meshFilter:
   - {fileID: 5704438940911411511}
   - {fileID: 4689098114458371145}
@@ -19904,7 +19904,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 31, y: 0.16017246, z: 10.75}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3121034710763891616}
@@ -19931,8 +19931,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 0, z: 3.3849692}
-  m_Center: {x: 0, y: 0.02, z: 0.7924821}
+  m_Size: {x: 4, y: 0, z: 5}
+  m_Center: {x: 0, y: 0.02, z: 1.25}
 --- !u!114 &4678064946066056671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19945,7 +19945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80fb65e18e659c45932149d21628e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 2, y: 0.02, z: 0}
+  buyingPosition: {x: 2.75, y: 0.02, z: 0}
   meshFilter:
   - {fileID: 740631817403767146}
   upgradeMeshes:
@@ -20501,7 +20501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: -2.59, y: 0.02, z: 0}
+  buyingPosition: {x: -2, y: 0.02, z: 0}
   meshFilter:
   - {fileID: 6835843695538524260}
   - {fileID: 6142291565029219931}
@@ -20552,7 +20552,7 @@ Transform:
   m_GameObject: {fileID: 6097801679684785440}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.5, y: 0.16, z: -11}
+  m_LocalPosition: {x: 6.5, y: 0.16, z: -11.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20579,7 +20579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0.02, z: -2.28}
+  buyingPosition: {x: 0, y: 0.02, z: 2.5}
   meshFilter:
   - {fileID: 7139978501238857842}
   - {fileID: 2716208537081114462}
@@ -20953,7 +20953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: -2.59, y: 0.02, z: 0}
+  buyingPosition: {x: -2, y: 0.02, z: 0}
   meshFilter:
   - {fileID: 476787265293395293}
   - {fileID: 2230699606394583114}
@@ -22159,8 +22159,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyingPosition: {x: -1.43, y: 0.02, z: 2.45}
   meshFilter:
-  - {fileID: 2222851643558370086}
-  - {fileID: 3437970496360601762}
+  - {fileID: 0}
+  - {fileID: 0}
   upgradeMeshes:
   - meshes:
     - {fileID: -1526101117349070256, guid: b1ec33dc8ed87e84db90103ac1487ac2, type: 3}
@@ -22858,8 +22858,8 @@ Transform:
   m_GameObject: {fileID: 6822889420109259185}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 1.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 2.25}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8809945616564684245}
@@ -29264,11 +29264,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: buyingPosition.x
-      value: -4.37
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: buyingPosition.y
       value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: buyingPosition.z
+      value: 2.75
       objectReference: {fileID: 0}
     - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: baseProductionInterval
@@ -29281,7 +29285,15 @@ PrefabInstance:
     - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: upgradeMeshes.Array.data[0].deleted
       value: 
-      objectReference: {fileID: 7678980360646109223}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: upgradeMeshes.Array.data[0].meshes.Array.data[0]
+      value: 
+      objectReference: {fileID: 2755073039738189750, guid: 1420863906f314c4fba6b68d4cfd9283, type: 3}
+    - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: upgradeMeshes.Array.data[1].meshes.Array.data[0]
+      value: 
+      objectReference: {fileID: 2755073039738189750, guid: 2b1bd5f9ded24214f854186d1992d629, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6999112866716342989, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
@@ -29291,11 +29303,6 @@ PrefabInstance:
 --- !u!4 &2538841489105999079 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2031079686175380940, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
-  m_PrefabInstance: {fileID: 4545291822755283243}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7678980360646109223 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6162376914055080204, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
   m_PrefabInstance: {fileID: 4545291822755283243}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8367286480945819165 stripped
@@ -29367,11 +29374,15 @@ PrefabInstance:
       objectReference: {fileID: 8367286480945819165}
     - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: buyingPosition.x
-      value: -4.37
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: buyingPosition.y
       value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: buyingPosition.z
+      value: 2.75
       objectReference: {fileID: 0}
     - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: upgradeMeshes.Array.size
@@ -29380,7 +29391,15 @@ PrefabInstance:
     - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: upgradeMeshes.Array.data[0].deleted
       value: 
-      objectReference: {fileID: 3234750747912832858}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: upgradeMeshes.Array.data[0].meshes.Array.data[0]
+      value: 
+      objectReference: {fileID: 2755073039738189750, guid: 1420863906f314c4fba6b68d4cfd9283, type: 3}
+    - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: upgradeMeshes.Array.data[1].meshes.Array.data[0]
+      value: 
+      objectReference: {fileID: 2755073039738189750, guid: 2b1bd5f9ded24214f854186d1992d629, type: 3}
     - target: {fileID: 7780159240403446712, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.07
@@ -29391,11 +29410,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
---- !u!1 &3234750747912832858 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6162376914055080204, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
-  m_PrefabInstance: {fileID: 8746286854398291542}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7300007046238895002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2031079686175380940, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}

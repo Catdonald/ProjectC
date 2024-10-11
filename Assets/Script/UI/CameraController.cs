@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public bool IsMoving { get; set; } = false;
+    public float waitDuration = 1.5f;
 
     private float moveDuration = 0.2f; 
     private float stayDuration = 2.0f;
@@ -27,13 +28,14 @@ public class CameraController : MonoBehaviour
     IEnumerator MoveCamera(Vector3 targetPosition)
     {
         IsMoving = true;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(waitDuration);
         yield return StartCoroutine(MoveToPosition(Camera.main.transform, targetPosition, moveDuration));
 
         yield return new WaitForSeconds(stayDuration);
 
         yield return StartCoroutine(MoveToPosition(Camera.main.transform, originalPosition, moveDuration));
         IsMoving = false;
+        waitDuration = 1.5f;
     }
 
     IEnumerator MoveToPosition(Transform transform, Vector3 targetPosition, float duration)
