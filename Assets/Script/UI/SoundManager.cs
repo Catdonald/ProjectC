@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     [Header("Sound Management")]
     public float soundVol;
-    public List<AudioSource> sounds;
+    public List<AudioSource> sounds_3d;
     [SerializeField] private AudioSource bgm;
     [SerializeField] private AudioClip[] bgmClips;
     [SerializeField] private AudioSource sfx;
@@ -77,9 +77,9 @@ public class SoundManager : MonoBehaviour
 
     public void SetVolume(float vol)
     {
-        for (int i = 0; i < sounds.Count; i++)
+        for (int i = 0; i < sounds_3d.Count; i++)
         {
-            sounds[i].volume = vol;
+            sounds_3d[i].volume = vol;
         }
 
         bgm.volume = vol;
@@ -93,7 +93,7 @@ public class SoundManager : MonoBehaviour
     public void PlayPitchSound(string name)
     {
         PlaySFX(name);
-        Invoke(nameof(OnSoundComplete), GetSFXSoundLength(soundName));
+        Invoke(nameof(OnSoundComplete), GetSFXSoundLength(name));
     }
 
     private void OnSoundComplete()
