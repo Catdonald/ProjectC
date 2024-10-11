@@ -984,6 +984,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7176116462830611392, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
+      propertyPath: sfxClips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176116462830611392, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
+      propertyPath: sfxClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 41b8cd34a5341b54086a0817dc009a2d, type: 3}
+    - target: {fileID: 7176116462830611392, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
+      propertyPath: sfxClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7862bbe6db7d05a45872b947004aa91c, type: 3}
     - target: {fileID: 9208546872888492888, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -1453,6 +1465,18 @@ PrefabInstance:
       propertyPath: upgradeMeshes.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3849361320406872295, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: upgradeMeshes.Array.data[0].deleted
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849361320406872295, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: upgradeMeshes.Array.data[0].meshes.Array.data[0]
+      value: 
+      objectReference: {fileID: 2755073039738189750, guid: 1420863906f314c4fba6b68d4cfd9283, type: 3}
+    - target: {fileID: 3849361320406872295, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: upgradeMeshes.Array.data[1].meshes.Array.data[0]
+      value: 
+      objectReference: {fileID: 2755073039738189750, guid: 2b1bd5f9ded24214f854186d1992d629, type: 3}
     - target: {fileID: 4085882210268421513, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: upgradeMeshes.Array.size
       value: 2
@@ -1641,6 +1665,18 @@ PrefabInstance:
       propertyPath: upgradeMeshes.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8295277435784519578, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: upgradeMeshes.Array.data[0].deleted
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295277435784519578, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: upgradeMeshes.Array.data[0].meshes.Array.data[0]
+      value: 
+      objectReference: {fileID: 2755073039738189750, guid: 1420863906f314c4fba6b68d4cfd9283, type: 3}
+    - target: {fileID: 8295277435784519578, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: upgradeMeshes.Array.data[1].meshes.Array.data[0]
+      value: 
+      objectReference: {fileID: 2755073039738189750, guid: 2b1bd5f9ded24214f854186d1992d629, type: 3}
     - target: {fileID: 8615528339217851023, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: upgradeMeshes.Array.size
       value: 2

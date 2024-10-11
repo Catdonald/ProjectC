@@ -37,6 +37,7 @@ public class Upgradable : MonoBehaviour
 
             if (upgradeMeshes[upgradeLevel - 1].deleted)
                 upgradeMeshes[upgradeLevel - 1].deleted.SetActive(false);
+
         }
         else
         {

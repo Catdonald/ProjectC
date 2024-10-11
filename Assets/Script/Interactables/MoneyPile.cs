@@ -34,10 +34,11 @@ public class MoneyPile : ObjectPile
         isCollectingMoney = true;
         GameManager.instance.AdjustMoney(hiddenMoney);
         hiddenMoney = 0;
-        GameManager.instance.SoundManager.PlayPitchSound("SFX_money");
 
         while (player != null && objects.Count > 0)
         {
+            GameManager.instance.SoundManager.PlaySFX("SFX_cashBell");
+
             for (int i = 0; i < collectRate; i++)
             {
                 if (objects.Count == 0)
@@ -59,9 +60,7 @@ public class MoneyPile : ObjectPile
                 yield return new WaitForSeconds(0.03f);
             }
         }
-
         isCollectingMoney = false;
-        GameManager.instance.SoundManager.QuitPitchSound();
     }
 
     public void AddMoney()

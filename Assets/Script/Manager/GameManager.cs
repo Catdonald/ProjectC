@@ -194,7 +194,7 @@ public class GameManager : MonoBehaviour
         // effect, sound
         upgradeParticle.transform.position = upgradables[UpgradeCount - 1].transform.position;
         upgradeParticle.Play();
-        //SoundManager.PlaySFX("Upgrade");
+        SoundManager.PlaySFX("SFX_upgradeButton");
 
         // camera move
         Vector3 upgradablePosition = upgradables[UpgradeCount].BuyingPosition;
@@ -265,6 +265,8 @@ public class GameManager : MonoBehaviour
     {
         int price = GetUpgradePrice(upgradeType);
         AdjustMoney(-price);
+
+        SoundManager.PlaySFX("SFX_upgradeButton");
 
         switch (upgradeType)
         {
