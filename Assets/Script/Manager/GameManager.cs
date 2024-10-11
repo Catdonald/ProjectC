@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
 
         UpdateUpgradeButton();
 
-        if(UpgradeCount == 0)
+        if (UpgradeCount == 0)
         {
             player.transform.position = new Vector3(-3.75f, 0.16f, -21.5f);
         }
@@ -199,6 +199,12 @@ public class GameManager : MonoBehaviour
     {
         /// upgrade와 effect 재생, 카메라 이동, 그리고 save
         upgradables[UpgradeCount].Upgrade();
+        // entrance unlock 시 애니메이션 재생
+        if (UpgradeCount == 0 || UpgradeCount == 51)
+        {
+            GameManager.instance.upgradableCam.waitDuration = 3.0f;
+            FindObjectOfType<PlayerController>().Animator.SetTrigger("unlockEntrance");
+        }
         UpgradeCount++;
         PaidAmount = 0;
         UpdateUpgradeButton();
@@ -211,9 +217,9 @@ public class GameManager : MonoBehaviour
         // camera move
         Vector3 upgradablePosition = upgradables[UpgradeCount].BuyingPosition;
         Vector3 nextPos;
-        nextPos.x = upgradablePosition.x - 5;
-        nextPos.y = Camera.main.transform.position.y;
-        nextPos.z = upgradablePosition.z - 5;
+        nextPos.x = upgradablePosition.x + Camera.main.transform.localPosition.x;
+        nextPos.y = Camera.main.transform.localPosition.y;
+        nextPos.z = upgradablePosition.z + Camera.main.transform.localPosition.z;
         upgradableCam.ShowPosition(nextPos);
 
         // save

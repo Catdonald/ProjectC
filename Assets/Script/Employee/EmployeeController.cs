@@ -14,6 +14,7 @@ public class EmployeeController : MonoBehaviour
 
     private Animator animator;
     private NavMeshAgent agent;
+    private LayerMask entranceLayer;
     private Work currentWork;
     private playerStack stack;
 
@@ -22,10 +23,12 @@ public class EmployeeController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        entranceLayer = 1 << LayerMask.NameToLayer("Entrance");
         stack = GetComponentInChildren<playerStack>();
         currentWork = Work.NONE;
         GameManager.instance.OnUpgrade += UpdateStats;
         UpdateStats();
+        StartCoroutine(CheckDoor());
     }
 
     // Update is called once per frame
@@ -94,6 +97,28 @@ public class EmployeeController : MonoBehaviour
 
         int capacityLevel = GameManager.instance.GetUpgradeLevel(UpgradeType.EmployeeCapacity);
         stack.Capacity = baseCapacity + capacityLevel;
+    }
+
+    IEnumerator CheckDoor()
+    {
+        RaycastHit hit;
+        while (!Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, 0.5f, entranceLayer, QueryTriggerInteraction.Collide))
+        {
+            yield return null;
+        }
+
+        var doors = hit.transform.GetComponentsInChildren<Door>();
+        foreach (var door in doors)
+        {
+            door.OpenDoor(transform);
+        }
+
+        yield return new WaitForSeconds(1.0f);
+
+        foreach (var door in doors)
+        {
+            door.CloseDoor();
+        }
     }
 
     IEnumerator TakeOrder()

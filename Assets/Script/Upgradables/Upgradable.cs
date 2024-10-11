@@ -53,7 +53,7 @@ public class Upgradable : MonoBehaviour
         if (!animate)
             return;
 
-        transform.DOPunchScale(punchScale, 0.3f).OnComplete(()=> transform.localScale = Vector3.one);
+        transform.DOPunchScale(punchScale, 0.3f).OnComplete(()=> transform.localScale = Vector3.one);    
     }
 
     public virtual void UpgradeStats() { }
