@@ -34,11 +34,11 @@ public class Upgradable : MonoBehaviour
         {
             for(int i = 0; i < meshFilter.Length; ++i)
             {
-                meshFilter[i].mesh = upgradeMeshes[upgradeLevel - 1].meshes[i];
+                meshFilter[i].mesh = upgradeMeshes[upgradeLevel - 2].meshes[i];
             }
-
-            if (upgradeMeshes[upgradeLevel - 1].deleted)
-                upgradeMeshes[upgradeLevel - 1].deleted.SetActive(false);
+            
+            if (upgradeMeshes[upgradeLevel - 2].deleted)
+                upgradeMeshes[upgradeLevel - 2].deleted.SetActive(false);
 
         }
         else

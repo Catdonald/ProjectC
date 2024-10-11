@@ -22181,8 +22181,8 @@ MonoBehaviour:
   buyingPosition: {x: -1.43, y: 0.02, z: 2.45}
   punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2222851643558370086}
+  - {fileID: 3437970496360601762}
   upgradeMeshes:
   - meshes:
     - {fileID: -1526101117349070256, guid: b1ec33dc8ed87e84db90103ac1487ac2, type: 3}
@@ -29315,12 +29315,21 @@ PrefabInstance:
     - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: upgradeMeshes.Array.data[0].meshes.Array.data[0]
       value: 
-      objectReference: {fileID: 2755073039738189750, guid: 1420863906f314c4fba6b68d4cfd9283, type: 3}
+      objectReference: {fileID: 2755073039738189750, guid: 853edb81984162540969f7ad021ed7c2, type: 3}
+    - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: upgradeMeshes.Array.data[0].meshes.Array.data[1]
+      value: 
+      objectReference: {fileID: 2957062671455881007, guid: eb170a134765c1d4ba52832fcc388d68, type: 3}
     - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: upgradeMeshes.Array.data[1].meshes.Array.data[0]
       value: 
-      objectReference: {fileID: 2755073039738189750, guid: 2b1bd5f9ded24214f854186d1992d629, type: 3}
-    m_RemovedComponents: []
+      objectReference: {fileID: 2755073039738189750, guid: 6a5705827334ac543a4a217da870ee81, type: 3}
+    - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: upgradeMeshes.Array.data[1].meshes.Array.data[1]
+      value: 
+      objectReference: {fileID: 2957062671455881007, guid: 9eeb545495d75f24aba552b3bd3914da, type: 3}
+    m_RemovedComponents:
+    - {fileID: 1046843407158227421, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6999112866716342989, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
     m_AddedGameObjects: []
@@ -29421,11 +29430,19 @@ PrefabInstance:
     - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: upgradeMeshes.Array.data[0].meshes.Array.data[0]
       value: 
-      objectReference: {fileID: 2755073039738189750, guid: 1420863906f314c4fba6b68d4cfd9283, type: 3}
+      objectReference: {fileID: 2755073039738189750, guid: 853edb81984162540969f7ad021ed7c2, type: 3}
+    - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: upgradeMeshes.Array.data[0].meshes.Array.data[1]
+      value: 
+      objectReference: {fileID: 2957062671455881007, guid: eb170a134765c1d4ba52832fcc388d68, type: 3}
     - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: upgradeMeshes.Array.data[1].meshes.Array.data[0]
       value: 
-      objectReference: {fileID: 2755073039738189750, guid: 2b1bd5f9ded24214f854186d1992d629, type: 3}
+      objectReference: {fileID: 2755073039738189750, guid: 6a5705827334ac543a4a217da870ee81, type: 3}
+    - target: {fileID: 5479368041964691121, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: upgradeMeshes.Array.data[1].meshes.Array.data[1]
+      value: 
+      objectReference: {fileID: 2957062671455881007, guid: 9eeb545495d75f24aba552b3bd3914da, type: 3}
     - target: {fileID: 7780159240403446712, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.07
