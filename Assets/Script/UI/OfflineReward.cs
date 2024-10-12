@@ -23,7 +23,8 @@ public class OfflineReward : MonoBehaviour
     public void ReceiveReward()
     {
         moveMoney.SetActive(true);
-        moveMoney.transform.DOMove(movePos.position, 0.5f).OnComplete(() => { gameObject.SetActive(false); });
+        gameObject.SetActive(false);
+        moveMoney.transform.DOMove(movePos.position, 0.5f).OnComplete(() => { moveMoney.SetActive(false); });
     }
 
     private void Bounce()

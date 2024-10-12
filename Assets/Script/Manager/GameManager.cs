@@ -148,7 +148,6 @@ public class GameManager : MonoBehaviour
             player.transform.position = new Vector3(0f, 0.16f, 0f);
         }
     }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
@@ -190,7 +189,6 @@ public class GameManager : MonoBehaviour
             one.UpdateHUD();
         }
     }
-
     public void ExitGame()
     {
         data.LastTime = DateTime.Now;
