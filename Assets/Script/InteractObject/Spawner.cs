@@ -50,6 +50,9 @@ public class Spawner : Stackable
         if (stack.Count == 0)
             return;
 
+        if (player.Height >= player.Capacity)
+            return;
+
         if (player.StackType == eObjectType.LAST || player.StackType == type)
         {
             player.AddToStack(stack.Pop(), type);

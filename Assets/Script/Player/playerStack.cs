@@ -54,11 +54,6 @@ public class playerStack : MonoBehaviour
 
     public void AddToStack(GameObject obj, eObjectType objType)
     {
-        if(Height >= Capacity)
-        {
-            return;
-        }
-
         if (stack.Count == 0)
         {
             StackType = objType;
