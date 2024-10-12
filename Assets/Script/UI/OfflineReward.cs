@@ -31,6 +31,7 @@ public class OfflineReward : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+        GameManager.instance.SoundManager.PlaySFX("SFX_cashBell");
     }
 
     private void Bounce()

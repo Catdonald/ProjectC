@@ -35,9 +35,13 @@ public class MoneyPile : ObjectPile
         GameManager.instance.AdjustMoney(hiddenMoney);
         hiddenMoney = 0;
 
-        while (player != null && objects.Count > 0)
+        if (player != null && objects.Count > 0)
         {
             GameManager.instance.SoundManager.PlaySFX("SFX_cashBell");
+        }
+
+        while (player != null && objects.Count > 0)
+        {
 
             for (int i = 0; i < collectRate; i++)
             {
