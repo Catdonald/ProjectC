@@ -77,6 +77,7 @@ public class PoolManager : MonoBehaviour
 
     public void Return(GameObject obj)
     {
+        obj.transform.SetParent(transform);
         obj.SetActive(false);
         string prefabName = obj.name;
         if(poolDictionary.ContainsKey(prefabName))
