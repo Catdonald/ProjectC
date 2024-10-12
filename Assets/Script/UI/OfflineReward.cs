@@ -9,7 +9,7 @@ public class OfflineReward : MonoBehaviour
     [SerializeField] private Text reward;
     [SerializeField] private GameObject money;
     [SerializeField] private Transform movePos;
-    [SerializeField] private GameObject moveMoney;
+    [SerializeField] private GameObject[] moveMoney;
     public int rewardNow;
     private void Start()
     {
@@ -22,9 +22,15 @@ public class OfflineReward : MonoBehaviour
     }
     public void ReceiveReward()
     {
-        moveMoney.SetActive(true);
+        for (int i = 0; i < moveMoney.Length; i++)
+        {
+            moveMoney[i].SetActive(true);
+            moveMoney[i].transform.DOMove(movePos.position, 0.5f).OnComplete(() => { moveMoney[i].SetActive(false); });
+            moveMoney[i].transform.DOScale(new Vector3(0.7f, 0.7f), 0.5f);
+            moveMoney[i].transform.DORotate(new Vector3(0, 0, 13.277f), 0.5f);
+        }
+
         gameObject.SetActive(false);
-        moveMoney.transform.DOMove(movePos.position, 0.5f).OnComplete(() => { moveMoney.SetActive(false); });
     }
 
     private void Bounce()
