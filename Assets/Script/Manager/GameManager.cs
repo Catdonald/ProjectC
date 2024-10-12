@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ParticleSystem upgradeParticle;
 
     [Header("# UI")]
+    [SerializeField] private OfflineReward offlineReward;
+    [SerializeField] private HUD[] hud;
     [SerializeField] private SceneFader sceneFader;
     [SerializeField] private OrderInfo[] orderInfo; // 0: burger, 1: sub-menu, 2: driveThru
     [SerializeField] private KioskOrderInfo[] kioskOrderInfo;
@@ -96,7 +98,7 @@ public class GameManager : MonoBehaviour
         {
             data = new StoreData(storeName, startingMoney, startingMaxExp, 1);
         }
-        AdjustMoney(0);
+        CalculateReward();
 
         for (int i = 0; i < data.EmployeeAmount; i++)
         {
@@ -106,12 +108,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        sceneFader.FadeOut(() => 
-        {
-            upgradableCam.waitDuration = 0.0f;
-            Vector3 upgradablePosition = upgradables[UpgradeCount].BuyingPosition;
-            upgradableCam.ShowPosition(upgradablePosition);
-        });
+        UpdateUI();
 
         counters = GameObject.FindObjectsOfType<Counter>(true).ToList();
         trashBins = GameObject.FindObjectsOfType<Trashbin>().ToList();
@@ -134,7 +131,7 @@ public class GameManager : MonoBehaviour
 
         upgradableCam = GameObject.FindObjectOfType<CameraController>();
         player = GameObject.FindObjectOfType<PlayerController>();
-        
+
         for (int i = 0; i < UpgradeCount; ++i)
         {
             upgradables[i].Upgrade(false);
@@ -158,6 +155,52 @@ public class GameManager : MonoBehaviour
         {
             SoundManager.PlaySFX("SFX_upgrade");
         }
+    }
+    private void OnApplicationQuit()
+    {
+        ExitGame();
+    }
+    private void CalculateReward()
+    {
+        DateTime LastTime = data.LastTime;
+        DateTime current = DateTime.Now;
+
+        TimeSpan time = current - LastTime;
+        Debug.Log(time.Hours + "hour " + time.Minutes + "minutes" + time.Seconds + "seconds 만의 재접속입니다.");
+
+        offlineReward.SetRewardText(time.Hours * 1000 + time.Minutes * 100 + time.Seconds * 1);
+    }
+    public void ReceiveReward()
+    {
+        AdjustMoney(offlineReward.rewardNow);
+        offlineReward.ReceiveReward();
+
+        sceneFader.FadeOut(() =>
+        {
+            upgradableCam.waitDuration = 0.0f;
+            Vector3 upgradablePosition = upgradables[UpgradeCount].BuyingPosition;
+            upgradableCam.ShowPosition(upgradablePosition);
+        });
+    }
+
+    private void UpdateUI()
+    {
+        foreach (HUD one in hud)
+        {
+            one.UpdateHUD();
+        }
+    }
+
+    public void ExitGame()
+    {
+        data.LastTime = DateTime.Now;
+        SaveLoadManager.SaveData<StoreData>(data, storeName);
+
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+    #else
+        Application.Quit();
+    #endif
     }
 
     void LoadDataFromCSV<T>(string filename, List<T> dataLst, Func<string[], T> parser)
@@ -235,6 +278,7 @@ public class GameManager : MonoBehaviour
         upgradableCam.ShowPosition(upgradablePosition);
 
         // save
+        data.LastTime = DateTime.Now;
         SaveLoadManager.SaveData<StoreData>(data, storeName);
     }
 
@@ -275,6 +319,7 @@ public class GameManager : MonoBehaviour
     public void AdjustMoney(int value)
     {
         data.Money += value;
+        UpdateUI();
     }
 
     public long GetMoney()
@@ -326,6 +371,7 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
+        data.LastTime = DateTime.Now;
         SaveLoadManager.SaveData<StoreData>(data, storeName);
         OnUpgrade?.Invoke();
     }

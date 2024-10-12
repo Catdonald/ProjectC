@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -22,6 +23,8 @@ public class StoreData
     public int UpgradeCount { get; set; }
     public int PaidAmount { get; set; }
     public bool IsUnlocked { get; set; } // Is All Objects are unlocked in the store
+
+    public DateTime LastTime;
 
     public StoreData(string storeName, long money, int EXP, int Level)
     {

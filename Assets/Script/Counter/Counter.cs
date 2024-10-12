@@ -48,7 +48,6 @@ public class Counter : WorkStation
             materials[i] = Resources.Load<Material>(path);
         }
     }
-
     private void Update()
     {
         SpawnCustomer();

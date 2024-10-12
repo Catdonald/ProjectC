@@ -21,7 +21,7 @@ public class HUD : MonoBehaviour
         mytext = GetComponent<Text>();
     }
 
-    void LateUpdate()
+    public void UpdateHUD()
     {
         switch (type)
         {
@@ -37,10 +37,7 @@ public class HUD : MonoBehaviour
                 break;
             case InfoType.EXP:
                 {
-                    int curEXP = GameManager.instance.data.EXP;
-                    int maxEXP = GameManager.instance.data.NextEXP;
-
-                    myslider.value = curEXP / maxEXP;
+                   myslider.value = (float)GameManager.instance.UpgradeCount / GameManager.instance.upgradables.Count;
                 }
                 break;
         }

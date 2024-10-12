@@ -13,6 +13,7 @@ public class SceneFader : MonoBehaviour
     void Awake()
     {
         fadeImage = GetComponent<Image>();
+        fadeImage.color = new Color(0, 0, 0, 0.5f);
     }
 
     public void FadeIn(System.Action onComplete = null)
