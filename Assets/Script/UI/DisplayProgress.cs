@@ -14,9 +14,17 @@ public class DisplayProgress : MonoBehaviour
         progressText = GetComponentInChildren<Text>();
     }
 
-    private void OnEnable()
+    private void Start()
     {
         GameManager.instance.OnUnlock += UpdateProgress;
+    }
+
+    private void OnEnable()
+    {
+        if (GameManager.instance)
+        {
+            GameManager.instance.OnUnlock += UpdateProgress;
+        }
     }
 
     private void OnDisable()
