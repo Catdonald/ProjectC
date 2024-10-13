@@ -67,8 +67,8 @@ public class PlayerController : MonoBehaviour
                 {
                     Vector3 mousePos = Input.mousePosition;
                     mouseDelta = mousePos - mouseClickedPos;
-                    // max padSizeX = 35.0f
-                    Vector3 mouseDeltaNorm = new Vector3(mouseDelta.x / 35.0f, mouseDelta.y / 35.0f, mouseDelta.z);
+                    // max padSizeX = 70.0f
+                    Vector3 mouseDeltaNorm = new Vector3(mouseDelta.x / 70.0f, mouseDelta.y / 70.0f, mouseDelta.z);
                     float mouseDeltaMagnitude = mouseDeltaNorm.magnitude;
                     if (mouseDeltaMagnitude > 1.0f)
                     {
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
                     animator.SetBool("isMove", mouseDeltaMagnitude > 0.0f);
 
                     Vector3 moveVec = new Vector3(mouseDeltaNorm.x, 0.0f, mouseDeltaNorm.y);
-                    rayStartPoint = new Vector3(transform.position.x, 0.5f, transform.position.z);
+                    rayStartPoint = new Vector3(transform.position.x, 0.15f, transform.position.z);
                     Debug.DrawRay(rayStartPoint, moveVec * 1.0f, Color.red);
                     RaycastHit hit;
                     if (Physics.Raycast(rayStartPoint, moveVec, out hit, 1.0f))
