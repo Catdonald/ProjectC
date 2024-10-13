@@ -21,13 +21,13 @@ public class OfflineReward : MonoBehaviour
         reward.text = GameManager.instance.GetFormattedMoney(money);
     }
     public void ReceiveReward()
-    {
-        for (int i = 0; i < moveMoney.Length; i++)
+    {       
+        foreach(var money in moveMoney)
         {
-            moveMoney[i].SetActive(true);
-            moveMoney[i].transform.DOMove(movePos.position, 0.5f).OnComplete(() => { moveMoney[i].SetActive(false); });
-            moveMoney[i].transform.DOScale(new Vector3(0.7f, 0.7f), 0.5f);
-            moveMoney[i].transform.DORotate(new Vector3(0, 0, 13.277f), 0.5f);
+            money.SetActive(true);
+            money.transform.DOMove(movePos.position, 0.5f).OnComplete(() => { money.SetActive(false); });
+            money.transform.DOScale(new Vector3(0.7f, 0.7f), 0.5f);
+            money.transform.DORotate(new Vector3(0, 0, 13.277f), 0.5f);
         }
 
         gameObject.SetActive(false);
