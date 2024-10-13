@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate = 30;
         instance = this;
         storeName = "store name";
         data = SaveLoadManager.LoadData<StoreData>(storeName);
@@ -264,7 +265,6 @@ public class GameManager : MonoBehaviour
         upgradableCam.ShowPosition(upgradablePosition);
 
         // save
-        data.LastTime = DateTime.Now;
         SaveLoadManager.SaveData<StoreData>(data, storeName);
     }
 
@@ -323,7 +323,7 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
-        data.LastTime = DateTime.Now;
+        
         SaveLoadManager.SaveData<StoreData>(data, storeName);
         OnUpgrade?.Invoke();
     }

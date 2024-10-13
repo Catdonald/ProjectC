@@ -60,8 +60,9 @@ public class UpgradeBox : Interactable
 
             // money animation
             var moneyObj = GameManager.instance.PoolManager.SpawnObject("Money");
-            moneyObj.transform.position = player.transform.position + Vector3.up * 1.75f;
-            moneyObj.transform.DOJump(transform.position, 3.0f, 1, 0.5f)
+            moneyObj.transform.SetParent(null);
+            moneyObj.transform.position = player.transform.position + Vector3.up * 1.0f;
+            moneyObj.transform.DOJump(transform.position, 2.0f, 1, 0.2f)
                 .OnComplete(() => GameManager.instance.PoolManager.Return(moneyObj));
 
             if (paidAmount >= upgradePrice)
