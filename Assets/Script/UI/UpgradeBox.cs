@@ -47,7 +47,7 @@ public class UpgradeBox : Interactable
     {
         yield return new WaitForSeconds(2.0f);
         GameManager.instance.SoundManager.PlayPitchSound("SFX_money");
-        //Handheld.Vibrate();
+        Vibration.Vibrate(500);
         while (player != null && paidAmount < upgradePrice && playerMoney > 0)
         {
             // 1원씩 지불하면 가격 비쌀수록 채우는데 오래 걸려서 보정함.
