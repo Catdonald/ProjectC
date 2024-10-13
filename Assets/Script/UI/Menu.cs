@@ -26,14 +26,12 @@ public class Menu : MonoBehaviour
         settingsPanel.SetActive(isOn);
 
         if (isOn)
-        {
-            Time.timeScale = 0;
             GameManager.instance.upgradableCam.IsMoving = true;
-        }
         else
-        {
-            Time.timeScale = 1;
             GameManager.instance.upgradableCam.IsMoving = false;
-        }
+    }
+    public void ExitGame()
+    {
+        
     }
 }
