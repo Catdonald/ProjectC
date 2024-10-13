@@ -1016,8 +1016,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRoot: {fileID: 5782377798854588419}
   moveController: {fileID: 0}
-  baseSpeed: 10
-  baseCapacity: 5
+  baseSpeed: 20
+  baseCapacity: 50
   mouseDelta: {x: 0, y: 0, z: 0}
 --- !u!136 &8626983596843426152
 CapsuleCollider:

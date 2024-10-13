@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int baseUnlockPrice = 75;
     [SerializeField, Range(1.01f, 2.0f)] private float unlockGrowthFactor = 1.2f;
     [SerializeField] private long startingMoney = 10000;
-    [SerializeField] private int startingMaxExp = 10;
 
     [Header("# Manager")]
     public PoolManager PoolManager;
@@ -44,7 +43,8 @@ public class GameManager : MonoBehaviour
 
     [Header("# UI")]
     [SerializeField] private OfflineReward offlineReward;
-    [SerializeField] private HUD[] hud;
+    [SerializeField] private DisplayProgress displayProgress;
+    [SerializeField] private Text displayMoneyText;
     [SerializeField] private SceneFader sceneFader;
     [SerializeField] private OrderInfo[] orderInfo; // 0: burger, 1: sub-menu, 2: driveThru
     [SerializeField] private KioskOrderInfo[] kioskOrderInfo;
@@ -83,11 +83,10 @@ public class GameManager : MonoBehaviour
     public event System.Action<float> OnUnlock;
 
     public StoreData data;
-    private string storeName;
-
     public CameraController upgradableCam;
 
     private PlayerController player;
+    private string storeName;
 
     void Awake()
     {
@@ -96,8 +95,9 @@ public class GameManager : MonoBehaviour
         data = SaveLoadManager.LoadData<StoreData>(storeName);
         if (data == null)
         {
-            data = new StoreData(storeName, startingMoney, startingMaxExp, 1);
+            data = new StoreData(storeName, startingMoney);
         }
+        AdjustMoney(0);
         CalculateReward();
 
         for (int i = 0; i < data.EmployeeAmount; i++)
@@ -107,9 +107,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start()
-    {
-        UpdateUI();
-
+    {        
         counters = GameObject.FindObjectsOfType<Counter>(true).ToList();
         trashBins = GameObject.FindObjectsOfType<Trashbin>().ToList();
 
@@ -148,13 +146,7 @@ public class GameManager : MonoBehaviour
             player.transform.position = new Vector3(0f, 0.16f, 0f);
         }
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            SoundManager.PlaySFX("SFX_upgrade");
-        }
-    }
+   
     private void OnApplicationQuit()
     {
         ExitGame();
@@ -181,14 +173,7 @@ public class GameManager : MonoBehaviour
             upgradableCam.ShowPosition(upgradablePosition);
         });
     }
-
-    private void UpdateUI()
-    {
-        foreach (HUD one in hud)
-        {
-            one.UpdateHUD();
-        }
-    }
+   
     public void ExitGame()
     {
         data.LastTime = DateTime.Now;
@@ -250,6 +235,9 @@ public class GameManager : MonoBehaviour
             data.IsUnlocked = true;
             upgradeButton.gameObject.SetActive(false);
         }
+
+        float progress = UpgradeCount / (float)upgradables.Count;
+        OnUnlock?.Invoke(progress);
     }
 
     public void BuyUpgradable()
@@ -280,44 +268,10 @@ public class GameManager : MonoBehaviour
         SaveLoadManager.SaveData<StoreData>(data, storeName);
     }
 
-    public int GetLevel()
-    {
-        return data.Level;
-    }
-
-    public void AddEXP(int value)
-    {
-        for (int i = 0; i < value; ++i)
-        {
-            data.EXP++;
-            if (data.EXP >= data.NextEXP)
-            {
-                LevelUp();
-            }
-        }
-    }
-
-    public void LevelUp()
-    {
-        data.Level++;
-        data.EXP = 0;
-        data.NextEXP += 3;
-    }
-
-    public int GetEXP()
-    {
-        return data.EXP;
-    }
-
-    public int GetMaxEXP()
-    {
-        return data.NextEXP;
-    }
-
     public void AdjustMoney(int value)
     {
         data.Money += value;
-        UpdateUI();
+        displayMoneyText.text = GetFormattedMoney(data.Money);
     }
 
     public long GetMoney()

@@ -8,9 +8,6 @@ using UnityEngine;
 public class StoreData
 {
     public string StoreName {  get; set; }
-    public int Level { get; set; }
-    public int EXP { get; set; }
-    public int NextEXP { get; set; }
     public long Money { get; set; }
 
     public int EmployeeSpeed { get; set; }
@@ -26,11 +23,9 @@ public class StoreData
 
     public DateTime LastTime;
 
-    public StoreData(string storeName, long money, int EXP, int Level)
+    public StoreData(string storeName, long money)
     {
         StoreName = storeName;
         Money = money;
-        NextEXP = EXP;
-        this.Level = Level;
     }
 }

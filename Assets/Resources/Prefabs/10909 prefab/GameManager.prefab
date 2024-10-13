@@ -106,7 +106,6 @@ MonoBehaviour:
   baseUnlockPrice: 75
   unlockGrowthFactor: 1.2
   startingMoney: 1000000
-  startingMaxExp: 10
   PoolManager: {fileID: 9150074619032864708}
   SoundManager: {fileID: 7176116462830611392}
   employeeSpawner: {fileID: 0}
@@ -203,6 +202,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   upgradeParticle: {fileID: 4995594721774948730}
+  offlineReward: {fileID: 0}
+  displayProgress: {fileID: 0}
+  displayMoneyText: {fileID: 0}
   sceneFader: {fileID: 0}
   orderInfo:
   - {fileID: 0}
