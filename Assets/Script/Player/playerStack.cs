@@ -59,7 +59,7 @@ public class playerStack : MonoBehaviour
             StackType = objType;
         }
 
-        Vector3 peakPoint = transform.position + transform.up * Height * StackOffset;
+        Vector3 peakPoint = transform.position + Vector3.up * Height * StackOffset;
         Height++;
 
         obj.transform.DOJump(peakPoint, 5f, 1, 0.3f)

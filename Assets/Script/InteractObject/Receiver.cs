@@ -21,7 +21,7 @@ public class Receiver : Stackable
     }
     public override void Interaction(Collision other)
     {
-        if(player.Count > 0 && player.StackType == type)
+        if(player.Count > 0 && player.StackType == type && !IsFull)
         {
             ReceiveObject(player.RemoveFromStack(), type, GameManager.instance.GetStackOffset(type));
             GameManager.instance.SoundManager.PlaySFX("SFX_pop");

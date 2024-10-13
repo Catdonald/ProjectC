@@ -471,7 +471,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &141290241083956732
 GameObject:
   m_ObjectHideFlags: 0
@@ -2143,7 +2143,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &550114942381503642
 GameObject:
   m_ObjectHideFlags: 0
@@ -4887,7 +4887,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &1206139819999979156
 GameObject:
   m_ObjectHideFlags: 0
@@ -6331,7 +6331,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &1661602994154381629
 GameObject:
   m_ObjectHideFlags: 0
@@ -6709,7 +6709,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &1810884295087367793
 GameObject:
   m_ObjectHideFlags: 0
@@ -9141,7 +9141,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 240
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &2592110621921452879
 GameObject:
   m_ObjectHideFlags: 0
@@ -9849,7 +9849,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &2760707979665444392
 GameObject:
   m_ObjectHideFlags: 0
@@ -10410,7 +10410,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &2909780978936837164
 GameObject:
   m_ObjectHideFlags: 0
@@ -11369,7 +11369,7 @@ MonoBehaviour:
   spacing: {x: 0.4, y: 0.1, z: 0.8}
   dropInterval: 0.03
   maxPile: 240
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &3205838445835214313
 GameObject:
   m_ObjectHideFlags: 0
@@ -11442,7 +11442,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &3214284485177474097
 GameObject:
   m_ObjectHideFlags: 0
@@ -11954,7 +11954,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &3514659425521611108
 GameObject:
   m_ObjectHideFlags: 0
@@ -13731,7 +13731,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &4090020133942755800
 GameObject:
   m_ObjectHideFlags: 0
@@ -13981,7 +13981,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 240
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &4211393436408414371
 GameObject:
   m_ObjectHideFlags: 0
@@ -14904,7 +14904,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &4551682883214522051
 GameObject:
   m_ObjectHideFlags: 0
@@ -15292,7 +15292,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &4666070996760522202
 GameObject:
   m_ObjectHideFlags: 0
@@ -16870,7 +16870,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &5145367886962254368
 GameObject:
   m_ObjectHideFlags: 0
@@ -17022,7 +17022,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &5218881693685737279
 GameObject:
   m_ObjectHideFlags: 0
@@ -18538,7 +18538,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &5678331522548598819
 GameObject:
   m_ObjectHideFlags: 0
@@ -19927,7 +19927,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &5991930965455415237
 GameObject:
   m_ObjectHideFlags: 0
@@ -22362,7 +22362,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &6721622253970155116
 GameObject:
   m_ObjectHideFlags: 0
@@ -24332,7 +24332,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &7249375808782220570
 GameObject:
   m_ObjectHideFlags: 0
@@ -25589,7 +25589,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 120
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &7826019169118802409
 GameObject:
   m_ObjectHideFlags: 0
@@ -26416,7 +26416,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 240
-  collectMultiplier: 2
+  collectMultiplier: 4
 --- !u!1 &8227459926174803481
 GameObject:
   m_ObjectHideFlags: 0
