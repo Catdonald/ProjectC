@@ -105,6 +105,6 @@ public class SoundManager : MonoBehaviour
     public void QuitPitchSound()
     {
         CancelInvoke(nameof(OnSoundComplete));
-        sfx.pitch = initialPitch;
+        pitchSound.pitch = initialPitch;
     }
 }
