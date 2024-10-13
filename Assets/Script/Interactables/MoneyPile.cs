@@ -6,7 +6,7 @@ using UnityEngine;
 public class MoneyPile : ObjectPile
 {
     [SerializeField] private int maxPile = 120;
-    [SerializeField, Range(1, 8)] private int collectMultiplier = 2;
+    [SerializeField, Range(1, 8)] private int collectMultiplier = 4;
     private int hiddenMoney;
     private bool isCollectingMoney;
     private int collectRate => objects.Count > 8 ? collectMultiplier : 1;
@@ -42,7 +42,6 @@ public class MoneyPile : ObjectPile
 
         while (player != null && objects.Count > 0)
         {
-
             for (int i = 0; i < collectRate; i++)
             {
                 if (objects.Count == 0)

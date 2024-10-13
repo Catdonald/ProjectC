@@ -8,7 +8,7 @@ public class UpgradeHandler : MonoBehaviour
 {
     [SerializeField] private UpgradeType upgradeType;
     [SerializeField] private Button upgradeButton;
-    [SerializeField] private TMP_Text priceLabelText;
+    [SerializeField] private Text priceLabelText;
     [SerializeField] private Image[] indicators;
 
     private List<Color> activeColors = new List<Color>();
