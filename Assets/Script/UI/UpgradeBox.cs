@@ -26,6 +26,7 @@ public class UpgradeBox : Interactable
     protected override void OnPlayerExit()
     {
         GameManager.instance.SoundManager.QuitPitchSound();
+        Vibration.Cancel();
     }
 
     public void Initialize(int upgradePrice, int paidAmount)
@@ -47,7 +48,6 @@ public class UpgradeBox : Interactable
     {
         yield return new WaitForSeconds(2.0f);
         GameManager.instance.SoundManager.PlayPitchSound("SFX_money");
-        Vibration.Vibrate(500);
         while (player != null && paidAmount < upgradePrice && playerMoney > 0)
         {
             // 1원씩 지불하면 가격 비쌀수록 채우는데 오래 걸려서 보정함.
@@ -57,6 +57,8 @@ public class UpgradeBox : Interactable
 
             UpdatePayAmount(payment);
             GameManager.instance.AdjustMoney(-payment);
+
+            Vibration.Vibrate(500);
 
             // money animation
             var moneyObj = GameManager.instance.PoolManager.SpawnObject("Money");
