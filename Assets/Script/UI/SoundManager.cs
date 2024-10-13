@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip[] bgmClips;
     [SerializeField] private AudioSource sfx;
     [SerializeField] private AudioClip[] sfxClips;
+    [SerializeField] private AudioSource pitchSound;
 
     private Dictionary<string, AudioClip> bgms;
     private Dictionary<string, AudioClip> sfxs;
@@ -64,6 +65,11 @@ public class SoundManager : MonoBehaviour
         sfx.clip = sfxs[name];
         sfx.PlayOneShot(sfx.clip);
     }
+    public void PlayPitch(string name)
+    {
+        pitchSound.clip = sfxs[name];
+        pitchSound.PlayOneShot(pitchSound.clip);
+    }
 
     public void SetVolume(float vol)
     {
@@ -74,6 +80,7 @@ public class SoundManager : MonoBehaviour
 
         bgm.volume = vol;
         sfx.volume = vol;
+        pitchSound.volume = vol;
     }
     public float GetSFXSoundLength(string name)
     {
@@ -82,18 +89,18 @@ public class SoundManager : MonoBehaviour
 
     public void PlayPitchSound(string name)
     {
-        PlaySFX(name);
+        PlayPitch(name);
         Invoke(nameof(OnSoundComplete), GetSFXSoundLength(name));
     }
 
     private void OnSoundComplete()
     {
-        if (sfx.pitch < maxPitch)
+        if (pitchSound.pitch < maxPitch)
         {
-            sfx.pitch += pitchIncrease;
+            pitchSound.pitch += pitchIncrease;
         }
 
-        PlayPitchSound(sfx.clip.name);
+        PlayPitchSound(pitchSound.clip.name);
     }
     public void QuitPitchSound()
     {
