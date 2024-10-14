@@ -36,9 +36,9 @@ public class OfflineReward : MonoBehaviour
 
     private void Bounce()
     {
-        money.transform.DOScale(1.2f, 0.8f).OnComplete(() =>
+        money.transform.DOScale(1.5f, 0.8f).OnComplete(() =>
         {
-            money.transform.DOScale(1, 0.8f).OnComplete(() =>
+            money.transform.DOScale(1.3f, 0.8f).OnComplete(() =>
             {
                 Bounce();
             });
