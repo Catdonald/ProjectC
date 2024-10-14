@@ -26,7 +26,6 @@ public class UpgradeBox : Interactable
     protected override void OnPlayerExit()
     {
         GameManager.instance.SoundManager.QuitPitchSound();
-        Vibration.Cancel();
     }
 
     public void Initialize(int upgradePrice, int paidAmount)
@@ -58,13 +57,13 @@ public class UpgradeBox : Interactable
             UpdatePayAmount(payment);
             GameManager.instance.AdjustMoney(-payment);
 
-            Vibration.Vibrate(500);
+            Vibration.Vibrate(200);
 
             // money animation
             var moneyObj = GameManager.instance.PoolManager.SpawnObject("Money");
             moneyObj.transform.SetParent(null);
             moneyObj.transform.position = player.transform.position + Vector3.up * 1.0f;
-            moneyObj.transform.DOJump(transform.position, 2.0f, 1, 0.1f)
+            moneyObj.transform.DOJump(transform.position, 1.75f, 1, 0.1f).SetEase(Ease.OutQuad)
             .OnComplete(() =>
             {
                 GameManager.instance.PoolManager.Return(moneyObj);
