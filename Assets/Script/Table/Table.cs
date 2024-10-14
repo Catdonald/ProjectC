@@ -97,6 +97,7 @@ public class Table : Upgradable
                     trashObj.transform.position = transform.position;
                 }
             }
+            trashCount = 0;
             trashObject.SetActive(true);
             yield return new WaitForSeconds(Random.Range(1, 4) * 0.3f);
         }
