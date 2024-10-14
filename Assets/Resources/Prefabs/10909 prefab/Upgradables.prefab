@@ -29328,6 +29328,14 @@ PrefabInstance:
       propertyPath: upgradeMeshes.Array.data[1].meshes.Array.data[1]
       value: 
       objectReference: {fileID: 2957062671455881007, guid: 9eeb545495d75f24aba552b3bd3914da, type: 3}
+    - target: {fileID: 6537349509843915278, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: m_TagString
+      value: Building
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863172450778940800, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
+      propertyPath: m_TagString
+      value: Building
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1046843407158227421, guid: 99ada91f3f348084a9e25dd61ee7cc85, type: 3}
     m_RemovedGameObjects:
