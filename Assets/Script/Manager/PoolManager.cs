@@ -37,7 +37,9 @@ public class PoolManager : MonoBehaviour
     {
         if (!poolDictionary.ContainsKey(prefabName))
         {
+#if UNITY_EDITOR
             Debug.LogWarning("PoolManager does not contain " + prefabName);
+#endif
             return null;
         }
 
@@ -56,7 +58,7 @@ public class PoolManager : MonoBehaviour
 
     public GameObject SpawnObject(int index)
     {
-        if(index >= poolDictionary.Count)
+        if (index >= poolDictionary.Count)
         {
             return null;
         }
@@ -80,7 +82,7 @@ public class PoolManager : MonoBehaviour
         obj.transform.SetParent(transform);
         obj.SetActive(false);
         string prefabName = obj.name;
-        if(poolDictionary.ContainsKey(prefabName))
+        if (poolDictionary.ContainsKey(prefabName))
         {
             poolDictionary[prefabName].Enqueue(obj);
         }

@@ -6800,6 +6800,10 @@ PrefabInstance:
       propertyPath: moveController
       value: 
       objectReference: {fileID: 3212226724548481570}
+    - target: {fileID: 3920075347111443487, guid: e571a8b3a5bc7804b9c63ca6e3d8adb2, type: 3}
+      propertyPath: m_Drag
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6708759824566844844, guid: e571a8b3a5bc7804b9c63ca6e3d8adb2, type: 3}
       propertyPath: m_Name
       value: Player

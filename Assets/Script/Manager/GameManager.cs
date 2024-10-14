@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start()
-    {        
+    {
         counters = GameObject.FindObjectsOfType<Counter>(true).ToList();
         trashBins = GameObject.FindObjectsOfType<Trashbin>().ToList();
 
@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
 
         upgradableCam = GameObject.FindObjectOfType<CameraController>();
         player = GameObject.FindObjectOfType<PlayerController>();
-        
+
         for (int i = 0; i < UpgradeCount; ++i)
         {
             upgradables[i].Upgrade(false);
@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
             player.transform.position = new Vector3(0f, 0.16f, 0f);
         }
     }
-   
+
     private void OnApplicationQuit()
     {
         ExitGame();
@@ -160,7 +160,9 @@ public class GameManager : MonoBehaviour
         DateTime current = DateTime.Now;
 
         TimeSpan time = current - LastTime;
+#if UNITY_EDITOR
         Debug.Log(time.Hours + "hour " + time.Minutes + "minutes" + time.Seconds + "seconds 만의 재접속입니다.");
+#endif
 
         offlineReward.SetRewardText(time.Hours * 1000 + time.Minutes * 100 + time.Seconds * 1);
     }
@@ -176,17 +178,17 @@ public class GameManager : MonoBehaviour
             upgradableCam.ShowPosition(upgradablePosition);
         });
     }
-   
+
     public void ExitGame()
     {
         data.LastTime = DateTime.Now;
         SaveLoadManager.SaveData<StoreData>(data, storeName);
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-    #else
+#else
         Application.Quit();
-    #endif
+#endif
     }
 
     void LoadDataFromCSV<T>(string filename, List<T> dataLst, Func<string[], T> parser)
@@ -194,7 +196,9 @@ public class GameManager : MonoBehaviour
         TextAsset csvData = Resources.Load<TextAsset>(filename);
         if (csvData == null)
         {
+#if UNITY_EDITOR
             Debug.LogError("CSV is not founded: " + filename);
+#endif
             return;
         }
 
@@ -222,7 +226,9 @@ public class GameManager : MonoBehaviour
     {
         if (upgradables.Count == 0)
         {
+#if UNITY_EDITOR
             Debug.LogWarning("There are no upgradables in the scene. Please add the upgradables to proceed.");
+#endif
             return;
         }
 
@@ -325,7 +331,7 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
-        
+
         SaveLoadManager.SaveData<StoreData>(data, storeName);
         OnUpgrade?.Invoke();
     }

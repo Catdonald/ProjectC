@@ -40,7 +40,7 @@ public class CustomerController : MonoBehaviour
     {
         animator.SetBool("isMove", agent.velocity.sqrMagnitude >= 0.1f);
 
-        if(!startFlag)
+        if (!startFlag)
         {
             startFlag = true;
             agent.enabled = true;
@@ -60,20 +60,20 @@ public class CustomerController : MonoBehaviour
     IEnumerator CheckEntrance()
     {
         RaycastHit hit;
-        while(!Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, 0.5f, entranceLayer, QueryTriggerInteraction.Collide))
+        while (!Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, 0.5f, entranceLayer, QueryTriggerInteraction.Collide))
         {
             yield return null;
         }
 
         var doors = hit.transform.GetComponentsInChildren<Door>();
-        foreach(var door in doors)
+        foreach (var door in doors)
         {
             door.OpenDoor(transform);
         }
 
         yield return new WaitForSeconds(1.0f);
 
-        foreach(var door in doors)
+        foreach (var door in doors)
         {
             door.CloseDoor();
         }
@@ -106,7 +106,7 @@ public class CustomerController : MonoBehaviour
         yield return new WaitUntil(() => HasArrivedToDestination());
 
         // 테이블 방향을 바라본다
-        while(Vector3.Angle(transform.forward, seat.transform.forward) > 0.1f)
+        while (Vector3.Angle(transform.forward, seat.transform.forward) > 0.1f)
         {
             transform.rotation = Quaternion.RotateTowards(transform.rotation, seat.transform.rotation, Time.deltaTime * 270.0f);
             yield return null;
@@ -118,7 +118,7 @@ public class CustomerController : MonoBehaviour
 
         // 들고있던 음식 테이블에 내려놓는다
         var table = seat.GetComponentInParent<Table>();
-        while(customerstack.stack.Count > 0)
+        while (customerstack.stack.Count > 0)
         {
             table.PutFoodOnTable(customerstack.stack.Pop(), GameManager.instance.GetStackOffset(customerstack.type));
             yield return new WaitForSeconds(0.05f);
@@ -153,13 +153,15 @@ public class CustomerController : MonoBehaviour
         StartCoroutine(MoveToSeat(seat));
     }
 
-    public void ReceiveFood(GameObject obj,eObjectType objType , float objHeight)
+    public void ReceiveFood(GameObject obj, eObjectType objType, float objHeight)
     {
         customerstack.ReceiveObject(obj, objType, objHeight);
         OrderCount -= 1;
         orderInfo.ShowInfo(OrderCount);
 
+#if UNITY_EDITOR
         Debug.Log("Customer : " + customerstack.stack.Count);
+#endif
     }
 
     public void FinishEating()

@@ -80,7 +80,9 @@ public class PlayerController : MonoBehaviour
 
                     Vector3 moveVec = new Vector3(mouseDeltaNorm.x, 0.0f, mouseDeltaNorm.y);
                     rayStartPoint = new Vector3(transform.position.x, 0.15f, transform.position.z);
+#if UNITY_EDITOR
                     Debug.DrawRay(rayStartPoint, moveVec * 1.0f, Color.red);
+#endif
                     RaycastHit hit;
                     if (Physics.Raycast(rayStartPoint, moveVec, out hit, 1.0f))
                     {
