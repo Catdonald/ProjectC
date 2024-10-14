@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour
     private playerStack playerStack;
     private Animator animator;
     private Rigidbody playerRigidbody;
-    private JoyStickController joystickController;  
+    private JoyStickController joystickController;
+    public ParticleSystem particle;
+
 
     private Vector3 rayStartPoint;
     private Vector3 mouseClickedPos;
@@ -100,6 +102,8 @@ public class PlayerController : MonoBehaviour
                     joystickController.mouseDelta = mouseDelta;
                 }
             }
+
+            particle.transform.position = gameObject.transform.position;
         }
         if (Input.GetMouseButtonUp(0) || GameManager.instance.IsUpgradableCamMoving)
         {
