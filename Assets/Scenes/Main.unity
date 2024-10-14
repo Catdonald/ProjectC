@@ -4040,19 +4040,19 @@ PrefabInstance:
       objectReference: {fileID: -6808713650045663630, guid: 65017768ec6f0764bba31c8ffab13ec9, type: 3}
     - target: {fileID: 7055165398731426349, guid: 00650a4c3799e124aa758ac4356b19fc, type: 3}
       propertyPath: m_fontColor.b
-      value: 0.0040049767
+      value: 0.6556604
       objectReference: {fileID: 0}
     - target: {fileID: 7055165398731426349, guid: 00650a4c3799e124aa758ac4356b19fc, type: 3}
       propertyPath: m_fontColor.g
-      value: 0.14124028
+      value: 0.82540524
       objectReference: {fileID: 0}
     - target: {fileID: 7055165398731426349, guid: 00650a4c3799e124aa758ac4356b19fc, type: 3}
       propertyPath: m_fontColor.r
-      value: 0.2830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7055165398731426349, guid: 00650a4c3799e124aa758ac4356b19fc, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278264904
+      value: 4289188607
       objectReference: {fileID: 0}
     - target: {fileID: 7106697650212882869, guid: 00650a4c3799e124aa758ac4356b19fc, type: 3}
       propertyPath: m_Materials.Array.data[0]
