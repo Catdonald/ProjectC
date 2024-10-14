@@ -28,12 +28,10 @@ public class Menu : MonoBehaviour
         if (isOn)
         {
             Time.timeScale = 0;
-            //GameManager.instance.upgradableCam.IsMoving = true;
         }
         else
         {
             Time.timeScale = 1;
-            //GameManager.instance.upgradableCam.IsMoving = false;
         }
     }
     public void ExitGame()
