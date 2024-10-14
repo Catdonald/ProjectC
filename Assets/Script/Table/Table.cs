@@ -22,6 +22,7 @@ public class Table : Upgradable
     [SerializeField] private List<CustomerController> customers = new List<CustomerController>();
 
     private MoneyPile moneyPile;
+    private int trashCount = 0;
 
     #region Table Stats
     [SerializeField, Range(1.0f, 10.0f)] private float baseEatTime = 5.0f;
@@ -74,24 +75,29 @@ public class Table : Upgradable
             yield return new WaitForSeconds(eatingInterval);
 
             GameManager.instance.PoolManager.Return(tableStack.stack.Pop());
-            if (StackType == eObjectType.HAMBURGER)
-            {
-                var trashObj = GameManager.instance.PoolManager.SpawnObject("Trash");
-                trashStack.stack.Push(trashObj);
-                trashObj.transform.position = transform.position;
-            }
-            else if (StackType == eObjectType.SUBMENU)
-            {
-                var trashObj = GameManager.instance.PoolManager.SpawnObject("EmptyCup");
-                trashStack.stack.Push(trashObj);
-                trashObj.transform.position = transform.position;
-            }
+            trashCount++;
             LeaveTip();
         }
 
         foreach (var customer in customers)
         {
             customer.FinishEating();
+            for (int i = 0; i < trashCount; i++)
+            {
+                if (StackType == eObjectType.HAMBURGER)
+                {
+                    var trashObj = GameManager.instance.PoolManager.SpawnObject("Trash");
+                    trashStack.stack.Push(trashObj);
+                    trashObj.transform.position = transform.position;
+                }
+                else if (StackType == eObjectType.SUBMENU)
+                {
+                    var trashObj = GameManager.instance.PoolManager.SpawnObject("EmptyCup");
+                    trashStack.stack.Push(trashObj);
+                    trashObj.transform.position = transform.position;
+                }
+            }
+            trashCount = 0;
             trashObject.SetActive(true);
             yield return new WaitForSeconds(Random.Range(1, 4) * 0.3f);
         }

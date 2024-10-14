@@ -6,7 +6,7 @@ using UnityEngine;
 public class Stackable : MonoBehaviour, IStackObject
 {
     public playerStack player;
-    public float actingTime { get; set; } = 0;
+    public float actingTime { get; set; } = 5.0f;
     public bool isActing { get; set; } = false;
 
     public eObjectType type;
