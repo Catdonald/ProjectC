@@ -90,7 +90,9 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+#if UNITY_EDITOR
         Application.targetFrameRate = 30;
+#endif
         instance = this;
         storeName = "store name";
         data = SaveLoadManager.LoadData<StoreData>(storeName);
@@ -130,7 +132,7 @@ public class GameManager : MonoBehaviour
 
         upgradableCam = GameObject.FindObjectOfType<CameraController>();
         player = GameObject.FindObjectOfType<PlayerController>();
-
+        UpgradeCount = 9;
         for (int i = 0; i < UpgradeCount; ++i)
         {
             upgradables[i].Upgrade(false);
