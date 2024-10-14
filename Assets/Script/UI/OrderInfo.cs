@@ -14,7 +14,7 @@ public class OrderInfo : MonoBehaviour
     {
         orderUI = transform.GetChild(0).gameObject;
         noSeatUI = transform.GetChild(1).gameObject;
-        orderCountText = orderUI.transform.GetChild(1).GetComponent<Text>();
+        orderCountText = orderUI.transform.GetChild(2).GetComponent<Text>();
 
         HideInfo();
     }
