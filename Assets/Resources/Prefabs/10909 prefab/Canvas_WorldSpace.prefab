@@ -491,8 +491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35490aa5146405448505b4b942faf23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  payingInterval: 0.03
-  payingTime: 3
+  payingInterval: 0.01
+  payingTime: 2
   fill: {fileID: 5299778912712187537}
   priceText: {fileID: 3887732877665457155}
 --- !u!65 &474183125465078702

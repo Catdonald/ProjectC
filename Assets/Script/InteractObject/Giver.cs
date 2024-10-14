@@ -11,7 +11,6 @@ public class Giver : Stackable
         GameObject obj = GameManager.instance.PoolManager.SpawnObject("Burger_Package");
         objectHeight = obj.GetComponent<Renderer>().bounds.size.y;
         GameManager.instance.PoolManager.Return(obj);
-        actingTime = 5;
     }
     public override void Enter(Collision other)
     {

@@ -22,7 +22,6 @@ public class Spawner : Stackable
         GameObject obj = GameManager.instance.PoolManager.SpawnObject((int)type);
         objectHeight = obj.GetComponent<Renderer>().bounds.size.y;
         GameManager.instance.PoolManager.Return(obj);
-        actingTime = 5;
     }
 
     void Update()
