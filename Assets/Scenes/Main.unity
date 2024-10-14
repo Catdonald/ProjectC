@@ -644,6 +644,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245c3f3c3eec801478d712499378c1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1707526320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6525895863917096202, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+  m_PrefabInstance: {fileID: 6926385734106981282}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1772961848 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5039210411639894787, guid: 94501bc169326ba46bf06438581f5092, type: 3}
@@ -809,16 +814,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044092062}
   m_CullTransparentMesh: 1
---- !u!1 &2075846456 stripped
+--- !u!1 &2075846456
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3daa62abd453fc241a19415eb79b5a2a, type: 3}
-  m_PrefabInstance: {fileID: 1270254937}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2075846459 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3daa62abd453fc241a19415eb79b5a2a, type: 3}
-  m_PrefabInstance: {fileID: 1270254937}
-  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2075846462}
+  - component: {fileID: 2075846460}
+  - component: {fileID: 2075846461}
+  m_Layer: 0
+  m_Name: 
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!65 &2075846460
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -859,6 +872,21 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!4 &2075846462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075846456}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &2106873757 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6456215596757392675, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
@@ -1954,7 +1982,7 @@ PrefabInstance:
     - target: {fileID: 4596821873570069100, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
       propertyPath: settingsPanel
       value: 
-      objectReference: {fileID: 34632067}
+      objectReference: {fileID: 1707526320}
     - target: {fileID: 4635119336939399472, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2506,6 +2534,7 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2075846462}
   - {fileID: 100922924}
   - {fileID: 740637730937494919}
   - {fileID: 2020267118150246379}
