@@ -4222,10 +4222,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: b1ce024f5f948844dae7a7778a36fbc0, type: 3}
-    m_FontSize: 28
+    m_FontSize: 26
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 144
     m_Alignment: 4
     m_AlignByGeometry: 0
