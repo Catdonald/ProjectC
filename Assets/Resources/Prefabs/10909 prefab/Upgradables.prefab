@@ -18416,7 +18416,7 @@ Transform:
   m_GameObject: {fileID: 5658028135402315477}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.5, y: 0.15, z: 0.04}
+  m_LocalPosition: {x: -5.5, y: 0.15, z: 1.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18442,7 +18442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a32f8727c6662498356158f0409fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: -4.05, y: 0.02, z: 0}
+  buyingPosition: {x: -4.05, y: 0.02, z: -0.15}
   punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 3909644854078315647}
@@ -18976,7 +18976,7 @@ Transform:
   m_GameObject: {fileID: 5754041213950132164}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35, y: 0.16, z: 0}
+  m_LocalPosition: {x: 35, y: 0.16, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19002,7 +19002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a32f8727c6662498356158f0409fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 1.5, y: 0.02, z: 2}
+  buyingPosition: {x: -3.8, y: 0.02, z: -0.15}
   punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 4962263818198905149}

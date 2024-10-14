@@ -200,7 +200,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   upgradeParticle: {fileID: 4995594721774948730}
   offlineReward: {fileID: 0}
   displayProgress: {fileID: 0}
