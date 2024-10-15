@@ -542,8 +542,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1497584052490780820}
-  - component: {fileID: 1023476432383416032}
-  - component: {fileID: 6002107291868314197}
+  - component: {fileID: 7220040643894162347}
+  - component: {fileID: 7903833662331737172}
   m_Layer: 5
   m_Name: Background (2)
   m_TagString: Untagged
@@ -570,7 +570,7 @@ RectTransform:
   m_AnchoredPosition: {x: -4.07, y: 2.69}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1023476432383416032
+--- !u!222 &7220040643894162347
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -578,7 +578,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236283800919616983}
   m_CullTransparentMesh: 1
---- !u!114 &6002107291868314197
+--- !u!114 &7903833662331737172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1932,8 +1932,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4082003724578679124}
-  - component: {fileID: 5028371435059687059}
-  - component: {fileID: 5250412524196522457}
+  - component: {fileID: 1775969037798170402}
+  - component: {fileID: 200333009520148189}
   m_Layer: 5
   m_Name: Background (1)
   m_TagString: Untagged
@@ -1960,7 +1960,7 @@ RectTransform:
   m_AnchoredPosition: {x: 8.3, y: 2.69}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &5028371435059687059
+--- !u!222 &1775969037798170402
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1968,7 +1968,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6305243964247270212}
   m_CullTransparentMesh: 1
---- !u!114 &5250412524196522457
+--- !u!114 &200333009520148189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2238,8 +2238,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3636349824515010384}
-  - component: {fileID: 410716131817591768}
-  - component: {fileID: 5888017216209922815}
+  - component: {fileID: 4123586309015558060}
+  - component: {fileID: 4773692543774888927}
   m_Layer: 5
   m_Name: Background (3)
   m_TagString: Untagged
@@ -2266,7 +2266,7 @@ RectTransform:
   m_AnchoredPosition: {x: 31.02, y: 4.6}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &410716131817591768
+--- !u!222 &4123586309015558060
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2274,7 +2274,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8347689494714534656}
   m_CullTransparentMesh: 1
---- !u!114 &5888017216209922815
+--- !u!114 &4773692543774888927
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
