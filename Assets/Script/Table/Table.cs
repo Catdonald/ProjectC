@@ -84,6 +84,7 @@ public class Table : Upgradable
             customer.FinishEating();
             for (int i = 0; i < trashCount; i++)
             {
+                trashObject.SetActive(true);
                 if (StackType == eObjectType.HAMBURGER)
                 {
                     var trashObj = GameManager.instance.PoolManager.SpawnObject("Trash");
@@ -98,7 +99,6 @@ public class Table : Upgradable
                 }
             }
             trashCount = 0;
-            trashObject.SetActive(true);
             yield return new WaitForSeconds(Random.Range(1, 4) * 0.3f);
         }
         customers.Clear();
