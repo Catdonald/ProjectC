@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class OfflineReward : MonoBehaviour
 {
+    [SerializeField] private GameObject panel;
     [SerializeField] private Text reward;
     [SerializeField] private GameObject money;
     [SerializeField] private Transform movePos;
@@ -13,6 +14,7 @@ public class OfflineReward : MonoBehaviour
     public int rewardNow;
     private void Start()
     {
+        panel.SetActive(true);
         Bounce();
     }
     public void SetRewardText(int money)
