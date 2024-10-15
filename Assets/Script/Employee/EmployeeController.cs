@@ -391,7 +391,14 @@ public class EmployeeController : MonoBehaviour
         agent.SetDestination(transform.position);
         yield return new WaitForSeconds(0.5f);
 
-        agent.SetDestination(packageTable.transform.position);
+        if(packageTable.UpgradeLevel > 1)
+        {
+            agent.SetDestination(packageTable.BurgerStoragePosition);
+        }
+        else
+        {
+            agent.SetDestination(packageTable.WorkingSpotPosition);
+        }       
         yield return new WaitUntil(() => HasArrivedToDestination());
 
         // put foods on the counter
@@ -428,7 +435,7 @@ public class EmployeeController : MonoBehaviour
             yield break;
         }
 
-        agent.SetDestination(packageTable.transform.position);
+        agent.SetDestination(packageTable.PackageStoragePosition);
 
         // 가는 도중 packageTable에에 패키지 한개도 없으면 상태 none
         while (!HasArrivedToDestination())

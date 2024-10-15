@@ -9,10 +9,14 @@ public class PackageTable : WorkStation
     public bool IsFoodStorageFull => foodReceiver.IsFull;
     public int GetStoredPackageCount => packageStack.stack.Count;
     public bool IsPackageStorageFull => packageStack.IsFull;
+    public Vector3 BurgerStoragePosition => transform.TransformPoint(burgerStoragePosition);
+    public Vector3 PackageStoragePosition => transform.TransformPoint(packageStoragePosition);
 
     public Receiver foodReceiver;
     public Giver packageStack;
     [SerializeField] private Transform packageBox;
+    [SerializeField] private Vector3 burgerStoragePosition = Vector3.zero;
+    [SerializeField] private Vector3 packageStoragePosition = Vector3.zero;
 
     #region PackageTable Stats
     [SerializeField] private float baseInterval = 1.5f;
@@ -87,4 +91,20 @@ public class PackageTable : WorkStation
         // 버거팩 stack에 추가
         packageStack.ReceiveObject(burgerPack, eObjectType.BURGERPACK, packageStack.objectHeight);
     }
+
+#if UNITY_EDITOR
+    protected void OnDrawGizmosSelected()
+    {
+        base.OnDrawGizmosSelected();
+        
+        Gizmos.color = Color.red;
+        Vector3 center = BurgerStoragePosition;
+        Vector3 size = new Vector3(2.0f, 0.2f, 2.0f);
+        Gizmos.DrawCube(center, size);
+
+        Gizmos.color = Color.green;
+        center = PackageStoragePosition;
+        Gizmos.DrawCube(center, size);
+    }
+#endif
 }

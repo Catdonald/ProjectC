@@ -28007,6 +28007,8 @@ MonoBehaviour:
   foodReceiver: {fileID: 3644407524815722542}
   packageStack: {fileID: 2339637386980788036}
   packageBox: {fileID: 1132868244410622249}
+  burgerStoragePosition: {x: -2.3, y: 0, z: 1.75}
+  packageStoragePosition: {x: 2.3, y: 0, z: 1.75}
   baseInterval: 1.5
   baseCapacity: 30
 --- !u!1 &8874327824805309476

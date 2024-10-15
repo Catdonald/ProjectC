@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField, Range(1.01f, 2.0f)] private float upgradeGrowthFactor = 1.5f;
     [SerializeField] private int baseUnlockPrice = 75;
     [SerializeField, Range(1.01f, 2.0f)] private float unlockGrowthFactor = 1.2f;
-    [SerializeField] private long startingMoney = 10000;
+    [SerializeField] private long startingMoney = 1500;
 
     [Header("# Manager")]
     public PoolManager PoolManager;
@@ -150,6 +150,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnApplicationPause(bool pause)
+    {
+        SaveLastTime();
+    }
+
     private void OnApplicationQuit()
     {
         ExitGame();
@@ -179,10 +184,15 @@ public class GameManager : MonoBehaviour
         });
     }
 
-    public void ExitGame()
+    private void SaveLastTime()
     {
         data.LastTime = DateTime.Now;
         SaveLoadManager.SaveData<StoreData>(data, storeName);
+    }
+
+    public void ExitGame()
+    {
+        SaveLastTime();
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

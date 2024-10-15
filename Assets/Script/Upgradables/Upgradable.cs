@@ -21,6 +21,7 @@ public class Upgradable : MonoBehaviour
     [SerializeField] private List<MeshGroup> upgradeMeshes;
 
     public Vector3 BuyingPosition => transform.TransformPoint(buyingPosition);
+    public int UpgradeLevel => upgradeLevel;
 
     protected void Awake()
     {
@@ -59,7 +60,7 @@ public class Upgradable : MonoBehaviour
     public virtual void UpgradeStats() { }
 
 #if UNITY_EDITOR
-    private void OnDrawGizmosSelected()
+    protected void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.magenta;
         Vector3 center = BuyingPosition;
