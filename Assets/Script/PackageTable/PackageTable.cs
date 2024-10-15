@@ -17,6 +17,7 @@ public class PackageTable : WorkStation
     [SerializeField] private Transform packageBox;
     [SerializeField] private Vector3 burgerStoragePosition = Vector3.zero;
     [SerializeField] private Vector3 packageStoragePosition = Vector3.zero;
+    [SerializeField] private GameObject maxImg;
 
     #region PackageTable Stats
     [SerializeField] private float baseInterval = 1.5f;
@@ -33,6 +34,11 @@ public class PackageTable : WorkStation
     void Update()
     {
         Packing();
+
+        if (IsFoodStorageFull && !maxImg.activeSelf)
+            maxImg.SetActive(true);
+        else if (!IsFoodStorageFull && maxImg.activeSelf)
+            maxImg.SetActive(false);
     }
 
     public override void UpgradeStats()

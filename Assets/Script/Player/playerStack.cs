@@ -15,6 +15,7 @@ public class playerStack : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     [SerializeField] private Vector2 rateRange = new Vector2(0.8f, 0.4f);
     [SerializeField] private float bendFactor = 0.1f;
+    [SerializeField] private GameObject maxImg;
     public int Height { get; private set; }
     public int Count => stack.Count;
     public eObjectType StackType { get; private set; }
