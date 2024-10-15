@@ -24,7 +24,7 @@ public class SoundManager : MonoBehaviour
 
     void Awake()
     {
-        soundVol = 0.5f; 
+        soundVol = 0.5f;
 
         bgms = new Dictionary<string, AudioClip>();
         sfxs = new Dictionary<string, AudioClip>();
@@ -105,7 +105,6 @@ public class SoundManager : MonoBehaviour
     public void QuitPitchSound()
     {
         CancelInvoke(nameof(OnSoundComplete));
-        pitchSound.Stop();
         pitchSound.pitch = initialPitch;
     }
 }
