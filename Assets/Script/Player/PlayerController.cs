@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour
     private playerStack playerStack;
     private Animator animator;
     private Rigidbody playerRigidbody;
-    private JoyStickController joystickController;  
+    private JoyStickController joystickController;
+    public ParticleSystem particle;
+
 
     private Vector3 rayStartPoint;
     private Vector3 mouseClickedPos;
@@ -78,7 +80,9 @@ public class PlayerController : MonoBehaviour
 
                     Vector3 moveVec = new Vector3(mouseDeltaNorm.x, 0.0f, mouseDeltaNorm.y);
                     rayStartPoint = new Vector3(transform.position.x, 0.15f, transform.position.z);
+#if UNITY_EDITOR
                     Debug.DrawRay(rayStartPoint, moveVec * 1.0f, Color.red);
+#endif
                     RaycastHit hit;
                     if (Physics.Raycast(rayStartPoint, moveVec, out hit, 1.0f))
                     {
@@ -100,6 +104,8 @@ public class PlayerController : MonoBehaviour
                     joystickController.mouseDelta = mouseDelta;
                 }
             }
+
+            particle.transform.position = gameObject.transform.position;
         }
         if (Input.GetMouseButtonUp(0) || GameManager.instance.IsUpgradableCamMoving)
         {
