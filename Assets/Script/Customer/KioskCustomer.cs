@@ -68,7 +68,7 @@ public class KioskCustomer : MonoBehaviour
     IEnumerator PlaceOrder()
     {
         yield return new WaitUntil(() => HasArrivedToDestination());
-
+        agent.SetDestination(transform.position);
         // 키오스크 향해 회전
         while (Vector3.Angle(transform.forward, -kiosk.transform.forward) > 0.1f)
         {

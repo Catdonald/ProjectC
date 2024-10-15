@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 #if UNITY_EDITOR
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
+using static UnityEditor.PlayerSettings;
 #endif
 public class EmployeeController : MonoBehaviour
 {
@@ -49,7 +50,7 @@ public class EmployeeController : MonoBehaviour
 
         switch (Random.Range(0, ((int)Work.MAX) - 1))
         {
-            case 0:
+            /*case 0:
                 StartCoroutine(TakeOrder());
                 break;
             case 1:
@@ -66,12 +67,14 @@ public class EmployeeController : MonoBehaviour
                 break;
             case 5:
                 StartCoroutine(RefillSubMenu());
-                break;
+                break;*/
             case 6:
                 StartCoroutine(PackingBurgerPack());
                 break;
-            case 7:
+            /*case 7:
                 StartCoroutine(TakeDriveThruOrder());
+                break;*/
+            default:
                 break;
         }
     }
@@ -557,11 +560,11 @@ public class EmployeeController : MonoBehaviour
 
         agent.SetDestination(packageTable.WorkingSpotPosition);
         yield return new WaitUntil(() => HasArrivedToDestination());
-
+        agent.SetDestination(transform.position);
         // 테이블 향해 회전
-        while (Vector3.Angle(transform.forward, packageTable.transform.forward) > 0.1f)
+        while (Vector3.Angle(transform.forward, -packageTable.transform.forward) > 0.1f)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, packageTable.transform.rotation, Time.deltaTime * 270.0f);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, packageTable.transform.rotation, Time.deltaTime * -270.0f);
             yield return null;
         }
 
