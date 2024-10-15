@@ -50,7 +50,7 @@ public class UpgradeBox : Interactable
         if (player == null)
             yield break;
 
-        float paymentRate = (upgradePrice - paidAmount) * payingInterval / payingTime;
+        float paymentRate = upgradePrice * payingInterval / payingTime;
 
         // 플레이어의 돈이 한 프레임보다 작은경우
         if (playerMoney < paymentRate && playerMoney > 0)
@@ -59,7 +59,7 @@ public class UpgradeBox : Interactable
 
             while (player != null && playerMoney > 0)
             {
-                GameManager.instance.SoundManager.PlayPitchSound("SFX_money");
+                GameManager.instance.SoundManager.PlaySFX("SFX_money");
                 paymentRate = Mathf.Min(playerMoney, paymentRate);
                 int payment = Mathf.Max(1, Mathf.RoundToInt(paymentRate));
 
@@ -77,39 +77,37 @@ public class UpgradeBox : Interactable
 
                 yield return new WaitForSeconds(0.02f);
             }
-            GameManager.instance.SoundManager.QuitPitchSound();
-            yield break;
         }
-
-        // 한 프레임보다 큰 경우
-        GameManager.instance.SoundManager.PlayPitchSound("SFX_money");
-
-        while (player != null && paidAmount < upgradePrice && playerMoney > 0)
+        else
         {
-            paymentRate = Mathf.Min(playerMoney, paymentRate);
-            int payment = Mathf.Max(1, Mathf.RoundToInt(paymentRate));
-
-            UpdatePayAmount(payment);
-            GameManager.instance.AdjustMoney(-payment);
-
-            Vibration.Vibrate(200);
-
-            // money animation
-            GameObject moneyObj = GameManager.instance.PoolManager.SpawnObject("Money");
-            moneyObj.transform.SetParent(null);
-            moneyObj.transform.position = player.transform.position - Vector3.up * 0.5f;
-            moneyObj.transform.DOJump(transform.position, 2.5f, 1, 0.1f).SetEase(Ease.OutQuad)
-            .OnComplete(() =>
+            GameManager.instance.SoundManager.PlayPitchSound("SFX_money");
+            while (player != null && paidAmount < upgradePrice && playerMoney > 0)
             {
-                GameManager.instance.PoolManager.Return(moneyObj);
-            });
+                paymentRate = Mathf.Min(playerMoney, paymentRate);
+                int payment = Mathf.Max(1, Mathf.RoundToInt(paymentRate));
 
-            if (paidAmount >= upgradePrice)
-            {
-                GameManager.instance.SoundManager.QuitPitchSound();
-                GameManager.instance.BuyUpgradable();
+                UpdatePayAmount(payment);
+                GameManager.instance.AdjustMoney(-payment);
+
+                Vibration.Vibrate(200);
+
+                // money animation
+                GameObject moneyObj = GameManager.instance.PoolManager.SpawnObject("Money");
+                moneyObj.transform.SetParent(null);
+                moneyObj.transform.position = player.transform.position - Vector3.up * 0.5f;
+                moneyObj.transform.DOJump(transform.position, 2.5f, 1, 0.1f).SetEase(Ease.OutQuad)
+                .OnComplete(() =>
+                {
+                    GameManager.instance.PoolManager.Return(moneyObj);
+                });
+
+                if (paidAmount >= upgradePrice)
+                {
+                    GameManager.instance.SoundManager.QuitPitchSound();
+                    GameManager.instance.BuyUpgradable();
+                }
+                yield return new WaitForSeconds(payingInterval);
             }
-            yield return new WaitForSeconds(payingInterval);
         }
         GameManager.instance.SoundManager.QuitPitchSound();
     }

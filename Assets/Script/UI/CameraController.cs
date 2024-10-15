@@ -34,7 +34,6 @@ public class CameraController : MonoBehaviour
         yield return StartCoroutine(MoveToPosition(Camera.main.transform, targetPosition, moveDuration));
 
         yield return new WaitForSeconds(stayDuration);
-
         yield return StartCoroutine(MoveToPosition(Camera.main.transform, originalPosition, moveDuration));
         IsMoving = false;
         waitDuration = 1.5f;
