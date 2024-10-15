@@ -25,7 +25,7 @@ public class UpgradeBox : Interactable
 
     protected override void OnPlayerExit()
     {
-        
+
     }
 
     public void Initialize(int upgradePrice, int paidAmount)
@@ -64,17 +64,18 @@ public class UpgradeBox : Interactable
                 UpdatePayAmount(payment);
                 GameManager.instance.AdjustMoney(-payment);
 
-            Vibration.Vibrate(500);
-            PlayMoneyAnimation();
+                Vibration.Vibrate(500);
+                PlayMoneyAnimation();
 
-            if (paidAmount >= upgradePrice)
-            {
-                GameManager.instance.SoundManager.QuitPitchSound();
-                GameManager.instance.BuyUpgradable();
+                if (paidAmount >= upgradePrice)
+                {
+                    GameManager.instance.SoundManager.QuitPitchSound();
+                    GameManager.instance.BuyUpgradable();
+                }
             }
+            GameManager.instance.SoundManager.QuitPitchSound();
+            Vibration.Cancel();
         }
-        GameManager.instance.SoundManager.QuitPitchSound();
-        Vibration.Cancel();        
     }
 
     IEnumerator PlayFillingStartAnimation()
