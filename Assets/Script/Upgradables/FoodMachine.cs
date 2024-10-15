@@ -15,9 +15,6 @@ public class FoodMachine : Upgradable
     }
     private void Update()
     {
-        if (!gameObject.activeSelf)
-            return;
-
         if (spawner.IsFull && !maxImg.activeSelf)
             maxImg.SetActive(true);
         else if (!spawner.IsFull && maxImg.activeSelf)

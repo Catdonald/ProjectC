@@ -55,11 +55,14 @@ public class UpgradeBox : Interactable
         float paymentRate = upgradePrice * payingInterval / payingTime;
         while (player != null && paidAmount < upgradePrice && playerMoney > 0)
         {
-            paymentRate = Mathf.Min(playerMoney, paymentRate);
-            int payment = Mathf.Max(1, Mathf.RoundToInt(paymentRate));
+            GameManager.instance.SoundManager.PlayPitchSound("SFX_money");
+            while (player != null && paidAmount < upgradePrice && playerMoney > 0)
+            {
+                paymentRate = Mathf.Min(playerMoney, paymentRate);
+                int payment = Mathf.Max(1, Mathf.RoundToInt(paymentRate));
 
-            UpdatePayAmount(payment);
-            GameManager.instance.AdjustMoney(-payment);
+                UpdatePayAmount(payment);
+                GameManager.instance.AdjustMoney(-payment);
 
             Vibration.Vibrate(500);
             PlayMoneyAnimation();
@@ -69,7 +72,6 @@ public class UpgradeBox : Interactable
                 GameManager.instance.SoundManager.QuitPitchSound();
                 GameManager.instance.BuyUpgradable();
             }
-            yield return new WaitForSeconds(payingInterval);
         }
         GameManager.instance.SoundManager.QuitPitchSound();
         Vibration.Cancel();        

@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float baseSpeed = 10.0f;
     [SerializeField] private int baseCapacity = 5;
+    [SerializeField] private GameObject maxImg;
 
     private playerStack playerStack;
     private Animator animator;
@@ -43,6 +44,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerStack.IsFull && !maxImg.activeSelf)
+            maxImg.SetActive(true);
+        else if (!playerStack.IsFull && maxImg.activeSelf)
+            maxImg.SetActive(false);
+
+
         mouseDelta = Vector2.zero;
         if (GameManager.instance.IsUpgradableCamMoving == false)
         {
@@ -105,7 +112,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            particle.transform.position = gameObject.transform.position;
+            particle.transform.position = gameObject.transform.position +  new Vector3(0, 0.3f, 0);
         }
         if (Input.GetMouseButtonUp(0) || GameManager.instance.IsUpgradableCamMoving)
         {
@@ -113,6 +120,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isMove", false);
             moveController.SetActive(false);
         }
+        maxImg.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 5f, 0));
     }
 
     private void UpdateStats()
