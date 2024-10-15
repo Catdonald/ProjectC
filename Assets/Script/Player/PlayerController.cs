@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            particle.transform.position = gameObject.transform.position;
+            particle.transform.position = gameObject.transform.position +  new Vector3(0, 0.3f, 0);
         }
         if (Input.GetMouseButtonUp(0) || GameManager.instance.IsUpgradableCamMoving)
         {
