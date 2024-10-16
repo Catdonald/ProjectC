@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -18,9 +19,11 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private PlayerController playercontroller;
     [SerializeField] private Table table;
     [SerializeField] private CameraController cam;
+    [SerializeField] private MoneyPile second;
 
     private bool isTutorialEnd = false;
     private float edgeBuffer = 20f;
+    private bool isTweening = false;
 
     void Start()
     {
@@ -51,9 +54,17 @@ public class TutorialManager : MonoBehaviour
     {
         if (!isTutorialEnd)
         {
-            arrow.transform.position = Camera.main.WorldToScreenPoint(tutorialpositions[GameManager.instance.data.TutorialCount].position + new Vector3(0.5f, 2, 0));
+            arrow.transform.position = Camera.main.WorldToScreenPoint(tutorialpositions[GameManager.instance.data.TutorialCount].position + new Vector3(0, 2, 0));
 
-            /// direction point
+            if (!isTweening)
+            {
+                arrow.transform.DOMoveY(arrow.transform.position.y + 50f, 1)
+                .SetLoops(-1, LoopType.Yoyo) 
+                .SetEase(Ease.InOutSine);
+
+                isTweening = true; 
+            }
+
             // rotation
             Vector3 dir = arrow.transform.position - direction.transform.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
@@ -100,41 +111,35 @@ public class TutorialManager : MonoBehaviour
                     goto case 4;
                 }
             case 4:
+            case 5:
+            case 6:
                 {
+                    GameManager.instance.data.TutorialCount = 4;
+                    nextStep.text = explain[GameManager.instance.data.TutorialCount];
                     yield return new WaitUntil(() => GameManager.instance.UpgradeCount == 4);
                     ShowNextStep();
-                    goto case 5;
-                }
-            case 5:
-                {
                     // put burger
                     yield return new WaitUntil(() => playercontroller.Stack.Count > 0 && playercontroller.Stack.StackType == eObjectType.HAMBURGER);
                     ShowNextStep();
-                    goto case 6;
-                }
-            case 6:
-                {
                     // move burger
                     yield return new WaitUntil(() => playercontroller.Stack.Count == 0);
                     ShowNextStep();
                     goto case 7;
                 }
             case 7:
-                {
-                    // sell burger
-                    yield return new WaitUntil(() => table.isTrashActive);
-                    ShowNextStep();
-                    goto case 8;
-                }
             case 8:
                 {
+                    GameManager.instance.data.TutorialCount = 7;
+                    nextStep.text = explain[GameManager.instance.data.TutorialCount];
+                    yield return new WaitUntil(() => second.Count > 0);
+                    SetUIActive(false);
+                    // sell burger
+                    yield return new WaitUntil(() => table.isTrashActive);
+                    SetUIActive(true);
+                    ShowNextStep();
                     // refresh table
                     yield return new WaitUntil(() => !table.isTrashActive && playercontroller.Stack.StackType == eObjectType.TRASH);
                     ShowNextStep();
-                    goto case 9;
-                }
-            case 9:
-                {
                     // trash
                     yield return new WaitUntil(() => playercontroller.Stack.StackType == eObjectType.LAST);
                     EndTutorial();
@@ -151,9 +156,7 @@ public class TutorialManager : MonoBehaviour
     void EndTutorial()
     {
         isTutorialEnd = true;
-        arrow.gameObject.SetActive(false);
-        nextStep.gameObject.SetActive(false);
-        direction.gameObject.SetActive(false);
+        SetUIActive(false);
         firstGivingMoney.gameObject.SetActive(false);
     }
 
@@ -165,5 +168,12 @@ public class TutorialManager : MonoBehaviour
         }
 
         return true; // 모든 모서리가 화면 안에 있는 경우
+    }
+
+    private void SetUIActive(bool isActive)
+    {
+        arrow.gameObject.SetActive(isActive);
+        nextStep.gameObject.SetActive(isActive);
+        direction.gameObject.SetActive(isActive);
     }
 }
