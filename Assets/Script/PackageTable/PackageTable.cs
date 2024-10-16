@@ -26,7 +26,6 @@ public class PackageTable : WorkStation
 
     private float packingInterval;
     private float packingTimer = 0.0f;
-    private int packingCapacity;
     private int currentPackingCount = 0;
 
     const int maxPackingCount = 4;
@@ -44,7 +43,8 @@ public class PackageTable : WorkStation
     public override void UpgradeStats()
     {
         packingInterval = baseInterval / upgradeLevel;
-        packingCapacity = baseCapacity + upgradeLevel * 5;
+        foodReceiver.MaxStackCount = baseCapacity + upgradeLevel * 5;
+        packageStack.MaxStackCount = baseCapacity + upgradeLevel * 5;
     }
 
     private void Packing()
