@@ -37,6 +37,10 @@ public class TutorialManager : MonoBehaviour
         {
             nextStep.text = explain[GameManager.instance.data.TutorialCount];
             StartCoroutine(TutorialSequence(GameManager.instance.data.TutorialCount));
+
+            //arrow.transform.DOMoveY(arrow.transform.position.y + 50f, 1)
+            //        .SetLoops(-1, LoopType.Yoyo)
+            //        .SetEase(Ease.InOutSine);
         }
         else
         {
@@ -59,15 +63,6 @@ public class TutorialManager : MonoBehaviour
             if (IsUIVisible(arrow.transform) || cam.IsMoving)
             {
                 direction.gameObject.SetActive(false);
-
-                if (!isTweening)
-                {
-                    arrow.transform.DOMoveY(arrow.transform.position.y + 50f, 1)
-                    .SetLoops(-1, LoopType.Yoyo)
-                    .SetEase(Ease.InOutSine);
-
-                    isTweening = true;
-                }
             }
             else
             {
