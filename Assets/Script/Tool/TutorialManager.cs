@@ -25,7 +25,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (GameManager.instance.data.TutorialCount == 0)
         {
-            for (int i = 0; i < 8; ++i)
+            for (int i = 0; i < 4; ++i)
                 firstGivingMoney.AddMoney();
         }
 
@@ -58,7 +58,7 @@ public class TutorialManager : MonoBehaviour
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             direction.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-            if (IsUIVisible(arrow.rectTransform))
+            if (IsUIVisible(arrow.transform))
             {
                 direction.gameObject.SetActive(false);
             }
@@ -158,19 +158,9 @@ public class TutorialManager : MonoBehaviour
 
     bool IsUIVisible(Transform uiElement)
     {
-        // 1. UI 요소의 스크린 좌표를 구함
-        Vector3[] worldCorners = new Vector3[4];
-
-        // 2. 모든 모서리 좌표가 화면 안에 있는지 확인
-        for (int i = 0; i < 4; i++)
+        if (uiElement.position.x < 0 || uiElement.position.x > Screen.width || uiElement.position.y < 0 || uiElement.position.y > Screen.height)
         {
-            Vector3 screenPoint = Camera.main.WorldToScreenPoint(worldCorners[i]);
-
-            // 화면의 왼쪽, 오른쪽, 위, 아래 경계를 벗어났는지 체크
-            if (screenPoint.x < 0 || screenPoint.x > Screen.width || screenPoint.y < 0 || screenPoint.y > Screen.height)
-            {
-                return false; // 경계를 벗어난 경우
-            }
+            return false; // 경계를 벗어난 경우
         }
 
         return true; // 모든 모서리가 화면 안에 있는 경우
