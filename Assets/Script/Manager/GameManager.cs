@@ -152,6 +152,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.F1))
+        {
+            AdjustMoney(10000);
+            SaveLoadManager.SaveData<StoreData>(data, storeName);
+        }
+        else if (Input.GetKeyDown(KeyCode.F2))
+        {
+            AdjustMoney(100000);
+            SaveLoadManager.SaveData<StoreData>(data, storeName);
+        }
+        else if (Input.GetKeyDown(KeyCode.F3))
+        {
+            AdjustMoney(1000000);
+            SaveLoadManager.SaveData<StoreData>(data, storeName);
+        }
+    }
+
     private void OnApplicationPause(bool pause)
     {
         SaveLastTime();

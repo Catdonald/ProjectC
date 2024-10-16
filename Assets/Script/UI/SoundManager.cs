@@ -105,6 +105,7 @@ public class SoundManager : MonoBehaviour
     public void QuitPitchSound()
     {
         CancelInvoke(nameof(OnSoundComplete));
+        pitchSound.Stop();
         pitchSound.pitch = initialPitch;
     }
 }
