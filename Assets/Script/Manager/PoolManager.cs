@@ -16,7 +16,7 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private List<GameObject> prefabs;
     private Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
-    void Start()
+    void Awake()
     {
         foreach (GameObject obj in prefabs)
         {
