@@ -9,6 +9,7 @@ public class TutorialManager : MonoBehaviour
     [Header("Tutorial UI")]
     [SerializeField] private MoneyPile firstGivingMoney;
     [SerializeField] private Image arrow;
+    [SerializeField] private Image direction;
     [SerializeField] private TextMeshProUGUI nextStep;
     public List<Transform> tutorialpositions = new List<Transform>();
     [SerializeField] string[] explain;
@@ -18,6 +19,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Table table;
 
     private bool isTutorialEnd = false;
+    private float edgeBuffer = 20f;
 
     void Start()
     {
@@ -25,10 +27,6 @@ public class TutorialManager : MonoBehaviour
         {
             for (int i = 0; i < 8; ++i)
                 firstGivingMoney.AddMoney();
-        }
-        else
-        {
-            firstGivingMoney.gameObject.SetActive(false);
         }
 
         if(GameManager.instance.data.TutorialCount < tutorialpositions.Count - 1)
@@ -48,7 +46,15 @@ public class TutorialManager : MonoBehaviour
     public void Update()
     {
         if (!isTutorialEnd)
+        {
             arrow.transform.position = Camera.main.WorldToScreenPoint(tutorialpositions[GameManager.instance.data.TutorialCount].position + new Vector3(0.5f, 2, 0));
+
+            /// direction point
+            // rotation
+            Vector3 dir = arrow.transform.position - direction.transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            direction.transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
     }
 
     IEnumerator TutorialSequence(int tutorialCount)
@@ -134,5 +140,7 @@ public class TutorialManager : MonoBehaviour
         isTutorialEnd = true;
         arrow.gameObject.SetActive(false);
         nextStep.gameObject.SetActive(false);
+        direction.gameObject.SetActive(false);
+        firstGivingMoney.gameObject.SetActive(false);
     }
 }
