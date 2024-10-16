@@ -17,83 +17,121 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private PlayerController playercontroller;
     [SerializeField] private Table table;
 
-    private bool tutorialStart = false;
     private bool isTutorialEnd = false;
-    private int tutorialCount = 0;
 
     void Start()
     {
-        if (!tutorialStart)
+        if (GameManager.instance.data.TutorialCount == 0)
         {
             for (int i = 0; i < 8; ++i)
                 firstGivingMoney.AddMoney();
-
-            nextStep.text = explain[tutorialCount];
         }
         else
         {
             firstGivingMoney.gameObject.SetActive(false);
         }
 
-        if (isTutorialEnd)
-        {
-            arrow.gameObject.SetActive(false);
+        if(GameManager.instance.data.TutorialCount < tutorialpositions.Count - 1)
+            nextStep.text = explain[GameManager.instance.data.TutorialCount];
+        else
             nextStep.gameObject.SetActive(false);
-        }
 
-        StartCoroutine(TutorialSequence());
+        StartCoroutine(TutorialSequence(GameManager.instance.data.TutorialCount));
     }
 
     public void ShowNextStep()
     {
-        ++tutorialCount;
-        nextStep.text = explain[tutorialCount];
+        ++GameManager.instance.data.TutorialCount;
+        nextStep.text = explain[GameManager.instance.data.TutorialCount];
     }
 
     public void Update()
     {
-        arrow.transform.position = Camera.main.WorldToScreenPoint(tutorialpositions[tutorialCount].position);
+        if (!isTutorialEnd)
+            arrow.transform.position = Camera.main.WorldToScreenPoint(tutorialpositions[GameManager.instance.data.TutorialCount].position + new Vector3(0.5f, 2, 0));
     }
 
-    IEnumerator TutorialSequence()
+    IEnumerator TutorialSequence(int tutorialCount)
     {
-        // start
-        yield return new WaitUntil(() => firstGivingMoney.Count == 0);
-        ShowNextStep();
-
-        // open burger shop
-        // add counter
-        // add burger machine
-        // add table
-        for (int i = 0; i < 4; ++i)
+        switch (tutorialCount)
         {
-            yield return new WaitUntil(() => GameManager.instance.UpgradeCount == i + 1);
-            ShowNextStep();
+            case 0:
+                {
+                    // start
+                    yield return new WaitUntil(() => firstGivingMoney.Count == 0);
+                    ShowNextStep();
+                    goto case 1;
+                }
+            case 1:
+                {
+                    yield return new WaitUntil(() => GameManager.instance.UpgradeCount == 1);
+                    ShowNextStep();
+                    goto case 2;
+                }
+            case 2:
+                {
+                    yield return new WaitUntil(() => GameManager.instance.UpgradeCount == 2);
+                    ShowNextStep();
+                    goto case 3;
+                }
+            case 3:
+                {
+                    yield return new WaitUntil(() => GameManager.instance.UpgradeCount == 3);
+                    ShowNextStep();
+                    goto case 4;
+                }
+            case 4:
+                {
+                    yield return new WaitUntil(() => GameManager.instance.UpgradeCount == 4);
+                    ShowNextStep();
+                    goto case 5;
+                }
+            case 5:
+                {
+                    // put burger
+                    yield return new WaitUntil(() => playercontroller.Stack.Count > 0 && playercontroller.Stack.StackType == eObjectType.HAMBURGER);
+                    ShowNextStep();
+                    goto case 6;
+                }
+            case 6:
+                {
+                    // move burger
+                    yield return new WaitUntil(() => playercontroller.Stack.Count == 0);
+                    ShowNextStep();
+                    goto case 7;
+                }
+            case 7:
+                {
+                    // sell burger
+                    yield return new WaitUntil(() => table.isTrashActive);
+                    ShowNextStep();
+                    goto case 8;
+                }
+            case 8:
+                {
+                    // refresh table
+                    yield return new WaitUntil(() => !table.isTrashActive && playercontroller.Stack.StackType == eObjectType.TRASH);
+                    ShowNextStep();
+                    goto case 9;
+                }
+            case 9:
+                {
+                    // trash
+                    yield return new WaitUntil(() => playercontroller.Stack.StackType == eObjectType.LAST);
+                    EndTutorial();
+                }
+                break;
+            default:
+                {
+                    EndTutorial();
+                }
+                break;
         }
-
-        // put burger
-        yield return new WaitUntil(() => playercontroller.Stack.Count > 0 && playercontroller.Stack.StackType == eObjectType.HAMBURGER);
-        ShowNextStep();
-
-        // move burger
-        yield return new WaitUntil(() => playercontroller.Stack.Count == 0);
-        ShowNextStep();
-
-        // sell burger
-        yield return new WaitUntil(() => table.isTrashActive);
-        ShowNextStep();
-
-        // refresh table
-        yield return new WaitUntil(() => !table.isTrashActive && playercontroller.Stack.StackType == eObjectType.TRASH);
-        ShowNextStep();
-
-        // trash
-        yield return new WaitUntil(() => playercontroller.Stack.StackType == eObjectType.LAST);
-        EndTutorial();
     }
 
     void EndTutorial()
     {
+        isTutorialEnd = true;
         arrow.gameObject.SetActive(false);
         nextStep.gameObject.SetActive(false);
     }
