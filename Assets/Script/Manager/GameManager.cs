@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public PoolManager PoolManager;
     public SoundManager SoundManager;
     public TutorialManager tutorial;
-    public bool isTutorialEnd => UpgradeCount > 10;
+
 
     [Header("# Employee")]
     [SerializeField] private Transform employeeSpawner;
@@ -255,11 +255,6 @@ public class GameManager : MonoBehaviour
         {
             data.IsUnlocked = true;
             upgradeButton.gameObject.SetActive(false);
-        }
-
-        if(!isTutorialEnd)
-        {
-            tutorial.ShowNextStep();
         }
 
         float progress = UpgradeCount / (float)upgradables.Count;
