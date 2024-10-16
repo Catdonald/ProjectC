@@ -17,6 +17,7 @@ public class TutorialManager : MonoBehaviour
     [Header("Ref for Tutorial")]
     [SerializeField] private PlayerController playercontroller;
     [SerializeField] private Table table;
+    [SerializeField] private CameraController cam;
 
     private bool isTutorialEnd = false;
     private float edgeBuffer = 20f;
@@ -25,16 +26,19 @@ public class TutorialManager : MonoBehaviour
     {
         if (GameManager.instance.data.TutorialCount == 0)
         {
-            for (int i = 0; i < 8; ++i)
+            for (int i = 0; i < 4; ++i)
                 firstGivingMoney.AddMoney();
         }
 
-        if(GameManager.instance.data.TutorialCount < tutorialpositions.Count - 1)
+        if (GameManager.instance.data.TutorialCount < tutorialpositions.Count - 1)
+        {
             nextStep.text = explain[GameManager.instance.data.TutorialCount];
+            StartCoroutine(TutorialSequence(GameManager.instance.data.TutorialCount));
+        }
         else
-            nextStep.gameObject.SetActive(false);
-
-        StartCoroutine(TutorialSequence(GameManager.instance.data.TutorialCount));
+        {
+            EndTutorial();
+        }
     }
 
     public void ShowNextStep()
@@ -54,6 +58,15 @@ public class TutorialManager : MonoBehaviour
             Vector3 dir = arrow.transform.position - direction.transform.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             direction.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+            if (IsUIVisible(arrow.transform) || cam.IsMoving)
+            {
+                direction.gameObject.SetActive(false);
+            }
+            else
+            {
+                direction.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -142,5 +155,15 @@ public class TutorialManager : MonoBehaviour
         nextStep.gameObject.SetActive(false);
         direction.gameObject.SetActive(false);
         firstGivingMoney.gameObject.SetActive(false);
+    }
+
+    bool IsUIVisible(Transform uiElement)
+    {
+        if (uiElement.position.x < 0 || uiElement.position.x > Screen.width || uiElement.position.y < 0 || uiElement.position.y > Screen.height)
+        {
+            return false; // 경계를 벗어난 경우
+        }
+
+        return true; // 모든 모서리가 화면 안에 있는 경우
     }
 }
