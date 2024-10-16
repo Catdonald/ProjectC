@@ -882,7 +882,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6518579574648031556}
   - component: {fileID: 8615528339217851023}
-  - component: {fileID: 5535338871406022871}
   m_Layer: 0
   m_Name: CafeTable_Double (1)
   m_TagString: Untagged
@@ -899,7 +898,7 @@ Transform:
   m_GameObject: {fileID: 242338383035895184}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.25, y: 0.16017155, z: -9.5}
+  m_LocalPosition: {x: 38, y: 0.16017155, z: -10.450001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -924,7 +923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0.02, z: 4.13}
+  buyingPosition: {x: 0, y: 0.02, z: 3.25}
   punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 4656566108177796007}
@@ -950,27 +949,6 @@ MonoBehaviour:
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
---- !u!65 &5535338871406022871
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242338383035895184}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.5, y: 0, z: 3.5}
-  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!1 &252662697266960452
 GameObject:
   m_ObjectHideFlags: 0
@@ -2740,7 +2718,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7737412125074334073}
   - component: {fileID: 7288893956937606811}
-  - component: {fileID: 7617428864393064343}
   m_Layer: 0
   m_Name: CafeTable_Double
   m_TagString: Untagged
@@ -2757,7 +2734,7 @@ Transform:
   m_GameObject: {fileID: 618339832279109607}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.25, y: 0.16017155, z: -3.5}
+  m_LocalPosition: {x: 38, y: 0.16017155, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2782,7 +2759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0.02, z: 4.13}
+  buyingPosition: {x: 0, y: 0.02, z: 3.25}
   punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 8354310230791643897}
@@ -2808,27 +2785,6 @@ MonoBehaviour:
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
---- !u!65 &7617428864393064343
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 618339832279109607}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.5, y: 0, z: 3.5}
-  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!1 &635321340517666343
 GameObject:
   m_ObjectHideFlags: 0
@@ -5191,7 +5147,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6929900608020696935}
   - component: {fileID: 3412241588360758392}
-  - component: {fileID: 7855844766169126529}
   m_Layer: 0
   m_Name: CafeTable_Single (1)
   m_TagString: Untagged
@@ -5254,27 +5209,6 @@ MonoBehaviour:
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
---- !u!65 &7855844766169126529
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1285617332111153001}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.5, y: 0, z: 3.5}
-  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!1 &1326133465592834195
 GameObject:
   m_ObjectHideFlags: 0
@@ -6287,7 +6221,7 @@ Transform:
   m_GameObject: {fileID: 1654330679638015437}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 0, z: 0}
+  m_LocalPosition: {x: 3.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6665,7 +6599,7 @@ Transform:
   m_GameObject: {fileID: 1808619618404213045}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 0, z: 0}
+  m_LocalPosition: {x: 3.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9398,7 +9332,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7354009384597611915}
   - component: {fileID: 4106167059432115908}
-  - component: {fileID: 8558291528474031011}
   m_Layer: 0
   m_Name: CafeTable_Single
   m_TagString: Untagged
@@ -9461,27 +9394,6 @@ MonoBehaviour:
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
---- !u!65 &8558291528474031011
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2643043296549909769}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.5, y: 0, z: 3.5}
-  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!1 &2670188551805188877
 GameObject:
   m_ObjectHideFlags: 0
@@ -12764,7 +12676,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8492506643963548513}
   - component: {fileID: 2464882004436511956}
-  - component: {fileID: 3588168232757738044}
   m_Layer: 0
   m_Name: CafeTable_Double (3)
   m_TagString: Untagged
@@ -12781,7 +12692,7 @@ Transform:
   m_GameObject: {fileID: 3712923258775016792}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.25, y: 0.16017155, z: -9.5}
+  m_LocalPosition: {x: 43, y: 0.16017155, z: -10.450001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12806,7 +12717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0.02, z: 4.13}
+  buyingPosition: {x: 0, y: 0.02, z: 3.25}
   punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 6985681113417084558}
@@ -12832,27 +12743,6 @@ MonoBehaviour:
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
---- !u!65 &3588168232757738044
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3712923258775016792}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.5, y: 0, z: 3.5}
-  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!1 &3753228426168507831
 GameObject:
   m_ObjectHideFlags: 0
@@ -17034,7 +16924,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3937568847497034612}
   - component: {fileID: 1184816913669822746}
-  - component: {fileID: 135629123293576555}
   m_Layer: 0
   m_Name: CafeTable_Double (2)
   m_TagString: Untagged
@@ -17051,7 +16940,7 @@ Transform:
   m_GameObject: {fileID: 5218881693685737279}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.25, y: 0.16017155, z: -3.5}
+  m_LocalPosition: {x: 43, y: 0.16017155, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17076,7 +16965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 0, y: 0.02, z: 4.13}
+  buyingPosition: {x: 0, y: 0.02, z: 3.25}
   punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 2543128075116584595}
@@ -17102,27 +16991,6 @@ MonoBehaviour:
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
---- !u!65 &135629123293576555
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5218881693685737279}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.5, y: 0, z: 3.5}
-  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!1 &5225862366410342902
 GameObject:
   m_ObjectHideFlags: 0
@@ -20861,7 +20729,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3950747342407137826}
   - component: {fileID: 3394183739924542952}
-  - component: {fileID: 8114972861747394313}
   m_Layer: 0
   m_Name: CafeTable_Quater (1)
   m_TagString: Untagged
@@ -20878,7 +20745,7 @@ Transform:
   m_GameObject: {fileID: 6173301206627380909}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40.5, y: 0.16017155, z: -10}
+  m_LocalPosition: {x: 28, y: 0.16017155, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20905,7 +20772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 3.69, y: 0.02, z: 0}
+  buyingPosition: {x: 3.69, y: 0.02, z: 2}
   punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 2606838784038295584}
@@ -20939,27 +20806,6 @@ MonoBehaviour:
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
---- !u!65 &8114972861747394313
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6173301206627380909}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.5, y: 0, z: 3.5}
-  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!1 &6176621012096344885
 GameObject:
   m_ObjectHideFlags: 0
@@ -23172,7 +23018,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3779238736257138645}
   - component: {fileID: 5815399236474137038}
-  - component: {fileID: 8475819181607477205}
   m_Layer: 0
   m_Name: CafeTable_Quater
   m_TagString: Untagged
@@ -23189,7 +23034,7 @@ Transform:
   m_GameObject: {fileID: 6867561467560515245}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40.5, y: 0.16017155, z: -4.5}
+  m_LocalPosition: {x: 28, y: 0.16017155, z: -3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23216,7 +23061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd43fe7a3be8142a2c8d5f858b5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 3.69, y: 0.02, z: 0}
+  buyingPosition: {x: 3.69, y: 0.02, z: 2}
   punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter:
   - {fileID: 6228604949877044524}
@@ -23250,27 +23095,6 @@ MonoBehaviour:
   customers: []
   baseEatTime: 5
   baseTipChance: 0.4
---- !u!65 &8475819181607477205
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6867561467560515245}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.5, y: 0, z: 3.5}
-  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!1 &6872827765720135678
 GameObject:
   m_ObjectHideFlags: 0
