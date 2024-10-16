@@ -48,12 +48,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerStack.IsFull && 
-            (playerStack.StackType != eObjectType.TRASH || playerStack.StackType != eObjectType.EMPTYCUP) 
+        if (playerStack.IsFull 
+            && playerStack.StackType != eObjectType.TRASH 
+            && playerStack.StackType != eObjectType.EMPTYCUP 
             && !maxImg.activeSelf)
+        {
             maxImg.SetActive(true);
+        }
         else if (!playerStack.IsFull && maxImg.activeSelf)
+        {
             maxImg.SetActive(false);
+        }
 
 
         mouseDelta = Vector2.zero;

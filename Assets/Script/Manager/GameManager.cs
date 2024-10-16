@@ -439,6 +439,10 @@ public class GameManager : MonoBehaviour
 
     public void ShowNextDestination(float waitTime = 1.5f)
     {
+        if(UpgradeCount >= upgradables.Count)
+        {
+            return;
+        }
         upgradableCam.waitDuration = waitTime;
         Vector3 upgradablePosition = upgradables[UpgradeCount].BuyingPosition;
         upgradableCam.ShowPosition(upgradablePosition);

@@ -103,9 +103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseUpgradePrice: 250
-  upgradeGrowthFactor: 1.5
+  upgradeGrowthFactor: 1.75
   baseUnlockPrice: 75
-  unlockGrowthFactor: 1.2
+  unlockGrowthFactor: 1.05
   startingMoney: 1000000
   PoolManager: {fileID: 9150074619032864708}
   SoundManager: {fileID: 7176116462830611392}
@@ -297,6 +297,8 @@ MonoBehaviour:
   - "\uC0AC\uBB34\uC2E4\uC744 \uC124\uCE58\uD558\uC138\uC694."
   playercontroller: {fileID: 0}
   table: {fileID: 0}
+  cam: {fileID: 0}
+  second: {fileID: 0}
 --- !u!1 &9201031985188762969
 GameObject:
   m_ObjectHideFlags: 0
