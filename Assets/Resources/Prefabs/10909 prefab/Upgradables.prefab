@@ -9076,7 +9076,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 240
-  collectMultiplier: 4
+  collectMultiplier: 8
 --- !u!1 &2592110621921452879
 GameObject:
   m_ObjectHideFlags: 0
@@ -11282,7 +11282,7 @@ MonoBehaviour:
   spacing: {x: 0.4, y: 0.1, z: 0.8}
   dropInterval: 0.03
   maxPile: 240
-  collectMultiplier: 4
+  collectMultiplier: 8
 --- !u!1 &3205838445835214313
 GameObject:
   m_ObjectHideFlags: 0
@@ -13872,7 +13872,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 240
-  collectMultiplier: 4
+  collectMultiplier: 8
 --- !u!1 &4211393436408414371
 GameObject:
   m_ObjectHideFlags: 0
@@ -26242,7 +26242,7 @@ MonoBehaviour:
   spacing: {x: 0.8, y: 0.1, z: 0.4}
   dropInterval: 0.03
   maxPile: 240
-  collectMultiplier: 4
+  collectMultiplier: 8
 --- !u!1 &8227459926174803481
 GameObject:
   m_ObjectHideFlags: 0
@@ -27629,7 +27629,7 @@ MonoBehaviour:
     deleted: {fileID: 0}
   baseInterval: 1
   basePrice_firstFood: 5
-  basePrice_secondFood: 5
+  basePrice_secondFood: 6
   priceIncrementRate: 1.25
   baseStack: 30
   customerSpawnPoint: {fileID: 1378045930751168908}
