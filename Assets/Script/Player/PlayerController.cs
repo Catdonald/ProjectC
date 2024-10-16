@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRigidbody;
     private JoyStickController joystickController;
 
-
     private Vector3 rayStartPoint;
     private Vector3 mouseClickedPos;
     private bool isClicked = false;
@@ -28,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 mouseDelta;
     public playerStack Stack => playerStack;
     public Animator Animator => animator;
+    public bool IsUnlockEntranceTriggerOn { get; set; } = false;
 
     private void Awake()
     {
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
 
         mouseDelta = Vector2.zero;
-        if (GameManager.instance.IsUpgradableCamMoving == false)
+        if (GameManager.instance.IsUpgradableCamMoving == false && IsUnlockEntranceTriggerOn == false)
         {
             if (Input.GetMouseButtonDown(0))
             {

@@ -9,29 +9,23 @@ public class CameraController : MonoBehaviour
 
     private float moveDuration = 0.2f; 
     private float stayDuration = 2.0f;
-    
-    private Camera mainCamera;
     private Vector3 originalPosition; 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        mainCamera = Camera.main;
-    }
-    public void ShowPosition(Vector3 pos)
-    {
+    public void ShowPosition(Vector3 targetPos)
+    {        
+        if(IsMoving)
+            return;
         originalPosition = Camera.main.transform.position;
-        Vector3 targetPos = Camera.main.transform.localPosition;
-        targetPos.x += pos.x;
-        targetPos.z += pos.z;
         StartCoroutine(MoveCamera(targetPos));
     }
 
-    IEnumerator MoveCamera(Vector3 targetPosition)
+    IEnumerator MoveCamera(Vector3 position)
     {
         IsMoving = true;
+        Vector3 cameraLocalPos = Camera.main.transform.localPosition;
+        Vector3 targetPos = new Vector3(position.x + cameraLocalPos.x, cameraLocalPos.y, position.z + cameraLocalPos.z);
         yield return new WaitForSeconds(waitDuration);
-        yield return StartCoroutine(MoveToPosition(Camera.main.transform, targetPosition, moveDuration));
+        yield return StartCoroutine(MoveToPosition(Camera.main.transform, targetPos, moveDuration));
 
         yield return new WaitForSeconds(stayDuration);
         yield return StartCoroutine(MoveToPosition(Camera.main.transform, originalPosition, moveDuration));

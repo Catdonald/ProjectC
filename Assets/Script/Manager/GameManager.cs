@@ -427,9 +427,9 @@ public class GameManager : MonoBehaviour
 
     private void PlayUnlockEntranceSequence()
     {
-        upgradableCam.IsMoving = true;
         var player = FindObjectOfType<PlayerController>();
         player.playerRoot.transform.DOLocalRotate(new Vector3(0, -130, 0), 0.25f);
+        player.IsUnlockEntranceTriggerOn = true;
         player.Animator.SetTrigger("unlockEntrance");
         // 캐릭터 비춰주기
         var sequence = DOTween.Sequence();
@@ -445,6 +445,7 @@ public class GameManager : MonoBehaviour
             sequence2.OnComplete(() =>
             {
                 player.playerRoot.transform.DOLocalRotate(new Vector3(0, 0, 0), 0.25f);
+                player.IsUnlockEntranceTriggerOn = false;
                 // 다음 업그레이드 박스 보여주기
                 ShowNextDestination(0.5f);
             });
