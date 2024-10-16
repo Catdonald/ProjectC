@@ -18068,7 +18068,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 0}
-  m_Center: {x: 0, y: 0, z: -0.02}
+  m_Center: {x: 0, y: 0.02, z: -0.02}
 --- !u!114 &1316059870192621147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18328,7 +18328,7 @@ MonoBehaviour:
   worker: {fileID: 9058744813812916539}
   workingSpot: {fileID: 8604380530354437458}
   casher: {fileID: 8750057785427587270}
-  baseInterval: 1.5
+  baseInterval: 2
   basePrice: 5
   priceIncrementRate: 1.25
   baseStack: 30
@@ -18885,8 +18885,8 @@ MonoBehaviour:
   worker: {fileID: 2873954098836481996}
   workingSpot: {fileID: 1316059870192621147}
   casher: {fileID: 3022913226474979673}
-  baseInterval: 1.5
-  basePrice: 5
+  baseInterval: 2
+  basePrice: 6
   priceIncrementRate: 1.25
   baseStack: 30
   customerSpawnPoint: {fileID: 8532991370603055314}
@@ -22079,8 +22079,8 @@ MonoBehaviour:
   worker: {fileID: 4612568878305129784}
   workingSpot: {fileID: 7568691325695291179}
   casher: {fileID: 1576880767502847027}
-  baseInterval: 1.5
-  basePrice: 20
+  baseInterval: 2
+  basePrice: 25
   priceIncrementRate: 1.25
   baseStack: 30
   receiver: {fileID: 1429691599478293703}

@@ -114,7 +114,7 @@ public class DriveThruCounter : WorkStation
         }
 
         sellingTimer = 0.0f;
-        isFinishServing = true;
+        isFinishServing = false;
     }
 
     private void CollectMoney()
