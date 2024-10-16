@@ -9,7 +9,7 @@ public class TutorialManager : MonoBehaviour
     [Header("Tutorial UI")]
     [SerializeField] private MoneyPile firstGivingMoney;
     [SerializeField] private Image arrow;
-    [SerializeField] private Image direction;
+    [SerializeField] private GameObject direction;
     [SerializeField] private TextMeshProUGUI nextStep;
     public List<Transform> tutorialpositions = new List<Transform>();
     [SerializeField] string[] explain;
