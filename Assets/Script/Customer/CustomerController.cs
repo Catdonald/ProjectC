@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CustomerController : MonoBehaviour
 {
+    [SerializeField] private Transform root;
     [SerializeField] private int maxOrderCount = 5;
 
     private Transform entrance;
@@ -34,6 +35,7 @@ public class CustomerController : MonoBehaviour
     {
         HasOrder = false;
         startFlag = false;
+        ReadyToEat = false;
     }
 
     void Update()
@@ -112,9 +114,8 @@ public class CustomerController : MonoBehaviour
             yield return null;
         }
 
-        agent.enabled = false;
-        transform.position += transform.forward * 0.3f;
-        transform.position += transform.up * 0.2f;
+        root.position += transform.forward * 0.3f;
+        root.position += transform.up * 0.2f;
 
         // 들고있던 음식 테이블에 내려놓는다
         var table = seat.GetComponentInParent<Table>();
@@ -166,7 +167,8 @@ public class CustomerController : MonoBehaviour
 
     public void FinishEating()
     {
-        agent.enabled = true;
+        root.position -= transform.forward * 0.3f;
+        root.position -= transform.up * 0.2f;
         agent.SetDestination(entrance.position);
         animator.SetTrigger("Leave");
         StartCoroutine(Exit());

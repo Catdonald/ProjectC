@@ -466,13 +466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2534c38c6cce74eaf5e09c1ef96624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entrance: {fileID: 0}
-  spawnPoint: {fileID: 0}
-  touchedTable: {fileID: 0}
-  customerstack: {fileID: 0}
-  line: {fileID: 0}
-  orderInfo: {fileID: 0}
-  agent: {fileID: 0}
+  root: {fileID: 5940744222242235519}
+  maxOrderCount: 5
 --- !u!195 &9203761653845793125
 NavMeshAgent:
   m_ObjectHideFlags: 0

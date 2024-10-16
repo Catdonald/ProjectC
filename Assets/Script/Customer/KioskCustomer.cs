@@ -70,11 +70,7 @@ public class KioskCustomer : MonoBehaviour
         yield return new WaitUntil(() => HasArrivedToDestination());
         agent.SetDestination(transform.position);
         // 키오스크 향해 회전
-        while (Vector3.Angle(transform.forward, -kiosk.transform.forward) > 0.1f)
-        {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, kiosk.transform.rotation, Time.deltaTime * -270.0f);
-            yield return null;
-        }
+        transform.LookAt(kiosk.transform.position);
 
         // 도착하면 말풍선 띄우기 - 주문 중
         yield return new WaitForSeconds(0.5f);
