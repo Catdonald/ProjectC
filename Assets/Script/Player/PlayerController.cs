@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isMove", false);
             moveController.SetActive(false);
         }
-        maxImg.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 5f, 0));
+        maxImg.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 3f, 0));
     }
 
     private void UpdateStats()
