@@ -6521,6 +6521,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 886825449352384219, guid: 7d1c2ab905d107a44a736ce7cb949997, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236283800919616983, guid: 7d1c2ab905d107a44a736ce7cb949997, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2689024618261454829, guid: 7d1c2ab905d107a44a736ce7cb949997, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6605,6 +6613,18 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2656058668518033735}
+    - target: {fileID: 6304284835772961996, guid: 7d1c2ab905d107a44a736ce7cb949997, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305243964247270212, guid: 7d1c2ab905d107a44a736ce7cb949997, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347689494714534656, guid: 7d1c2ab905d107a44a736ce7cb949997, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9084377210023441542, guid: 7d1c2ab905d107a44a736ce7cb949997, type: 3}
       propertyPath: m_Name
       value: Canvas_WorldSpace
