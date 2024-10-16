@@ -29,12 +29,15 @@ public class TutorialManager : MonoBehaviour
                 firstGivingMoney.AddMoney();
         }
 
-        if(GameManager.instance.data.TutorialCount < tutorialpositions.Count - 1)
+        if (GameManager.instance.data.TutorialCount < tutorialpositions.Count - 1)
+        {
             nextStep.text = explain[GameManager.instance.data.TutorialCount];
+            StartCoroutine(TutorialSequence(GameManager.instance.data.TutorialCount));
+        }
         else
-            nextStep.gameObject.SetActive(false);
-
-        StartCoroutine(TutorialSequence(GameManager.instance.data.TutorialCount));
+        {
+            EndTutorial();
+        }
     }
 
     public void ShowNextStep()
@@ -54,6 +57,15 @@ public class TutorialManager : MonoBehaviour
             Vector3 dir = arrow.transform.position - direction.transform.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             direction.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+            if (IsUIVisible(arrow.rectTransform))
+            {
+                direction.gameObject.SetActive(false);
+            }
+            else
+            {
+                direction.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -142,5 +154,25 @@ public class TutorialManager : MonoBehaviour
         nextStep.gameObject.SetActive(false);
         direction.gameObject.SetActive(false);
         firstGivingMoney.gameObject.SetActive(false);
+    }
+
+    bool IsUIVisible(Transform uiElement)
+    {
+        // 1. UI 요소의 스크린 좌표를 구함
+        Vector3[] worldCorners = new Vector3[4];
+
+        // 2. 모든 모서리 좌표가 화면 안에 있는지 확인
+        for (int i = 0; i < 4; i++)
+        {
+            Vector3 screenPoint = Camera.main.WorldToScreenPoint(worldCorners[i]);
+
+            // 화면의 왼쪽, 오른쪽, 위, 아래 경계를 벗어났는지 체크
+            if (screenPoint.x < 0 || screenPoint.x > Screen.width || screenPoint.y < 0 || screenPoint.y > Screen.height)
+            {
+                return false; // 경계를 벗어난 경우
+            }
+        }
+
+        return true; // 모든 모서리가 화면 안에 있는 경우
     }
 }
