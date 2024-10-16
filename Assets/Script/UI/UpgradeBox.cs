@@ -52,7 +52,6 @@ public class UpgradeBox : Interactable
             StartCoroutine(PlayFillingStartAnimation());
         }
 
-        //GameManager.instance.SoundManager.PlayPitchSound("SFX_money");
         while (player != null && paidAmount < upgradePrice && playerMoney > 0)
         {
             float paymentRate = upgradePrice * payingInterval / payingTime;
