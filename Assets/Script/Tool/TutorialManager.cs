@@ -17,6 +17,7 @@ public class TutorialManager : MonoBehaviour
     [Header("Ref for Tutorial")]
     [SerializeField] private PlayerController playercontroller;
     [SerializeField] private Table table;
+    [SerializeField] private CameraController cam;
 
     private bool isTutorialEnd = false;
     private float edgeBuffer = 20f;
@@ -58,7 +59,7 @@ public class TutorialManager : MonoBehaviour
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             direction.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-            if (IsUIVisible(arrow.transform))
+            if (IsUIVisible(arrow.transform) || cam.IsMoving)
             {
                 direction.gameObject.SetActive(false);
             }
