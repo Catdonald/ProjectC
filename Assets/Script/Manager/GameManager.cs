@@ -180,9 +180,7 @@ public class GameManager : MonoBehaviour
 
         sceneFader.FadeOut(() =>
         {
-            upgradableCam.waitDuration = 0.0f;
-            Vector3 upgradablePosition = upgradables[UpgradeCount].BuyingPosition;
-            upgradableCam.ShowPosition(upgradablePosition);
+            ShowNextDestination(0.0f);
         });
     }
 
@@ -281,8 +279,7 @@ public class GameManager : MonoBehaviour
         SoundManager.PlaySFX("SFX_upgrade");
 
         // camera move
-        Vector3 upgradablePosition = upgradables[UpgradeCount].BuyingPosition;
-        upgradableCam.ShowPosition(upgradablePosition);
+        ShowNextDestination();
 
         // save
         SaveLoadManager.SaveData<StoreData>(data, storeName);
@@ -417,6 +414,13 @@ public class GameManager : MonoBehaviour
         Vector2 randomCircle = UnityEngine.Random.insideUnitCircle * employeeSpawnRadius;
         Vector3 randomPos = employeeSpawner.position + new Vector3(randomCircle.x, 0, randomCircle.y);
         Instantiate(employeePrefab, randomPos, employeeSpawner.rotation);
+    }
+
+    public void ShowNextDestination(float waitTime = 1.5f)
+    {
+        upgradableCam.waitDuration = waitTime;
+        Vector3 upgradablePosition = upgradables[UpgradeCount].BuyingPosition;
+        upgradableCam.ShowPosition(upgradablePosition);
     }
 }
 

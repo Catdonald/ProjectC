@@ -6,8 +6,9 @@ using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private GameObject playerRoot;
+    public GameObject playerRoot;
     [SerializeField] private GameObject moveController;
+    [SerializeField] private ParticleSystem particle;
 
     [SerializeField] private float baseSpeed = 10.0f;
     [SerializeField] private int baseCapacity = 5;
@@ -17,7 +18,6 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Rigidbody playerRigidbody;
     private JoyStickController joystickController;
-    public ParticleSystem particle;
 
 
     private Vector3 rayStartPoint;

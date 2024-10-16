@@ -83,6 +83,7 @@ public class UpgradeBox : Interactable
             GameObject moneyObj = GameManager.instance.PoolManager.SpawnObject("Money");
             moneyObj.transform.SetParent(null);
             moneyObj.transform.position = player.transform.position - Vector3.up * 0.5f;
+            moneyObj.transform.rotation = player.playerRoot.transform.rotation;
             Vector3 targetPos = transform.position;
             moneyObj.transform.DOJump(targetPos, 2.5f, 1, 0.1f).SetEase(Ease.OutQuad)
             .OnComplete(() =>
@@ -90,7 +91,7 @@ public class UpgradeBox : Interactable
                 GameManager.instance.PoolManager.Return(moneyObj);
             });
             ++count;
-            yield return new WaitForSeconds(payingInterval / 3);
+            yield return new WaitForSeconds(payingInterval);
         }
     }
 
@@ -99,10 +100,12 @@ public class UpgradeBox : Interactable
         GameObject moneyObj = GameManager.instance.PoolManager.SpawnObject("Money");
         moneyObj.transform.SetParent(null);
         moneyObj.transform.position = player.transform.position - Vector3.up * 0.5f;
+        moneyObj.transform.rotation = player.playerRoot.transform.rotation;
         Vector3 targetPos = transform.position;
         moneyObj.transform.DOJump(targetPos, 2.5f, 1, 0.1f).SetEase(Ease.OutQuad)
         .OnComplete(() =>
         {
+            moneyObj.transform.rotation = Quaternion.identity;
             GameManager.instance.PoolManager.Return(moneyObj);
         });
     }
