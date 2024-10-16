@@ -52,30 +52,28 @@ public class UpgradeBox : Interactable
             StartCoroutine(PlayFillingStartAnimation());
         }
 
-        float paymentRate = upgradePrice * payingInterval / payingTime;
+        //GameManager.instance.SoundManager.PlayPitchSound("SFX_money");
         while (player != null && paidAmount < upgradePrice && playerMoney > 0)
         {
-            GameManager.instance.SoundManager.PlayPitchSound("SFX_money");
-            while (player != null && paidAmount < upgradePrice && playerMoney > 0)
+            float paymentRate = upgradePrice * payingInterval / payingTime;
+            paymentRate = Mathf.Min(playerMoney, paymentRate);
+            int payment = Mathf.Max(1, Mathf.RoundToInt(paymentRate));
+
+            UpdatePayAmount(payment);
+            GameManager.instance.AdjustMoney(-payment);
+
+            Vibration.Vibrate(500);
+            PlayMoneyAnimation();
+
+            if (paidAmount >= upgradePrice)
             {
-                paymentRate = Mathf.Min(playerMoney, paymentRate);
-                int payment = Mathf.Max(1, Mathf.RoundToInt(paymentRate));
-
-                UpdatePayAmount(payment);
-                GameManager.instance.AdjustMoney(-payment);
-
-                Vibration.Vibrate(500);
-                PlayMoneyAnimation();
-
-                if (paidAmount >= upgradePrice)
-                {
-                    GameManager.instance.SoundManager.QuitPitchSound();
-                    GameManager.instance.BuyUpgradable();
-                }
+                GameManager.instance.SoundManager.QuitPitchSound();
+                GameManager.instance.BuyUpgradable();
             }
-            GameManager.instance.SoundManager.QuitPitchSound();
-            Vibration.Cancel();
+            yield return new WaitForSeconds(payingInterval);
         }
+        GameManager.instance.SoundManager.QuitPitchSound();
+        Vibration.Cancel();
     }
 
     IEnumerator PlayFillingStartAnimation()
@@ -102,7 +100,8 @@ public class UpgradeBox : Interactable
         GameObject moneyObj = GameManager.instance.PoolManager.SpawnObject("Money");
         moneyObj.transform.SetParent(null);
         moneyObj.transform.position = player.transform.position - Vector3.up * 0.5f;
-        moneyObj.transform.DOJump(transform.position, 2.5f, 1, 0.05f).SetEase(Ease.OutQuad)
+        Vector3 targetPos = transform.position;
+        moneyObj.transform.DOJump(targetPos, 2.5f, 1, 0.1f).SetEase(Ease.OutQuad)
         .OnComplete(() =>
         {
             GameManager.instance.PoolManager.Return(moneyObj);
