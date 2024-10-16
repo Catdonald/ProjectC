@@ -1017,8 +1017,8 @@ MonoBehaviour:
   playerRoot: {fileID: 5782377798854588419}
   moveController: {fileID: 0}
   particle: {fileID: 0}
-  baseSpeed: 10
-  baseCapacity: 5
+  baseSpeed: 4
+  baseCapacity: 2
   maxImg: {fileID: 0}
   mouseDelta: {x: 0, y: 0, z: 0}
 --- !u!136 &8626983596843426152

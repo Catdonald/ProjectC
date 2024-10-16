@@ -96,14 +96,22 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 30;
 #endif
         instance = this;
-        storeName = "store name";
+        storeName = SceneManager.GetActiveScene().name;
         data = SaveLoadManager.LoadData<StoreData>(storeName);
         if (data == null)
         {
             data = new StoreData(storeName, startingMoney);
+            sceneFader.FadeOut(() =>
+            {
+                ShowNextDestination(0.0f);
+            });
+        }
+        else
+        {
+            CalculateReward();
+            offlineReward.gameObject.SetActive(true);
         }
         AdjustMoney(0);
-        CalculateReward();
 
         for (int i = 0; i < data.EmployeeAmount; i++)
         {

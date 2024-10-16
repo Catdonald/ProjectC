@@ -566,6 +566,11 @@ public class EmployeeController : MonoBehaviour
 
         while (packageTable.GetStoredFoodCount > 0)
         {
+            if(packageTable.HasWorker && packageTable.WorkingEmployee != this)
+            {
+                currentWork = Work.NONE;
+                yield break;
+            }
             yield return null;
         }
 

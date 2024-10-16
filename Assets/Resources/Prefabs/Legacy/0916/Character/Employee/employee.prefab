@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 2.5
-  baseCapacity: 4
+  baseCapacity: 2
 --- !u!136 &8636375158292719015
 CapsuleCollider:
   m_ObjectHideFlags: 0

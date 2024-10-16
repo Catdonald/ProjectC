@@ -106,7 +106,7 @@ MonoBehaviour:
   upgradeGrowthFactor: 1.6
   baseUnlockPrice: 75
   unlockGrowthFactor: 1.125
-  startingMoney: 1000000
+  startingMoney: 0
   PoolManager: {fileID: 9150074619032864708}
   SoundManager: {fileID: 7176116462830611392}
   tutorial: {fileID: 2402175547392459677}
