@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
 
         upgradableCam = GameObject.FindObjectOfType<CameraController>();
         player = GameObject.FindObjectOfType<PlayerController>();
-        
+
         for (int i = 0; i < UpgradeCount; ++i)
         {
             upgradables[i].Upgrade(false);
@@ -261,14 +261,9 @@ public class GameManager : MonoBehaviour
     {
         /// upgrade와 effect 재생, 카메라 이동, 그리고 save
         upgradables[UpgradeCount].Upgrade();
-        // entrance unlock 시 애니메이션 재생
-        if (UpgradeCount == 0 || UpgradeCount == 51)
-        {
-            upgradableCam.waitDuration = 3.0f;
-            FindObjectOfType<PlayerController>().Animator.SetTrigger("unlockEntrance");
-        }
         UpgradeCount++;
         PaidAmount = 0;
+
         UpdateUpgradeButton();
 
         // effect, sound
@@ -276,8 +271,15 @@ public class GameManager : MonoBehaviour
         upgradeParticle.Play();
         SoundManager.PlaySFX("SFX_upgrade");
 
-        // camera move
-        ShowNextDestination();
+        // entrance unlock 시 애니메이션 재생
+        if ((UpgradeCount - 1) == 0 || (UpgradeCount - 1) == 50)
+        {
+            PlayUnlockEntranceSequence();
+        }
+        else
+        {
+            ShowNextDestination();
+        }
 
         // save
         SaveLoadManager.SaveData<StoreData>(data, storeName);
@@ -419,6 +421,32 @@ public class GameManager : MonoBehaviour
         upgradableCam.waitDuration = waitTime;
         Vector3 upgradablePosition = upgradables[UpgradeCount].BuyingPosition;
         upgradableCam.ShowPosition(upgradablePosition);
+    }
+
+    private void PlayUnlockEntranceSequence()
+    {
+        upgradableCam.IsMoving = true;
+        var player = FindObjectOfType<PlayerController>();
+        player.playerRoot.transform.DOLocalRotate(new Vector3(0, -130, 0), 0.25f);
+        player.Animator.SetTrigger("unlockEntrance");
+        // 캐릭터 비춰주기
+        var sequence = DOTween.Sequence();
+        sequence.Append(Camera.main.transform.DOLocalMove(new Vector3(-13, 13, -13), 0.5f).SetEase(Ease.OutQuad));
+        sequence.Join(Camera.main.transform.DOLocalRotate(new Vector3(22.75f, 45, 0), 0.5f).SetEase(Ease.OutQuad));
+        sequence.OnComplete(() =>
+        {
+            // 원래 카메라 위치로 돌아가기
+            var sequence2 = DOTween.Sequence();
+            sequence2.SetDelay(2.5f);
+            sequence2.Append(Camera.main.transform.DOLocalMove(new Vector3(-10.7f, 17, -10.7f), 0.5f).SetEase(Ease.OutQuad));
+            sequence2.Join(Camera.main.transform.DOLocalRotate(new Vector3(45, 45, 0), 0.5f).SetEase(Ease.OutQuad));
+            sequence2.OnComplete(() =>
+            {
+                player.playerRoot.transform.DOLocalRotate(new Vector3(0, 0, 0), 0.25f);
+                // 다음 업그레이드 박스 보여주기
+                ShowNextDestination(0.5f);
+            });
+        });
     }
 }
 
