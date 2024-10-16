@@ -87,6 +87,7 @@ Transform:
   - {fileID: 5094768821284373898}
   - {fileID: 2621494982479193590}
   - {fileID: 4995594721774948729}
+  - {fileID: 63888152033977421}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2227726940140494795
@@ -108,6 +109,7 @@ MonoBehaviour:
   startingMoney: 1000000
   PoolManager: {fileID: 9150074619032864708}
   SoundManager: {fileID: 7176116462830611392}
+  tutorial: {fileID: 2402175547392459677}
   employeeSpawner: {fileID: 0}
   employeePrefab: {fileID: 382947474619814530, guid: 2a904ec1249322044a635bc092a92b8b, type: 3}
   employeeSpawnRadius: 3
@@ -222,6 +224,79 @@ MonoBehaviour:
   counters: []
   trashBins: []
   upgradableCam: {fileID: 0}
+--- !u!1 &4184573780433641151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 63888152033977421}
+  - component: {fileID: 2402175547392459677}
+  m_Layer: 0
+  m_Name: TutorialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &63888152033977421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4184573780433641151}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3818981149191006178}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2402175547392459677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4184573780433641151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2e33663cf26854c8998ae363f9fc75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstGivingMoney: {fileID: 0}
+  arrow: {fileID: 0}
+  direction: {fileID: 0}
+  nextStep: {fileID: 0}
+  tutorialpositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  explain:
+  - "\uB3C8\uC744 \uD68D\uB4DD\uD558\uC138\uC694."
+  - "\uAC00\uAC8C\uB97C \uC624\uD508\uD558\uC138\uC694."
+  - "\uCE74\uC6B4\uD130\uB97C \uC124\uCE58\uD558\uC138\uC694."
+  - "\uBC84\uAC70 \uAE30\uACC4\uB97C \uC124\uCE58\uD558\uC138\uC694."
+  - "\uD14C\uC774\uBE14\uC744 \uC124\uCE58\uD558\uC138\uC694."
+  - "\uBC84\uAC70\uB97C \uC62E\uAE30\uC138\uC694."
+  - "\uBC84\uAC70\uB97C \uC62E\uAE30\uC138\uC694."
+  - "\uBC84\uAC70\uB97C \uD310\uB9E4\uD558\uC138\uC694."
+  - "\uD14C\uC774\uBE14\uC744 \uCE58\uC6B0\uC138\uC694."
+  - "\uC4F0\uB808\uAE30\uB97C \uBC84\uB9AC\uC138\uC694."
+  - "\uC0AC\uBB34\uC2E4\uC744 \uC124\uCE58\uD558\uC138\uC694."
+  playercontroller: {fileID: 0}
+  table: {fileID: 0}
 --- !u!1 &9201031985188762969
 GameObject:
   m_ObjectHideFlags: 0

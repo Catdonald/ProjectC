@@ -29,14 +29,18 @@ public class PlayerController : MonoBehaviour
     public playerStack Stack => playerStack;
     public Animator Animator => animator;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
         playerRigidbody.sleepThreshold = 0.0f;
         joystickController = moveController.GetComponentInChildren<JoyStickController>();
         playerStack = GetComponentInChildren<playerStack>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
         GameManager.instance.OnUpgrade += UpdateStats;
         UpdateStats();
     }
@@ -44,7 +48,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerStack.IsFull && !maxImg.activeSelf)
+        if (playerStack.IsFull && 
+            (playerStack.StackType != eObjectType.TRASH || playerStack.StackType != eObjectType.EMPTYCUP) 
+            && !maxImg.activeSelf)
             maxImg.SetActive(true);
         else if (!playerStack.IsFull && maxImg.activeSelf)
             maxImg.SetActive(false);
