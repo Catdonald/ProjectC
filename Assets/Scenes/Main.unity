@@ -6580,9 +6580,17 @@ PrefabInstance:
       propertyPath: entrancePoint
       value: 
       objectReference: {fileID: 5020902904865027814}
+    - target: {fileID: 1254475508730752123, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.77
+      objectReference: {fileID: 0}
     - target: {fileID: 2592110621921452879, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: m_Name
       value: Upgradables
+      objectReference: {fileID: 0}
+    - target: {fileID: 2677432127899343145, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 2915637121169241077, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: maxImg
@@ -6604,10 +6612,18 @@ PrefabInstance:
       propertyPath: entrancePoint
       value: 
       objectReference: {fileID: 6240662035577394398}
+    - target: {fileID: 5160414845672968223, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.14
+      objectReference: {fileID: 0}
     - target: {fileID: 5532469515899033736, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2656058668518033735}
+    - target: {fileID: 6689499566222295391, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.56
+      objectReference: {fileID: 0}
     - target: {fileID: 7894806821522185238, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
