@@ -9,7 +9,7 @@ public class StoreData
 {
     public string StoreName {  get; set; }
     public long Money { get; set; }
-
+    public int TutorialCount { get; set; }
     public int EmployeeSpeed { get; set; }
     public int EmployeeCapacity { get; set; }
     public int EmployeeAmount { get; set; }

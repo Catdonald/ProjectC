@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 public class Table : Upgradable
 {
     [SerializeField] private GameObject trashObject;
-
+    public bool isTrashActive => trashObject.activeSelf;
     #region Reference Properties
     public bool IsSemiFull => TrashCount == 0 && customers.Count > 0 && customers.Count < seats.Count;
     public bool IsEmpty => TrashCount == 0 && customers.Count == 0;

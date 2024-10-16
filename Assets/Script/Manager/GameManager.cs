@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     [Header("# Manager")]
     public PoolManager PoolManager;
     public SoundManager SoundManager;
+    public TutorialManager tutorial;
+
 
     [Header("# Employee")]
     [SerializeField] private Transform employeeSpawner;
