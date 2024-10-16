@@ -6429,6 +6429,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1526609819}
+    - target: {fileID: 2361701166753573470, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1526609819}
     - target: {fileID: 4635119336939399472, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6516,14 +6520,6 @@ PrefabInstance:
     - target: {fileID: 5792849779976437438, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
       propertyPath: m_Name
       value: Canvas_ScreenSpace
-      objectReference: {fileID: 0}
-    - target: {fileID: 8696217290669901449, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8696217290669901449, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
