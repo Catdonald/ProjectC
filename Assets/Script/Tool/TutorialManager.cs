@@ -56,27 +56,27 @@ public class TutorialManager : MonoBehaviour
         {
             arrow.transform.position = Camera.main.WorldToScreenPoint(tutorialpositions[GameManager.instance.data.TutorialCount].position + new Vector3(0, 2, 0));
 
-            if (!isTweening)
-            {
-                arrow.transform.DOMoveY(arrow.transform.position.y + 50f, 1)
-                .SetLoops(-1, LoopType.Yoyo) 
-                .SetEase(Ease.InOutSine);
-
-                isTweening = true; 
-            }
-
-            // rotation
-            Vector3 dir = arrow.transform.position - direction.transform.position;
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            direction.transform.rotation = Quaternion.Euler(0, 0, angle);
-
             if (IsUIVisible(arrow.transform) || cam.IsMoving)
             {
                 direction.gameObject.SetActive(false);
+
+                if (!isTweening)
+                {
+                    arrow.transform.DOMoveY(arrow.transform.position.y + 50f, 1)
+                    .SetLoops(-1, LoopType.Yoyo)
+                    .SetEase(Ease.InOutSine);
+
+                    isTweening = true;
+                }
             }
             else
             {
                 direction.gameObject.SetActive(true);
+
+                // rotation
+                Vector3 dir = arrow.transform.position - direction.transform.position;
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                direction.transform.rotation = Quaternion.Euler(0, 0, angle);
             }
         }
     }
