@@ -78,13 +78,13 @@ public class UpgradeBox : Interactable
     IEnumerator PlayFillingStartAnimation()
     {
         int count = 0;
+        Vector3 targetPos = transform.position;
         while (count < 3)
         {
             GameObject moneyObj = GameManager.instance.PoolManager.SpawnObject("Money");
             moneyObj.transform.SetParent(null);
             moneyObj.transform.position = player.transform.position - Vector3.up * 0.5f;
             moneyObj.transform.rotation = player.playerRoot.transform.rotation;
-            Vector3 targetPos = transform.position;
             moneyObj.transform.DOJump(targetPos, 2.5f, 1, 0.1f).SetEase(Ease.OutQuad)
             .OnComplete(() =>
             {
