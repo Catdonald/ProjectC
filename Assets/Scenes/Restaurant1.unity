@@ -6786,22 +6786,6 @@ PrefabInstance:
       propertyPath: linkedUI
       value: 
       objectReference: {fileID: 4930509322278317793}
-    - target: {fileID: 3788501794997658079, guid: 00650a4c3799e124aa758ac4356b19fc, type: 3}
-      propertyPath: buyingPosition.x
-      value: 16.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3788501794997658079, guid: 00650a4c3799e124aa758ac4356b19fc, type: 3}
-      propertyPath: buyingPosition.z
-      value: 6.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 5359097883324163056, guid: 00650a4c3799e124aa758ac4356b19fc, type: 3}
-      propertyPath: buyingPosition.x
-      value: 16.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5359097883324163056, guid: 00650a4c3799e124aa758ac4356b19fc, type: 3}
-      propertyPath: buyingPosition.z
-      value: 8.8
-      objectReference: {fileID: 0}
     - target: {fileID: 5733050958337839258, guid: 00650a4c3799e124aa758ac4356b19fc, type: 3}
       propertyPath: linkedUI
       value: 

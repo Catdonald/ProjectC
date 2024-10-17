@@ -3565,7 +3565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14af2a0d0e0b6244da00c2a2ceb74b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 15.08, y: 0.42, z: 8.98}
+  buyingPosition: {x: 16.6, y: 0.42, z: 8.8}
   punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter: []
   upgradeMeshes: []
@@ -16908,7 +16908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14af2a0d0e0b6244da00c2a2ceb74b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyingPosition: {x: 15.03, y: 0.42, z: 6.13}
+  buyingPosition: {x: 16.6, y: 0.42, z: 6.12}
   punchScale: {x: 0.1, y: 0.2, z: 0.1}
   meshFilter: []
   upgradeMeshes: []
