@@ -6376,6 +6376,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3006346218767744409, guid: 7d1c2ab905d107a44a736ce7cb949997, type: 3}
+      propertyPath: payingTime
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4952596043398665737, guid: 7d1c2ab905d107a44a736ce7cb949997, type: 3}
       propertyPath: m_Camera
       value: 
@@ -6669,6 +6673,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1526609819}
+    - target: {fileID: 1231608097409212078, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1231608097409212078, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1231608097409212078, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2361701166753573470, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6760,6 +6776,14 @@ PrefabInstance:
     - target: {fileID: 5792849779976437438, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
       propertyPath: m_Name
       value: Canvas_ScreenSpace
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196417712190389530, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196417712190389530, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8696217290669901449, guid: 0599882c3ec6f3944bc69682a92ecfd0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6869,7 +6893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3180183967850916408, guid: e571a8b3a5bc7804b9c63ca6e3d8adb2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 3180183967850916408, guid: e571a8b3a5bc7804b9c63ca6e3d8adb2, type: 3}
       propertyPath: m_LocalRotation.w

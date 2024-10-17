@@ -14,9 +14,9 @@ public class FrameCounter : MonoBehaviour
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
     }
 
+#if UNITY_EDITOR
     private void OnGUI()
     {
-
         GUIStyle style = new GUIStyle();
 
         Rect rect = new Rect(30, 30, Screen.width, Screen.height);
@@ -29,6 +29,6 @@ public class FrameCounter : MonoBehaviour
         string text = string.Format("{0:0.} FPS ({1:0.0} ms)", fps, ms);
 
         GUI.Label(rect, text, style);
-
     }
+#endif
 }

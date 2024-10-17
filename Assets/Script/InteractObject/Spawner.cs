@@ -56,6 +56,7 @@ public class Spawner : Stackable
         {
             player.AddToStack(stack.Pop(), type);
             GameManager.instance.SoundManager.PlaySFX("SFX_stack");
+            Vibration.Vibrate(100);
         }
     }
 }

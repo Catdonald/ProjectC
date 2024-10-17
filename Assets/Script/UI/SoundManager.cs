@@ -5,7 +5,6 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [Header("Sound Management")]
-    public float soundVol;
     public List<AudioSource> sounds_3d;
     [SerializeField] private AudioSource bgm;
     [SerializeField] private AudioClip[] bgmClips;
@@ -24,8 +23,6 @@ public class SoundManager : MonoBehaviour
 
     void Awake()
     {
-        soundVol = 0.5f;
-
         bgms = new Dictionary<string, AudioClip>();
         sfxs = new Dictionary<string, AudioClip>();
     }
@@ -41,7 +38,7 @@ public class SoundManager : MonoBehaviour
             sfxs.Add(sfxClips[i].name, sfxClips[i]);
         }
 
-        SetVolume(soundVol);
+        SetVolume(GameManager.instance.SoundVolume / 100.0f);
 
         PlayBGM("BGM_main");
         StopSFX();

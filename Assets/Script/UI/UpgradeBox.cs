@@ -9,7 +9,7 @@ public class UpgradeBox : Interactable
 {
     [Header("Button info")]
     [SerializeField] private float payingInterval = 0.01f;
-    [SerializeField] private float payingTime = 1.0f;
+    [SerializeField] private float payingTime = 0.5f;
     [SerializeField] private Image fill;
     [SerializeField] private TextMeshProUGUI priceText;
 
@@ -61,7 +61,7 @@ public class UpgradeBox : Interactable
             UpdatePayAmount(payment);
             GameManager.instance.AdjustMoney(-payment);
 
-            Vibration.Vibrate(500);
+            Vibration.Vibrate(200);
             PlayMoneyAnimation();
 
             if (paidAmount >= upgradePrice)

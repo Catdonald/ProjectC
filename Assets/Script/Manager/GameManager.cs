@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
     public SoundManager SoundManager;
     public TutorialManager tutorial;
 
-
     [Header("# Employee")]
     [SerializeField] private Transform employeeSpawner;
     [SerializeField] private GameObject employeePrefab;
@@ -70,21 +69,32 @@ public class GameManager : MonoBehaviour
     public PackageTable PackageTable { get; private set; }
     public int PaidAmount
     {
-        get => data.PaidAmount;
-        set => data.PaidAmount = value;
+        get => storeData.PaidAmount;
+        set => storeData.PaidAmount = value;
     }
     public int UpgradeCount
     {
-        get => data.UpgradeCount;
-        set => data.UpgradeCount = value;
+        get => storeData.UpgradeCount;
+        set => storeData.UpgradeCount = value;
     }
     public bool IsUpgradableCamMoving => upgradableCam.IsMoving;
+    public int SoundVolume
+    {
+        get => userData.SoundVolume;
+        set => userData.SoundVolume = value;
+    }
+    public bool IsHapticOn
+    {
+        get => userData.IsHapticOn;
+        set => userData.IsHapticOn = value;
+    }
     #endregion
 
     public event System.Action OnUpgrade;
     public event System.Action<float> OnUnlock;
 
-    public StoreData data;
+    public UserData userData;
+    public StoreData storeData;
     public CameraController upgradableCam;
 
     private PlayerController player;
@@ -96,11 +106,17 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 30;
 #endif
         instance = this;
-        storeName = SceneManager.GetActiveScene().name;
-        data = SaveLoadManager.LoadData<StoreData>(storeName);
-        if (data == null)
+        userData = SaveLoadManager.LoadData<UserData>("userData");
+        if(userData == null)
         {
-            data = new StoreData(storeName, startingMoney);
+            userData = new UserData();
+            SaveLoadManager.SaveData<UserData>(userData, "userData");
+        }
+        storeName = SceneManager.GetActiveScene().name;
+        storeData = SaveLoadManager.LoadData<StoreData>(storeName);
+        if (storeData == null)
+        {
+            storeData = new StoreData(storeName, startingMoney);
             sceneFader.FadeOut(() =>
             {
                 ShowNextDestination(0.0f);
@@ -113,7 +129,7 @@ public class GameManager : MonoBehaviour
         }
         AdjustMoney(0);
 
-        for (int i = 0; i < data.EmployeeAmount; i++)
+        for (int i = 0; i < storeData.EmployeeAmount; i++)
         {
             SpawnEmployee();
         }
@@ -156,7 +172,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            player.transform.position = new Vector3(0f, 0.16f, 0f);
+            player.transform.position = new Vector3(0f, 0.16f, 1.25f);
         }
     }
 
@@ -165,23 +181,24 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F1))
         {
             AdjustMoney(10000);
-            SaveLoadManager.SaveData<StoreData>(data, storeName);
+            SaveLoadManager.SaveData<StoreData>(storeData, storeName);
         }
         else if (Input.GetKeyDown(KeyCode.F2))
         {
             AdjustMoney(100000);
-            SaveLoadManager.SaveData<StoreData>(data, storeName);
+            SaveLoadManager.SaveData<StoreData>(storeData, storeName);
         }
         else if (Input.GetKeyDown(KeyCode.F3))
         {
             AdjustMoney(1000000);
-            SaveLoadManager.SaveData<StoreData>(data, storeName);
+            SaveLoadManager.SaveData<StoreData>(storeData, storeName);
         }
     }
 
     private void OnApplicationPause(bool pause)
     {
         SaveLastTime();
+        SaveLoadManager.SaveData<UserData>(userData, "userData");
     }
 
     private void OnApplicationQuit()
@@ -190,7 +207,7 @@ public class GameManager : MonoBehaviour
     }
     private void CalculateReward()
     {
-        DateTime LastTime = data.LastTime;
+        DateTime LastTime = storeData.LastTime;
         DateTime current = DateTime.Now;
 
         TimeSpan time = current - LastTime;
@@ -213,14 +230,14 @@ public class GameManager : MonoBehaviour
 
     private void SaveLastTime()
     {
-        data.LastTime = DateTime.Now;
-        SaveLoadManager.SaveData<StoreData>(data, storeName);
+        storeData.LastTime = DateTime.Now;
+        SaveLoadManager.SaveData<StoreData>(storeData, storeName);
     }
 
     public void ExitGame()
     {
         SaveLastTime();
-
+        SaveLoadManager.SaveData<UserData>(userData, "userData");
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -278,7 +295,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            data.IsUnlocked = true;
+            storeData.IsUnlocked = true;
             upgradeButton.gameObject.SetActive(false);
         }
 
@@ -311,18 +328,18 @@ public class GameManager : MonoBehaviour
         }
 
         // save
-        SaveLoadManager.SaveData<StoreData>(data, storeName);
+        SaveLoadManager.SaveData<StoreData>(storeData, storeName);
     }
 
     public void AdjustMoney(int value)
     {
-        data.Money += value;
-        displayMoneyText.text = GetFormattedMoney(data.Money);
+        storeData.Money += value;
+        displayMoneyText.text = GetFormattedMoney(storeData.Money);
     }
 
     public long GetMoney()
     {
-        return data.Money;
+        return storeData.Money;
     }
 
     public string GetFormattedMoney(long money)
@@ -344,23 +361,23 @@ public class GameManager : MonoBehaviour
         switch (upgradeType)
         {
             case UpgradeType.EmployeeSpeed:
-                data.EmployeeSpeed++;
+                storeData.EmployeeSpeed++;
                 break;
             case UpgradeType.EmployeeCapacity:
-                data.EmployeeCapacity++;
+                storeData.EmployeeCapacity++;
                 break;
             case UpgradeType.EmployeeAmount:
-                data.EmployeeAmount++;
+                storeData.EmployeeAmount++;
                 SpawnEmployee();
                 break;
             case UpgradeType.PlayerSpeed:
-                data.PlayerSpeed++;
+                storeData.PlayerSpeed++;
                 break;
             case UpgradeType.PlayerCapacity:
-                data.PlayerCapacity++;
+                storeData.PlayerCapacity++;
                 break;
             case UpgradeType.Profit:
-                data.Profit++;
+                storeData.Profit++;
                 foreach (var upgradable in upgradables)
                 {
                     upgradable.UpgradeStats();
@@ -370,7 +387,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        SaveLoadManager.SaveData<StoreData>(data, storeName);
+        SaveLoadManager.SaveData<StoreData>(storeData, storeName);
         OnUpgrade?.Invoke();
     }
 
@@ -386,22 +403,22 @@ public class GameManager : MonoBehaviour
         switch (upgradeType)
         {
             case UpgradeType.EmployeeSpeed:
-                level = data.EmployeeSpeed;
+                level = storeData.EmployeeSpeed;
                 break;
             case UpgradeType.EmployeeCapacity:
-                level = data.EmployeeCapacity;
+                level = storeData.EmployeeCapacity;
                 break;
             case UpgradeType.EmployeeAmount:
-                level = data.EmployeeAmount;
+                level = storeData.EmployeeAmount;
                 break;
             case UpgradeType.PlayerSpeed:
-                level = data.PlayerSpeed;
+                level = storeData.PlayerSpeed;
                 break;
             case UpgradeType.PlayerCapacity:
-                level = data.PlayerCapacity;
+                level = storeData.PlayerCapacity;
                 break;
             case UpgradeType.Profit:
-                level = data.Profit;
+                level = storeData.Profit;
                 break;
             default:
                 break;

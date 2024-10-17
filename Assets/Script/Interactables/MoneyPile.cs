@@ -38,6 +38,7 @@ public class MoneyPile : ObjectPile
         if (player != null && objects.Count > 0)
         {
             GameManager.instance.SoundManager.PlaySFX("SFX_cashBell");
+            Vibration.Vibrate(100);
         }
 
         while (player != null && objects.Count > 0)

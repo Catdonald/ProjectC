@@ -31,6 +31,7 @@ public class Giver : Stackable
         if (player.StackType == eObjectType.LAST || player.StackType == type)
         {
             player.AddToStack(stack.Pop(), type);
+            Vibration.Vibrate(100);
             GameManager.instance.SoundManager.PlaySFX("SFX_stack");
             if (linkedObject != null && stack.Count == 0)
                 linkedObject.SetActive(false);

@@ -27,16 +27,16 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-        if (GameManager.instance.data.TutorialCount == 0)
+        if (GameManager.instance.storeData.TutorialCount == 0)
         {
             for (int i = 0; i < 500; ++i)
                 firstGivingMoney.AddMoney();
         }
 
-        if (GameManager.instance.data.TutorialCount < tutorialpositions.Count - 1)
+        if (GameManager.instance.storeData.TutorialCount < tutorialpositions.Count - 1)
         {
-            nextStep.text = explain[GameManager.instance.data.TutorialCount];
-            StartCoroutine(TutorialSequence(GameManager.instance.data.TutorialCount));
+            nextStep.text = explain[GameManager.instance.storeData.TutorialCount];
+            StartCoroutine(TutorialSequence(GameManager.instance.storeData.TutorialCount));
 
             //arrow.transform.DOMoveY(arrow.transform.position.y + 50f, 1)
             //        .SetLoops(-1, LoopType.Yoyo)
@@ -50,15 +50,15 @@ public class TutorialManager : MonoBehaviour
 
     public void ShowNextStep()
     {
-        ++GameManager.instance.data.TutorialCount;
-        nextStep.text = explain[GameManager.instance.data.TutorialCount];
+        ++GameManager.instance.storeData.TutorialCount;
+        nextStep.text = explain[GameManager.instance.storeData.TutorialCount];
     }
 
     public void Update()
     {
         if (!isTutorialEnd)
         {
-            arrow.transform.position = Camera.main.WorldToScreenPoint(tutorialpositions[GameManager.instance.data.TutorialCount].position + new Vector3(0, 2, 0));
+            arrow.transform.position = Camera.main.WorldToScreenPoint(tutorialpositions[GameManager.instance.storeData.TutorialCount].position + new Vector3(0, 2, 0));
 
             if (IsUIVisible(arrow.transform) || cam.IsMoving)
             {
@@ -109,8 +109,8 @@ public class TutorialManager : MonoBehaviour
             case 5:
             case 6:
                 {
-                    GameManager.instance.data.TutorialCount = 4;
-                    nextStep.text = explain[GameManager.instance.data.TutorialCount];
+                    GameManager.instance.storeData.TutorialCount = 4;
+                    nextStep.text = explain[GameManager.instance.storeData.TutorialCount];
                     yield return new WaitUntil(() => GameManager.instance.UpgradeCount == 4);
                     ShowNextStep();
                     // put burger
@@ -124,8 +124,8 @@ public class TutorialManager : MonoBehaviour
             case 7:
             case 8:
                 {
-                    GameManager.instance.data.TutorialCount = 7;
-                    nextStep.text = explain[GameManager.instance.data.TutorialCount];
+                    GameManager.instance.storeData.TutorialCount = 7;
+                    nextStep.text = explain[GameManager.instance.storeData.TutorialCount];
                     yield return new WaitUntil(() => second.Count > 0);
                     SetUIActive(false);
                     // sell burger

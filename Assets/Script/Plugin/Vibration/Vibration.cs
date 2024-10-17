@@ -10,15 +10,23 @@ public static class Vibration
 #endif
     public static void Vibrate()
     {
+        if (!GameManager.instance.IsHapticOn)
+        {
+            return;
+        }
 #if UNITY_ANDROID && !UNITY_EDITOR
         AndroidVibrator.Call("vibrate");
 #else
-        Handheld.Vibrate();
+            Handheld.Vibrate();
 #endif
     }
 
     public static void Vibrate(long milliseconds)
     {
+        if (!GameManager.instance.IsHapticOn)
+        {
+            return;
+        }
 #if UNITY_ANDROID && !UNITY_EDITOR
         AndroidVibrator.Call("vibrate", milliseconds);
 #else
@@ -27,7 +35,10 @@ public static class Vibration
     }
     public static void Vibrate(long[] pattern, int repeat)
     {
-
+        if (!GameManager.instance.IsHapticOn)
+        {
+            return;
+        }
 
 #if UNITY_ANDROID && !UNITY_EDITOR
         AndroidVibrator.Call("vibrate", pattern, repeat);

@@ -793,7 +793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   payingInterval: 0.01
-  payingTime: 1
+  payingTime: 0.4
   fill: {fileID: 5299778912712187537}
   priceText: {fileID: 3887732877665457155}
 --- !u!65 &474183125465078702

@@ -26,6 +26,7 @@ public class Trashbin : Interactable
                 {
                     GameManager.instance.PoolManager.Return(thrownObj);
                     GameManager.instance.SoundManager.PlaySFX("SFX_bin");
+                    Vibration.Vibrate(100);
                 });
         }
     }
