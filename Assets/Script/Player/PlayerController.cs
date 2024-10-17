@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
                         moveController.SetActive(true);
                         Vector3 touchControllerPos = new Vector3(mouseClickedPos.x - Screen.width / 2, mouseClickedPos.y - Screen.height / 2, mouseClickedPos.z);
                         moveController.GetComponent<RectTransform>().localPosition = touchControllerPos;
+                        joystickController.mouseClickedPos = mouseClickedPos;
                     }
                 }
             }
@@ -87,8 +88,8 @@ public class PlayerController : MonoBehaviour
                 {
                     Vector3 mousePos = Input.mousePosition;
                     mouseDelta = mousePos - mouseClickedPos;
-                    // max padSizeX = 70.0f
-                    Vector3 mouseDeltaNorm = new Vector3(mouseDelta.x / 70.0f, mouseDelta.y / 70.0f, mouseDelta.z);
+                    
+                    Vector3 mouseDeltaNorm = new Vector3(mouseDelta.x / 100.0f, mouseDelta.y / 100.0f, mouseDelta.z);
                     float mouseDeltaMagnitude = mouseDeltaNorm.magnitude;
                     if (mouseDeltaMagnitude > 1.0f)
                     {
@@ -97,33 +98,34 @@ public class PlayerController : MonoBehaviour
                     animator.SetBool("isMove", mouseDeltaMagnitude > 0.0f);
 
                     Vector3 moveVec = new Vector3(mouseDeltaNorm.x, 0.0f, mouseDeltaNorm.y);
+                    Vector3 moveDir = Quaternion.Euler(0, 45, 0) * moveVec;
                     rayStartPoint = new Vector3(transform.position.x, 0.15f, transform.position.z);
 #if UNITY_EDITOR
-                    Debug.DrawRay(rayStartPoint, moveVec * 1.0f, Color.red);
+                    Debug.DrawRay(rayStartPoint, moveDir * 1.0f, Color.red);
 #endif
                     RaycastHit hit;
-                    if (Physics.Raycast(rayStartPoint, moveVec, out hit, 1.0f))
+                    if (Physics.Raycast(rayStartPoint, moveDir, out hit, 1.0f))
                     {
                         if (!hit.collider.CompareTag("Building"))
                         {
-                            playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * moveSpeed);
+                            playerRigidbody.MovePosition(transform.position + moveDir * Time.deltaTime * moveSpeed);
                         }
                     }
                     else
                     {
-                        playerRigidbody.MovePosition(transform.position + moveVec * Time.deltaTime * moveSpeed);
+                        playerRigidbody.MovePosition(transform.position + moveDir * Time.deltaTime * moveSpeed);
                     }
 
-                    if (moveVec.magnitude > 0.0f)
+                    if (moveDir.magnitude > 0.0f)
                     {
-                        playerRoot.transform.forward = moveVec;
+                        playerRoot.transform.forward = moveDir;
                     }
 
                     joystickController.mouseDelta = mouseDelta;
                 }
             }
 
-            particle.transform.position = gameObject.transform.position +  new Vector3(0, 0.3f, 0);
+            particle.transform.position = gameObject.transform.position + new Vector3(0, 0.3f, 0);
         }
         if (Input.GetMouseButtonUp(0) || GameManager.instance.IsUpgradableCamMoving)
         {

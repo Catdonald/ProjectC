@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
         {
             storeData = new StoreData(storeName, startingMoney);
         }
-        else
+        if(storeData.UpgradeCount > 0)
         {
             CalculateReward();
             offlineReward.gameObject.SetActive(true);
