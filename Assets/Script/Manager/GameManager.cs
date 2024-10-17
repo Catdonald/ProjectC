@@ -117,10 +117,6 @@ public class GameManager : MonoBehaviour
         if (storeData == null)
         {
             storeData = new StoreData(storeName, startingMoney);
-            sceneFader.FadeOut(() =>
-            {
-                ShowNextDestination(0.0f);
-            });
         }
         else
         {
@@ -169,6 +165,10 @@ public class GameManager : MonoBehaviour
         if (UpgradeCount == 0)
         {
             player.transform.position = new Vector3(-3.75f, 0.16f, -21.5f);
+            sceneFader.FadeOut(() =>
+            {
+                ShowNextDestination(0.0f);
+            });
         }
         else
         {
