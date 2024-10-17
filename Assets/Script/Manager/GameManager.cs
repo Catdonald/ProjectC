@@ -473,6 +473,11 @@ public class GameManager : MonoBehaviour
         upgradableCam.ShowPosition(upgradablePosition);
     }
 
+    public void EmergencyEscape()
+    {
+        player.transform.position = new Vector3(0f, 0.16f, 1.25f);
+    }
+
     private void PlayUnlockEntranceSequence()
     {
         var player = FindObjectOfType<PlayerController>();
