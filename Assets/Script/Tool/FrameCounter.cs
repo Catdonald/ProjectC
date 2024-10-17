@@ -17,6 +17,7 @@ public class FrameCounter : MonoBehaviour
 #if UNITY_EDITOR
     private void OnGUI()
     {
+#if UNITY_EDITOR
         GUIStyle style = new GUIStyle();
 
         Rect rect = new Rect(30, 30, Screen.width, Screen.height);
@@ -29,6 +30,7 @@ public class FrameCounter : MonoBehaviour
         string text = string.Format("{0:0.} FPS ({1:0.0} ms)", fps, ms);
 
         GUI.Label(rect, text, style);
+#endif
     }
 #endif
 }
