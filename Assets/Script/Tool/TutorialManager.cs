@@ -38,9 +38,9 @@ public class TutorialManager : MonoBehaviour
             nextStep.text = explain[GameManager.instance.storeData.TutorialCount];
             StartCoroutine(TutorialSequence(GameManager.instance.storeData.TutorialCount));
 
-            //arrow.transform.DOMoveY(arrow.transform.position.y + 50f, 1)
-            //        .SetLoops(-1, LoopType.Yoyo)
-            //        .SetEase(Ease.InOutSine);
+            arrow.transform.DOMoveY(arrow.transform.position.y + 20f, 1)
+                    .SetLoops(-1, LoopType.Yoyo)
+                    .SetEase(Ease.InOutSine);
         }
         else
         {
@@ -58,7 +58,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (!isTutorialEnd)
         {
-            arrow.transform.position = Camera.main.WorldToScreenPoint(tutorialpositions[GameManager.instance.storeData.TutorialCount].position + new Vector3(0, 2, 0));
+            arrow.transform.position = Camera.main.WorldToScreenPoint(tutorialpositions[GameManager.instance.storeData.TutorialCount].position + new Vector3(0, 4, 0));
 
             if (IsUIVisible(arrow.transform) || cam.IsMoving)
             {

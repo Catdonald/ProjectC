@@ -18,18 +18,18 @@ public class FrameCounter : MonoBehaviour
     private void OnGUI()
     {
 #if UNITY_EDITOR
-        GUIStyle style = new GUIStyle();
+        //GUIStyle style = new GUIStyle();
 
-        Rect rect = new Rect(30, 30, Screen.width, Screen.height);
-        style.alignment = TextAnchor.UpperLeft;
-        style.fontSize = size;
-        style.normal.textColor = color;
+        //Rect rect = new Rect(30, 30, Screen.width, Screen.height);
+        //style.alignment = TextAnchor.UpperLeft;
+        //style.fontSize = size;
+        //style.normal.textColor = color;
 
-        float ms = deltaTime * 1000f;
-        float fps = 1.0f / deltaTime;
-        string text = string.Format("{0:0.} FPS ({1:0.0} ms)", fps, ms);
+        //float ms = deltaTime * 1000f;
+        //float fps = 1.0f / deltaTime;
+        //string text = string.Format("{0:0.} FPS ({1:0.0} ms)", fps, ms);
 
-        GUI.Label(rect, text, style);
+        //GUI.Label(rect, text, style);
 #endif
     }
 #endif
