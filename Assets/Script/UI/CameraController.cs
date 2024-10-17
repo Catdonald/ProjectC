@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
     public bool IsMoving { get; set; } = false;
     public float waitDuration = 1.5f;
 
-    private float moveDuration = 0.3f;
+    private float moveDuration = 0.5f;
     private float stayDuration = 2.0f;
     private Vector3 originalPosition;
 
@@ -30,9 +30,9 @@ public class CameraController : MonoBehaviour
         moveDuration = Vector3.Distance(Camera.main.transform.position, targetPos) / 10;
 
         yield return new WaitForSeconds(waitDuration);
-        Camera.main.transform.DOMove(targetPos, moveDuration).SetEase(Ease.Linear);
+        Camera.main.transform.DOMove(targetPos, moveDuration).SetEase(Ease.InQuad);
         yield return new WaitForSeconds(moveDuration + stayDuration);
-        Camera.main.transform.DOMove(originalPosition, moveDuration).SetEase(Ease.Linear);
+        Camera.main.transform.DOMove(originalPosition, moveDuration).SetEase(Ease.InQuad);
 
         IsMoving = false;
     }
