@@ -89,19 +89,19 @@ public class TutorialManager : MonoBehaviour
                 }
             case 1:
                 {
-                    yield return new WaitUntil(() => GameManager.instance.UpgradeCount == 1);
+                    yield return new WaitUntil(() => GameManager.instance.UpgradeCount >= 1);
                     ShowNextStep();
                     goto case 2;
                 }
             case 2:
                 {
-                    yield return new WaitUntil(() => GameManager.instance.UpgradeCount == 2);
+                    yield return new WaitUntil(() => GameManager.instance.UpgradeCount >= 2);
                     ShowNextStep();
                     goto case 3;
                 }
             case 3:
                 {
-                    yield return new WaitUntil(() => GameManager.instance.UpgradeCount == 3);
+                    yield return new WaitUntil(() => GameManager.instance.UpgradeCount >= 3);
                     ShowNextStep();
                     goto case 4;
                 }
@@ -111,7 +111,7 @@ public class TutorialManager : MonoBehaviour
                 {
                     GameManager.instance.storeData.TutorialCount = 4;
                     nextStep.text = explain[GameManager.instance.storeData.TutorialCount];
-                    yield return new WaitUntil(() => GameManager.instance.UpgradeCount == 4);
+                    yield return new WaitUntil(() => GameManager.instance.UpgradeCount >= 4);
                     ShowNextStep();
                     // put burger
                     yield return new WaitUntil(() => playercontroller.Stack.Count > 0 && playercontroller.Stack.StackType == eObjectType.HAMBURGER);
