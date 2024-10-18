@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,8 @@ public class Menu : MonoBehaviour
     [SerializeField] private Image hapticSliderImage;
     [SerializeField] private Text hapticOnText;
     [SerializeField] private Text hapticOffText;
+    [SerializeField] private Text versionInfoText;
+
     private const int hapticOnSliderPosX = 155;
     private const int hapticOffSliderPosX = 50;
     private Color hapticOnBgColor = new Color(181 / 255.0f, 218 / 255.0f, 234 / 255.0f, 1.0f);
@@ -25,6 +28,7 @@ public class Menu : MonoBehaviour
         soundSlider.value = GameManager.instance.SoundVolume / 100.0f;
         bool isHapticOn = GameManager.instance.IsHapticOn;
         SettingHaptic(isHapticOn);
+        versionInfoText.text = "version " + PlayerSettings.bundleVersion;
         settingsPanel.SetActive(false);
     }
     void Update()

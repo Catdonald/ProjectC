@@ -1708,7 +1708,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 7e60f982b1b2cf94aa53c5342e72ac7d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8847,7 +8847,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 8d4fa60f87902bf49b5fd6c674ea4c56, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13087,7 +13087,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 8d4fa60f87902bf49b5fd6c674ea4c56, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15332,7 +15332,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 8d4fa60f87902bf49b5fd6c674ea4c56, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16600,7 +16600,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 7e60f982b1b2cf94aa53c5342e72ac7d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18329,7 +18329,7 @@ MonoBehaviour:
   workingSpot: {fileID: 8604380530354437458}
   casher: {fileID: 8750057785427587270}
   baseInterval: 2
-  basePrice: 5
+  basePrice: 6
   priceIncrementRate: 1.25
   baseStack: 30
   customerSpawnPoint: {fileID: 1968984711188522289}
@@ -18886,7 +18886,7 @@ MonoBehaviour:
   workingSpot: {fileID: 1316059870192621147}
   casher: {fileID: 3022913226474979673}
   baseInterval: 2
-  basePrice: 6
+  basePrice: 7
   priceIncrementRate: 1.25
   baseStack: 30
   customerSpawnPoint: {fileID: 8532991370603055314}
@@ -22887,7 +22887,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 7e60f982b1b2cf94aa53c5342e72ac7d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
