@@ -18,18 +18,18 @@ public class KioskOrderInfo : MonoBehaviour
     private GameObject secondUI;
     private Image firstIcon;
     private Image secondIcon;
-    private TextMeshProUGUI firstText;
-    private TextMeshProUGUI secondText;
+    private Text firstText;
+    private Text secondText;
 
     // Start is called before the first frame update
     void Start()
     {
         firstUI = transform.GetChild(2).gameObject;
         firstIcon = firstUI.GetComponentInChildren<Image>();
-        firstText = firstUI.GetComponentInChildren<TextMeshProUGUI>();
+        firstText = firstUI.GetComponentInChildren<Text>();
         secondUI = transform.GetChild(3).gameObject;
         secondIcon = secondUI.GetComponentInChildren<Image>();
-        secondText = secondUI.GetComponentInChildren<TextMeshProUGUI>();
+        secondText = secondUI.GetComponentInChildren<Text>();
         HideInfo();
     }
 

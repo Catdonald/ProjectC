@@ -41,9 +41,9 @@ public class WorkingSpot : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Employee"))
         {
-            isEmployeeInSpot = true;
             if (workingEmployee == null)
             {
+                isEmployeeInSpot = true;
                 workingEmployee = other.gameObject.GetComponent<EmployeeController>();
             }
         }
@@ -57,9 +57,9 @@ public class WorkingSpot : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Employee"))
         {
-            isEmployeeInSpot = false;
             if (workingEmployee == other.gameObject.GetComponent<EmployeeController>())
             {
+                isEmployeeInSpot = false;
                 workingEmployee = null;
             }
         }

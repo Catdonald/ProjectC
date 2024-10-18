@@ -32,8 +32,7 @@ public class CameraController : MonoBehaviour
         yield return new WaitForSeconds(waitDuration);
         Camera.main.transform.DOMove(targetPos, moveDuration).SetEase(Ease.InQuad);
         yield return new WaitForSeconds(moveDuration + stayDuration);
-        Camera.main.transform.DOMove(originalPosition, moveDuration).SetEase(Ease.InQuad);
-
-        IsMoving = false;
+        Camera.main.transform.DOMove(originalPosition, moveDuration).SetEase(Ease.InQuad)
+            .OnComplete( () => IsMoving = false );
     }
 }
