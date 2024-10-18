@@ -9,7 +9,7 @@ public class UpgradeBox : Interactable
 {
     [Header("Button info")]
     [SerializeField] private float payingInterval = 0.01f;
-    [SerializeField] private float payingTime = 0.5f;
+    [SerializeField] private float payingTime = 0.4f;
     [SerializeField] private Image fill;
     [SerializeField] private TextMeshProUGUI priceText;
 
