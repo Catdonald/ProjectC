@@ -29,7 +29,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (GameManager.instance.storeData.TutorialCount == 0)
         {
-            for (int i = 0; i < 500; ++i)
+            for (int i = 0; i < 800; ++i)
                 firstGivingMoney.AddMoney();
         }
 

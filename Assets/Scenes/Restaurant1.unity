@@ -5900,6 +5900,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 997030832}
     - target: {fileID: 2227726940140494795, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
+      propertyPath: unlockGrowthFactor
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227726940140494795, guid: 972489c4c00f9e3478f4592b0f3a082b, type: 3}
       propertyPath: orderInfo.Array.data[0]
       value: 
       objectReference: {fileID: 2248823112514135292}
@@ -7061,6 +7065,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 683251179}
     - target: {fileID: 1042017543485143354, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: basePrice
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042017543485143354, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: entrancePoint
       value: 
       objectReference: {fileID: 5020902904865027814}
@@ -7096,6 +7104,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 8d4fa60f87902bf49b5fd6c674ea4c56, type: 3}
+    - target: {fileID: 5130535731979409813, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: basePrice
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5130535731979409813, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: entrancePoint
       value: 
