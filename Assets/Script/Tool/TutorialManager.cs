@@ -38,9 +38,9 @@ public class TutorialManager : MonoBehaviour
             nextStep.text = explain[GameManager.instance.storeData.TutorialCount];
             StartCoroutine(TutorialSequence(GameManager.instance.storeData.TutorialCount));
 
-            arrow.transform.DOMoveY(arrow.transform.position.y + 20f, 1)
-                    .SetLoops(-1, LoopType.Yoyo)
-                    .SetEase(Ease.InOutSine);
+            //arrow.transform.DOMoveY(arrow.transform.position.y + 20f, 1)
+            //        .SetLoops(-1, LoopType.Yoyo)
+            //        .SetEase(Ease.InOutSine);
         }
         else
         {
