@@ -687,7 +687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 3527531453024274342}
   rateRange: {x: 0.8, y: 0.4}
-  bendFactor: 0.3
+  bendFactor: 0.15
   Capacity: 0
 --- !u!1 &4004222314899204916
 GameObject:
