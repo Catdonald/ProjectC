@@ -48,6 +48,7 @@ public class playerStack : MonoBehaviour
                 stack[i - 1].transform.position + (stack[i - 1].transform.up * StackOffset), rate);
             stack[i].transform.rotation = Quaternion.Lerp(stack[i].transform.rotation,
                 stack[i - 1].transform.rotation, rate);
+
             if (playerController.mouseDelta != Vector3.zero)
             {
                 stack[i].transform.rotation *= Quaternion.Euler(-i * bendFactor * rate, 0, 0);

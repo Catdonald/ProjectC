@@ -28,8 +28,30 @@ public class Giver : Stackable
         if (stack.Count == 0)
             return;
 
-        if (player.StackType == eObjectType.LAST || player.StackType == type)
+        if (type == eObjectType.BURGERPACK)
         {
+            if (player.Count == player.Capacity)
+            {
+                return;
+            }
+        }
+        else if (type == eObjectType.TRASH)
+        {
+            if (player.Count == 50)
+            {
+                return;
+            }
+        }
+        else if (type == eObjectType.EMPTYCUP)
+        {
+            if (player.Count == 50)
+            {
+                return;
+            }
+        }
+
+        if (player.StackType == eObjectType.LAST || player.StackType == type)
+        {         
             player.AddToStack(stack.Pop(), type);
             Vibration.Vibrate(100);
             GameManager.instance.SoundManager.PlaySFX("SFX_stack");
