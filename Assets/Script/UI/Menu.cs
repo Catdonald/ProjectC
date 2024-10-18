@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,7 +27,7 @@ public class Menu : MonoBehaviour
         soundSlider.value = GameManager.instance.SoundVolume / 100.0f;
         bool isHapticOn = GameManager.instance.IsHapticOn;
         SettingHaptic(isHapticOn);
-        versionInfoText.text = "version " + PlayerSettings.bundleVersion;
+        versionInfoText.text = "version " + Application.version;
         settingsPanel.SetActive(false);
     }
     void Update()
