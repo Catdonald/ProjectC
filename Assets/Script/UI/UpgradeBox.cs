@@ -57,7 +57,10 @@ public class UpgradeBox : Interactable
             float paymentRate = upgradePrice * payingInterval / payingTime;
             paymentRate = Mathf.Min(playerMoney, paymentRate);
             int payment = Mathf.Max(1, Mathf.RoundToInt(paymentRate));
-
+            if(paidAmount + payment > upgradePrice)
+            {
+                payment = upgradePrice - paidAmount;
+            }
             UpdatePayAmount(payment);
             GameManager.instance.AdjustMoney(-payment);
 
