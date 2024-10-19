@@ -18886,7 +18886,7 @@ MonoBehaviour:
   workingSpot: {fileID: 1316059870192621147}
   casher: {fileID: 3022913226474979673}
   baseInterval: 2
-  basePrice: 7
+  basePrice: 18
   priceIncrementRate: 1.25
   baseStack: 30
   customerSpawnPoint: {fileID: 8532991370603055314}
@@ -27628,8 +27628,8 @@ MonoBehaviour:
     - {fileID: 6191006585576940517, guid: 39b66458cdc4caa49ac9697f00e0c55a, type: 3}
     deleted: {fileID: 0}
   baseInterval: 1
-  basePrice_firstFood: 5
-  basePrice_secondFood: 6
+  basePrice_firstFood: 6
+  basePrice_secondFood: 18
   priceIncrementRate: 1.25
   baseStack: 30
   customerSpawnPoint: {fileID: 1378045930751168908}
