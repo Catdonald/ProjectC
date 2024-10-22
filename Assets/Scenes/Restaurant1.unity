@@ -6577,6 +6577,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 683251179}
     - target: {fileID: 1042017543485143354, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: basePrice
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042017543485143354, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: entrancePoint
       value: 
       objectReference: {fileID: 5020902904865027814}
@@ -6608,6 +6612,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2656058668518033735}
+    - target: {fileID: 6098111768307794661, guid: 94501bc169326ba46bf06438581f5092, type: 3}
+      propertyPath: basePrice_secondFood
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7894806821522185238, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
