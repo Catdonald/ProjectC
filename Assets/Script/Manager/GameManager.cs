@@ -215,7 +215,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(time.Hours + "hour " + time.Minutes + "minutes" + time.Seconds + "seconds 만의 재접속입니다.");
 #endif
 
-        offlineReward.SetRewardText(time.Hours * 1000 + time.Minutes * 100 + time.Seconds * 1);
+        offlineReward.SetRewardText(time.Hours * 100 + time.Minutes * 10 + time.Seconds * 1);
     }
     public void ReceiveReward()
     {
