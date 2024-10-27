@@ -6521,10 +6521,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 683251179}
     - target: {fileID: 1042017543485143354, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: basePrice
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1042017543485143354, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: entrancePoint
       value: 
       objectReference: {fileID: 5020902904865027814}
@@ -6556,10 +6552,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2656058668518033735}
-    - target: {fileID: 6098111768307794661, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: basePrice_secondFood
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 7894806821522185238, guid: 94501bc169326ba46bf06438581f5092, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6604,14 +6596,6 @@ PrefabInstance:
       propertyPath: maxImg
       value: 
       objectReference: {fileID: 1406071703}
-    - target: {fileID: 8365492743017622207, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 8d4fa60f87902bf49b5fd6c674ea4c56, type: 3}
-    - target: {fileID: 8490389116664120122, guid: 94501bc169326ba46bf06438581f5092, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7e60f982b1b2cf94aa53c5342e72ac7d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

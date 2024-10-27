@@ -74,11 +74,8 @@ public class PlayerController : MonoBehaviour
                     {
                         isClicked = true;
                         mouseClickedPos = Input.mousePosition;
-                        // moveController UI Ȱ��ȭ
+                        moveController.GetComponent<RectTransform>().position = mouseClickedPos;
                         moveController.SetActive(true);
-                        Vector3 touchControllerPos = new Vector3(mouseClickedPos.x - Screen.width / 2, mouseClickedPos.y - Screen.height / 2, mouseClickedPos.z);
-                        moveController.GetComponent<RectTransform>().localPosition = touchControllerPos;
-                        joystickController.mouseClickedPos = mouseClickedPos;
                     }
                 }
             }
