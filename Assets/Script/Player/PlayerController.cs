@@ -70,12 +70,14 @@ public class PlayerController : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit))
                 {
-                    if (EventSystem.current.IsPointerOverGameObject() == false)
+                    if (!EventSystem.current.IsPointerOverGameObject())
                     {
                         isClicked = true;
                         mouseClickedPos = Input.mousePosition;
                         moveController.GetComponent<RectTransform>().position = mouseClickedPos;
                         moveController.SetActive(true);
+                        Camera.main.transform.localPosition = new Vector3(-10.7f, 17.0f, -10.7f);
+                        Camera.main.transform.localRotation = Quaternion.Euler(45, 45, 0);
                     }
                 }
             }

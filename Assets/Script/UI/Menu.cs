@@ -7,10 +7,8 @@ public class Menu : MonoBehaviour
 {
     public GameObject settingsPanel;  // 설정창 패널
     public Slider soundSlider;
-    public Button quitButton;
 
-    public Button enterMenu;
-
+    [SerializeField] private GameObject backgroundAlpha;
     [SerializeField] private Image hapticBackgroundImage;
     [SerializeField] private Image hapticSliderImage;
     [SerializeField] private Text hapticOnText;
@@ -29,6 +27,7 @@ public class Menu : MonoBehaviour
         SettingHaptic(isHapticOn);
         versionInfoText.text = "version " + Application.version;
         settingsPanel.SetActive(false);
+        backgroundAlpha.SetActive(false);
     }
     void Update()
     {
@@ -38,6 +37,7 @@ public class Menu : MonoBehaviour
     public void SetMenuCanvasOn(bool isOn)
     {
         settingsPanel.SetActive(isOn);
+        backgroundAlpha.SetActive(isOn);
 
         if (isOn)
         {
