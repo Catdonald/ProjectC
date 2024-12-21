@@ -34,7 +34,6 @@ public class EmployeeController : MonoBehaviour
         StartCoroutine(CheckDoor());
     }
 
-    // Update is called once per frame
     void Update()
     {
         animator.SetBool("isMove", agent.velocity.sqrMagnitude > 0.1f);
